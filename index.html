@@ -59,7 +59,7 @@
 
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.117.2';
-import maplibregl from 'https://esm.sh/maplibre-gl@6.11.2';
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.mjs';
 const SUPABASE_URL='https://omvfsaokykpclzecfqlw.supabase.co';
 const SUPABASE_KEY='sb_publishable_jD9bmxnOpo5-ZUZsddKTtA_avOker7P';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
