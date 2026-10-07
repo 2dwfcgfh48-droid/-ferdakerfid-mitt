@@ -346,12 +346,12 @@ async function lookupFlightRoute(leg='outbound'){
     const {data,error}=await supabase.functions.invoke('flight-lookup',{body:{flight_number:flight,date}});
     if(error)throw error;if(!data?.found)throw new Error(data?.error||'Flug fannst ekki.');
     const from=data.dep_iata||data.dep_icao||'',to=data.arr_iata||data.arr_icao||'';
-    if(isReturn){if(from)$('returnFrom').value=from;if(to)$('returnTo').value=to;if(data.dep_time)$('returnFlightTime').value=String(data.dep_time).slice(0,5);if(data.arr_time)$('returnArrivalTime').value=String(data.arr_time).slice(0,5);$('returnArrivalDate').value=flightArrivalDate(date,data.dep_time_utc,data.arr_time_utc)}
-    else{if(from)$('outboundFrom').value=from;if(to)$('outboundTo').value=to;if(data.dep_time)$('outboundDepartureTime').value=String(data.dep_time).slice(0,5);if(data.arr_time)$('outboundArrivalTime').value=String(data.arr_time).slice(0,5);$('outboundArrivalDate').value=flightArrivalDate(date,data.dep_time_utc,data.arr_time_utc)}
+    if(isReturn){if(from)$('returnFrom').value=from;if(to)$('returnTo').value=to;if(data.dep_time)$('returnFlightTime').value=String(data.dep_time).slice(0,5);if(data.arr_time)$('returnArrivalTime').value=String(data.arr_time).slice(0,5);$('returnArrivalDate').value=data.arr_date||flightArrivalDate(date,data.dep_time_utc,data.arr_time_utc)}
+    else{if(from)$('outboundFrom').value=from;if(to)$('outboundTo').value=to;if(data.dep_time)$('outboundDepartureTime').value=String(data.dep_time).slice(0,5);if(data.arr_time)$('outboundArrivalTime').value=String(data.arr_time).slice(0,5);$('outboundArrivalDate').value=data.arr_date||flightArrivalDate(date,data.dep_time_utc,data.arr_time_utc)}
     syncTransportDates();
-    const dayNote=data.operates_on_requested_day?'':' · Ath.: leið fannst en flugdagur passar ekki við dagsetninguna';
-    setFlightLookupStatus(leg,`${from||'—'} → ${to||'—'}${data.dep_time?' · '+String(data.dep_time).slice(0,5):''}${data.arr_time?'–'+String(data.arr_time).slice(0,5):''}${dayNote}`,data.operates_on_requested_day?'ok':'warn');
-    toast(data.operates_on_requested_day?'Flugupplýsingar fundust.':'Flugleið fannst, en athugaðu dagsetninguna.');
+    const uncertain=!!data.approximate||!data.operates_on_requested_day;const dayNote=uncertain?' · '+(data.warning||'Flugdagur og tímar eru ekki staðfest.'):' · Heimild: AeroDataBox';
+    setFlightLookupStatus(leg,`${from||'—'} → ${to||'—'}${data.dep_time?' · '+String(data.dep_time).slice(0,5):''}${data.arr_time?'–'+String(data.arr_time).slice(0,5):''}${dayNote}`,uncertain?'warn':'ok');
+    toast(uncertain?'Varaleit í AirLabs: staðfestu dagsetningu og tíma.':'Flugupplýsingar fundust í AeroDataBox.');
   }catch(e){const msg=e?.context?.body?.error||e?.message||'Flugleit mistókst.';setFlightLookupStatus(leg,msg,'warn');toast(msg)}finally{btn.disabled=false;btn.textContent=old}
 }
 function syncItemCurrency(force=false){if(!state.trip)return;const cc=itemCountryCode(),cur=currencyFor(cc);if(force||!$('itemCurrency').value)$('itemCurrency').value=cur;updateItemCostHint()}
@@ -407,3 +407,4 @@ init();
 </script>
 </body></html>
 <!-- pages-redeploy: 2026-10-06 fresh-run -->
+
