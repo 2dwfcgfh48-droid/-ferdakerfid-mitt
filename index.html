@@ -497,27 +497,55 @@ function flightMapAirports(){
   });
  });return [...groups.values()];
 }
+function mapPlaceKey(value){const key=String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');return ({napoli:'naples',naples:'naples',rom:'rome',roma:'rome',rome:'rome',keflavik:'keflavik'})[key]||key}
+function resolveTransportMapPlace(value,category){
+ const raw=String(value||'').trim();if(!raw)return null;
+ if(category==='flight'){const code=raw.toUpperCase();const iata=MAP_AIRPORTS[code]?code:MAP_AIRPORT_ICAO[code];const a=iata&&MAP_AIRPORTS[iata];return a?{name:iata+' — '+a[2],point:a.slice(0,2),country:a[3],precision:'Flugvöllur'}:null}
+ const matches=state.stops.filter(t=>mapPlaceKey(t.name)===mapPlaceKey(raw)&&mapCoordinate(t.latitude,t.longitude));
+ if(matches.length){const points=new Set(matches.map(t=>mapCoordinate(t.latitude,t.longitude).join(',')));if(points.size!==1)return null;const t=matches[0];return {name:t.name,point:mapCoordinate(t.latitude,t.longitude),country:t.country_code,precision:'Staðsetning áfangastaðar — ekki nákvæm stöð eða höfn'}}
+ return null;
+}
+function transportMapLegs(){
+ const legs=[];mapVisibleItems().filter(x=>isTransportCategory(x.category)).forEach(item=>{
+  const m=item.metadata||{};const pairs=[['outbound_from','outbound_to','Útleið']];if((m.transport_trip_type||m.flight_trip_type)==='round_trip')pairs.push(['return_from','return_to','Heimleið']);
+  pairs.forEach(([from,to,label])=>{legs.push({item,label,from:resolveTransportMapPlace(m[from],item.category),to:resolveTransportMapPlace(m[to],item.category)})});
+ });return legs;
+}
+function transportMapPlaces(){
+ const places=new Map();transportMapLegs().forEach(leg=>{[['from','Brottför'],['to','Koma']].forEach(([key,role])=>{const place=leg[key];if(!place)return;const id=place.point.join(',');if(!places.has(id))places.set(id,{...place,items:[]});const group=places.get(id);const label=leg.label+' — '+role;let entry=group.items.find(x=>x.item.id===leg.item.id);if(!entry){entry={item:leg.item,legs:[]};group.items.push(entry)}if(!entry.legs.includes(label))entry.legs.push(label)})});return [...places.values()];
+}
+function transportMapGeoJSON(){return {type:'FeatureCollection',features:transportMapLegs().filter(x=>x.from&&x.to&&x.from.point.join(',')!==x.to.point.join(',')).map(x=>({type:'Feature',properties:{itemId:x.item.id,label:x.label},geometry:{type:'LineString',coordinates:[x.from.point,x.to.point]}}))}}
+function updateTransportMapLines(){
+ const map=state.map;if(!map||!map.isStyleLoaded())return;const data=transportMapGeoJSON();
+ if(map.getSource('trip-transport')){map.getSource('trip-transport').setData(data);return}
+ map.addSource('trip-transport',{type:'geojson',data});
+ map.addLayer({id:'trip-transport-hit',type:'line',source:'trip-transport',paint:{'line-color':'#ffd078','line-width':18,'line-opacity':0.01}});
+ map.addLayer({id:'trip-transport-line',type:'line',source:'trip-transport',paint:{'line-color':'#ffd078','line-width':3,'line-dasharray':[2,2],'line-opacity':0.85}});
+ map.on('click','trip-transport-hit',e=>{const id=e.features?.[0]?.properties?.itemId;if(id&&state.items.some(x=>x.id===id))openEditItem(id)});
+ map.on('mouseenter','trip-transport-hit',()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave','trip-transport-hit',()=>map.getCanvas().style.cursor='');
+}
 function mapOverviewPoints(localOnly=false){
  const stops=state.stops.filter(x=>!localOnly||!x.country_code||x.country_code===state.trip?.country_code).map(x=>mapCoordinate(x.latitude,x.longitude)).filter(Boolean);
- const airports=flightMapAirports();const selected=localOnly?airports.filter(x=>x.country===state.trip?.country_code):airports;
+ const airports=transportMapPlaces();const selected=localOnly?airports.filter(x=>x.country===state.trip?.country_code):airports;
  const points=[...stops,...selected.map(x=>x.point)];if(points.length)return points;if(localOnly){const tp=tripMapPoint();return tp?[[tp.longitude,tp.latitude]]:[]}return airports.map(x=>x.point);
 }
 function renderMapBookings(){
  const filter=state.mapCategory||'all';const categories=CATEGORIES;
  $('mapFilters').innerHTML=[['all','📍','Allt'],...categories].map(c=>`<button type="button" class="chip ${filter===c[0]?'active':''}" aria-pressed="${filter===c[0]}" data-map-category="${c[0]}">${c[1]} ${esc(c[2])} (${c[0]==='all'?state.items.length:state.items.filter(x=>x.category===c[0]).length})</button>`).join('');
  $('mapFilters').querySelectorAll('[data-map-category]').forEach(btn=>btn.onclick=()=>{const scroll=$('mapFilters').scrollLeft;state.mapCategory=btn.dataset.mapCategory;renderMapBookings();$('mapFilters').scrollLeft=scroll;updateMarkers();state.map?.resize()});
- const items=mapVisibleItems();const rows=items.map(x=>{const stop=state.stops.find(t=>t.id===x.stop_id);const cat=CATEGORIES.find(c=>c[0]===x.category);return `<button type="button" class="btn map-booking" data-map-booking="${esc(x.id)}">${cat?.[1]||'📍'} ${esc(x.title||'Án heitis')}<small>${esc(statusLabel(x.status))}${x.local_date?' · '+fmtDate(x.local_date):''} · ${stop?esc(stop.name)+' — staðsetning áfangastaðar':'Enginn áfangastaður tengdur'}</small></button>`}).join('');
- $('mapBookingList').innerHTML='<div class="mut" style="font-size:11px">Græn merki sýna áfangastaði og gul merki flugvelli úr flugbókunum. Aðrar færslur tengjast áfangastaðnum; nákvæmt heimilisfang þeirra er ekki skráð.</div>'+(rows||'<div class="mut" style="margin-top:8px">Engar færslur í þessum flokki.</div>');
+ const items=mapVisibleItems();const rows=items.map(x=>{const stop=state.stops.find(t=>t.id===x.stop_id);const cat=CATEGORIES.find(c=>c[0]===x.category);return `<button type="button" class="btn map-booking" data-map-booking="${esc(x.id)}">${cat?.[1]||'📍'} ${esc(x.title||'Án heitis')}<small>${esc(statusLabel(x.status))}${x.local_date?' · '+fmtDate(x.local_date):''} · ${stop?esc(stop.name)+' — staðsetning áfangastaðar':'Enginn áfangastaður tengdur'}${isTransportCategory(x.category)&&transportMapLegs().filter(l=>l.item.id===x.id).some(l=>!l.from||!l.to)?' · Kortatengingu vantar: Frá/Til þarf að samsvara skráðum áfangastað eða flugvallarkóða.':''}</small></button>`}).join('');
+ $('mapBookingList').innerHTML='<div class="mut" style="font-size:11px">Græn merki: áfangastaðir. Gul merki og strikalínur: samgöngur. Línur sýna tengingu, ekki nákvæma ferðaleið. Lestir og ferjur nota staðsetningu áfangastaðar þegar nákvæm stöð eða höfn er ekki skráð.</div>'+(rows||'<div class="mut" style="margin-top:8px">Engar færslur í þessum flokki.</div>');
  $('mapBookingList').querySelectorAll('[data-map-booking]').forEach(btn=>btn.onclick=()=>openEditItem(btn.dataset.mapBooking));
 }
 function updateMarkers(){
  state.markers.forEach(m=>m.remove());state.markers=[];if(!state.map)return;
- const items=mapVisibleItems();const airports=flightMapAirports();const pts=state.stops.filter(t=>mapCoordinate(t.latitude,t.longitude));
+ updateTransportMapLines();
+ const items=mapVisibleItems();const airports=transportMapPlaces();const pts=state.stops.filter(t=>mapCoordinate(t.latitude,t.longitude));
  airports.forEach(a=>{
-  const content=document.createElement('div');const title=document.createElement('strong');title.textContent='✈️ '+a.code+' — '+a.name;content.append(title);
+  const content=document.createElement('div');const title=document.createElement('strong');title.textContent=[...new Set(a.items.map(x=>transportIcon(x.item.category)))].join(' ')+' '+a.name;content.append(title);const detail=document.createElement('div');detail.textContent=a.precision;content.append(detail);
   a.items.forEach(entry=>{const button=document.createElement('button');button.type='button';button.className='btn small';button.textContent=(entry.item.title||'Flugbókun')+' · '+entry.legs.join(' / ');button.onclick=()=>{popup.remove();openEditItem(entry.item.id)};content.append(button)});
   const popup=new maplibregl.Popup({offset:20,maxWidth:'290px'}).setDOMContent(content);
-  state.markers.push(new maplibregl.Marker({color:'#ffd078'}).setLngLat(a.point).setPopup(popup).addTo(state.map));
+  state.markers.push(new maplibregl.Marker({color:'#ffd078',offset:[12,-3]}).setLngLat(a.point).setPopup(popup).addTo(state.map));
  });
  pts.forEach(t=>{
   const related=items.filter(x=>x.stop_id===t.id);if(state.mapCategory&&state.mapCategory!=='all'&&!related.length)return;
