@@ -532,7 +532,7 @@ function mapOverviewPoints(localOnly=false){
 function renderMapBookings(){
  const filter=state.mapCategory||'all';const categories=CATEGORIES;
  $('mapFilters').innerHTML=[['all','📍','Allt'],...categories].map(c=>`<button type="button" class="chip ${filter===c[0]?'active':''}" aria-pressed="${filter===c[0]}" data-map-category="${c[0]}">${c[1]} ${esc(c[2])} (${c[0]==='all'?state.items.length:state.items.filter(x=>x.category===c[0]).length})</button>`).join('');
- $('mapFilters').querySelectorAll('[data-map-category]').forEach(btn=>btn.onclick=()=>{const scroll=$('mapFilters').scrollLeft;state.mapCategory=btn.dataset.mapCategory;renderMapBookings();$('mapFilters').scrollLeft=scroll;updateMarkers();state.map?.resize()});
+ $('mapFilters').querySelectorAll('[data-map-category]').forEach(btn=>btn.onclick=()=>{const scroll=$('mapFilters').scrollLeft;state.mapCategory=btn.dataset.mapCategory;renderMapBookings();$('mapFilters').scrollLeft=scroll;updateMarkers();state.map?.resize();if(isTransportCategory(state.mapCategory))fitTransportLegs()});
  const items=mapVisibleItems();const rows=items.map(x=>{const stop=state.stops.find(t=>t.id===x.stop_id);const cat=CATEGORIES.find(c=>c[0]===x.category);return `<button type="button" class="btn map-booking" data-map-booking="${esc(x.id)}">${cat?.[1]||'📍'} ${esc(x.title||'Án heitis')}<small>${esc(statusLabel(x.status))}${x.local_date?' · '+fmtDate(x.local_date):''} · ${stop?esc(stop.name)+' — staðsetning áfangastaðar':'Enginn áfangastaður tengdur'}${isTransportCategory(x.category)&&transportMapLegs().filter(l=>l.item.id===x.id).some(l=>!l.from||!l.to)?' · Kortatengingu vantar: Frá/Til þarf að samsvara skráðum áfangastað eða flugvallarkóða.':''}</small></button>`}).join('');
  $('mapBookingList').innerHTML='<div class="mut" style="font-size:11px">Græn merki: áfangastaðir. Gul merki og strikalínur: samgöngur. Línur sýna tengingu, ekki nákvæma ferðaleið. Lestir og ferjur nota staðsetningu áfangastaðar þegar nákvæm stöð eða höfn er ekki skráð.</div>'+(rows||'<div class="mut" style="margin-top:8px">Engar færslur í þessum flokki.</div>');
  $('mapBookingList').querySelectorAll('[data-map-booking]').forEach(btn=>btn.onclick=()=>openEditItem(btn.dataset.mapBooking));
@@ -559,6 +559,11 @@ function updateMarkers(){
  if(!pts.length&&!airports.length){const tp=tripMapPoint();if(tp)state.markers.push(new maplibregl.Marker({color:'#43c9ab'}).setLngLat([tp.longitude,tp.latitude]).setPopup(new maplibregl.Popup({offset:20}).setText(state.trip.location_name||state.trip.name||'Ferð')).addTo(state.map))}
 }
 
+function fitTransportLegs(){
+ if(!state.map)return;const pts=transportMapPlaces().map(x=>x.point);if(!pts.length)return;
+ state.map.stop();if(pts.length===1){state.map.flyTo({center:pts[0],zoom:10,duration:650});return}
+ const bounds=new maplibregl.LngLatBounds();pts.forEach(p=>bounds.extend(p));state.map.fitBounds(bounds,{padding:55,maxZoom:10,duration:800});
+}
 function fitStops(zoomOut=0,localOnly=zoomOut>0){
  if(!state.map)return;const pts=mapOverviewPoints(localOnly);
  state.map.stop();
