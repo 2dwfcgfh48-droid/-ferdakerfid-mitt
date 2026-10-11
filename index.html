@@ -125,6 +125,24 @@ body.density-compact .dialog{padding:14px}body.density-compact .field{margin:4px
 .anim-off #destinationWeather .forecast-art>*{animation:none}
 @media(prefers-reduced-motion:reduce){#destinationWeather .forecast-art>*{animation:none!important}}
 
+
+/* Compact weather windows with a lightly translucent surface. */
+#destinationWeather .weather-tiles{column-gap:22px;row-gap:26px;justify-items:start}
+#destinationWeather .weather-tile{width:100%;max-width:140px;min-height:68px;padding:8px 9px;border-radius:11px;background:var(--surface-bg);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+#destinationWeather .weather-tile-label{font-size:10px;margin-bottom:2px}
+#destinationWeather .weather-tile strong{font-size:16px;line-height:1.25}
+#destinationWeather .weather-tile small{font-size:9px;line-height:1.4;margin-top:3px}
+@supports(background:color-mix(in srgb,black 82%,transparent)){#destinationWeather .weather-tile{background:color-mix(in srgb,var(--surface-bg) 82%,transparent)}}
+
+
+@supports(background:color-mix(in srgb,black 82%,transparent)){
+.theme-light #destinationWeather .weather-tile{background:color-mix(in srgb,var(--surface-bg) 93%,transparent)}
+.theme-sand #destinationWeather .weather-tile{background:color-mix(in srgb,var(--surface-bg) 90%,transparent)}
+.theme-midnight #destinationWeather .weather-tile{background:color-mix(in srgb,var(--surface-bg) 86%,transparent)}
+.theme-cockpit #destinationWeather .weather-tile{background:color-mix(in srgb,var(--surface-bg) 84%,transparent)}
+}
+#destinationWeather .weather-tile-label,#destinationWeather .weather-tile small{color:var(--text);opacity:.82}
+
 </style>
 </head>
 <body class="anim-on">
