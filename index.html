@@ -14,6 +14,7 @@
 
 /* Keep the destination/weather card above the map at every screen width. */
 .trip-layout-stacked{grid-template-columns:minmax(0,1fr)}
+.trip-layout-stacked>.timeline-card{margin-top:0}
 /* Trip header: full-width identity, four actions and an anchored disclosure. */
 .trip-head{display:block;margin-bottom:16px;min-width:0}
 .trip-nav{display:flex;justify-content:flex-start;margin-bottom:12px}
@@ -330,8 +331,6 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
   <div id="tripLodgingSummary" class="card section hidden"></div><div id="tripFlightMonitor" class="card section hidden" aria-label="Flugvöktun"></div><div id="tripCancellationReminders" class="card section hidden" aria-label="Afbókunaráminningar"></div>
   <div class="trip-layout trip-layout-stacked">
     <div id="destinationWeather" class="card next-card"><div class="weather-art"><div class="sun"></div><div class="cloud">☁️</div><div class="rain">🌧️</div></div><div class="brand">NÆSTI ÁFANGASTAÐUR</div><h2>Enginn áfangastaður</h2><div class="mut">Bættu við fyrsta staðnum í ferðinni.</div></div>
-    <div class="card map-wrap" id="tripMapCard"><div class="map-toolbar"><strong>Ferðin mín</strong><div class="map-view-buttons"><button type="button" class="btn small" id="mapDestinationBtn">Sýna áfangastaði</button><button type="button" class="btn small" id="mapFitBtn">Sýna alla ferðina</button></div></div><div id="mapFilters" class="map-filters"></div><div class="map-stage"><div id="map" class="map"></div><section id="mapInfo" class="map-info hidden" aria-label="Valinn staður" aria-live="polite"></section><button type="button" class="btn map-expand" id="mapExpandBtn" aria-label="Stækka kort" aria-expanded="false" title="Stækka kort">⛶</button></div><div id="mapBookingList" class="map-bookings"></div></div>
-  </div>
   <div class="card timeline-card">
     <div class="top"><h3 style="margin:0">FERÐALEIÐ & DAGATAL</h3><button class="btn small" id="manageStopsBtn">Breyta áfangastöðum</button></div>
     <div class="view-tabs"><button class="tab active" data-view="route">Ferðaleið</button><button class="tab" data-view="calendar">Dagatal</button><button class="tab" data-view="today">Í dag</button></div>
@@ -339,6 +338,8 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
     <div id="timelineDateWarnings" class="timeline-warnings hidden" role="status" aria-live="polite"></div><div id="routeView"><div id="timeline" class="timeline"></div></div>
     <div id="calendarView" class="hidden"><div id="dayItems" class="day-items"></div><div id="dayOpenJourneys"></div><div class="unscheduled"><h3>ÓSKIPULAGT / OPIÐ</h3><div id="unscheduledItems" class="day-items"></div></div></div>
     <div id="todayView" class="hidden"><div id="todayNext" aria-label="Næst á dagskrá"></div><div id="todayItems" class="day-items"></div><div id="todayOpenJourneys"></div></div>
+  </div>
+    <div class="card map-wrap" id="tripMapCard"><div class="map-toolbar"><strong>Ferðin mín</strong><div class="map-view-buttons"><button type="button" class="btn small" id="mapDestinationBtn">Sýna áfangastaði</button><button type="button" class="btn small" id="mapFitBtn">Sýna alla ferðina</button></div></div><div id="mapFilters" class="map-filters"></div><div class="map-stage"><div id="map" class="map"></div><section id="mapInfo" class="map-info hidden" aria-label="Valinn staður" aria-live="polite"></section><button type="button" class="btn map-expand" id="mapExpandBtn" aria-label="Stækka kort" aria-expanded="false" title="Stækka kort">⛶</button></div><div id="mapBookingList" class="map-bookings"></div></div>
   </div>
   <details class="card section planning-check" id="planningChecklist"><summary><strong>Hvað vantar í ferðina?</strong><span id="planningCount" class="notice" role="status" aria-live="polite"></span></summary><div id="planningChecklistBody"></div></details>
   <div class="card section"><h3>FERÐARHLUTAR</h3><div class="cats" id="categories"></div></div>
