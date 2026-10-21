@@ -2,6 +2,7 @@
 (()=>{'use strict';
  let config=null,owner=null,version=0,setupMissing=false,dialogContext=null;const choices=new Map(),pending=new Map(),attempted=new Set();
  const defaultStyle={size:100,fade:65};
+ const clamp=(n,min,max,fallback)=>Number.isFinite(Number(n))?Math.max(min,Math.min(max,Number(n))):fallback;
  function styleKey(){return 'travel-header-style-v1:'+JSON.stringify([location.origin,location.pathname.replace(/[^/]*$/,''),owner,config?.tripId])}
  function readStyle(){let s;try{s=JSON.parse(localStorage.getItem(styleKey())||'null')}catch{}return {size:clamp(s?.size??100,70,150,100),fade:clamp(s?.fade??65,0,100,65)}}
  function applyStyle(){const s=readStyle();document.querySelectorAll('.trip-hero,.header-photo-preview').forEach(node=>{node.style.setProperty('--header-photo-height',(150*s.size/100)+'px');node.style.setProperty('--header-photo-width',(2*s.size/3)+'%');node.style.setProperty('--header-fade-left',(10+s.fade*.5)+'%');node.style.setProperty('--header-fade-solid',(90-s.fade*.65)+'%')})}

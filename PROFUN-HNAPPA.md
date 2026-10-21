@@ -1,0 +1,24 @@
+# Yfirferð hnappa — 21-10-2026
+
+## Leiðrétt villa
+`clamp` vantaði í myndahlutann. `openTrip` sótti ferðina en myndastillingar köstuðu villu áður en ferðasíðan birtist. Fallið er endurheimt í báðum myndaskrám og skyndiminnisútgáfunúmer hækkað.
+
+## Keyrsluprófanir með prufugögnum
+- Opnun ferðar í gegnum raunverulega `openTrip`, `refreshTripHeading` og myndauppsetningu nær að birta ferðasíðu.
+- Ferðaspjöld tengjast `openTrip`; óþekkt ferðarauðkenni er hunsað.
+- Myndahluti ræsist og skiptir um ferð; sjálfgefnar stærðarstillingar reiknast.
+- ⋯ opnar myndaglugga. Loka-hnappur og utansmellur loka. Smellur innan glugga lokar ekki.
+- Fela mynd vistar falið val og sýna-aðgerð birtist.
+- Sama próf greinir villu ef clamp er aftur fjarlægt.
+
+Prófin nota eftirlíkingu af DOM og gagnasvörum í Node, ekki raunverulegan vafra. Innbyggð modal-einangrun iPhone/Safari er því óstaðfest.
+
+## Yfirferð kóða
+188 fastir hnappar: almennar aðgerðir, stillingar, ferðir, áfangastaðir, bókanir, dagsetningar, flugleit, kort, kostnaður, PDF, ferðaveski, innflutningur, áminningar og öryggisafrit. 63 beint nafngreindir atburðahandlarar vísa allir í skilgreind föll. Aðrir hnappar tengjast með data-close, lykkjum, reiknuðum auðkennum eða innfelldum aðgerðum. Engin tvítekin föst HTML-auðkenni fundust. Þetta er kóðayfirferð, ekki framkvæmd allra aðgerða.
+
+Allt JavaScript í afhentum skrám stenst setningafræðiprófun.
+
+## Óstaðfest
+Ekki hefur verið klárað að ýta á alla hnappa í innskráðum vafra. Vistun/breyting/eyðing raunverulegra gagna, PDF-sjónprófun, innskráning, netlaus virkni og ytri þjónustur eru óstaðfest. Upprunalegi pakkinn innihélt ekki allar tengdar verkefnisskrár, t.d. offline-store.js. Halda öðrum skrám verkefnisins.
+
+Prófunarskrá: `node tests/controls-smoke.cjs` úr verkefnismöppunni.
