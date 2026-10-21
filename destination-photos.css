@@ -53,3 +53,10 @@
 .today-weather-values>strong{font-size:22px;line-height:1.2;white-space:nowrap}
 .today-weather-values>span{font-size:12px;line-height:1.4;max-width:150px}
 @media(max-width:360px){.spotlight-today-head>.spotlight-weather-today{gap:3px}.today-weather-icon{font-size:30px}.today-weather-values>strong{font-size:22px}.spotlight-today-head>.brand,.spotlight-today-head>div>.brand{letter-spacing:1px}}
+
+.photo-action-wrap{display:flex;justify-content:flex-end;margin-top:4px}
+.photo-action-toggle.btn{min-width:44px;min-height:44px;padding:4px 10px;font-size:24px;background:transparent;border-color:transparent}
+.photo-actions-dialog{position:fixed;width:min(280px,calc(100vw - 40px));max-height:80dvh;overflow:auto;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--text);box-shadow:var(--shadow)}
+.photo-actions-dialog::backdrop{background:rgba(0,0,0,.18)}
+.photo-actions-dialog .place-photo-tools{display:grid;margin:0 0 8px;gap:8px}
+.photo-actions-dialog .btn{width:100%;min-height:44px;font-size:14px}
