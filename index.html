@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071018">
-<link rel="stylesheet" href="./destination-photos.css?v=20261021-today-weather">
+<link rel="stylesheet" href="./destination-photos.css?v=20261021-today-layout">
 <title>Ferðakerfið mitt — V6 Master</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.11.2/dist/maplibre-gl.css">
 <style>
@@ -439,7 +439,7 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
 
 <script src="./offline-store.js"></script>
 <script>if(navigator.onLine===false)location.replace(new URL('./offline.html',location.href));</script>
-<script src="./destination-photos.js?v=20261021-today-weather"></script>
+<script src="./destination-photos.js?v=20261021-today-layout"></script>
 <div id="destinationPhotoModal" class="modal"></div>
 <div id="headerPhotoSettingsModal" class="modal"></div>
 <script type="module">
@@ -1355,7 +1355,8 @@ function spotlightWeatherMarkup(place,date,plain=false){
  if(!v)return plain?(entry?.failed?'Veður ekki tiltækt':'Spá ekki tiltæk'):(entry?.failed?'Veður ekki tiltækt ↘':'Skoða veður ↘');
  const icon=({sunny:'☀️',partly:'🌤️',cloudy:'☁️',fog:'🌫️',storm:'⛈️',snow:'🌨️',rain:'🌧️'})[weatherGraphicState(v.codes[0])]||'🌡️';
  const stale=entry.failed||Date.now()-entry.checked>=3600000;
- return esc(icon+' '+weatherRangeText(v.min,v.max,'°C')+' · '+weatherCodeLabel(v.codes[0])+(stale?' · Eldri spá':'')+(plain?'':' ↘'));
+ if(plain)return '<span class="today-weather-icon" aria-hidden="true">'+esc(icon)+'</span><span class="today-weather-values"><strong>'+esc(weatherRangeText(v.min,v.max,'°C'))+'</strong><span>'+esc(weatherCodeLabel(v.codes[0])+(stale?' · Eldri spá':''))+'</span></span>';
+ return esc(icon+' '+weatherRangeText(v.min,v.max,'°C')+' · '+weatherCodeLabel(v.codes[0])+(stale?' · Eldri spá':'')+' ↘');
 }
 function spotlightDirections(item,leg){
  const saved=item.metadata?.departure_plans?.[leg],plan=saved&&effectiveDeparturePlan(item,leg,saved);
@@ -1385,7 +1386,7 @@ function renderTripSpotlight(){
  const hotels=state.items.filter(i=>i.category==='lodging'&&lodgingUsed(i)&&i.local_date&&i.local_date<=day&&i.end_local_date&&day<i.end_local_date);
  const hotelHtml=hotels.length?'<div class="spotlight-hotel"><div class="brand">GISTING Í KVÖLD · '+esc(fmtDate(day))+'</div>'+hotels.map(h=>'<div><strong>🏨 '+esc(h.title)+'</strong><div class="spotlight-actions">'+spotlightDirections(h,'outbound')+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</div>':'';
  const until=addDaysIso(day,7),open=state.items.filter(i=>{if(!isOpenTransport(i.category,i.status))return false;const c=openJourneyContext(i),d=i.metadata?.outbound_departure_date||i.local_date||c?.start;return d?d>=day&&d<=until:openJourneyRelevant(i,day)});
- host.innerHTML=`<div class="spotlight-head spotlight-today-head${todayWeather?' spotlight-with-weather':''}"><div><div class="brand">Í DAG · ${esc(fmtDate(day))}</div><h2>${esc(stopForDate(day)?.name||state.trip.name)}</h2></div>${todayWeather}</div>${destinationPhotoSlot(todayPlace,'today')}${body}${hotelHtml}${open.length?'<div class="spotlight-open"><div class="brand">ÓBÓKAÐ / OPIÐ · NÆSTU DAGAR</div>'+open.map(i=>'<div class="spotlight-open-row"><div><strong>'+transportIcon(i.category)+' '+esc(i.title)+'</strong><div class="notice">'+esc(openJourneyLabel(i)|| (i.local_date?fmtDate(i.local_date):'Dagsetning opin'))+' · Klukka óstaðfest</div></div>'+destinationPhotoSlot(openJourneyContext(i)?.to,'journey')+'<button type="button" class="btn small" data-spotlight-item="'+esc(i.id)+'">Ganga frá ferð →</button></div>').join('')+'</div>':''}`;
+ host.innerHTML=`<div class="spotlight-head spotlight-today-head${todayWeather?' spotlight-with-weather':''}"><div><div class="brand">Í DAG · ${esc(fmtDate(day))}</div></div>${todayWeather}<h2>${esc(stopForDate(day)?.name||state.trip.name)}</h2></div>${destinationPhotoSlot(todayPlace,'today')}${body}${hotelHtml}${open.length?'<div class="spotlight-open"><div class="brand">ÓBÓKAÐ / OPIÐ · NÆSTU DAGAR</div>'+open.map(i=>'<div class="spotlight-open-row"><div><strong>'+transportIcon(i.category)+' '+esc(i.title)+'</strong><div class="notice">'+esc(openJourneyLabel(i)|| (i.local_date?fmtDate(i.local_date):'Dagsetning opin'))+' · Klukka óstaðfest</div></div>'+destinationPhotoSlot(openJourneyContext(i)?.to,'journey')+'<button type="button" class="btn small" data-spotlight-item="'+esc(i.id)+'">Ganga frá ferð →</button></div>').join('')+'</div>':''}`;
  host.classList.remove('hidden');paintDestinationPhotos();
  host.querySelectorAll('[data-spotlight-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.spotlightItem));
  host.querySelectorAll('[data-spotlight-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.spotlightDocument));

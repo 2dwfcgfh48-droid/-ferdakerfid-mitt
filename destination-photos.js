@@ -2,6 +2,8 @@
 (()=>{'use strict';
  let config=null,owner=null,version=0,setupMissing=false,dialogContext=null;const choices=new Map(),pending=new Map(),attempted=new Set();
  const defaultStyle={size:100,fade:65};
+ document.addEventListener('pointerdown',e=>{document.querySelectorAll('.place-photo-menu[open]').forEach(menu=>{if(!menu.contains(e.target))menu.open=false})});
+ document.addEventListener('focusin',e=>{document.querySelectorAll('.place-photo-menu[open]').forEach(menu=>{if(!menu.contains(e.target))menu.open=false})});
  const clamp=(n,min,max,fallback)=>Number.isFinite(Number(n))?Math.max(min,Math.min(max,Number(n))):fallback;
  function styleKey(){return 'travel-header-style-v1:'+JSON.stringify([location.origin,location.pathname.replace(/[^/]*$/,''),owner,config?.tripId])}
  function readStyle(){let s;try{s=JSON.parse(localStorage.getItem(styleKey())||'null')}catch{}return {size:clamp(s?.size??100,70,150,100),fade:clamp(s?.fade??65,0,100,65)}}
