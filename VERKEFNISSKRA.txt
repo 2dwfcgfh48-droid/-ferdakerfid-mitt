@@ -96,3 +96,5 @@ Viðbót 21-10-2026 — myndir áfangastaða og Í dag
 Samþykkt: Áfangastaður hefur myndaval sem nýtist líka í Í dag. Mynd í Í dag er breið undir staðarheiti, með ávölum hornum, án útþynningar, hreyfingar eða stærðarsleða. Minni mynd með útþynningu í Næsti áfangastaður.
 Útfært: Næsti áfangastaður notar nú sameiginlega myndavalshluta destination-photos. Sama staðarheiti og land nota sama vistaða myndaval í sama vafra og reikningi. Breyta/fela/sýna helst sameiginlegt milli spjalda. Í dag sýnir mynd 150–230 px háa eftir skjábreidd. Haus og hausmyndastillingar haldast.
 Sannprófun: Allt innfellt JavaScript og destination-photos.js standast setningafræðiprófun. Ekki tókst að staðfesta útlit í vafra/iPhone eða innskráða myndaleit í þessu umhverfi. Vistun myndavals er áfram staðbundin í vafra, ekki samstilling milli tækja.
+
+Leiðrétting 21-10-2026 — nýrri fyrirmæli ganga framar: Engin staðarmynd og engir myndahnappar eiga að vera á veðurspjaldinu „Næsti áfangastaður“. Myndasvæðið þar hefur verið fjarlægt. Mynd í Í dag og hausmynd haldast. Fyrri ákvörðun um litla mynd á veðurspjaldi fellur úr gildi. JavaScript setningafræði staðfest; iPhone útlit óprófað.
