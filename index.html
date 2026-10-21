@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071018">
-<link rel="stylesheet" href="./destination-photos.css">
+<link rel="stylesheet" href="./destination-photos.css?v=20261021-header1">
 <title>Ferðakerfið mitt — V6 Master</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.11.2/dist/maplibre-gl.css">
 <style>
@@ -22,9 +22,9 @@
 .trip-spotlight{padding:17px;margin:14px 0;border-color:var(--accent);overflow-wrap:anywhere}
 .spotlight-head{min-width:0}.spotlight-with-weather{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);align-items:start;gap:10px}.spotlight-head>div{min-width:0}.spotlight-weather-wrap{justify-self:end;max-width:100%;width:100%}.spotlight-next-head{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.spotlight-place{display:block;margin-top:5px;font-weight:900}.spotlight-weather-wrap .spotlight-weather{width:100%;min-height:44px;font-size:12px;line-height:1.4;padding:7px 8px}.spotlight-head h2{margin:6px 0;font-size:22px}.spotlight-weather{max-width:100%;font-size:12px;text-align:left;white-space:normal}.spotlight-body h3{font-size:20px;margin:12px 0 7px}.spotlight-leave{margin:10px 0;padding:9px 12px;border-radius:10px;background:var(--surface-bg,#102e29);color:var(--accent);font-weight:900}.spotlight-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.spotlight-actions>*{max-width:100%;text-decoration:none}.spotlight-hotel{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.spotlight-open{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.spotlight-open-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px}.spotlight-open-row>div{min-width:0}.trip-spotlight .notice{margin:5px 0}
 #destinationWeather{scroll-margin-top:18px}
-/* Trip header: full-width identity, four actions and an anchored disclosure. */
+/* Trip header: two primary actions and secondary controls under More. */
 .trip-head{display:block;margin-bottom:16px;min-width:0}
-.trip-nav{display:flex;justify-content:flex-start;margin-bottom:12px}
+.trip-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;position:relative;z-index:4}
 .trip-identity{min-width:0;text-align:left}
 .trip-identity h1{overflow-wrap:anywhere;margin:5px 0 7px}
 #tripDates{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 12px;line-height:1.5}
@@ -33,8 +33,8 @@
 .trip-head-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
 .trip-head-actions>.btn,.trip-more>.btn{width:100%;min-height:44px;white-space:normal}
 .trip-more{position:relative;min-width:0}
-.trip-more-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:60;display:grid;gap:4px;width:max-content;min-width:100%;max-width:calc(100vw - 32px);padding:8px;background:var(--card-bg,#0d1b24);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
-.trip-more-menu .btn{width:100%;min-height:44px;text-align:left;white-space:nowrap}
+.trip-more-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:60;display:grid;gap:4px;width:max-content;min-width:100%;max-width:calc(100vw - 32px);max-height:70dvh;overflow:auto;padding:8px;background:var(--card-bg,#0d1b24);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+.trip-more-menu .btn{width:100%;min-height:44px;text-align:left;white-space:normal;overflow-wrap:anywhere}
 .trip-more-menu .danger{border-top-width:2px;margin-top:4px}
 /* V6 settings + live theme preview */
 body.settings-applied{background:var(--body-bg);color:var(--text)}
@@ -320,17 +320,21 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
 
 <section id="tripScreen" class="screen">
   <header class="trip-head">
-    <div class="trip-nav"><button type="button" class="btn small" id="backBtn">← Til baka</button></div>
-    <div class="trip-identity"><div id="tripBrand" class="brand">FERÐASÍÐA</div><h1 id="tripTitle">Ferð</h1><div id="tripDates" class="mut"></div></div>
-    <div class="trip-head-actions">
-      <button type="button" class="btn small primary" id="addItemBtn">＋ Atriði</button>
-      <button type="button" class="btn small" id="addStopBtn">＋ Áfangastaður</button>
-      <button type="button" class="btn small" id="tripOfflineBtn" aria-haspopup="dialog" aria-controls="offlineInfoModal">↓ Ferðin án nets</button>
+    <div class="trip-nav"><button type="button" class="btn small" id="backBtn">← Til baka</button>
       <div class="trip-more"><button type="button" class="btn small" id="tripMoreBtn" aria-expanded="false" aria-controls="tripMoreMenu">⋯ Meira</button><div id="tripMoreMenu" class="trip-more-menu hidden" aria-label="Fleiri aðgerðir ferðar">
+        <button type="button" class="btn small" id="tripOfflineBtn" aria-haspopup="dialog" aria-controls="offlineInfoModal">↓ Ferðin án nets</button>
+        <button type="button" class="btn small" id="tripHeaderPhotoEdit" aria-haspopup="dialog" aria-controls="destinationPhotoModal">Velja / breyta hausmynd</button>
+        <button type="button" class="btn small" id="tripHeaderPhotoSettings" aria-haspopup="dialog" aria-controls="headerPhotoSettingsModal">Stilla hausmynd</button>
+        <button type="button" class="btn small hidden" id="tripHeaderPhotoToggle">Fela hausmynd</button>
         <button type="button" class="btn small" id="tripPdfBtn">Vista sem PDF</button>
         <button type="button" class="btn small" id="editTripBtn">Breyta ferð</button>
         <button type="button" class="btn small danger hidden" id="deleteTripBtn">Eyða ferð</button>
       </div></div>
+    </div>
+    <div class="trip-identity"><div class="trip-hero" id="tripHero"><div id="tripBrand" class="brand">FERÐASÍÐA</div><h1 id="tripTitle">Ferð</h1></div><div id="tripDates" class="mut"></div></div>
+    <div class="trip-head-actions">
+      <button type="button" class="btn small primary" id="addItemBtn">＋ Atriði</button>
+      <button type="button" class="btn small" id="addStopBtn">＋ Áfangastaður</button>
     </div>
   </header>
   <button class="card cost-summary" id="tripCostSummary" type="button"><div><div class="brand">HEILDARKOSTNAÐUR</div><div class="detail">Leggst sjálfkrafa saman úr flugi, gistingu, lestum og öðrum atriðum</div></div><div class="total" id="tripCostTotal">— kr.</div></button>
@@ -435,8 +439,9 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
 
 <script src="./offline-store.js"></script>
 <script>if(navigator.onLine===false)location.replace(new URL('./offline.html',location.href));</script>
-<script src="./destination-photos.js"></script>
+<script src="./destination-photos.js?v=20261021-header1"></script>
 <div id="destinationPhotoModal" class="modal"></div>
+<div id="headerPhotoSettingsModal" class="modal"></div>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.117.2';
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.mjs';
@@ -621,6 +626,7 @@ installModalPageScrollGuard();
 function closeTripMore(restoreFocus=false){const button=$('tripMoreBtn');if(!button)return;const wasOpen=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded','false');$('tripMoreMenu').classList.add('hidden');if(restoreFocus&&wasOpen)button.focus({preventScroll:true})}
 function initTripHeaderControls(){
  const button=$('tripMoreBtn'),menu=$('tripMoreMenu');
+ $('tripHeaderPhotoEdit').onclick=()=>window.DestinationPhotos?.openHeader();$('tripHeaderPhotoSettings').onclick=()=>window.DestinationPhotos?.openSettings();$('tripHeaderPhotoToggle').onclick=()=>window.DestinationPhotos?.toggleHeader();
  button.onclick=()=>{const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));menu.classList.toggle('hidden',!open)};
  button.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();button.setAttribute('aria-expanded','true');menu.classList.remove('hidden');menu.querySelector('button:not(.hidden)')?.focus()}});
  menu.addEventListener('click',e=>{if(e.target.closest('button'))closeTripMore()});
@@ -744,7 +750,7 @@ function openDeleteTripConfirm(){if(!state.trip||state.trip.owner_id!==state.use
 function advanceTripDeletion(){if(state.deletingTrip)return;const confirmation=state.tripDeletion;if(!confirmation||confirmation.id!==state.trip?.id)return;if(confirmation.stage===1){confirmation.stage=2;$('deleteTripMessage').textContent=`Lokastaðfesting: „${state.trip.name}“ verður eytt. Viltu vista PDF áður en þú heldur áfram? Sæktu einnig viðhengi úr ferðaveskinu sem þú vilt geyma. Að opna PDF eyðir engu; staðfestu vistun sjálf/ur áður en þú velur eyðingu.`;$('deleteTripFinalOptions').classList.remove('hidden');$('confirmDeleteTripBtn').textContent='Eyða ferð endanlega';$('confirmDeleteTripBtn').disabled=true;return}if(confirmation.stage===2&&$('deleteTripUnderstood').checked)return deleteCurrentTrip()}
 async function deleteCurrentTrip(){const trip=state.trip;if(state.deletingTrip||!trip||state.tripDeletion?.id!==trip.id||state.tripDeletion?.stage!==2||!$('deleteTripUnderstood').checked)return;if(trip.owner_id!==state.user?.id)return toast('Aðeins eigandi getur eytt ferðinni.');const btn=$('confirmDeleteTripBtn');state.deletingTrip=true;btn.disabled=true;btn.textContent='Eyði…';try{const {data,error}=await supabase.from('trips').delete().eq('id',trip.id).eq('owner_id',state.user.id).select('id');if(error)throw error;if(!data?.some(t=>t.id===trip.id))throw new Error('Ferðin eyddist ekki. Yfirfarðu aðgang og reyndu aftur.');closeModal('deleteTripModal');if(state.map){state.map.remove();state.map=null}if(typeof OfflineTravel!=='undefined')await OfflineTravel.remove(state.user.id,trip.id).catch(()=>toast('Ferð eytt á netinu. Fjarlægðu líka sótta afritið undir Ferðir án nets.'));state.trips=state.trips.filter(t=>t.id!==trip.id);state.pastTripCosts?.delete(trip.id);state.trip=null;state.stops=[];state.items=[];state.expenses=[];state.notes=[];state.walletDocs=[];state.tripDeletion=null;showScreen('homeScreen');renderHome();toast('Ferð eytt')}catch(e){toast(e.message||'Ekki tókst að eyða ferðinni.')}finally{state.deletingTrip=false;btn.disabled=false;btn.textContent='Eyða ferð endanlega'}}
 function openEditTrip(){if(!state.trip)return;openNewTrip();const t=state.trip;state.editingTripId=t.id;$('tripModalTitle').textContent='Breyta ferð';$('saveTripBtn').textContent='Vista breytingar';$('tripName').value=t.name;$('tripCountry').value=t.country_code||'';$('tripStart').value=t.start_date||'';$('tripEnd').value=t.end_date||'';$('tripEnd').min=t.start_date||'';$('tripPlaceSearch').value=t.location_name||'';state.tripPlaceSelection={name:t.location_name,latitude:t.latitude,longitude:t.longitude,timezone:t.timezone};updateCurrencyHint();$('tripPlaceSelected').textContent='Breytingar á ferð færa ekki dagsetningar bókana eða áfangastaða.'}
-function refreshTripHeading(){const t=state.trip;if(!t)return;$('tripTitle').textContent=`${flag(t.country_code)} ${t.name}`;$('tripBrand').textContent=`${(t.country_code||'').toUpperCase()} · FERÐASÍÐA`;const count=nights(t);$('tripDates').innerHTML='<span class="trip-date-range"><span class="trip-date-part">'+esc(t.start_date?fmtDate(t.start_date):'Dagsetning opin')+'</span>'+(t.end_date?'<span aria-hidden="true">–</span><span class="trip-date-part">'+esc(fmtDate(t.end_date))+'</span>':'')+'</span><span class="trip-night-count">· '+esc(count)+' '+(count===1?'nótt':'nætur')+'</span>';const identity=$('tripTitle').closest('.trip-identity');if(identity&&window.DestinationPhotos){identity.querySelector('[data-photo-kind=header]')?.remove();identity.insertAdjacentHTML('afterbegin',destinationPhotoSlot({name:t.location_name||new Intl.DisplayNames(['en'],{type:'region'}).of(t.country_code||'IS'),country_code:t.country_code},'header'))}paintDestinationPhotos()}
+function refreshTripHeading(){const t=state.trip;if(!t)return;$('tripTitle').textContent=`${flag(t.country_code)} ${t.name}`;$('tripBrand').textContent=`${(t.country_code||'').toUpperCase()} · FERÐASÍÐA`;const count=nights(t);$('tripDates').innerHTML='<span class="trip-date-range"><span class="trip-date-part">'+esc(t.start_date?fmtDate(t.start_date):'Dagsetning opin')+'</span>'+(t.end_date?'<span aria-hidden="true">–</span><span class="trip-date-part">'+esc(fmtDate(t.end_date))+'</span>':'')+'</span><span class="trip-night-count">· '+esc(count)+' '+(count===1?'nótt':'nætur')+'</span>';const hero=$('tripHero');if(hero&&window.DestinationPhotos){hero.querySelector('[data-photo-kind=header]')?.remove();hero.insertAdjacentHTML('afterbegin',destinationPhotoSlot({name:t.location_name||new Intl.DisplayNames(['en'],{type:'region'}).of(t.country_code||'IS'),country_code:t.country_code},'header'))}paintDestinationPhotos()}
 async function saveTrip(){
  const name=$('tripName').value.trim(),cc=$('tripCountry').value,start=$('tripStart').value||null,end=$('tripEnd').value||null,place=state.tripPlaceSelection,editing=state.editingTripId;
  if(!name)return toast('Ferðin þarf heiti.');if(start&&end&&end<start)return toast('Heimkomudagur má ekki vera á undan brottfarardegi.');
@@ -1365,7 +1371,7 @@ function spotlightDeparture(next){
  try{const t=departurePlanTime(date,time,plan);return `<div class="spotlight-leave">Leggðu af stað kl. ${esc(departureTimeLabel(t.leaveLocal,date))}</div><div class="notice">Mæting kl. ${esc(departureTimeLabel(t.arriveLocal,date))} · ${plan.mode==='driving'?'Akstur':'Ganga'} ${esc(journeyDurationLabel(plan.travel_minutes))} · Öryggisbil ${esc(plan.buffer_minutes)} mín.</div>${plan.destination?'<div class="notice">📍 Mæting: '+esc(plan.destination)+'</div>':''}<div class="notice">Áætlað út frá skráðum ferðatíma · ${esc(plan.timezone)}</div>`}catch{return '<div class="notice">Brottfararáætlun þarf yfirferð í bókuninni.</div>'}
 }
 function destinationPhotoSlot(place,kind){if(!place)return '';const names={'róm':'Rome','napólí':'Naples','kaupmannahöfn':'Copenhagen','haag':'The Hague','kaíró':'Cairo'},name=place.name||place.location_name;if(!name)return '';return window.DestinationPhotos?.slot({...place,name,query:names[name.toLowerCase()]||name},kind)||''}
-function paintDestinationPhotos(){if(!window.DestinationPhotos)return;window.DestinationPhotos.mount({owner:state.user?.id||null,open:openModal,notice:toast,request:async body=>{const {data}=await supabase.auth.getSession();if(!data.session?.access_token)return {error:'Skráðu þig inn fyrir myndaleit.'};const response=await fetch(SUPABASE_URL+'/functions/v1/destination-photos',{method:'POST',headers:{Authorization:'Bearer '+data.session.access_token,apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(20000)});const result=await response.json();if(!response.ok&&!result.error)result.error='Ekki tókst að sækja myndir.';return result}})}
+function paintDestinationPhotos(){if(!window.DestinationPhotos)return;window.DestinationPhotos.mount({owner:state.user?.id||null,tripId:state.trip?.id||null,title:$('tripTitle').textContent,open:openModal,notice:toast,request:async body=>{const {data}=await supabase.auth.getSession();if(!data.session?.access_token)return {error:'Skráðu þig inn fyrir myndaleit.'};const response=await fetch(SUPABASE_URL+'/functions/v1/destination-photos',{method:'POST',headers:{Authorization:'Bearer '+data.session.access_token,apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(20000)});const result=await response.json();if(!response.ok&&!result.error)result.error='Ekki tókst að sækja myndir.';return result}})}
 function renderTripSpotlight(){
  const host=$('tripSpotlight');if(!host)return;
  const day=tripTodayDate();if(!tripInProgress(day)||state.tripLoadError){host.innerHTML='';host.classList.add('hidden');return}
