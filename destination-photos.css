@@ -60,3 +60,5 @@
 .photo-actions-dialog::backdrop{background:rgba(0,0,0,.18)}
 .photo-actions-dialog .place-photo-tools{display:grid;margin:0 0 8px;gap:8px}
 .photo-actions-dialog .btn{width:100%;min-height:44px;font-size:14px}
+
+.date-nowrap{display:inline-block;white-space:nowrap;overflow-wrap:normal;word-break:normal}
