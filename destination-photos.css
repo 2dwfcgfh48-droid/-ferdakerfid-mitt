@@ -35,3 +35,11 @@
 .place-photo[data-photo-kind="today"] .place-photo-frame img{height:clamp(150px,42vw,230px);object-fit:cover;-webkit-mask-image:none;mask-image:none;animation:none}
 
 .place-photo[data-photo-kind="today"] .place-photo-tools .btn{min-height:44px;font-size:12px}
+
+.spotlight-today-head{align-items:center;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.spotlight-weather-today{font-size:12px;line-height:1.5;text-align:right;color:var(--text);overflow-wrap:anywhere}
+.place-photo-menu{position:relative;display:flex;justify-content:flex-end;margin-top:4px}
+.place-photo-menu>summary{list-style:none;cursor:pointer;margin-left:auto;width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:24px;border-radius:10px}
+.place-photo-menu>summary::-webkit-details-marker{display:none}
+.place-photo-menu[open]>.place-photo-tools{position:absolute;right:0;top:44px;z-index:5;display:grid;min-width:170px;padding:8px;background:var(--bg);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.place-photo-menu:not([open])>.place-photo-tools{display:none}

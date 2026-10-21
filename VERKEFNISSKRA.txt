@@ -98,3 +98,5 @@ Samþykkt: Áfangastaður hefur myndaval sem nýtist líka í Í dag. Mynd í Í
 Sannprófun: Allt innfellt JavaScript og destination-photos.js standast setningafræðiprófun. Ekki tókst að staðfesta útlit í vafra/iPhone eða innskráða myndaleit í þessu umhverfi. Vistun myndavals er áfram staðbundin í vafra, ekki samstilling milli tækja.
 
 Leiðrétting 21-10-2026 — nýrri fyrirmæli ganga framar: Engin staðarmynd og engir myndahnappar eiga að vera á veðurspjaldinu „Næsti áfangastaður“. Myndasvæðið þar hefur verið fjarlægt. Mynd í Í dag og hausmynd haldast. Fyrri ákvörðun um litla mynd á veðurspjaldi fellur úr gildi. JavaScript setningafræði staðfest; iPhone útlit óprófað.
+
+Viðbót 21-10-2026: Veður dagsins birtist hægra megin við áfangastaðarheiti ofan við mynd í Í dag, án hnapps/ramma eða örvar. Notar daginn í dag og stað þess dags, sjálfstætt frá næstu bókun. Sérstök spá við bókun annars dags/staðar helst. Myndaaðgerðir í Í dag færðar undir ⋯ með Escape-lokun. JavaScript setningafræði staðfest. Vafra-/iPhone-prófun og innskráð veðursókn óstaðfest.
