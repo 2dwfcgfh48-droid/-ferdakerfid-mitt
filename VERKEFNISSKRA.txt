@@ -1,0 +1,93 @@
+Ferðakerfið mitt — gildandi ákvarðanir
+
+Viðbót 18-10-2026 — föst vinnuregla um dagsetningar
+
+Samþykkt af notanda: Allar dagsetningar sem appið birtir eða býr til fyrir notanda skulu vera dagur-mánuður-ár, með tveggja stafa degi og mánuði og fjögurra stafa ári: dd-mm-yyyy, t.d. 18-10-2026. Reglan gildir yfir allt kerfið, líka nýja virkni, skjái, dagatal/tímalínu, form, tilkynningar og viðvaranir, lesafrit án nets, PDF/prentun og skráarheiti öryggisafrita eða annarra skráa sem appið myndar. Nota sameiginleg birtingarföll og sannreyna sniðið við breytingar.
+
+Innri vistun, API, JSON-öryggisafrit og vélgildi innbyggðra dagsetningarreita mega halda ISO-sniði þar sem þess er tæknilega þörf. Birting fyrir notanda skal samt vera dd-mm-yyyy og rétt tímabelti skal varðveitt. Upprunaleg viðhengi, frjáls notandatexti og eldri skráarheiti eru ekki endurskrifuð sjálfkrafa.
+
+Þessi regla bætist við samþykktar kröfur hér fyrir neðan og gildir við allar áframhaldandi breytingar á verkefninu.
+
+Umfang: Samantektin byggist á samtalsbrotunum og verkefnissamantektinni sem eru aðgengileg hér. Hluti eldra samtals er styttur eða vantar. Kóði var ekki skoðaður og engu var breytt.
+
+Staða útfærslu: Fyrri svör segja breytingarnar hér að neðan framkvæmdar og prófaðar með prufugögnum. Það staðfestir ekki sjálfstætt hvað er í núverandi GitHub-útgáfu eða hvernig það virkar á iPhone.
+
+1. Samþykktar reglur um útlit og hegðun
+
+* Varðveita núverandi útlit og virkni utan þess sem breytingabeiðni nær til. Viðbót vegna útlagðs kostnaðar má ekki breyta reiknivél, þjórféshnöppum eða öðrum samþykktum reitum fyrir ofan hana.
+* „Alls staðar“ og „heimfæra á allt“ merkir að breyting gildi á öllum sambærilegum stöðum og samræmi sé yfirfarið.
+* Tímalína og dagatalssýn haldast bæði. Val á áfangastað í tímalínu leiðir að viðeigandi dögum; val á degi merkir viðkomandi áfangastað.
+* Stöðug hreyfing er aðeins í „Næsti áfangastaður“. Aðrir hlutar fá aðeins mjúkar hreyfingar við val, opnun eða skipti.
+* Kostnaðargluggi hefur röðina: Flokkur → Tengist bókun? → Staður / heiti kostnaðar → Upphæð og útreikningur.
+* „Fjöldi alls“ og „Okkar fjöldi“ eru hlið við hlið, einnig í síma. Við snertingu velst talan svo hægt sé að skrifa yfir hana beint.
+* Viðbótarkostnaður við bókun sýnir emoji eigin kostnaðarflokks.
+
+2. Samþykkt virkni
+
+Skráning og breyting kostnaðar
+
+* „Skrá kostnað“ stofnar nýjan reikning. Val á tengdri bókun má ekki óvart yfirskrifa eldri reikning.
+* Eldri færslu er breytt með því að opna hana úr kostnaðaryfirliti eða undir „Viðbótarkostnaður við bókun“.
+* Einfalt heiti, t.d. „Kvöldmatur“, nægir; nákvæmt nafn staðar er ekki skilyrði.
+* Eftir vistun á staðfesting að sýna skýrt hvað vistaðist, þar á meðal upphæð og greiðslustöðu.
+
+Flokkur og tenging við bókun
+
+* Flokkur er sýnilegur ofarlega og alltaf breytanlegur, líka í eldri kostnaðarfærslu og þegar kostnaður tengist bókun.
+* Þegar glugginn er opnaður úr bókun er flokkur hennar forval og tengingin þegar valin.
+* Almenna flýtileiðin man síðasta vistaða flokk í sama vafra.
+* Sjálfgefin tenging í almennri nýskráningu er „Nei, sjálfstæður kostnaður“.
+* Val á tengdri bókun má ekki yfirskrifa flokk, heiti eða upphæð sem þegar hefur verið valin eða slegin inn.
+* Kostnaður má hafa annan flokk en bókunin, t.d. Veitingastaðir tengdir hóteli, án þess að breyta hótelbókuninni.
+* Tengdur kostnaður finnst í kostnaðaryfirliti og við bókunina og telst aðeins einu sinni.
+* Breyting á flokki eldri kostnaðarfærslu flytur sömu færslu milli flokka; hún stofnar ekki nýja.
+
+Reiknivél, þjórfé og skipting
+
+* Þjórfé hefur flýtival: ekkert, 5%, 10%, 12%, 15% og eigin upphæð.
+* Þjórfé reiknast af reikningnum áður en honum er skipt. Sé það þegar innifalið er engu bætt við.
+* Reiknivélin á að halda áfram frá innsláttu upphæðinni.
+* Skipting notar fjölda alls og okkar fjölda. Okkar fjöldi er sjálfgefið tveir, en breytanlegt.
+* Einnig má skrá okkar hlut handvirkt.
+* Aðeins okkar hluti fer í ferðakostnaðinn. Reikningur, þjórfé, skipting og okkar hluti varðveitast með færslunni til endurskoðunar og breytinga.
+
+Útlagður kostnaður og uppgjör
+
+* Við greiðsluna er val um að við höfum greitt allan reikninginn fyrir hópinn.
+* Aðgreina skal okkar ferðakostnað, það sem við greiddum og það sem við eigum eftir að fá til baka.
+* Hægt er að merkja endurgreiðslu móttekna og afturkalla uppgjör.
+* Endurgreiðsla breytir ekki okkar ferðakostnaði.
+* Uppgjörsstaða varðveitist við enduropnun og sést í kostnaðaryfirliti og við tengda bókun.
+
+Drög og lokun
+
+* „Hætta við“ á að loka glugganum og varðveita ólokna skráningu sem drög í sama vafra. Drög teljast ekki ferðakostnaður.
+* Ef drög eru þegar til þarf að velja „Halda áfram“ eða „Henda drögum“ áður en ný skráning hefst.
+* Lokun án þess að velja má ekki yfirskrifa eldri drög.
+
+ISK-heild og gagnabirting
+
+* Þegar gengi eða skráða ISK-greiðslu vantar skal merkja ISK-heild ófullgerða, bæði á ferðaspjaldi og í kostnaðaryfirliti.
+* Innri vistunarupplýsingar mega ekki birtast sem athugasemdir. Tómar athugasemdir haldast tómar.
+
+Staðsetning hótels
+
+* Flýtileiðin heitir „Skoða tillögu að staðsetningu hótels“, bæði undir korti og í bókunarglugga.
+* Skýring segir hvaðan tillagan kemur. Kort opnast til yfirferðar áður en staðsetning er vistuð.
+* Tillagan er ekki staðfesting á því að punkturinn sé hótelið.
+
+3. Ólokið, þekkt vandamál og óvissa
+
+* iPhone-prófun er óstaðfest. Ekki liggur fyrir staðfesting á heildarflæðinu þar, sérstaklega tölureitum, lokun, drögum og enduropnun.
+* Núverandi útgáfa er óstaðfest. Nýjasta afhenta skráin í aðgengilega samtalinu er kostnadur-fjoldi-hlid-vid-hlid/index.html; ekki sést hvort hún hafi verið sett á GitHub.
+* Eldri villur voru sagðar lagaðar: föst lokun með „Hætta við“, innri gögn í athugasemdum, yfirskrift draga og ómerkt ófullgerð ISK-heild. Engin þeirra er hér staðfest enn opin, en lagfæringarnar hafa ekki verið sannreyndar í núverandi útgáfu.
+* Kostnaðarflokkur er ekki dagskráratriði. Nýjasta skýringin segir að kvöldmatur tengdur hóteli stofni ekki sjálfkrafa sérstakt atriði í Veitingastöðum. Eldri fullyrðing um það var leiðrétt. Sérstök skýring á þessum mun í viðmótinu er ekki staðfest.
+* „Í dag“ og „Ferðaveski“ eru skráð sem samþykkt stefna í verkefnissamantektinni, en upprunalegi textinn er styttur. Nákvæm umfangslýsing og framkvæmdastaða liggja ekki fyrir.
+* Ekki liggur fyrir að samþykktar ákvarðanir og ólokin verk hafi verið færð í verkefnisskrá með núverandi kóða, eins og vinnureglurnar kveða á um.
+
+Tillögur sem ekki fengu skýrt samþykki eru ekki taldar gildandi kröfur hér.
+Viðbót 21-10-2026 — fyrirsögn og hnappar í ferðahaus
+Samþykkt: Til baka vinstra megin og Meira hægra megin, jafn stórir og í sömu hæð. Landkóði og FERÐASÍÐA yfir fána og ferðarheiti. Fyrirsögn má liggja yfir mynd og brotnar í línur ef hún er löng. Aðrar aðgerðir eru undir Meira. Varðveita myndahlutföll og stærðar-/útfeidunarsleða.
+Útfært í þessum pakka: Leiðsöguhnappar báðir 110 px breiðir, að lágmarki 44 px háir. Fyrirsögn ofar í myndsvæði með allt að 94% breidd. Staðsetning á einnig við um forskoðun myndastillinga. Núverandi myndahlutföll, vistun og aðgerðir varðveitt.
+Sannprófun: JavaScript skrár standast node --check. Sjónræn vafraprófun og prófun á iPhone ólokin: vafrakeyrslur voru ekki tiltækar og ekki tókst að sækja þær.
+Pakkinn sem barst inniheldur aðeins index.html og destination-photos.js/.css. Aðrar skrár sem index.html vísar á, t.d. offline-store.js, fylgdu ekki. Þessi pakki staðfestir því ekki heildarvirkni appsins sjálfstætt. Halda öðrum núverandi verkefnisskrám við uppfærslu.
