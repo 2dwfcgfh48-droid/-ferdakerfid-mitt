@@ -22,3 +22,6 @@ Allt JavaScript í afhentum skrám stenst setningafræðiprófun.
 Ekki hefur verið klárað að ýta á alla hnappa í innskráðum vafra. Vistun/breyting/eyðing raunverulegra gagna, PDF-sjónprófun, innskráning, netlaus virkni og ytri þjónustur eru óstaðfest. Upprunalegi pakkinn innihélt ekki allar tengdar verkefnisskrár, t.d. offline-store.js. Halda öðrum skrám verkefnisins.
 
 Prófunarskrá: `node tests/controls-smoke.cjs` úr verkefnismöppunni.
+
+## Ferðaspjöld — viðbót
+`node tests/trip-cards.cjs` staðfestir með prufugögnum sameiginlegt myndaval, aðskilnað reikninga, falda/ógilda mynd, dagsetningar/nætur, kostnaðarbirtingu safns, textavörn og smelli/Enter/bil. `controls-smoke.cjs` uppfært fyrir sameiginlega hausstaðsetningu og tengingu spjalda. Öll þrjú keyrsluprófin standast. Myndhlutföll, textalæsileiki yfir mynd og smáir skjáir hafa ekki verið sjónprófuð í vafra.

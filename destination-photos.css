@@ -62,3 +62,22 @@
 .photo-actions-dialog .btn{width:100%;min-height:44px;font-size:14px}
 
 .date-nowrap{display:inline-block;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+/* Shared home/archive trip cards. Art reuses the saved trip-header selection. */
+.trip-card.trip-card-visual{position:relative;isolation:isolate;overflow:hidden;padding:16px 38px 16px 16px;min-height:145px;box-shadow:0 5px 14px #0000000d;text-align:left}
+.trip-card-visual.has-trip-art{padding-bottom:37px}
+.trip-card-visual .trip-card-content{position:relative;z-index:1;min-width:0}
+.trip-card-visual h2{display:flex;align-items:baseline;gap:8px;font-size:21px;line-height:1.18;letter-spacing:-.5px;margin:0 0 10px;overflow-wrap:anywhere}
+.trip-card-visual h2>span:last-child{min-width:0}
+.trip-card-flag{font-size:23px;flex-shrink:0}
+.trip-card-dates{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 4px;font-size:14px;line-height:1.5}
+.trip-card-nights{font-size:14px;line-height:1.5;margin-top:2px}
+.trip-card-labels{font-size:11px;line-height:1.4;margin-top:10px}
+.trip-card-chevron{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:32px;line-height:1;z-index:2;color:var(--text)}
+.trip-card-photo{position:absolute;inset:0 0 0 auto;width:64%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent,#000 65%,#000 93%,transparent);mask-image:linear-gradient(to right,transparent,#000 65%,#000 93%,transparent);opacity:.72}
+.trip-card-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.trip-card-visual>.place-photo-credit{position:absolute;left:16px;right:34px;bottom:9px;font-size:9px;line-height:1.4;z-index:2;text-align:left;color:var(--mut)}
+.trip-card-visual:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.trip-card-visual.has-trip-art .trip-card-content{text-shadow:0 0 7px var(--bg),0 0 3px var(--bg)}
+body.density-compact .trip-card.trip-card-visual{padding:12px 36px 12px 12px;min-height:130px}
+body.density-compact .trip-card.trip-card-visual.has-trip-art{padding-bottom:35px}
+@media(min-width:900px){.trip-card-visual h2{font-size:23px}.trip-card-dates,.trip-card-nights{font-size:15px}}
