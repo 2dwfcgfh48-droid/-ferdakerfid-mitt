@@ -91,3 +91,8 @@ Samþykkt: Til baka vinstra megin og Meira hægra megin, jafn stórir og í söm
 Útfært í þessum pakka: Leiðsöguhnappar báðir 110 px breiðir, að lágmarki 44 px háir. Fyrirsögn ofar í myndsvæði með allt að 94% breidd. Staðsetning á einnig við um forskoðun myndastillinga. Núverandi myndahlutföll, vistun og aðgerðir varðveitt.
 Sannprófun: JavaScript skrár standast node --check. Sjónræn vafraprófun og prófun á iPhone ólokin: vafrakeyrslur voru ekki tiltækar og ekki tókst að sækja þær.
 Pakkinn sem barst inniheldur aðeins index.html og destination-photos.js/.css. Aðrar skrár sem index.html vísar á, t.d. offline-store.js, fylgdu ekki. Þessi pakki staðfestir því ekki heildarvirkni appsins sjálfstætt. Halda öðrum núverandi verkefnisskrám við uppfærslu.
+
+Viðbót 21-10-2026 — myndir áfangastaða og Í dag
+Samþykkt: Áfangastaður hefur myndaval sem nýtist líka í Í dag. Mynd í Í dag er breið undir staðarheiti, með ávölum hornum, án útþynningar, hreyfingar eða stærðarsleða. Minni mynd með útþynningu í Næsti áfangastaður.
+Útfært: Næsti áfangastaður notar nú sameiginlega myndavalshluta destination-photos. Sama staðarheiti og land nota sama vistaða myndaval í sama vafra og reikningi. Breyta/fela/sýna helst sameiginlegt milli spjalda. Í dag sýnir mynd 150–230 px háa eftir skjábreidd. Haus og hausmyndastillingar haldast.
+Sannprófun: Allt innfellt JavaScript og destination-photos.js standast setningafræðiprófun. Ekki tókst að staðfesta útlit í vafra/iPhone eða innskráða myndaleit í þessu umhverfi. Vistun myndavals er áfram staðbundin í vafra, ekki samstilling milli tækja.

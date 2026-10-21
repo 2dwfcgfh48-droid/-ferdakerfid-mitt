@@ -28,3 +28,14 @@
 .trip-hero>.brand,.header-photo-preview>.brand{margin-bottom:3px}
 .trip-hero>h1,.header-photo-preview>h1{max-width:94%;overflow-wrap:anywhere}
 .trip-hero>.brand,.trip-hero>h1,.header-photo-preview>.brand,.header-photo-preview>h1{pointer-events:auto}
+
+/* Destination photo selection is shared with today's card by place query. */
+.place-photo[data-photo-kind="today"]{margin:12px 0 16px}
+.place-photo[data-photo-kind="today"] .place-photo-frame{border-radius:14px;-webkit-mask-image:none;mask-image:none}
+.place-photo[data-photo-kind="today"] .place-photo-frame img{height:clamp(150px,42vw,230px);object-fit:cover;-webkit-mask-image:none;mask-image:none;animation:none}
+.place-photo[data-photo-kind="destination"]{width:min(44%,240px);float:right;margin:10px 0 10px 12px}
+.place-photo[data-photo-kind="destination"] .place-photo-frame{-webkit-mask-image:linear-gradient(to right,transparent,#000 28%);mask-image:linear-gradient(to right,transparent,#000 28%)}
+.place-photo[data-photo-kind="destination"] .place-photo-frame img{height:110px;animation:none}
+.place-photo[data-photo-kind="destination"]:not(.has-photo){float:none;width:100%;margin:10px 0}
+.place-photo[data-photo-kind="today"] .place-photo-tools .btn,.place-photo[data-photo-kind="destination"] .place-photo-tools .btn{min-height:44px;font-size:12px}
+#destinationWeather:after{content:"";display:block;clear:both}
