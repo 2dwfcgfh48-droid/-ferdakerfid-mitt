@@ -28,3 +28,6 @@ Prófunarskrá: `node tests/controls-smoke.cjs` úr verkefnismöppunni.
 
 ## Hausmynd — 22-10-2026
 `node tests/header-fade.cjs` prófar flutning eldri stillinga, tvo sleða, vistun/enduropnun, forskoðun, bogna lárétta grímu án botnútþynningar, núllgildi, endurstillingu og aðskilnað ferða. Önnur keyrslupróf standast áfram. SVG-gríman og snerting sleða hafa ekki verið sjónprófuð á iPhone.
+
+## Sleðauppfærsla — 22-10-2026
+Útfærsla notar nú CSS-grímur í stað síbreytilegs SVG-data-URL, rAF fyrir forskoðun og frestaða vistun. header-fade.cjs uppfært og stenst ásamt öðrum þremur prófum. Hvort Safari-blikk hverfi þarf að staðfesta í tæki.
