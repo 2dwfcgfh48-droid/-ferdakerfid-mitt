@@ -25,3 +25,6 @@ Prófunarskrá: `node tests/controls-smoke.cjs` úr verkefnismöppunni.
 
 ## Ferðaspjöld — viðbót
 `node tests/trip-cards.cjs` staðfestir með prufugögnum sameiginlegt myndaval, aðskilnað reikninga, falda/ógilda mynd, dagsetningar/nætur, kostnaðarbirtingu safns, textavörn og smelli/Enter/bil. `controls-smoke.cjs` uppfært fyrir sameiginlega hausstaðsetningu og tengingu spjalda. Öll þrjú keyrsluprófin standast. Myndhlutföll, textalæsileiki yfir mynd og smáir skjáir hafa ekki verið sjónprófuð í vafra.
+
+## Hausmynd — 22-10-2026
+`node tests/header-fade.cjs` prófar flutning eldri stillinga, tvo sleða, vistun/enduropnun, forskoðun, bogna lárétta grímu án botnútþynningar, núllgildi, endurstillingu og aðskilnað ferða. Önnur keyrslupróf standast áfram. SVG-gríman og snerting sleða hafa ekki verið sjónprófuð á iPhone.
