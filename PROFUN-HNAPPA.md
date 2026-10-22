@@ -31,3 +31,6 @@ Prófunarskrá: `node tests/controls-smoke.cjs` úr verkefnismöppunni.
 
 ## Sleðauppfærsla — 22-10-2026
 Útfærsla notar nú CSS-grímur í stað síbreytilegs SVG-data-URL, rAF fyrir forskoðun og frestaða vistun. header-fade.cjs uppfært og stenst ásamt öðrum þremur prófum. Hvort Safari-blikk hverfi þarf að staðfesta í tæki.
+
+## Dagaval og skrun — 22-10-2026
+`node tests/calendar-scroll.cjs` staðfestir með hermdum hæðum stöðugt dagaval við samdrátt/stækkun veðurspjalds og varðveislu láréttrar stöðu. Fyrri fjögur keyrslupróf standast. Þetta er ekki raunvafrapróf á Safari-skrunfestingu.
