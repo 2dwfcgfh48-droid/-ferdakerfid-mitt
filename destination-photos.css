@@ -10,7 +10,7 @@
 /* Both dimensions use the same scale; text wrapping cannot change the photo crop. */
 .trip-hero>[data-photo-kind="header"],.header-photo-preview>.header-preview-art{position:absolute;inset:0 0 auto auto;width:var(--header-photo-width,66.6666666667%);height:calc(var(--header-photo-height,150px) + 24px);float:none;margin:0;z-index:0}
 .trip-hero>[data-photo-kind="header"]:not(.has-photo){display:none}
-.trip-hero>[data-photo-kind="header"] .place-photo-frame,.header-photo-preview .header-preview-art .place-photo-frame{position:absolute;inset:0 0 24px;border-radius:0;width:100%;-webkit-mask-image:radial-gradient(ellipse var(--header-fade-top-width,65%) 100% at 0% 0%,transparent 0%,#000 100%),radial-gradient(ellipse var(--header-fade-bottom-width,25%) 100% at 0% 100%,transparent 0%,#000 100%);mask-image:radial-gradient(ellipse var(--header-fade-top-width,65%) 100% at 0% 0%,transparent 0%,#000 100%),radial-gradient(ellipse var(--header-fade-bottom-width,25%) 100% at 0% 100%,transparent 0%,#000 100%);-webkit-mask-composite:source-in;mask-composite:intersect;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.trip-hero>[data-photo-kind="header"] .place-photo-frame,.header-photo-preview .header-preview-art .place-photo-frame{position:absolute;inset:0 0 24px;border-radius:0;width:100%;-webkit-mask-image:linear-gradient(to right,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 calc(100% - 3px),transparent);mask-image:linear-gradient(to right,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 calc(100% - 3px),transparent);-webkit-mask-composite:source-in;mask-composite:intersect;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .trip-hero>[data-photo-kind="header"] .place-photo-frame img,.header-photo-preview .header-preview-art .place-photo-frame img{height:100%;width:100%;object-fit:cover;-webkit-mask-image:none;mask-image:none}
 .trip-hero>.place-photo-credit,.header-photo-preview>.place-photo-credit{position:absolute;right:0;bottom:0;width:100%;text-align:right;font-size:10px;line-height:1.3;padding:2px 0;z-index:3}
 .trip-hero>[data-photo-kind="header"] .place-photo-tools{display:none}
@@ -81,3 +81,5 @@
 body.density-compact .trip-card.trip-card-visual{padding:12px 36px 12px 12px;min-height:130px}
 body.density-compact .trip-card.trip-card-visual.has-trip-art{padding-bottom:35px}
 @media(min-width:900px){.trip-card-visual h2{font-size:23px}.trip-card-dates,.trip-card-nights{font-size:15px}}
+
+.header-fade-overlay{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;color:var(--bg);overflow:visible}
