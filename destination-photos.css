@@ -83,3 +83,38 @@ body.density-compact .trip-card.trip-card-visual.has-trip-art{padding-bottom:35p
 @media(min-width:900px){.trip-card-visual h2{font-size:23px}.trip-card-dates,.trip-card-nights{font-size:15px}}
 
 .header-fade-art{display:block;width:100%;height:100%;overflow:hidden;pointer-events:none}
+/* Today's next action stays primary; later dates have their own quieter card. */
+#tripSpotlight.spotlight-redesigned{padding:0;border:0;background:transparent;box-shadow:none}
+.spotlight-current{padding:17px;min-width:0}
+.spotlight-primary{margin-top:16px}
+.spotlight-primary h3{font-size:clamp(21px,3vw,27px);line-height:1.2;margin:9px 0;letter-spacing:-.4px}
+.spotlight-time{font-size:16px;line-height:1.5}
+.spotlight-primary-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch;margin:12px 0}
+.spotlight-primary-actions>.departure-actions{margin:0;width:100%;display:flex}
+.spotlight-primary-actions>.departure-actions a{width:100%;text-align:center}
+.spotlight-primary-actions>a.primary,.spotlight-primary-actions>.spotlight-ticket,.spotlight-ticket-group{width:100%}
+.spotlight-primary-actions>.btn,.spotlight-primary-actions a,.spotlight-ticket-group summary{min-height:44px;text-decoration:none;white-space:normal}
+.spotlight-ticket-group{padding:9px 12px;border:1px solid var(--line);border-radius:12px}
+.spotlight-ticket-group summary{cursor:pointer;display:flex;align-items:center;font-weight:800}
+.spotlight-ticket-group .btn{display:block;width:100%;text-align:left;margin-top:6px}
+.spotlight-text-action{appearance:none;border:0;background:none;color:var(--accent);font:inherit;text-decoration:underline;min-height:44px;cursor:pointer}
+.spotlight-free{padding:14px 0 5px;font-size:17px;line-height:1.5}
+.spotlight-hotel-compact,.spotlight-other{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.spotlight-hotel-row{margin-top:9px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.spotlight-hotel-row>strong{flex:1 1 170px;line-height:1.4}
+.spotlight-hotel-row .spotlight-actions{margin:0;gap:6px;align-items:center}
+.spotlight-hotel-row .departure-actions{margin:0}
+.spotlight-hotel-row .btn{min-height:44px;font-size:12px}
+.spotlight-future{margin-top:12px;padding:14px 17px;min-width:0}
+.spotlight-small{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;min-width:0}
+.spotlight-small>div{min-width:0;flex:1}
+.spotlight-small strong{font-size:15px;line-height:1.4}
+.spotlight-small .notice{font-size:12px}
+.spotlight-small>.btn{min-height:44px;max-width:45%;font-size:12px;white-space:normal;flex-shrink:0}
+.spotlight-today-head>.spotlight-weather-link{appearance:none;border:0;border-radius:0;background:none;color:var(--text);font:inherit;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 5px;padding:0;min-height:44px;cursor:pointer;justify-self:end}
+.spotlight-weather-reading{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0}
+.spotlight-weather-chevron{font-size:20px;line-height:1;align-self:center}
+.spotlight-weather-hint{grid-column:1/-1;font-size:10px;line-height:1.5;color:var(--mut);text-align:right}
+.spotlight-weather-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:5px}
+@media(max-width:360px){.spotlight-small{flex-wrap:wrap}.spotlight-small>.btn{max-width:100%;margin-left:auto}.spotlight-hotel-row .spotlight-actions{width:100%}.spotlight-weather-reading{gap:3px}}
+.spotlight-current .photo-action-toggle.btn{background:transparent;border-color:transparent;box-shadow:none}

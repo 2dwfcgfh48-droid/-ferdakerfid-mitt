@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071018">
-<link rel="stylesheet" href="./destination-photos.css?v=20261022-day-scroll-1">
+<link rel="stylesheet" href="./destination-photos.css?v=20261023-today-1">
 <title>Ferðakerfið mitt — V6 Master</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.11.2/dist/maplibre-gl.css">
 <style>
@@ -439,7 +439,7 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
 
 <script src="./offline-store.js"></script>
 <script>if(navigator.onLine===false)location.replace(new URL('./offline.html',location.href));</script>
-<script src="./destination-photos-menu-dialog.js?v=20261022-day-scroll-1"></script>
+<script src="./destination-photos-menu-dialog.js?v=20261023-today-1"></script>
 <div id="destinationPhotoModal" class="modal"></div>
 <div id="headerPhotoSettingsModal" class="modal"></div>
 <script type="module">
@@ -1378,24 +1378,70 @@ function destinationPhotoPlace(place){if(!place)return null;const names={'róm':
 function destinationPhotoSlot(place,kind){const p=destinationPhotoPlace(place);return p?window.DestinationPhotos?.slot(p,kind)||'':''}
 function tripHeaderPlace(t){return {name:t.location_name||new Intl.DisplayNames(['en'],{type:'region'}).of(t.country_code||'IS'),country_code:t.country_code}}
 function paintDestinationPhotos(){if(!window.DestinationPhotos)return;window.DestinationPhotos.mount({owner:state.user?.id||null,tripId:state.trip?.id||null,title:$('tripTitle').textContent,open:openModal,notice:toast,request:async body=>{const {data}=await supabase.auth.getSession();if(!data.session?.access_token)return {error:'Skráðu þig inn fyrir myndaleit.'};const response=await fetch(SUPABASE_URL+'/functions/v1/destination-photos',{method:'POST',headers:{Authorization:'Bearer '+data.session.access_token,apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(20000)});const result=await response.json();if(!response.ok&&!result.error)result.error='Ekki tókst að sækja myndir.';return result}})}
-function renderTripSpotlight(){
- const host=$('tripSpotlight');if(!host)return;
- const day=tripTodayDate();if(!tripInProgress(day)||state.tripLoadError){host.innerHTML='';host.classList.add('hidden');return}
- const next=nextTodayEntry(),date=next?.date||day,item=next?.item,place=(next?.leg==='return'?stopForDate(date):state.stops.find(s=>s.id===item?.stop_id))||stopForDate(date),point=weatherPoint(place); const todayPlace=stopForDate(day),separateNext=!!next&&(date!==day||place?.id!==todayPlace?.id);
- const todayPoint=weatherPoint(todayPlace),todayWeather=todayPlace?`<div class="spotlight-weather-today" data-weather-compact data-weather-plain data-weather-key="${todayPoint?.key||'none'}" data-weather-stop="${esc(todayPlace.id)}" data-weather-date="${esc(day)}">${spotlightWeatherMarkup(todayPlace,day,true)}</div>`:'';
- const weather=place?`<div class="spotlight-weather-wrap"><button type="button" class="btn small spotlight-weather" data-spotlight-weather data-weather-compact data-weather-key="${point?.key||'none'}" data-weather-stop="${esc(place.id)}" data-weather-date="${esc(date)}" aria-label="Skoða ítarlegt veður fyrir ${esc(place.name)} ${esc(fmtDate(date))}">${spotlightWeatherMarkup(place,date)}</button></div>`:'';
- let body='<div class="notice">Engin næsta bókun með skráðum tíma og tímabelti.</div>';
- if(next){const {leg,time,zone}=next,cat=CATEGORIES.find(c=>c[0]===item.category),docs=state.walletDocs.filter(d=>d.item_id===item.id),m=item.metadata||{},reference=leg==='return'?m.return_booking_reference:(m.outbound_booking_reference||item.booking_reference);
- body=`<div class="spotlight-body"><div class="spotlight-head spotlight-next-head${separateNext&&weather?' spotlight-with-weather':''}"><div><div class="brand">${date===day?'NÆST Á DAGSKRÁ':'NÆST · '+esc(fmtDate(date))}</div>${separateNext&&place?'<strong class="spotlight-place">'+esc(place.name)+'</strong>':''}</div>${separateNext?weather:''}</div><h3>${cat?.[1]||'📝'} ${esc(item.title)}${leg==='return'?' · heimleið':''}</h3><div>Kl. ${esc(String(time).slice(0,5))} · ${esc(zone)}</div>${reference?'<div class="notice">Bókun '+esc(reference)+'</div>':''}${spotlightDeparture(next)}<div class="spotlight-actions">${spotlightDirections(item,leg)}${docs.map(d=>`<button type="button" class="btn small" data-spotlight-document="${esc(d.id)}">🎫 ${esc(d.title||'Miði / skjal')}</button>`).join('')}<button type="button" class="btn small" data-spotlight-item="${esc(item.id)}">Skoða bókun →</button></div>${!docs.length?'<div class="notice">Enginn miði eða skjal tengt þessari bókun.</div>':''}</div>`;
+function spotlightEntry(item,leg,day,now){
+ const stop=state.stops.find(s=>s.id===item.stop_id),saved=item.metadata?.departure_plans?.[leg.leg],zone=saved?.timezone||item.metadata?.route_places?.[leg.leg==='return'?'return_from':'outbound_from']?.timezone||(leg.leg==='return'?stopForDate(leg.date)?.timezone:stop?.timezone)||stopForDate(leg.date)?.timezone||state.trip?.timezone;
+ let instant=null;if(leg.time&&zone)try{instant=cancellationInstant(leg.date,String(leg.time).slice(0,5),zone)}catch{}
+ let actionAt=instant;if(instant!==null&&saved?.enabled)try{actionAt=departurePlanTime(leg.date,leg.time,effectiveDeparturePlan(item,leg.leg,saved)).leave}catch{}
+ return {...leg,item,zone,instant,actionAt,place:stopForDate(leg.date)||stop,kind:item.category==='lodging'?'hotel':'booking'};
+}
+function spotlightModel(day=tripTodayDate(),now=Date.now()){
+ const today=[],later=[],earlier=[],hotels=[],openToday=[],openLater=[],until=addDaysIso(day,7);
+ for(const item of state.items){
+  if(item.metadata?.quick_cost||item.status==='cancelled')continue;
+  if(item.category==='lodging'){
+   if(!lodgingUsed(item)||!['booked','done'].includes(item.status))continue;
+   if(item.local_date&&item.end_local_date&&item.local_date<=day&&day<item.end_local_date)hotels.push(item);
+   if(item.status==='booked'&&item.local_date===day){const e=spotlightEntry(item,todayLegs(item)[0],day,now);if(e.instant===null||e.instant>=now)today.push(e)}
+   continue;
+  }
+  if(isOpenTransport(item.category,item.status)){
+   const ctx=openJourneyContext(item),explicitDate=item.metadata?.outbound_departure_date||item.local_date,date=explicitDate||ctx?.start;
+   const row={item,leg:'outbound',date:date||null,end:explicitDate?null:ctx?.end||null,estimated:!explicitDate,time:null,zone:null,instant:null,kind:'open'};
+   if(date===day&&(!ctx?.end||explicitDate||ctx.end===day))openToday.push(row);
+   else if((date&&date>day&&date<=until)||(!explicitDate&&ctx?.start<=until&&ctx?.end>=day)||(!date&&openJourneyRelevant(item,day)))openLater.push(row);
+   continue;
+  }
+  if(item.status!=='booked')continue;
+  for(const leg of todayLegs(item)){
+   if(!leg.date||leg.date<day)continue;const e=spotlightEntry(item,leg,day,now);
+   if(leg.date>day)later.push(e);else if(e.instant!==null&&e.instant<now)earlier.push(e);else today.push(e);
+  }
  }
- const hotels=state.items.filter(i=>i.category==='lodging'&&lodgingUsed(i)&&i.local_date&&i.local_date<=day&&i.end_local_date&&day<i.end_local_date);
- const hotelHtml=hotels.length?'<div class="spotlight-hotel"><div class="brand">GISTING Í KVÖLD · '+esc(fmtDate(day))+'</div>'+hotels.map(h=>'<div><strong>🏨 '+esc(h.title)+'</strong><div class="spotlight-actions">'+spotlightDirections(h,'outbound')+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</div>':'';
- const until=addDaysIso(day,7),open=state.items.filter(i=>{if(!isOpenTransport(i.category,i.status))return false;const c=openJourneyContext(i),d=i.metadata?.outbound_departure_date||i.local_date||c?.start;return d?d>=day&&d<=until:openJourneyRelevant(i,day)});
- host.innerHTML=`<div class="spotlight-head spotlight-today-head${todayWeather?' spotlight-with-weather':''}"><div><div class="brand">Í DAG · ${esc(fmtDate(day))}</div></div>${todayWeather}<h2>${esc(stopForDate(day)?.name||state.trip.name)}</h2></div>${destinationPhotoSlot(todayPlace,'today')}${body}${hotelHtml}${open.length?'<div class="spotlight-open"><div class="brand">ÓBÓKAÐ / OPIÐ · NÆSTU DAGAR</div>'+open.map(i=>'<div class="spotlight-open-row"><div><strong>'+transportIcon(i.category)+' '+esc(i.title)+'</strong><div class="notice">'+esc(openJourneyLabel(i)|| (i.local_date?fmtDate(i.local_date):'Dagsetning opin'))+' · Klukka óstaðfest</div></div>'+destinationPhotoSlot(openJourneyContext(i)?.to,'journey')+'<button type="button" class="btn small" data-spotlight-item="'+esc(i.id)+'">Ganga frá ferð →</button></div>').join('')+'</div>':''}`;
- host.classList.remove('hidden');paintDestinationPhotos();
+ const timed=today.filter(e=>e.instant!==null).sort((a,b)=>a.actionAt-b.actionAt),unknown=today.filter(e=>e.instant===null&&e.kind!=='hotel'),checkins=today.filter(e=>e.instant===null&&e.kind==='hotel');
+ const nextTimed=timed[0],main=(nextTimed?.kind==='hotel'&&openToday.length?openToday[0]:nextTimed)||openToday[0]||unknown[0]||checkins[0]||null;
+ const rest=[...timed,...openToday,...unknown,...checkins].filter(e=>e!==main&&e.kind!=='hotel');
+ later.sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'99:99').localeCompare(b.time||'99:99'));
+ openLater.sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
+ return {day,main,rest,hotels,earlier,later:[...later.slice(0,1),...openLater],hasTimed:timed.length>0};
+}
+function spotlightTimeLabel(entry){
+ if(entry.kind==='open')return 'Ferð enn óbókuð'+(entry.estimated?' · áætlað skipulag':'');
+ if(entry.item.all_day&&!entry.time)return 'Án ákveðins tíma';
+ if(!entry.time)return entry.kind==='hotel'?'Innritun í dag · komutími óskráður':'Tími óskráður — yfirfarið bókun';
+ if(entry.instant===null)return 'Kl. '+String(entry.time).slice(0,5)+' · tímabelti þarf yfirferð';
+ return 'Kl. '+String(entry.time).slice(0,5)+' · '+(entry.place?.name?'Staðartími í '+entry.place.name:'Staðartími bókunar');
+}
+function spotlightHotelDirections(item){const p=lodgingMapPoint(item);return p?'<a class="btn primary" href="https://www.google.com/maps/dir/?api=1&amp;destination='+esc(encodeURIComponent(p[1]+','+p[0]))+'&amp;dir_action=navigate" target="_blank" rel="noopener">➤ Leiðsögn á hótel</a>':spotlightDirections(item,'outbound')}
+function spotlightEntryHtml(entry,large=false){
+ const {item,leg}=entry,cat=CATEGORIES.find(c=>c[0]===item.category),title=(cat?.[1]||'📝')+' '+item.title+(leg==='return'?' · heimleið':''),hotel=entry.kind==='hotel',open=entry.kind==='open';
+ if(!large)return '<article class="spotlight-small"><div><strong>'+esc(title)+'</strong><div class="notice">'+(entry.date&&(entry.date!==tripTodayDate()||entry.end&&entry.end!==entry.date)?(entry.estimated?'Áætlað ':'')+'<span class="date-nowrap">'+esc(fmtDate(entry.date))+'</span>'+(entry.end&&entry.end!==entry.date?' – <span class="date-nowrap">'+esc(fmtDate(entry.end))+'</span>':'')+' · ':'')+esc(spotlightTimeLabel(entry))+'</div></div><button type="button" class="btn small" data-spotlight-item="'+esc(item.id)+'">'+(open?'Ganga frá ferð':hotel?'Skoða gistingu':'Skoða bókun')+' →</button></article>';
+ const docs=state.walletDocs.filter(d=>d.item_id===item.id),m=item.metadata||{},reference=leg==='return'?m.return_booking_reference:(m.outbound_booking_reference||item.booking_reference);
+ const tickets=docs.length===1?'<button type="button" class="btn spotlight-ticket" data-spotlight-document="'+esc(docs[0].id)+'">🎫 '+esc(docs[0].title||'Miði / skjal')+'</button>':docs.length?'<details class="spotlight-ticket-group"><summary>🎫 Miðar og skjöl · '+docs.length+'</summary>'+docs.map(d=>'<button type="button" class="btn" data-spotlight-document="'+esc(d.id)+'">'+esc(d.title||'Miði / skjal')+'</button>').join('')+'</details>':'';
+ return '<section class="spotlight-primary"><div class="brand">'+(open?'SAMGÖNGUR Í DAG':hotel?'INNRITUN Í DAG':'NÆST Í DAG')+'</div><h3>'+esc(title)+'</h3><div class="spotlight-time">'+esc(spotlightTimeLabel(entry))+'</div>'+(entry.instant!==null&&!open?spotlightDeparture(entry):'')+(reference?'<div class="notice">Bókun '+esc(reference)+'</div>':'')+'<div class="spotlight-primary-actions">'+(open?'':hotel?spotlightHotelDirections(item):spotlightDirections(item,leg))+tickets+'<button type="button" class="btn '+(open?'primary':'small')+'" data-spotlight-item="'+esc(item.id)+'">'+(open?'Ganga frá ferð':hotel?'Skoða gistingu':'Skoða bókun')+' →</button></div>'+(open?'<p class="notice">Veljið brottför þegar þið eruð tilbúin. Uppfærið þessa sömu færslu þegar ferðin er bókuð.</p>':!docs.length&&!hotel?'<p class="notice">Enginn miði eða skjal tengt. <button type="button" class="spotlight-text-action" data-spotlight-item="'+esc(item.id)+'">Skoða bókun</button></p>':'')+'</section>';
+}
+function renderTripSpotlight(){
+ const host=$('tripSpotlight');if(!host)return;const day=tripTodayDate();if(!tripInProgress(day)||state.tripLoadError){host.innerHTML='';host.classList.add('hidden');return}
+ const model=spotlightModel(day),place=stopForDate(day),point=weatherPoint(place);
+ const weather=place?'<button type="button" class="spotlight-weather-today spotlight-weather-link" data-spotlight-weather aria-label="Skoða nánari veðurspá fyrir '+esc(place.name)+' '+esc(fmtDate(day))+'"><span class="spotlight-weather-reading" data-weather-compact data-weather-plain data-weather-key="'+esc(point?.key||'none')+'" data-weather-stop="'+esc(place.id)+'" data-weather-date="'+esc(day)+'">'+spotlightWeatherMarkup(place,day,true)+'</span><span class="spotlight-weather-chevron" aria-hidden="true">⌄</span><span class="spotlight-weather-hint">Nánari spá</span></button>':'';
+ const main=model.main?spotlightEntryHtml(model.main,true):'<div class="spotlight-free"><strong>'+(model.earlier.length?'Engin fleiri tímasett atriði í dag':'Engin tímasett dagskrá í dag')+'</strong><p class="notice">'+(model.earlier.length?'Atriði fyrr í dag sjást áfram í dagatalinu.':'Skoðið dagatalið fyrir önnur skráð atriði og hugmyndir.')+'</p></div>';
+ const hotels=model.hotels.filter(h=>h.id!==model.main?.item.id);
+ const hotelHtml=hotels.length?'<section class="spotlight-hotel-compact"><div class="brand">GISTING Í KVÖLD</div>'+hotels.map(h=>'<div class="spotlight-hotel-row"><strong>🛏 '+esc(h.title)+'</strong><div class="spotlight-actions">'+spotlightHotelDirections(h)+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</section>':!model.hotels.length&&day<state.trip.end_date?'<section class="spotlight-hotel-compact"><strong>Gisting í kvöld þarf yfirferð</strong><p class="notice">Engin valin bókuð gisting nær yfir kvöldið.</p><button type="button" class="btn small" data-spotlight-lodging>Yfirfara gistingu</button></section>':'';
+ host.innerHTML='<section class="card spotlight-current"><div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div></div>'+weather+'<h2>'+esc(place?.name||state.trip.name)+'</h2></div>'+destinationPhotoSlot(place,'today')+main+hotelHtml+(model.rest.length?'<section class="spotlight-other"><div class="brand">ANNAÐ Í DAG</div>'+model.rest.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'')+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
+ host.classList.remove('hidden');host.classList.add('spotlight-redesigned');paintDestinationPhotos();
  host.querySelectorAll('[data-spotlight-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.spotlightItem));
  host.querySelectorAll('[data-spotlight-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.spotlightDocument));
- const weatherButton=host.querySelector('[data-spotlight-weather]');if(weatherButton)weatherButton.onclick=()=>{state.selectedDate=date;renderCalendar();renderDestination(place,date);const target=$('destinationWeather');target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({behavior:['reduced','off'].includes(state.settings?.animation_mode)||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})};
+ host.querySelector('[data-spotlight-lodging]')?.addEventListener('click',()=>openCategory('lodging'));
+ const weatherButton=host.querySelector('[data-spotlight-weather]');if(weatherButton)weatherButton.onclick=()=>{state.selectedDate=day;renderCalendar();renderDestination(place,day);const target=$('destinationWeather');target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({behavior:['reduced','off'].includes(state.settings?.animation_mode)||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})};
 }
 function refreshActiveToday(){if(!document.hidden&&state.trip&&$('tripScreen').classList.contains('active'))renderToday()}
 setInterval(refreshActiveToday,60000);
