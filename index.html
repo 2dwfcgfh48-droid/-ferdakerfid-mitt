@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071018">
-<link rel="stylesheet" href="./destination-photos.css?v=20261023-today-1">
+<link rel="stylesheet" href="./destination-photos.css?v=20261023-weather-link-2">
 <title>Ferðakerfið mitt — V6 Master</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.11.2/dist/maplibre-gl.css">
 <style>
@@ -439,7 +439,7 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
 
 <script src="./offline-store.js"></script>
 <script>if(navigator.onLine===false)location.replace(new URL('./offline.html',location.href));</script>
-<script src="./destination-photos-menu-dialog.js?v=20261023-today-1"></script>
+<script src="./destination-photos-menu-dialog.js?v=20261023-weather-link-2"></script>
 <div id="destinationPhotoModal" class="modal"></div>
 <div id="headerPhotoSettingsModal" class="modal"></div>
 <script type="module">
@@ -1432,7 +1432,7 @@ function spotlightEntryHtml(entry,large=false){
 function renderTripSpotlight(){
  const host=$('tripSpotlight');if(!host)return;const day=tripTodayDate();if(!tripInProgress(day)||state.tripLoadError){host.innerHTML='';host.classList.add('hidden');return}
  const model=spotlightModel(day),place=stopForDate(day),point=weatherPoint(place);
- const weather=place?'<button type="button" class="spotlight-weather-today spotlight-weather-link" data-spotlight-weather aria-label="Skoða nánari veðurspá fyrir '+esc(place.name)+' '+esc(fmtDate(day))+'"><span class="spotlight-weather-reading" data-weather-compact data-weather-plain data-weather-key="'+esc(point?.key||'none')+'" data-weather-stop="'+esc(place.id)+'" data-weather-date="'+esc(day)+'">'+spotlightWeatherMarkup(place,day,true)+'</span><span class="spotlight-weather-chevron" aria-hidden="true">⌄</span><span class="spotlight-weather-hint">Nánari spá</span></button>':'';
+ const weather=place?'<button type="button" class="spotlight-weather-today spotlight-weather-link" data-spotlight-weather aria-label="Skoða nánari veðurspá fyrir '+esc(place.name)+' '+esc(fmtDate(day))+'"><span class="spotlight-weather-reading" data-weather-compact data-weather-plain data-weather-key="'+esc(point?.key||'none')+'" data-weather-stop="'+esc(place.id)+'" data-weather-date="'+esc(day)+'">'+spotlightWeatherMarkup(place,day,true)+'</span><span class="spotlight-weather-hint"><span class="spotlight-weather-label">Nánari spá</span> <span class="spotlight-weather-chevron" aria-hidden="true">⌄</span></span></button>':'';
  const main=model.main?spotlightEntryHtml(model.main,true):'<div class="spotlight-free"><strong>'+(model.earlier.length?'Engin fleiri tímasett atriði í dag':'Engin tímasett dagskrá í dag')+'</strong><p class="notice">'+(model.earlier.length?'Atriði fyrr í dag sjást áfram í dagatalinu.':'Skoðið dagatalið fyrir önnur skráð atriði og hugmyndir.')+'</p></div>';
  const hotels=model.hotels.filter(h=>h.id!==model.main?.item.id);
  const hotelHtml=hotels.length?'<section class="spotlight-hotel-compact"><div class="brand">GISTING Í KVÖLD</div>'+hotels.map(h=>'<div class="spotlight-hotel-row"><strong>🛏 '+esc(h.title)+'</strong><div class="spotlight-actions">'+spotlightHotelDirections(h)+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</section>':!model.hotels.length&&day<state.trip.end_date?'<section class="spotlight-hotel-compact"><strong>Gisting í kvöld þarf yfirferð</strong><p class="notice">Engin valin bókuð gisting nær yfir kvöldið.</p><button type="button" class="btn small" data-spotlight-lodging>Yfirfara gistingu</button></section>':'';

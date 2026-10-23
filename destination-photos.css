@@ -118,3 +118,9 @@ body.density-compact .trip-card.trip-card-visual.has-trip-art{padding-bottom:35p
 .spotlight-weather-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:5px}
 @media(max-width:360px){.spotlight-small{flex-wrap:wrap}.spotlight-small>.btn{max-width:100%;margin-left:auto}.spotlight-hotel-row .spotlight-actions{width:100%}.spotlight-weather-reading{gap:3px}}
 .spotlight-current .photo-action-toggle.btn{background:transparent;border-color:transparent;box-shadow:none}
+
+/* Keep the weather action and its chevron together below the description. */
+.spotlight-today-head>.spotlight-weather-link{grid-template-columns:minmax(0,1fr)}
+.spotlight-weather-hint{display:flex;align-items:center;justify-content:flex-end;gap:4px;white-space:nowrap}
+.spotlight-weather-label{text-decoration:underline;text-underline-offset:3px}
+.spotlight-weather-hint .spotlight-weather-chevron{font-size:15px;line-height:1}
