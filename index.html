@@ -295,7 +295,15 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
 .cost-agenda-choice{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}.cost-agenda-choice label{display:flex;align-items:center;gap:9px;min-height:44px;font-size:14px}.cost-agenda-choice input{width:20px;height:20px;accent-color:var(--accent)}.cost-agenda-choice button{min-width:44px;min-height:44px}#quickCostAgendaHelp p{line-height:1.5;margin-top:0}.compact-help>summary{min-height:44px;cursor:pointer;align-content:center}
 #itemPaymentCalendarArea .actions{align-items:flex-start!important}#itemPaymentCalendarHelp[open]{flex-basis:100%}
 </style>
-<style>#lodgingStayFields .lodging-stay-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#lodgingStayFields .field{min-width:0}#lodgingStayFields input{min-width:0;max-width:100%;width:100%}#lodgingStayNights{margin:4px 0 14px}</style></head>
+<style>#lodgingStayFields .lodging-stay-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#lodgingStayFields .field{min-width:0}#lodgingStayFields input{min-width:0;max-width:100%;width:100%}#lodgingStayNights{margin:4px 0 14px}</style><style>
+/* Keep native date/time hit areas inside their visible controls in scrolling dialogs. */
+.modal .numeric-date{isolation:isolate;overflow:hidden;border-radius:11px}
+.modal .field input[type="date"],.modal .field input[type="time"]{position:relative;isolation:isolate;overflow:hidden;clip-path:inset(0 round 11px);min-height:44px;font-size:max(16px,1em);touch-action:manipulation}
+.modal .field input[type="date"]::-webkit-calendar-picker-indicator,.modal .field input[type="time"]::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0}
+/* A stable viewport prevents toolbar resizing from moving the booking scroller. */
+@supports(height:100svh){#itemModal{height:100svh;bottom:auto}#itemModal>.dialog{max-height:calc(100svh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}}
+#itemModal>.dialog{isolation:isolate;transform:translateZ(0)}
+</style></head>
 <body class="anim-on">
 <div class="app">
 <section id="authScreen" class="screen active">
@@ -1698,8 +1706,8 @@ function updateLodgingStayForm(){
   for(const id of ['itemDate','itemLodgingEnd'])for(const event of ['input','change'])$(id).addEventListener(event,paintLodgingStayNights);
  }
  const [date,time,end]=updateLodgingStayForm.homes;
- if(lodging){$('lodgingStayDates').append(date.node,end.node);$('lodgingArrivalField').append(time.node)}
- else for(const {node,marker} of updateLodgingStayForm.homes)marker.after(node);
+ if(lodging){if(date.node.parentNode!==$('lodgingStayDates'))$('lodgingStayDates').append(date.node,end.node);if(time.node.parentNode!==$('lodgingArrivalField'))$('lodgingArrivalField').append(time.node)}
+ else for(const {node,marker} of updateLodgingStayForm.homes)if(node.previousSibling!==marker)marker.after(node);
  $('lodgingStayFields').classList.toggle('hidden',!lodging);
  if(lodging){$('genericDateTimeFields').classList.add('hidden');$('itemDateLabel').textContent='Innritunardagur';$('itemTimeLabel').textContent='Áætluð koma okkar — kl. (valfrjálst)'}
  paintLodgingStayNights();

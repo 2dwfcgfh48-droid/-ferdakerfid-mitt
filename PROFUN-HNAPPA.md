@@ -53,3 +53,7 @@ Prófun: átta Node-prófasöfn standast, þar á meðal ný trip-more prófun �
 24-10-2026 — Dagsetningar áfangastaða í bókun
 Áfangastaðaval sýnir vistað dagabil í dd-mm-yyyy. Undir valinu birtist áætluð dvöl og fjöldi nátta þegar dagabilið er gilt. Gistibókun fær Nota daga áfangastaðar sem fyllir inn innritunar- og útritunardag; eldri gildi haldast tiltæk í Afturkalla val. Skipti um áfangastað eða flokk yfirskrifa ekki bókunardaga. Hnappur falinn fyrir aðra flokka og ófullkomið/ógilt dagabil. Upplýsingar sjást líka í öðrum bókunarflokkum.
 Prófun: níu Node-prófasöfn standast og málskipun innfelldra skrifta yfirfarin. Raunprófun í síma er eftir.
+
+24-10-2026 — Afmörkun dagsetningar- og tímareita í skrunanlegum bókunarglugga
+Notandi lýsir röngu snertimarki í iPhone Safari: dagsetning opnar tíma eða næsta hnapp. Orsök ekki endurgerð hér. Lagfæring afmarkar innbyggða date/time snertifleti innan sýnilegra reita, heldur minnst 16px letri til að forðast sjálfvirkan fókus-aðdrátt og notar stöðugt svh bókunargluggasvæði og eigin teiknilag. Gistireitir eru ekki endurfærðir innan DOM ef þeir eru þegar í réttum stað. Engar grípandi snerti- eða smellatilfærslur bættar við.
+Prófun: níu Node-prófasöfn og málskipun skrifta standast. Þetta staðfestir ekki viðgerð Safari snertivillunnar; nauðsynlegt er að prófa sýnilega dagsetningar- og tímareiti eftir skrun í síma.
