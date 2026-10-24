@@ -35,7 +35,7 @@
 .trip-more{position:relative;min-width:0}
 .trip-more-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:60;display:grid;gap:4px;width:max-content;min-width:100%;max-width:calc(100vw - 32px);max-height:70dvh;overflow:auto;padding:8px;background:var(--card-bg,#0d1b24);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
 .trip-more-menu .btn{width:100%;min-height:44px;text-align:left;white-space:normal;overflow-wrap:anywhere}
-.trip-more-menu .danger{border-top-width:2px;margin-top:4px}
+.trip-more-panel{display:grid;gap:4px}.trip-more-menu .danger{border-top:1px solid var(--line);margin-top:10px}.trip-more-menu .btn:disabled{opacity:.5;cursor:default}
 /* V6 settings + live theme preview */
 body.settings-applied{background:var(--body-bg);color:var(--text)}
 body.settings-applied h1,body.settings-applied h2,body.settings-applied h3{font-family:var(--heading-font)}
@@ -322,13 +322,22 @@ body.theme-light .map-info-close{background:#e9eef0;color:#17252e}body.theme-san
   <header class="trip-head">
     <div class="trip-nav"><button type="button" class="btn small" id="backBtn">← Til baka</button>
       <div class="trip-more"><button type="button" class="btn small" id="tripMoreBtn" aria-expanded="false" aria-controls="tripMoreMenu">⋯ Meira</button><div id="tripMoreMenu" class="trip-more-menu hidden" aria-label="Fleiri aðgerðir ferðar">
+        <div id="tripMoreMain" class="trip-more-panel">
+        <button type="button" class="btn small" id="tripGoTodayBtn">Fara í dag</button>
+        <button type="button" class="btn small" id="tripWalletBtn" aria-haspopup="dialog" aria-controls="walletModal">Ferðaveski</button>
         <button type="button" class="btn small" id="tripOfflineBtn" aria-haspopup="dialog" aria-controls="offlineInfoModal">↓ Ferðin án nets</button>
+        <button type="button" class="btn small" id="tripHeaderPhotoMenuBtn" aria-expanded="false" aria-controls="tripMorePhoto">Hausmynd ›</button>
+        <button type="button" class="btn small" id="tripPdfBtn">Vista sem PDF</button>
+        <button type="button" class="btn small" id="tripManageStopsBtn">Breyta áfangastöðum</button>
+        <button type="button" class="btn small" id="editTripBtn">Breyta ferð</button>
+        <button type="button" class="btn small danger hidden" id="deleteTripBtn">Eyða ferð</button>
+        </div>
+        <div id="tripMorePhoto" class="trip-more-panel hidden">
+        <button type="button" class="btn small" id="tripHeaderPhotoBack">← Til baka</button>
         <button type="button" class="btn small" id="tripHeaderPhotoEdit" aria-haspopup="dialog" aria-controls="destinationPhotoModal">Velja / breyta hausmynd</button>
         <button type="button" class="btn small" id="tripHeaderPhotoSettings" aria-haspopup="dialog" aria-controls="headerPhotoSettingsModal">Stilla hausmynd</button>
         <button type="button" class="btn small hidden" id="tripHeaderPhotoToggle">Fela hausmynd</button>
-        <button type="button" class="btn small" id="tripPdfBtn">Vista sem PDF</button>
-        <button type="button" class="btn small" id="editTripBtn">Breyta ferð</button>
-        <button type="button" class="btn small danger hidden" id="deleteTripBtn">Eyða ferð</button>
+        </div>
       </div></div>
     </div>
     <div class="trip-identity"><div class="trip-hero" id="tripHero"><div id="tripBrand" class="brand">FERÐASÍÐA</div><h1 id="tripTitle">Ferð</h1></div><div id="tripDates" class="mut"></div></div>
@@ -623,15 +632,26 @@ function installModalPageScrollGuard(){
  const observer=new MutationObserver(sync);document.querySelectorAll('.modal').forEach(modal=>observer.observe(modal,{attributes:true,attributeFilter:['class']}));sync();
 }
 installModalPageScrollGuard();
-function closeTripMore(restoreFocus=false){const button=$('tripMoreBtn');if(!button)return;const wasOpen=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded','false');$('tripMoreMenu').classList.add('hidden');if(restoreFocus&&wasOpen)button.focus({preventScroll:true})}
+function closeTripMore(restoreFocus=false){const button=$('tripMoreBtn');if(!button)return;const wasOpen=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded','false');$('tripMoreMenu').classList.add('hidden');showTripMorePhoto(false);if(restoreFocus&&wasOpen)button.focus({preventScroll:true})}
+function showTripMorePhoto(show,focus=false){
+ $('tripMoreMain').classList.toggle('hidden',show);$('tripMorePhoto').classList.toggle('hidden',!show);$('tripHeaderPhotoMenuBtn').setAttribute('aria-expanded',String(show));
+ if(focus)$(show?'tripHeaderPhotoBack':'tripHeaderPhotoMenuBtn').focus({preventScroll:true});
+}
+function goToTripToday(){
+ closeTripMore();renderTripSpotlight();const target=$('tripSpotlight');
+ if(!target||target.classList.contains('hidden'))return toast('„Í dag“ er virkt meðan ferðin stendur yfir.');
+ target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({behavior:['reduced','off'].includes(state.settings?.animation_mode)||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+}
 function initTripHeaderControls(){
  const button=$('tripMoreBtn'),menu=$('tripMoreMenu');
+ $('tripManageStopsBtn').onclick=()=>{closeTripMore();openManageStops()};$('tripWalletBtn').onclick=()=>{closeTripMore();openWalletModal()};$('tripGoTodayBtn').onclick=goToTripToday;
+ $('tripHeaderPhotoMenuBtn').onclick=()=>showTripMorePhoto(true,true);$('tripHeaderPhotoBack').onclick=()=>showTripMorePhoto(false,true);
  $('tripHeaderPhotoEdit').onclick=()=>window.DestinationPhotos?.openHeader();$('tripHeaderPhotoSettings').onclick=()=>window.DestinationPhotos?.openSettings();$('tripHeaderPhotoToggle').onclick=()=>window.DestinationPhotos?.toggleHeader();
  button.onclick=()=>{const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));menu.classList.toggle('hidden',!open)};
  button.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();button.setAttribute('aria-expanded','true');menu.classList.remove('hidden');menu.querySelector('button:not(.hidden)')?.focus()}});
- menu.addEventListener('click',e=>{if(e.target.closest('button'))closeTripMore()});
+ menu.addEventListener('click',e=>{const action=e.target.closest('button');if(action&&!['tripHeaderPhotoMenuBtn','tripHeaderPhotoBack'].includes(action.id))closeTripMore()});
  document.addEventListener('click',e=>{if(!e.target.closest('.trip-more'))closeTripMore()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&button.getAttribute('aria-expanded')==='true'){e.preventDefault();closeTripMore(true)}});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&button.getAttribute('aria-expanded')==='true'){e.preventDefault();if($('tripHeaderPhotoMenuBtn').getAttribute('aria-expanded')==='true')showTripMorePhoto(false,true);else closeTripMore(true)}});
  document.addEventListener('focusin',e=>{if(!e.target.closest('.trip-more'))closeTripMore()});
 }
 function openOfflineInfo(){if(!state.trip)return;closeTripMore();renderOfflineStatus();openModal('offlineInfoModal')}
@@ -1435,7 +1455,7 @@ function spotlightEntryHtml(entry,large=false){
  return '<section class="spotlight-primary"><div class="brand">'+(open?'SAMGÖNGUR Í DAG':hotel?'INNRITUN Í DAG':'NÆST Í DAG')+'</div><h3>'+esc(title)+'</h3><div class="spotlight-time">'+esc(spotlightTimeLabel(entry))+'</div>'+(entry.instant!==null&&!open?spotlightDeparture(entry):'')+(hotel&&lodgingStayTimes(item).checkin_from?'<div class="notice">Innritun frá kl. '+esc(lodgingStayTimes(item).checkin_from)+'</div>':'')+(reference?'<div class="notice">Bókun '+esc(reference)+'</div>':'')+'<div class="spotlight-primary-actions">'+(open?'':hotel?spotlightHotelDirections(item):spotlightDirections(item,leg))+tickets+'<button type="button" class="btn '+(open?'primary':'small')+'" data-spotlight-item="'+esc(item.id)+'">'+(open?'Ganga frá ferð':hotel?'Skoða gistingu':'Skoða bókun')+' →</button></div>'+(open?'<p class="notice">Veljið brottför þegar þið eruð tilbúin. Uppfærið þessa sömu færslu þegar ferðin er bókuð.</p>':!docs.length&&!hotel?'<p class="notice">Miði er ekki vistaður hér. Hann getur verið í appi söluaðila eða hjá ykkur.</p>':'')+'</section>';
 }
 function renderTripSpotlight(){
- const host=$('tripSpotlight');if(!host)return;const day=tripTodayDate();if(!tripInProgress(day)||state.tripLoadError){host.innerHTML='';host.classList.add('hidden');return}
+ const host=$('tripSpotlight');if(!host)return;const day=tripTodayDate();const shortcut=$('tripGoTodayBtn');if(shortcut){shortcut.disabled=!tripInProgress(day)||!!state.tripLoadError;shortcut.title=shortcut.disabled?'Í dag er virkt meðan ferðin stendur yfir.':'';}if(!tripInProgress(day)||state.tripLoadError){host.innerHTML='';host.classList.add('hidden');return}
  const model=spotlightModel(day),place=stopForDate(day),point=weatherPoint(place);
  const weather=place?'<button type="button" class="spotlight-weather-today spotlight-weather-link" data-spotlight-weather aria-label="Skoða nánari veðurspá fyrir '+esc(place.name)+' '+esc(fmtDate(day))+'"><span class="spotlight-weather-reading" data-weather-compact data-weather-plain data-weather-key="'+esc(point?.key||'none')+'" data-weather-stop="'+esc(place.id)+'" data-weather-date="'+esc(day)+'">'+spotlightWeatherMarkup(place,day,true)+'</span><span class="spotlight-weather-hint"><span class="spotlight-weather-label">Nánari spá</span> <span class="spotlight-weather-chevron" aria-hidden="true">⌄</span></span></button>':'';
  const main=model.main?spotlightEntryHtml(model.main,true):'<div class="spotlight-free"><strong>'+(model.earlier.length?'Engin fleiri tímasett atriði í dag':'Engin tímasett dagskrá í dag')+'</strong><p class="notice">'+(model.earlier.length?'Atriði fyrr í dag sjást áfram í dagatalinu.':'Skoðið dagatalið fyrir önnur skráð atriði og hugmyndir.')+'</p></div>';
