@@ -49,3 +49,7 @@ Prófun: sjö Node-prófasöfn, þar með raunveruleg saveItem keyrsla með herm
 24-10-2026 — Meira valmynd
 Bætt við Fara í dag, Ferðaveski og Breyta áfangastöðum fyrir ofan Breyta ferð. Hausmynd opnar undirvalmynd með Til baka og sömu eldri velja/stilla/fela aðgerðum. Eyða ferð heldur eldri sýnileikaskilyrðum og staðfestingum, neðst með auknu bili. Fara í dag er óvirkt utan ferðar í gangi eða við hleðsluvillu. Lokun endurstillir undirvalmynd; Escape fer fyrst til baka úr Hausmynd og lokar svo Meira. Núverandi gluggar og vistun notuð óbreytt.
 Prófun: átta Node-prófasöfn standast, þar á meðal ný trip-more prófun á aðgerðatengingum, undirvalmynd, bakfærslu, Escape, lokun utan valmyndar og fókus/skrun á Í dag. Málskipun skrifta og einstök HTML auðkenni yfirfarin. Engin raunprófun í síma/vafra hér.
+
+24-10-2026 — Dagsetningar áfangastaða í bókun
+Áfangastaðaval sýnir vistað dagabil í dd-mm-yyyy. Undir valinu birtist áætluð dvöl og fjöldi nátta þegar dagabilið er gilt. Gistibókun fær Nota daga áfangastaðar sem fyllir inn innritunar- og útritunardag; eldri gildi haldast tiltæk í Afturkalla val. Skipti um áfangastað eða flokk yfirskrifa ekki bókunardaga. Hnappur falinn fyrir aðra flokka og ófullkomið/ógilt dagabil. Upplýsingar sjást líka í öðrum bókunarflokkum.
+Prófun: níu Node-prófasöfn standast og málskipun innfelldra skrifta yfirfarin. Raunprófun í síma er eftir.
