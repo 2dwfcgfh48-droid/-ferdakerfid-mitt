@@ -37,3 +37,7 @@ Prófunarskrá: `node tests/controls-smoke.cjs` úr verkefnismöppunni.
 
 ## Nýtt aðalspjald Í dag — 23-10-2026
 `node tests/today-spotlight.cjs`: afþreying, frjáls dagur, opin lest, innritun og áframhaldandi dvöl, óskráður tími/tímabelti, eldri atriði dagsins, brottfararforgangur, valkostir/afbókun, heimleið fram/tilbaka, áætlað dagabil og virk tenging í bókun/skjal og nánari veðurspá. Prófin nota prufugögn og hermt DOM, ekki raunvafra. Allir sex prófaflokkar standast. Prófa þarf nýja útlitið, snertingu veðurs, miða og leiðsögn á iPhone og iPad.
+
+24-10-2026 — Hótelskipti í Í dag
+Samþykkt útlit varðveitt. Valin bókuð/notuð gisting sem lýkur í dag fær litla útritunarlínu fyrir ofan aðalatriðið. end_local_time birtist aðeins ef gilt vistað gildi er til; enginn tími áætlaður. Gisting í kvöld er áfram aðskilin. Óbókuð ferð sýnir að tími sé óákveðinn. Vantað viðhengi breytir ekki bókunarstöðu; skjámyndir/PDF nota núverandi ferðaveski. Engin ný tenging við lestaröpp eða sérreitur fyrir miðageymslu útfærður í þessari útgáfu.
+Prófun: öll sex Node-prófasöfn standast og málskipun innfelldra skrifta yfirfarin. Raunprófun í síma/iPad eftir uppfærslu er eftir.

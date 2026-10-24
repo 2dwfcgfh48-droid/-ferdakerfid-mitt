@@ -150,3 +150,7 @@ Innritun er ekki greind sjálfkrafa af raunstaðsetningu; framsetning byggist á
 Prófað: today-spotlight.cjs með hermdu DOM og prufugögnum fyrir hjólaferð, frjálsan dag, opna lest, innritun, lokið/afbókað/varagistingu, vantaðan tíma/tímabelti, lokin tímasett atriði, brottfararforgang, fram/tilbaka flug, dagabil, réttan veðurdag og tengingar í bókanir/skjöl. Fimm eldri keyrslupróf standast áfram. Allt innfellt JavaScript stenst setningafræðiprófun. Raunverulegt vafra-/iPhone-/iPad-próf og innskráðar ytri þjónustur óstaðfestar.
 
 Viðbót 23-10-2026: Veðurtengill í aðalspjaldi Í dag er nú undirstrikað Nánari spá með ⌄ á sömu línu undir veðurlýsingu. Örin er ekki lengur við veðurlýsinguna sjálfa. Tengingin á sama dag/stað óbreytt.
+
+24-10-2026 — Hótelskipti í Í dag
+Samþykkt útlit varðveitt. Valin bókuð/notuð gisting sem lýkur í dag fær litla útritunarlínu fyrir ofan aðalatriðið. end_local_time birtist aðeins ef gilt vistað gildi er til; enginn tími áætlaður. Gisting í kvöld er áfram aðskilin. Óbókuð ferð sýnir að tími sé óákveðinn. Vantað viðhengi breytir ekki bókunarstöðu; skjámyndir/PDF nota núverandi ferðaveski. Engin ný tenging við lestaröpp eða sérreitur fyrir miðageymslu útfærður í þessari útgáfu.
+Prófun: öll sex Node-prófasöfn standast og málskipun innfelldra skrifta yfirfarin. Raunprófun í síma/iPad eftir uppfærslu er eftir.
