@@ -57,3 +57,7 @@ Prófun: níu Node-prófasöfn standast og málskipun innfelldra skrifta yfirfar
 24-10-2026 — Afmörkun dagsetningar- og tímareita í skrunanlegum bókunarglugga
 Notandi lýsir röngu snertimarki í iPhone Safari: dagsetning opnar tíma eða næsta hnapp. Orsök ekki endurgerð hér. Lagfæring afmarkar innbyggða date/time snertifleti innan sýnilegra reita, heldur minnst 16px letri til að forðast sjálfvirkan fókus-aðdrátt og notar stöðugt svh bókunargluggasvæði og eigin teiknilag. Gistireitir eru ekki endurfærðir innan DOM ef þeir eru þegar í réttum stað. Engar grípandi snerti- eða smellatilfærslur bættar við.
 Prófun: níu Node-prófasöfn og málskipun skrifta standast. Þetta staðfestir ekki viðgerð Safari snertivillunnar; nauðsynlegt er að prófa sýnilega dagsetningar- og tímareiti eftir skrun í síma.
+
+24-10-2026 — Eitt skrunsvæði fyrir bókunarglugga
+Notandi staðfesti að fyrri snertilagfæring dugði ekki; Heildarverð opnaði gjaldmiðilsval. Fjarlægð fyrri tilraun með svh, transform og sérsnertifleti date/time. itemModal yfirlagið sér nú eitt um lóðrétt skrun; dialog er í venjulegu flæði án eigin skrunar, max-height eða transform. Allir innsláttar-/valreitir bókunar hafa minnst 16px letur. Þetta nær til verðs og gjaldmiðils jafnt sem dagsetninga. Aðrir gluggar óbreyttir.
+Prófun: níu Node-prófasöfn og málskipun innfelldra skrifta standast. Raunverulegt Safari snertifrávik hefur ekki verið endurgert hér og þarf staðfestingu í síma eftir uppfærslu.
