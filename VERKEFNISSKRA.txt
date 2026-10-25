@@ -250,3 +250,13 @@ Prófanir: setningafræði og hermd flæði fyrir val, endurbirtingu, hreinsun, 
 • Önnur bókunarform halda fyrri staðsetningu ítarreita. Stöðvaval sjálft ekki endurhannað í þessari afmörkuðu lagfæringu.
 Prófun: hermd DOM-flæði fyrir út-/heimleið, flokkaskipti, engar tvítekningar, leiðartengil og varðveislu vistunargagna standast ásamt eldri rökprófunum. Raunveruleg iPhone/iPad, bakendavistun og lifandi kortaþjónusta óprófuð.
 Afhending: ein zip-skrá með öllum nauðsynlegum vefskrám og verkefnisskrá. Notandi afþjappar og hleður innihaldi í rót GitHub-verkefnis.
+
+25-10-2026 — útgáfa 42: samræmdar tengingar við gistingu báðum megin samgangna
+Samþykkt umfang: flug, lest, bátur/ferja, akstur; útleið og heimleið, bókað/opið.
+• Upphafsstaður og hóteltillaga sýnileg við brottför í öllum þessum flokkum. Valið hótel felur samsvarandi „Nota gististað“ tillögu; aukatexti/punktaskoðun þétt.
+• Gisting eftir komu við komustöð. Tillaga notar nákvæman komudag, virka gistingu og tengdan komustað. Óþekktur komudagur gefur enga ágiskun; þegar komustaður er óþekktur velur notandi sjálfur úr gistingu á þeim degi. Fleiri kostir krefjast vals. Engin sjálfvirk yfirskrift.
+• Google Maps leiðsögn að stöð/flugvelli/höfn og frá komustað að valinni gistingu. Tenging notar vistaða kortapunkta þegar þeir eru til, annars heitileit. Engin leið teiknuð í innbyggðu korti og engin lifandi umferðarvöktun.
+• Val eftir komu geymist sem departure_plans[leg].arrival_place og endurheimtist við breytingu bókunar. Lokunarviðvörun tekur tillit til breytingar þess. Breyting á gistingu/dagsetningu/komustað sem gerir val ógilt krefst yfirferðar.
+• Hnappar í tengispjöldum vefjast innan breiddar og raðast lóðrétt á þröngum skjá. Leiðsagnarheiti nefnir Google Maps.
+• Notandi staðfesti fyrra val á brottfarargistingu og leiðsögn; val birtist með töf. Almenn tafagreining enn ólokin.
+Prófun 42: hermd val-/vistunar-/endurheimtuflæði og leiðartenglar fyrir alla fjóra flokka og báða leggi standast. Sannreynd tilvik: komudagur eftir miðnætti, óþekktur dagur, útritun, tvíræð gisting, valin tillaga, engin tvítekin spjöld, flokkskipti. Vafraútlit og bakendi á raunverulegu iPhone/iPad eru enn óprófuð.
