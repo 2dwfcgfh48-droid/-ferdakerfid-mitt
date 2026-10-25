@@ -260,3 +260,10 @@ Samþykkt umfang: flug, lest, bátur/ferja, akstur; útleið og heimleið, bóka
 • Hnappar í tengispjöldum vefjast innan breiddar og raðast lóðrétt á þröngum skjá. Leiðsagnarheiti nefnir Google Maps.
 • Notandi staðfesti fyrra val á brottfarargistingu og leiðsögn; val birtist með töf. Almenn tafagreining enn ólokin.
 Prófun 42: hermd val-/vistunar-/endurheimtuflæði og leiðartenglar fyrir alla fjóra flokka og báða leggi standast. Sannreynd tilvik: komudagur eftir miðnætti, óþekktur dagur, útritun, tvíræð gisting, valin tillaga, engin tvítekin spjöld, flokkskipti. Vafraútlit og bakendi á raunverulegu iPhone/iPad eru enn óprófuð.
+
+25-10-2026 — útgáfa 43: sama uppsetning tenginga fyrir brottför og eftir komu
+• Fyrirsagnir „Gisting fyrir brottför“ / „Gisting eftir komu“, sama letur, heiti hótels og röð hnappa: Breyta → Hreinsa → Leiðsögn í Google Maps · ferðamáti.
+• Sömu bil og lóðrétt röðun í síma; engin breyting á leiðarhnitum eða vistun.
+• Notandi staðfesti virkni Google Maps leiðsagnar og sýndi bæði út-/komuleið. Ekki jafngilt staðfestingu á öllum ferðaflokkum eða vistun eftir enduropnun.
+Prófun: eldri hermd flæði og leiðartenglar standast. Raunveruleg útlitsprófun í iPhone/iPad eftir breytingu óstaðfest.
+Afhending: zip búið til undir tímabundnu nafni, lokað, afþjappað, borið saman við allar frumskrár og síðan fært á endanlegt nafn. Niðurhalshlekkur afhentur eftir vistun.
