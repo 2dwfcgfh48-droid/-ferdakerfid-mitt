@@ -220,3 +220,33 @@ Prófun: fimmtán Node-prófasöfn standast ásamt málskipun. Ný railway-stati
 Flokkalistar raða eftir gildandi brottfarardegi; fyrir opnar lestir/ferjur/akstur án skráðs brottfarardags er upphaf áætlaðs dagabils notað. Dagsettar áætlanir blandast tímarétt við bókaðar færslur og fá merkinguna Áætlað. Ódagsettar færslur neðst, óskráður tími síðast innan sama dags. Staðfestur/handfærður brottfarardagur gengur framar áætluninni. Engum vistuðum dagsetningum eða stöðum breytt.
 Sama röðun og áætlunarmerking í PDF svo útflutningur fylgi listanum. Dagatal fær ekki tilbúna staðfestingu eða klukku fyrir áætlanir.
 Prófun: ný booking-order Node prófun sannreynir 19/21/25/ódagsett röð, raunverulegt openCategory HTML, tíma innan dags, forgang skráðs dags og óbreytt gögn. Prófið og málskipun innfelldra skrifta standast. WebKit prófun á raunverulegu staðbundnu viðmóti með gervigögnum staðfesti sömu röð í flokkalista og PDF og sýnilega Áætlað merkingu. Raunprófun í síma eftir.
+
+25-10-2026 — útgáfa 38: gistibundnar tillögur í lestar- og bátaformi
+Samþykkt: lítil viðbót við núverandi bókunarglugga. Gistiform og „Í dag“ breytast ekki.
+• Opnar lestir/bátar: leggja til dag þegar útritun á brottfararstað og innritun á komustað falla saman. Aðeins „Nota daginn“ fyllir tóman brottfarardag. Bókaðar ferðir og hringferðir fá ekki dagsetningartillögu.
+• Leiðsögn að stöð/höfn: miða hóteltillögu við brottfararstað viðkomandi leggs, einnig útritunardag. Heimleið miðar við sinn brottfararstað.
+• Fleiri hótel, ósamræmi eða óþekktur dagur/staður: skýring og handvirkt val; hvorki ágiskun né yfirskrift.
+• Vistaðir upphafsstaðir og dagsetningar breytast ekki sjálfkrafa. Tillögur nota núverandi vistaða gistingu, sleppa varabókunum/afbókuðum valkostum.
+Staða: kóði útfærður; rökprófanir keyrðar. Prófun á raunverulegum iPhone/iPad og staðfesting notanda bíður. Uppsetning á GitHub bíður.
+
+25-10-2026 — útgáfa 39: snerting staðareits og afritað heimilisfang
+• Birtingarreitur „Gististaður / Staður“ opnar nú sama staðaval og „Líma / velja á korti“, einnig með Enter/bilslá.
+• Staðaleit reynir upprunalegan texta fyrst. Ef engar niðurstöður fást eru mest tvö afmörkuð heimilisfangssnið reynd til viðbótar (þ.m.t. tékkneskt tvöfalt húsnúmer og einföldun póstnúmers/hverfis). Aldrei sjálfvirk vistun punkts.
+• Niðurstöður varaleitar eru merktar með leitartextanum og beiðni um að yfirfara húsnúmer. Þjónustuvillur verða áfram sýnilegar.
+• Prófun: rök og atburðameðhöndlun með hermdum leitarniðurstöðum standast. Lifandi leitarniðurstaða fyrir heimilisfang notanda, vistun við bakenda og raunveruleg iPhone/iPad-prófun óstaðfest.
+• Við yfirferð skilaði GitHub útgáfumerki 33; afhent útgáfa 39 byggir á vinnuútgáfu 38 og varðveitir samþykktar breytingar 37–38. Uppsetning bíður notanda.
+
+25-10-2026 — útgáfa 40: einfalt og samræmt staðaval
+Samþykkt: einn valhnappur; heiti eftir val og „Breyta staðsetningu“. „Nota vistaðan stað“ inni í staðavalinu.
+• Gisting, almennir mætingarstaðir og upphaf/mæting í brottfararáætlun: falinn gagnareitur í stað sýnilegs innsláttarlíks reits; valið heiti birtist sem texti. Gagnasnið og vistun haldast.
+• Vistaðir staðir, handvirk kortaleit og hreinsun aðgengileg inni í staðaglugganum. Lestarstöðval og leiðarinnsláttur haldast; flýtihnappur í vistaða staði flyst inn í valið.
+• Dagsetningar- og hóteltillögur 38 og heimilisfangsleit 39 varðveittar.
+Prófanir: setningafræði og hermd flæði fyrir val, endurbirtingu, hreinsun, staðaskipti, gistitillögur og leit standast. Raunveruleg iPhone/iPad- og bakendaprófun er eftir. Ekki uppsett á GitHub.
+
+25-10-2026 — útgáfa 41: gististaður sýnilegur í ferðabókun
+• Upphafsstaður leiðsagnar ásamt hóteltillögu fluttur úr földum ítarhluta fram fyrir brottfararstöð/höfn. Sama flæði á útleið og heimleið, lest/bát, bókað/opið.
+• Sömu gagnareitir og departure_plans varðveittir. Valið kveikir ekki sjálfkrafa á útreikningi brottfarartíma og krefst ekki skráðra ferðatímamínútna.
+• Þegar upphaf og brottfararstöð liggja fyrir birtist leiðsögn beint frá völdum upphafsstað að þeirri stöð/höfn. Tómur upphafsstaður gefur ekki í skyn valið hótel.
+• Önnur bókunarform halda fyrri staðsetningu ítarreita. Stöðvaval sjálft ekki endurhannað í þessari afmörkuðu lagfæringu.
+Prófun: hermd DOM-flæði fyrir út-/heimleið, flokkaskipti, engar tvítekningar, leiðartengil og varðveislu vistunargagna standast ásamt eldri rökprófunum. Raunveruleg iPhone/iPad, bakendavistun og lifandi kortaþjónusta óprófuð.
+Afhending: ein zip-skrá með öllum nauðsynlegum vefskrám og verkefnisskrá. Notandi afþjappar og hleður innihaldi í rót GitHub-verkefnis.
