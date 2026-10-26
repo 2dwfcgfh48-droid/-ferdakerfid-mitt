@@ -300,3 +300,13 @@ Samþykkt: endurnýta stöðvar útferðar í öfugri röð með sömu kortapunk
 Prófanir: 7 sjálfvirkar prófunarskrár standast. Ný rökprófun nær yfir viðsnúning, nákvæm hnit og stöðvarauðkenni, sérstakt heimferðarval, endurteknar uppfærslur, aðra flokka og endurheimt hermds vistunarpakka.
 Takmarkanir: vafraprófun ræstist ekki vegna þess að vafraforrit vantar í umhverfið. Raunveruleg vistun í bakenda og iPhone/iPad-prófun útgáfu 45 eru óstaðfest. Útfært, bíður staðfestingar notanda; ekki merkt fullprófað/lokið.
 Afhending: ein zip-skrá með sömu 12 vef-/verkefnisskrám og útgáfa 44; afþjöppun og bætasamanburður sannreynd fyrir afhendingu.
+
+
+26-10-2026 — útgáfa 46: sýnileg endurnýting stöðva þegar heimferð hefur borgarheiti
+Athugun notanda á 45: útleið Trieste Centrale → Venezia Santa Lucia var með stöðvapunkta en heimleið sýndi Feneyjar → Trieste. Opnun stöðvalista sýndi fyrri stöð sem handvirkt val; það staðfesti ekki viðsnúninginn. Orsök í kóða: ólík, óauð borgarheiti útilokuðu sjálfgefnu afritunina.
+• Heimferðarreitir með texta/borgarpunkti fá nú beinan hnapp „Nota [stöð] úr útferð“ ef samsvarandi útferðarendi hefur nákvæman punkt. Gildir fyrir báða enda lestarheimferðar, líka þegar eldri bókun er opnuð.
+• Notandi velur tillöguna sérstaklega; heiti, kortapunktur og stöðvargögn fylgja. Tillagan hverfur eftir val. Fyrirfram valdar nákvæmar heimferðarstöðvar eru varðveittar. Borgarpunktur útferðar er ekki boðinn sem nákvæm stöð.
+• Fyrri sjálfgefin hegðun fyrir tóma heimferðarreiti helst. Dagsetningum, gistivali og öðrum ferðaflokkum ekki breytt.
+Prófun: 7 prófunarskrár standast. Nýtt hermt viðmótsflæði endurgerir skjámyndatilvikið með eldri borgarheitum og borgarpunkti, samþykki hvorrar tillögu, nákvæm hnit, endurbirtingu án tvítekninga, endurheimt vistunarpakka og vernd sérvalinna stöðva.
+Takmörkun: raunverulegur vafri, bakendavistun og iPhone/iPad óprófuð. Ekki staðfest lokið hjá notanda.
+Afhending: ein zip-skrá, allar 12 skrár afþjappaðar og bætasamanburður við frumskrár sannreyndur.
