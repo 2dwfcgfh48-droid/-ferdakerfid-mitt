@@ -334,3 +334,9 @@ Samþykkt: jafna Ráðlagðan brottfarartíma og Afbókun og áminningar í minn
 • Fyrirsagnir nota Brottför frá Feneyjum / Koma til Feneyja á báðum leggjum í öllum samgönguflokkum. Heiti áfangastaðar í gögnum/valmynd helst Feneyjar. Aðrar staðarheitabeygingar ekki ágiskaðar.
 Prófanir: átta JavaScript-prófunarskrár standast; sérstaklega sannreyndar fyrirsagnir fyrir alla fjóra samgönguflokka og báða leggi, óbreytt vistað staðarheiti, sameiginleg leturregla, lokuð skýring og engin tvítekin afbókunarfyrirsögn. Raunveruleg vafra-/iPhone-/iPad-prófun á 48 óstaðfest.
 Afhending: ein zip-skrá með 12 nauðsynlegum vef-/verkefnisskrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — útgáfa 49: viðbótarkostnaður og áhrif skráninga
+Samþykkt: hnappur við bókun heitir „+ Skrá viðbótarkostnað“. Við Verð og greiðslu kemur lokaður kafli „Hvað hefur þetta áhrif á?“ sem skýrir heildarverð, greiðslustöðu og viðbótarkostnað, samanlagt verð fram og til baka aðeins einu sinni og að skrá ekki sama verð aftur sem viðbótarkostnað.
+Gildir í sameiginlega bókunarglugganum fyrir alla flokka. Almenna kostnaðarskráningin heldur eigin heiti. Reikningar, vistunarsnið og greiðsluútreikningar óbreytt. Kaflinn fylgir reglunni um lokaða kafla við enduropnun.
+Prófun: átta fyrirliggjandi JavaScript-prófunarskrár og raunveruleg HTML-yfirferð standast. Útlit á iPhone/iPad og lifandi vafraflæði útgáfu 49 óstaðfest.
+Afhending: ein zip-skrá með 12 skrám; afþjöppun og bætasamanburður sannreynd.
