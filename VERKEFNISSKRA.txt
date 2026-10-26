@@ -461,3 +461,23 @@ Prófanir:
 ☐ Leiðsögn frá fyrri gistingu að stöð/höfn og frá komustað að réttri næstu gistingu.
 ☐ Opnun/lokun kafla, lengd yfirlits og mynd/veður/myndastýringar á ferðadegi.
 Raunverulegur prófunarvafri er ekki tiltækur hér. Engin fullyrðing um fulla vafra- eða tækjaprófun er gerð.
+
+26-10-2026 — Útgáfa 55: útritun fremst í ferðadegi og skýrara heiti brottfarartíma
+
+Athugun út frá skjámyndum eftir útgáfu 54:
+• Ferðadagsflæðið, næsta-skrefs-spjald, opnanlegir kaflar og gisting eftir komu sjást í iPhone-sýnum notanda.
+• Útritun Hotel Hafen Hamburg sést hins vegar í eldri kafla neðan við innritun í Prag og vantar fremst í keðjuna.
+• 11:45 efst er skráður brottfarartími lestar; ráðlagður tími að stöðinni er óreiknaður. Innritun frá 12:00 er upphaf leyfilegs innritunartíma, ekki áætluð koma á hótelið.
+
+Lagfæring:
+• Dagsettar útritanir eru hluti af ferðadagslíkaninu, líka þegar upphafsstaður leiðsagnar er vistaður kortapunktur án tengingar við auðkenni gistibókunar.
+• Þessar útritanir birtast fremst í ferðadeginum, án tvískráningar þegar gistingin er þegar tengd samgöngufærslu. Eldri útritunarkafli neðst birtist ekki á ferðadögum.
+• Þegar ráðlagður tími er óreiknaður er tíminn í næsta-skrefs-spjaldi sérstaklega merktur „Brottför ferðar“ til að aðgreina hann frá brottför frá hóteli.
+• Enginn tími eða staðartenging er búin til og gögn bókunar eru ekki breytt.
+
+Prófun:
+• 26 ferðadagsprófanir og 23 fyrri kortaprófanir standast (49 alls).
+• Nýjar prófanir ná sérstaklega yfir útritun þegar upphafsstaður er ótengdur kortapunktur, staðsetningu útritunar í aðalspjaldi og merkingu óreiknaðs brottfarartíma.
+• JavaScript setningafræði og allar 13 skrár afhendingar sannreyndar.
+☐ Röð útritunar og orðalag bíða staðfestingar notanda í keyrandi appi á iPhone/iPad.
+Leiðsagnarhnappar sjást á myndum, en opnun leiðsagnar og allra bókana er ekki staðfest með skjámyndunum einum.
