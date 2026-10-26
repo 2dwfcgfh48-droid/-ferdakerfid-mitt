@@ -310,3 +310,19 @@ Athugun notanda á 45: útleið Trieste Centrale → Venezia Santa Lucia var me�
 Prófun: 7 prófunarskrár standast. Nýtt hermt viðmótsflæði endurgerir skjámyndatilvikið með eldri borgarheitum og borgarpunkti, samþykki hvorrar tillögu, nákvæm hnit, endurbirtingu án tvítekninga, endurheimt vistunarpakka og vernd sérvalinna stöðva.
 Takmörkun: raunverulegur vafri, bakendavistun og iPhone/iPad óprófuð. Ekki staðfest lokið hjá notanda.
 Afhending: ein zip-skrá, allar 12 skrár afþjappaðar og bætasamanburður við frumskrár sannreyndur.
+
+26-10-2026 — staðfesting notanda á útgáfu 46
+Notandi staðfestir: valið vistað og bókun opnuð aftur; það heldur sér. Skjámyndir sýna tillögurnar við Feneyjar/Trieste fyrir val og nákvæmar heimferðarstöðvar Venezia Santa Lucia → Trieste Centrale eftir val, með hnitum 45.44140, 12.32046 og 45.65741, 13.77043; tillöguhnappar horfnir eftir val.
+Staðfest að þessu marki: endurnýting útferðarstöðva í heimferð og varðveisla eftir vistun/endur­opnun í þessari lestarferð á iPhone. Ekki sjálfstæð staðfesting Google Maps leiðsagnar frá þessum stöðvum eða allra annarra tilvika. Engum appkóða breytt við skráningu staðfestingarinnar.
+
+26-10-2026 — útgáfa 47: samþykkt uppsetning bókunarglugga og lokaðir kaflar
+Samþykkt af notanda: skýrari fyrirsagnir og samþykkt útlitstillaga, opnanlegir kaflar sem stytta gluggann; mjóar hjálparskýringar „Hvað hefur þetta áhrif á?“ og „Skýring“. Við lokun/endur­opnun bókunar eiga allir kaflar að vera lokaðir og glugginn efst. Heimfæra á alla sambærilega bókunarglugga.
+• Flug/lest/bátur/akstur: aðskildir hópar fyrir brottför og komu, á útleið og heimleið. Dagsetning og klukka hjá viðeigandi stöð/flugvelli/höfn og gistingu. Fyrirsagnir nefna tengdan áfangastað þegar hann er þekktur. Útsýnisferð sýnir Lok ferðar við lokadag/tíma.
+• Sameiginlegir kaflar fyrir allar bókunartegundir: 🎫 Miðar og bókun, 💰 Verð og greiðsla, ⚙️ Fleiri stillingar; afbókun/áminningar þar undir. Núverandi reitir fluttir, ekki tvíteknir; öll upphafleg auðkenni, innsláttareigindi og valmöguleikar varðveitt. Viðbótarkostnaður áfram tengdur sömu færslum.
+• Föst almenn leiðbeiningatexta er hægt að opna undir Skýring. Virkar villur, tillögur og næsta skref með dýnamískum reitum haldast sýnileg. Greiðsludagatals- og brottfararáhrif fá viðeigandi skýringar.
+• Ráðlagður brottfarartími skýrir: Sýnir hvenær þú þarft að leggja af stað. Leiðsögn í Google Maps virkar líka án þessa vals. Reitir útreiknings opnast áfram aðeins þegar valið er virkt. Lokun kafla slekkur ekki á vistuðu vali.
+• Raunveruleg lokun lokar köflum og endurstillir skrun án þess að breyta innslætti. Enduropnun byrjar efst með lokaða kafla; sama regla við endurkomu úr ferðaveski. Hætt við lokun varðveitir opinn kafla og skrun. Venjuleg endurteikning í opnu formi fellir ekki saman kafla notandans.
+• Falin greiðslustaða sem vantar við samþykki innflutnings er opnuð og fær fókus þegar vistun bendir á villuna.
+Prófanir: átta JavaScript-prófunarskrár standast, ásamt DOM-yfirferð með raunverulegu HTML. Ný prófun á lokun/endur­opnun fyrir sex flokka, endurkomu úr ferðaveski, afturköllun lokunar og endurteikningu. Hótelupphaf helst í brottfararhópi og leiðartenglar varðveitast við endurteikningu í öllum fjórum samgönguflokkum. Hver upphaflegur innsláttarreitur og valkostur borinn saman við 46. Fyrri prófanir á leiðsögn, gistivali, stöðvum, dagsetningartillögum, kostnaðartengdum staðavali og áfangastöðum standast.
+Takmarkanir: ekki raunveruleg vafra-/bakendavistunarprófun eða iPhone/iPad-prófun á 47. Tilraun til að sækja prófunarvafra mistókst vegna netaðgangs umhverfisins. Ekki merkja þessa útgáfu staðfesta hjá notanda fyrir afhendingu.
+Afhending: ein zip-skrá með 12 nauðsynlegum vef-/verkefnisskrám; afþjöppun og bætasamanburður sannreynd.
