@@ -272,3 +272,31 @@ Afhending: zip búið til undir tímabundnu nafni, lokað, afþjappað, borið s
 Orsök: compactPlaceControl endurstillti hótelupphaf í „Breyta staðsetningu“ og faldi Hreinsa þegar paintBookingPlace eða paintRoutePointHints keyrði á eftir flutningssértækri birtingu.
 Lagfæring: almenna fallið þekkir nú upphafsstað samgöngubókunar og varðveitir Breyta/Hreinsa þegar staður er valinn; autt val sýnir Velja gististað. Gildir fyrir flug/lest/bát/akstur og út-/heimleið. Engar breytingar á leiðsögn, gistivali eða vistunarsniði.
 Prófun: sérstök endurtekningarprófun (þrjár endurteikningar) fyrir alla flokka/báða leggi og eldri prófanir standast. Raunveruleg símaprófun á 44 enn óstaðfest. Notandi staðfesti rétta leiðsögn að Carlton.
+
+
+Viðbót 26-10-2026 — flæði og sýnileiki í bókunargluggum
+
+☐ Yfirfara flæði, röðun og sýnileika í öllum sambærilegum bókunargluggum.
+• Færa tengd atriði nær hvert öðru, sérstaklega komudag og val á gistingu eftir komu.
+• Gera dagsetningartillögur og „Nota daginn“ auðfundið. Aðgreina stöðu bókunar, áætlað dagabil og skráðan brottfarar-/komudag.
+• Skýra hvers vegna val er ekki tiltækt og sýna næsta skref við viðeigandi reit, án þess að þurfa að leita langt í glugganum.
+• Skoða lengd glugga, hópun reita og samræmi hnappa, sérstaklega á iPhone og iPad.
+• Útbúa hugmyndir að hóflegri og samræmdri notkun emoji við fyrirsagnir til að auðvelda yfirsýn, t.d. 📅 Dagsetningar, 🏨 Gisting, 🚆 Lest, 🎫 Miðar og skjöl og 💰 Kostnaður. Tákn styðji texta; útlitstillaga til samþykktar áður en kóða er breytt.
+Staða: skráð til yfirferðar og tillögugerðar, ekki framkvæmd. Fyrri ólokin verk halda sér; nýr forgangur ekki ákveðinn.
+
+Afmarkaðar staðfestingar notanda 25–26-10-2026:
+• Í lestarferð virka leiðsögn frá gistingu að brottfararstöð og frá komustöð að gistingu; samræmd uppsetning beggja gistispjalda sést á skjámyndum.
+• Tillaga að brottfarardegi 30-10-2026 var notuð í Prag → Trieste, vistuð og varðveitt eftir enduropnun.
+• Gististaður í Trieste, skráður óbókaður/opinn, birtist til vals eftir að komudagur lestar var skráður. Óbókuð staða hótels var ekki hindrunin.
+Þetta staðfestir þessi afmörkuðu lestarflæði, ekki heildarprófun allra ferðaflokka. Sjálfvirkniliðir 1 og 2 eru því útfærðir og staðfestir að þessu marki; samsvarandi prófun annarra flokka er eftir. Næsti sjálfvirkniliður sem ræddur var: endurnýting nákvæmra lestarstöðva í heimferð (liður 3).
+
+
+26-10-2026 — útgáfa 45: nákvæmar lestarstöðvar í heimferð
+Samþykkt: endurnýta stöðvar útferðar í öfugri röð með sömu kortapunktum þegar Fram og til baka er valið; heimferðarstöðvar áfram breytanlegar.
+• Óvaldar heimferðarstöðvar fá heiti, hnit, stöðvarauðkenni, tímabelti og tengingu við áfangastað úr útferð. Engin ný staðaleit þarf fyrir vistaða punkta.
+• Virkar líka ef Fram og til baka er valið áður en útferðarstöðvar eru valdar. Sama heimferðarheiti án sérstaks punkts getur fengið samsvarandi útferðarpunkt.
+• Sérvaldar heimferðarstöðvar/punktar eru ekki yfirskrifuð, jafnvel þótt heitið sé eins. Breytt heiti útferðar yfirskrifar ekki þegar fyllt heimferðarheiti; notandi getur breytt því sérstaklega.
+• Sama route_places vistunarsnið áfram. Engum vistuðum bókunum er breytt utan bókunargluggans. Engin breyting á útliti.
+Prófanir: 7 sjálfvirkar prófunarskrár standast. Ný rökprófun nær yfir viðsnúning, nákvæm hnit og stöðvarauðkenni, sérstakt heimferðarval, endurteknar uppfærslur, aðra flokka og endurheimt hermds vistunarpakka.
+Takmarkanir: vafraprófun ræstist ekki vegna þess að vafraforrit vantar í umhverfið. Raunveruleg vistun í bakenda og iPhone/iPad-prófun útgáfu 45 eru óstaðfest. Útfært, bíður staðfestingar notanda; ekki merkt fullprófað/lokið.
+Afhending: ein zip-skrá með sömu 12 vef-/verkefnisskrám og útgáfa 44; afþjöppun og bætasamanburður sannreynd fyrir afhendingu.
