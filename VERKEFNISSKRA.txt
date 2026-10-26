@@ -409,3 +409,23 @@ Staðfestingar úr síðustu skjámyndum:
 ☐ Notandi yfirfer nýju flugvélar- og göngutáknin á iPhone/iPad.
 ☐ Staðfesta að táknskýringar fylgi raunverulegum sýnilegum merkjum við aðdrátt, færslu, flokkasíun og opnun kortaupplýsinga í vafra.
 Raunveruleg vafraprófun útgáfu 52 hefur ekki farið fram; prófunarvafri er ekki tiltækur í umhverfinu.
+
+26-10-2026 — Útgáfa 53: sömu tákn í litlu kortasíuhnöppunum
+
+Beiðni notanda: litlu hnapparnir við kortið sýna gömlu flugvélar- og göngutáknin, þótt nýju táknin sjáist á kortinu og í skýringunum.
+
+Breyting:
+• Kortasíuhnapparnir nota nú sama táknagjafa og kortamerki og táknskýringar. Fyllta flugvélin og gangandi manneskjan samræmast á þessum þremur stöðum.
+• Heiti, röð, fjöldi og síuvirkni hnappanna haldast. Bókunarflokkar utan kortsins haldast óbreyttir.
+• Engin önnur breyting á appkóða en val táknagjafa í kortasíum og útgáfumerking.
+
+Staðfest af síðustu skjámyndum notanda:
+• Ný flugvél og gangandi manneskja birtast á kortinu í sýndum iPhone-sýnum.
+• Táknskýringar í þessum sýnum samsvara flugvelli/hóteli annars vegar og áfangastað/hóteli/gönguferð hins vegar. Enginn upphafsfáni sést í skýringunum.
+• Þetta er afmörkuð staðfesting, ekki staðfesting á öllum kortafærslum eða öllum flokkum.
+
+Prófanir hér:
+• Fyrri 23 rök- og hermiprófanir standast, með samanburðarprófun aðlöguð fyrir samþykkta táknabreytingu síuhnappa.
+• JavaScript setningafræði staðfest. Samanburður við útgáfu 52 staðfestir aðeins tvær breyttar kóðalínur: táknagjafa síuhnappa og útgáfunúmer.
+• Zip-skráin afþjöppuð og innihald allra 13 skráa borið saman við afhendingarmöppu.
+☐ Nýju táknin í síuhnöppum bíða staðfestingar notanda á iPhone/iPad; raunveruleg vafraprófun hér er ekki framkvæmd.
