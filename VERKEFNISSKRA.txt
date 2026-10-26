@@ -340,3 +340,9 @@ Samþykkt: hnappur við bókun heitir „+ Skrá viðbótarkostnað“. Við Ver
 Gildir í sameiginlega bókunarglugganum fyrir alla flokka. Almenna kostnaðarskráningin heldur eigin heiti. Reikningar, vistunarsnið og greiðsluútreikningar óbreytt. Kaflinn fylgir reglunni um lokaða kafla við enduropnun.
 Prófun: átta fyrirliggjandi JavaScript-prófunarskrár og raunveruleg HTML-yfirferð standast. Útlit á iPhone/iPad og lifandi vafraflæði útgáfu 49 óstaðfest.
 Afhending: ein zip-skrá með 12 skrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — útgáfa 50: viðbótarkostnaðarhnappur sýnilegur fyrir vistun
+Samþykkt: „+ Skrá viðbótarkostnað“ skal sjást í öllum bókunarflokkum, líka nýjum óvistuðum bókunum. Þar er hann óvirkur með skýringunni „Vistaðu bókunina fyrst til að bæta við kostnaði.“ Í vistaðri bókun er hann virkur og tengir nýjan viðbótarkostnað við rétta bókun.
+Lagfæring: sameiginlega birtingarfallið felur ekki lengur hnappinn þegar editingItemId vantar. Native disabled og aria-describedby tengja óvirka hnappinn við skýringuna. Eldri viðbótarkostnaðarfærslur halda breytingarhnöppum sínum.
+Prófanir: ný hermd prófun nær yfir alla 16 bókunarflokka, nýja/vistaða bókun og skipti úr vistaðri í nýja án gamals smelliviðbragðs. Allar 9 JavaScript-prófunarskrár og HTML-yfirferð standast. Raunverulegt iPhone/iPad-/vafraflæði á 50 óstaðfest.
+Afhending: ein zip-skrá með 12 skrám; afþjöppun og bætasamanburður sannreynd.
