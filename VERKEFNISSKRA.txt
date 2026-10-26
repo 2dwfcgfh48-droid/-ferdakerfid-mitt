@@ -378,3 +378,34 @@ Prófanir hér:
 ☐ Athuga lestarstöðvar, bryggjur, hótel og upphaf hjólaferðar með réttum táknum.
 ☐ Athuga að flokkasíur, kortastækkun, opnun bókunar og leiðsögn virki áfram.
 Engin notandastaðfesting á útgáfu 51 liggur fyrir við afhendingu.
+
+26-10-2026 — Útgáfa 52: fyllt kortatákn og skýringar sem fylgja sýnilegum merkjum
+
+Samþykkt af notanda:
+• Prófa fylltu flugvélar- og göngutáknin úr síðustu útlitstillögu.
+• Táknskýringar undir korti sýna aðeins þau tákn sem birtast á sýnilegum hluta kortsins hverju sinni.
+• Bókunarflokkar og flokkasíur halda sér óbreytt.
+• Tvöföld heitisspjöld voru ekki staðfest sem útlitsgalli: notandi benti á að þau hefðu hjálpað við að greina að nákvæma lestarstöð vantaði í bókun. Sú hegðun er varðveitt.
+
+Útfært:
+• Kortamerki og upplýsingaspjald kortsins nota fyllt Material Design flugvélar- og göngutákn. Engin breyting á flokkatáknum í bókunum eða flokkasíum.
+• Táknin eru innbyggð í index.html; engin ný netbeiðni er nauðsynleg til að birta þau. Heimild og Apache-2.0 leyfi fylgja í map-icons-LICENSE.txt.
+• Fasta táknskýringin er fjarlægð. Ný skýring safnar aðeins tákntegundum þeirra kortamerkja sem hafa verið metin sýnileg, með nákvæmlega sama tákni og lit og merkin.
+• Eitt skýringaratriði fyrir hverja sýnilega tákntegund. Röð er stöðug og skýring felst ef engin merki sjást.
+• Uppfærist eftir kortafærslu, aðdrátt, stærðarbreytingu, flokkasíun og opnun/lokun upplýsingaspjalds. Merki utan korts eða falin undir stýringum/spjöldum teljast ekki sýnileg.
+• Upphafsfáni birtist ekki í skýringum nema sýnilegt kortamerki noti hann.
+• Skýringar eru nákvæmari þar sem það á við: Flugvöllur, Lestarstöð, Bryggja / höfn, Gönguferð og Hjólaferð.
+
+Prófað:
+• 23 rök- og hermiprófanir standast, þar af 17 fyrri kortaprófanir og sex viðbótarprófanir fyrir útgáfu 52.
+• Nýjar prófanir ná yfir alla 16 bókunarflokka og borgarmerki, fylltu táknin, óbreytt flokkatákn, samsvörun lita/tákna, tvítekningar, fjarverandi/sýnilegan fána, tómt kort og hermda færslu merkis inn/út úr sýn og undir upplýsingaspjald.
+• JavaScript setningafræði staðfest með node --check. Zip-skrá afþjöppuð og öll innihaldsgögn borin saman við afhendingarmöppu.
+
+Staðfestingar úr síðustu skjámyndum:
+• Útlit korts, borgarheita, ferðalína, efstu hnappa og flokkasía í sýndum iPhone-sýnum af útgáfu 51 hefur verið yfirfarið með notanda.
+• Það staðfestir ekki öll flæði eða alla flokka á iPhone/iPad.
+
+Ólokið:
+☐ Notandi yfirfer nýju flugvélar- og göngutáknin á iPhone/iPad.
+☐ Staðfesta að táknskýringar fylgi raunverulegum sýnilegum merkjum við aðdrátt, færslu, flokkasíun og opnun kortaupplýsinga í vafra.
+Raunveruleg vafraprófun útgáfu 52 hefur ekki farið fram; prófunarvafri er ekki tiltækur í umhverfinu.
