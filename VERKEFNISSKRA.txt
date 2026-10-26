@@ -346,3 +346,35 @@ Samþykkt: „+ Skrá viðbótarkostnað“ skal sjást í öllum bókunarflokku
 Lagfæring: sameiginlega birtingarfallið felur ekki lengur hnappinn þegar editingItemId vantar. Native disabled og aria-describedby tengja óvirka hnappinn við skýringuna. Eldri viðbótarkostnaðarfærslur halda breytingarhnöppum sínum.
 Prófanir: ný hermd prófun nær yfir alla 16 bókunarflokka, nýja/vistaða bókun og skipti úr vistaðri í nýja án gamals smelliviðbragðs. Allar 9 JavaScript-prófunarskrár og HTML-yfirferð standast. Raunverulegt iPhone/iPad-/vafraflæði á 50 óstaðfest.
 Afhending: ein zip-skrá með 12 skrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — Útgáfa 51: læsilegra kort og næsti ferðaleggur
+
+Samþykkt af notanda í þessu samtali:
+• Röð efstu kortahnappa: Sýna alla ferðina → Sýna áfangastaði → næsti ferðaleggur, t.d. 🚆 Prag ➡️ Trieste.
+• Flokkasíurnar undir halda sömu röð og virkni (Allt, Flug, Gisting, Lestir o.fl.).
+• Engin samgöngutákn á leiðarlínunum. Tákn fylgja staðarpunktum: lestarstöð, bryggja, upphaf hjólaferðar, gisting o.fl.
+• Borgarheiti við minni merki; skýrari línur með ljósri útlínu og samgöngulitum. Valinn ferðaleggur og endapunktar áberandi, aðrar línur daufari.
+
+Útfært í þessari afhendingu:
+• Ný röð hnappa og hnappur fyrir næsta dagsetta ferðalegg, óháð flokkasíu.
+• Útleið og heimleið skoðaðar sérstaklega; opnar ferðir nota áætlaðan dag úr skráðum tengdum áfangastöðum. Óþekktur dagur er ekki búinn til. Loknum og afpöntuðum færslum og útsýnis-/hringferðum báta sleppt.
+• Liðnir dagar eru útilokaðir; liðinn brottfarartími í dag einnig þegar tímabelti er þekkt. Ef enginn næsti dagsettur leggur finnst er hnappurinn falinn. Vanti kortapunkta opnast bókun til yfirferðar með skýringu.
+• Næsti-leggs-hnappur sýnir báða endapunkta á korti. Dagsetning í hjálpartexta og aðgengisheiti er dd-mm-yyyy.
+• Merki sýna staðar-/bókunarheiti í stað almenns flokksheitis. Borgarpunktur sem kemur í stað óþekktrar stöðvar/hafnar heldur borgartákni.
+• Minni tákn, tilraun til að færa heitisspjöld til við skörun; ef ekkert pláss finnst felst heitisspjaldið en tákn og opnanlegar upplýsingar haldast. Aðdráttur gefur meira pláss.
+• Endurteknar dvalir á nákvæmlega sama kortapunkti deila borgarmerki en dagsetningar og auðkenni hverrar dvalar varðveitast í upplýsingunum.
+• Samgöngulínur með ljósri útlínu: flug gult, lest blátt og aðrir flokkar nota núverandi flokkaliti. Strikalínur eru tengingar milli punkta, ekki nákvæm lestar-/akstursleið.
+• Upphaf hjólaferðar fær hjólatákn; önnur upphafstákn haldast.
+• Flokkasíukóðinn, gagnavistun og gagnagrunnssnið óbreytt.
+
+Prófanir hér:
+• 17 rök- og hermiprófanir standast: næsti leggur, heimleið, áætlaðir dagar, óþekktir dagar, tímabeltisreikningur dagsins, kortapunktar, endurteknar borgir, samgöngulitir, línulög, hnappatexti, merki, skörunarútreikningur og varðveisla flokkasía.
+• JavaScript setningafræði staðfest með node --check.
+• Þessar prófanir staðfesta ekki raunverulegt útlit eða snertiflæði. Sjálfvirkur prófunarvafri fékkst ekki uppsettur: niðurhal skilaði ógildri zip-skrá. Vafra-, iPhone- og iPad-prófun er eftir hjá notanda.
+
+Ólokið og næsta staðfesting:
+☐ Skoða alla ferðina og borgarheiti á iPhone/iPad, bæði yfirsýn og aðdrátt.
+☐ Velja næsta ferðalegg og staðfesta fókus/endapunkta og daufari aðrar leiðir.
+☐ Athuga lestarstöðvar, bryggjur, hótel og upphaf hjólaferðar með réttum táknum.
+☐ Athuga að flokkasíur, kortastækkun, opnun bókunar og leiðsögn virki áfram.
+Engin notandastaðfesting á útgáfu 51 liggur fyrir við afhendingu.
