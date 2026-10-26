@@ -429,3 +429,35 @@ Prófanir hér:
 • JavaScript setningafræði staðfest. Samanburður við útgáfu 52 staðfestir aðeins tvær breyttar kóðalínur: táknagjafa síuhnappa og útgáfunúmer.
 • Zip-skráin afþjöppuð og innihald allra 13 skráa borið saman við afhendingarmöppu.
 ☐ Nýju táknin í síuhnöppum bíða staðfestingar notanda á iPhone/iPad; raunveruleg vafraprófun hér er ekki framkvæmd.
+
+26-10-2026 — Útgáfa 54: heildstætt ferðadagsyfirlit undir mynd í „Í dag“
+
+Samþykkt útlit og umfang:
+• Næsta skref efst, síðan útritun → leið að brottfararstað → samgöngur → leið frá komustað að gistingu → innritun.
+• Nánari upplýsingar í lokuðum, opnanlegum köflum; miðar og leiðsögn við viðeigandi skref.
+• Núverandi mynd, áfangastaðarheiti, veður, myndastýringar og myndheimild halda sér. Útlitstillagan notaði dæmitíma; þeir eru ekki notaðir í appinu.
+
+Útfært:
+• Ferðadagsyfirlitið kemur undir núverandi mynd í aðalspjaldinu „Í dag“ og samsvarandi ferðaflæði er sýnt í Í dag-flipanum.
+• Á ferðadögum er heildarleiðin sýnd; aðrir dagar halda fyrri birtingu. Annað dagskrárefni, veður og gisting í kvöld varðveitast. Samgöngufærslur í nýja flæðinu eru ekki tvíteknar í sömu dagskrársýn.
+• Flug, lest, bátur/ferja og akstur nota sömu uppbyggingu. Útsýnis-/hringferðir báta halda eldri birtingu. Heimleið notar eigin stöðvar, tíma og tengingar.
+• Valinn gististaður úr bókun hefur forgang; tenging er sannreynd við dagsetningu og áfangastað. Ef aðeins einn virkur gististaður passar má sýna hann sem tillögu. Ekki giskað þegar fleiri koma til greina eða eldri tenging er ógild.
+• Útritunarfrestur hótels er aðgreindur frá ráðlögðum tíma til að leggja af stað. Ráðlagður tími notar aðeins vistaða, virka brottfararáætlun og hennar ferðatíma, mætingarfrest, öryggisbil og tímabelti.
+• Leiðsögn getur virkað þó ráðlagður brottfarartími sé óvirkur. Nýju leiðsagnarhnapparnir nota nákvæma vistaða punkta og samgöngumáta úr áætluninni. Borgarpunktur er ekki túlkaður sem nákvæm stöð/höfn; þá er vísað í bókun til yfirferðar.
+• Miðar tengdir samgöngubókun opnast úr ferðaveskinu. Ekkert skilyrði um að miðinn sé vistaður í appinu. Gistibókun er áfram aðgengileg fyrir innritunarupplýsingar og staðfestingu.
+• Komudagur, komutími og tímabelti eru ekki búin til út frá brottför. Opnar ferðir sýna áætlaðan dag og óskráða tíma. Komur yfir miðnætti og næsta dags gisting nota sínar dagsetningar.
+• Næsta-skrefs-spjald byggist á skráðum tímum, ekki lifandi staðsetningu eða sjálfvirkri staðfestingu þess að notandi sé búinn að mæta.
+• Dagsetningar birtast sem dd-mm-yyyy. Engin breyting á gagnagrunnssniði eða vistun ferðagagna.
+
+Prófanir:
+• 23 nýjar rök- og hermiprófanir fyrir ferðadagsyfirlitið standast; meðal annars full röð, mynd/veður, réttar gistitengingar, óvirk brottfararáætlun, vantar dag/tíma/stað, ógildar/óljósar tengingar, heimleið, ferð yfir miðnætti, opnar ferðir, miðatengingar, aðrir dagar og önnur dagskrá, tímabelti/sumartímaskipti, samræmi aðalspjalds og Í dag-flipa og afritun úr gögnum án breytinga.
+• Fyrri 23 kortaprófanir standast áfram (46 rök-/hermiprófanir alls).
+• JavaScript setningafræði staðfest með node --check. Myndaföll, myndastýringar, veðurfall og flokkalisti borin saman við útgáfu 53 og eru óbreytt.
+• Zip-skrá afþjöppuð og allar 13 skrár bornar saman við afhendingarmöppu.
+
+Óstaðfest hjá notanda:
+☐ Útlit og snertiflæði í keyrandi vafra á iPhone/iPad.
+☐ Opnun gistibókunar, samgöngubókunar og eigin miðaskjala úr nýju yfirliti.
+☐ Leiðsögn frá fyrri gistingu að stöð/höfn og frá komustað að réttri næstu gistingu.
+☐ Opnun/lokun kafla, lengd yfirlits og mynd/veður/myndastýringar á ferðadegi.
+Raunverulegur prófunarvafri er ekki tiltækur hér. Engin fullyrðing um fulla vafra- eða tækjaprófun er gerð.
