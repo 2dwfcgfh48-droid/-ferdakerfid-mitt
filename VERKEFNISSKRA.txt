@@ -326,3 +326,11 @@ Samþykkt af notanda: skýrari fyrirsagnir og samþykkt útlitstillaga, opnanleg
 Prófanir: átta JavaScript-prófunarskrár standast, ásamt DOM-yfirferð með raunverulegu HTML. Ný prófun á lokun/endur­opnun fyrir sex flokka, endurkomu úr ferðaveski, afturköllun lokunar og endurteikningu. Hótelupphaf helst í brottfararhópi og leiðartenglar varðveitast við endurteikningu í öllum fjórum samgönguflokkum. Hver upphaflegur innsláttarreitur og valkostur borinn saman við 46. Fyrri prófanir á leiðsögn, gistivali, stöðvum, dagsetningartillögum, kostnaðartengdum staðavali og áfangastöðum standast.
 Takmarkanir: ekki raunveruleg vafra-/bakendavistunarprófun eða iPhone/iPad-prófun á 47. Tilraun til að sækja prófunarvafra mistókst vegna netaðgangs umhverfisins. Ekki merkja þessa útgáfu staðfesta hjá notanda fyrir afhendingu.
 Afhending: ein zip-skrá með 12 nauðsynlegum vef-/verkefnisskrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — útgáfa 48: samræmdar undirkaflafyrirsagnir og skýringar
+Samþykkt: jafna Ráðlagðan brottfarartíma og Afbókun og áminningar í minni fyrirsagnarstærð, fjarlægja innri AFBÓKUN-tvítekningu og fella langan ferðatímainngang undir Skýring. Notandi staðfesti beyginguna Feneyjar / Feneyjar / Feneyjum / Feneyja.
+• Báðir undirkaflar nota sömu stærð, þykkt og línuhæð undir Fleiri stillingar í öllum bókunarflokkum. Eldri leturregla sem náði til allra summary-afkomenda brottfararáætlunar fjarlægð.
+• Ferðatímainngangur er í lokuðum Skýring-kafla. Hvað hefur þetta áhrif á? við út-/heimleið heldur sinni minni hjálparframsetningu. Lokunar-/endur­opnunarregla 47 varðveitt.
+• Fyrirsagnir nota Brottför frá Feneyjum / Koma til Feneyja á báðum leggjum í öllum samgönguflokkum. Heiti áfangastaðar í gögnum/valmynd helst Feneyjar. Aðrar staðarheitabeygingar ekki ágiskaðar.
+Prófanir: átta JavaScript-prófunarskrár standast; sérstaklega sannreyndar fyrirsagnir fyrir alla fjóra samgönguflokka og báða leggi, óbreytt vistað staðarheiti, sameiginleg leturregla, lokuð skýring og engin tvítekin afbókunarfyrirsögn. Raunveruleg vafra-/iPhone-/iPad-prófun á 48 óstaðfest.
+Afhending: ein zip-skrá með 12 nauðsynlegum vef-/verkefnisskrám; afþjöppun og bætasamanburður sannreynd.
