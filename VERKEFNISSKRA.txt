@@ -561,3 +561,17 @@ Beiðni: stytta og þétta framsetningu eftir skjámyndir notanda af útgáfu 57
 • Viðvaranareikningur, einstök talning, vistunarstaðfesting, gögn og dagsetningar óbreytt. Sömu birtingarstaðir haldast.
 Prófun: 61 fyrirliggjandi rök-/hermipróf ferða, viðvarana og áfangastaða og 23 kortapróf standast. Prófunarhleðsla uppfærð fyrir nýja birtingarhjálparfallið og styttan texta. JavaScript málskipan yfirfarin, breytingamunur skoðaður og zip sannreynt. Þetta er ekki vafra- eða tækjaprófun; útlit og snerting á iPhone/iPad bíður staðfestingar notanda.
 Notandaprófun: Athuga að gulur borði nýti alla breidd dagatalsspjalda, Yfirfara opni rétt atriði og talning breytist ekki við birtingu sama atriðis á fleiri stöðum.
+
+
+27-10-2026 — Útgáfa 59: viðvörun innan bókunar og rammi í Í dag
+Samþykkt beiðni: í dagatali skal viðvörun vera innan bókunarspjaldsins og guli ramminn utan um allt spjaldið. Í Í dag skal nota gulan ramma án þess að lengja spjaldið með viðvörunartexta. Sameiginlega viðvörunarspjaldið færist niður fyrir tímalínuna.
+Útfært: viðkomandi dagatalsspjald fær gulan ytri ramma; innri viðvörunarrammi fjarlægður þar, texti og Yfirfara haldast inni í spjaldinu. Í dag notar sömu síun eftir bókun/degi en sýnir aðeins ytri ramma, ekki nýja textaröð. Aðalspjaldið fyrir Í dag og samsvarandi hluti í Í dag flipanum fá innfelldan gulan ramma þegar bókun dagsins þarf yfirferð; ramminn breytir ekki stærð. Sameiginlega spjaldið er eftir tímalínunni í HTML, áfram aðgengilegt í öðrum flipum. Kortabókunarlistinn óbreyttur.
+Viðvaranareikningur, talning, vistun og öll gögn óbreytt.
+Prófun: 61 fyrirliggjandi rök-/hermipróf og 23 kortapróf standast; hermiumhverfi uppfært vegna nýrra birtingarhjálparfalla og classList. JavaScript málskipan, DOM röð, breytingamunur og zip yfirfarin. Raunveruleg vafra- og iPhone/iPad prófun ekki framkvæmd.
+Notandaprófun: guli ramminn um alla viðkomandi dagatalsbókun, texti inni í honum; Í dag fær ramma án nýs texta/lengingar; sameiginleg viðvörun fyrir neðan tímalínuna.
+
+
+27-10-2026 — Útgáfa 60: aðeins gulur rammi við spjöld
+Samþykkt: gulur rammi nægir við dagatal, Í dag og bókanir undir kortinu. Guli ramminn í tímalínu helst. Notandi hefur ekki sett útgáfu 59 inn; þessi heildarútgáfa tekur við af 58 og inniheldur líka breytingar 59.
+Útfært: aukatexti og Yfirfara-röð fjarlægð úr einstökum dagatalsspjöldum og kortabókunarlista. Viðkomandi spjöld halda gulum ytri ramma. Í dag og tímalína halda gulu merkingunni úr 59. Sameiginleg viðvörun undir tímalínu heldur fjölda og Yfirfara; atriðaglugginn heldur skýringum og tenglum. Viðvörun inni í breytingarformi bókunar helst til að hjálpa við leiðréttingu. Engin breyting á greiningu, talningu, gögnum eða vistun.
+Prófun: 61 fyrirliggjandi rök-/hermipróf og 23 kortapróf standast; vænt framsetning í prófum uppfærð fyrir ramma án aukatexta. Málskipan, óbreytt viðvaranagreining, áframhaldandi tímalínurammi og röðun sameiginlegu viðvörunarinnar yfirfarin. Zip sannreynt. iPhone/iPad útlit og snerting bíður notandaprófunar.
