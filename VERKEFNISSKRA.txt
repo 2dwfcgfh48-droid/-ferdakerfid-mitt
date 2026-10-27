@@ -575,3 +575,11 @@ Notandaprófun: guli ramminn um alla viðkomandi dagatalsbókun, texti inni í h
 Samþykkt: gulur rammi nægir við dagatal, Í dag og bókanir undir kortinu. Guli ramminn í tímalínu helst. Notandi hefur ekki sett útgáfu 59 inn; þessi heildarútgáfa tekur við af 58 og inniheldur líka breytingar 59.
 Útfært: aukatexti og Yfirfara-röð fjarlægð úr einstökum dagatalsspjöldum og kortabókunarlista. Viðkomandi spjöld halda gulum ytri ramma. Í dag og tímalína halda gulu merkingunni úr 59. Sameiginleg viðvörun undir tímalínu heldur fjölda og Yfirfara; atriðaglugginn heldur skýringum og tenglum. Viðvörun inni í breytingarformi bókunar helst til að hjálpa við leiðréttingu. Engin breyting á greiningu, talningu, gögnum eða vistun.
 Prófun: 61 fyrirliggjandi rök-/hermipróf og 23 kortapróf standast; vænt framsetning í prófum uppfærð fyrir ramma án aukatexta. Málskipan, óbreytt viðvaranagreining, áframhaldandi tímalínurammi og röðun sameiginlegu viðvörunarinnar yfirfarin. Zip sannreynt. iPhone/iPad útlit og snerting bíður notandaprófunar.
+
+
+27-10-2026 — Útgáfa 61: guli ramminn yfirskrifaðist af stillingum
+Notandaprófun 60: gulur rammi sást á todayNext en vantaði á aðalspjald Í dag og við einstakar bókanir; skjámyndir sýna áfram tvö atriði til yfirferðar.
+Orsök í kóða: body.settings-applied .card, .item og .btn höfðu meiri CSS sértækni en nýju rammareglurnar og settu border-color aftur á var(--line); .card yfirskrifaði líka innfellda box-shadow rammann.
+Lagfæring: afmarkaðar rammareglur fyrir viðkomandi dagatalsspjöld, kortabókanir og aðalspjald Í dag með meiri sértækni. Gulur rammi í tímalínu og todayNext helst óbreyttur. Box-shadow á aðalspjaldi sameinar fyrri skugga og innfellda gula merkingu. Engin stærðar-, efnis-, gagnabreyting eða viðbótarviðvörunartexti.
+Prófun: JavaScript hluti byte-identical við 60; málskipan og 61 rök-/hermipróf + 23 kortapróf standast. CSS sértækni og staðsetning í virkum stíl yfirfarin. Zip CRC sannreynt. Raunvafra-/iPhone-/iPad prófun ekki framkvæmd.
+Notandaprófun: endurhlaða og athuga gulan ramma utan um aðalspjald Í dag og viðkomandi bókunarspjöld í dagatali/undir korti meðan viðvaranir eru til. Skipta milli þema til að staðfesta að ramminn haldist.
