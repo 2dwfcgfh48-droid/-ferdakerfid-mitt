@@ -513,3 +513,41 @@ Prófanir:
 ☐ Prófa „Yfirfara“, opna rétta bókun, leiðrétta tíma, vista og staðfesta að viðvörun hverfi.
 Raunveruleg vafra- og tækjaprófun hefur ekki verið framkvæmd hér.
 Fyrri þekkt röðun undir „Næstu dagar“ (opnum og bókuðum ferðum blandað) er enn ólokin; henni var ekki breytt í þessari útgáfu.
+
+27-10-2026 — Útgáfa 57: raðaðir áfangastaðir, viðvörun við vistun og tengd gisting
+
+Beiðni notanda og skjámyndir:
+• Áfangastaðalistinn á að fylgja dagsetningum eftir breytingu á dvalardögum.
+• Nýr árekstur við breytingu á áfangastað á að birtast strax við vistun.
+• Áfangastaðirnir sem tengjast vandamálinu, t.d. Hamborg og Prag, eiga að fá gulan ramma.
+• Viðvörunin þarf að vísa í gistingu og sjást við tengdar gistifærslur í dagatali og atriðisglugga.
+• Fyrri skjámyndir staðfesta sameiginlega spjaldið, fjölda og opnun yfirferðarlista á iPhone. Það staðfestir ekki allar klukkuprófanir.
+
+Orsök:
+• saveStop kallaði ekki á fyrirliggjandi confirmNewTimelineWarnings áður en gögn voru skrifuð.
+• Stop-overlap viðvörunin geymdi auðkenni dvalarstaða en tengdi þau ekki við virkar gistibókanir. Viðvörunin kom því ekki með gistifærslunum í dagatalinu.
+
+Útfært:
+• Áfangastaðastjórnun raðast eftir upphafsdegi, lokadegi og fyrri röð við jafnar dagsetningar; ódagsettir staðir eru síðastir. Sama birtingarröð er notuð í áfangastaðavali bókunar og opinna ferða og tillögulista samgangna. Röðun breytir ekki auðkennum, gistigögnum eða vistuðum order_index-gildum.
+• Nýr eða breyttur árekstur er reiknaður út frá fyrirhuguðum áfangastaðagögnum áður en saveStop sendir breytinguna til vistunar. Notandi getur hætt við eða vistað samt. Tilvísun í bókanir og gistingu kemur fram; ekkert færist sjálfkrafa.
+• Fyrri vistunarathugun í saveItem heldur sér og nær nú líka yfir gistidaga sem passa ekki við tengda dvöl. Þessi vistunarviðvörun fjallar um dagsetningavandamál, ekki alla mögulega klukkuárekstra.
+• Skarandi áfangastaðir og önnur dagsetningavandamál á stöðum fá gulan ramma í áfangastaðalistanum og viðkomandi áfangastaðaspjöldum í ferðaleið. Textamerking fylgir listamerkingu.
+• Viðvaranir á áfangastöðum tengjast virkum gistibókunum þeirra. Þar kemur skýrt fram að dvalardagar staðanna skarist; ekki er fullyrt að gistibókanirnar sjálfar skarist þegar gistidagar eru óbreyttir.
+• Viðbótarathugun sýnir þegar gistidagar eru utan dagabils tengds áfangastaðar. Hún breytir engum dögum.
+• Tengdar gistiviðvaranir sjást í dagatalinu, við færslur undir kortinu og efst í atriðis-/bókunarglugga þegar vistuð bókun er opnuð. Sama sameiginlega yfirlitið og talningin eru notuð.
+• Yfirferðarlistinn og áfangastaðastjórnun bjóða að opna viðkomandi gistibókanir. Skipti úr opinni bókun yfir í aðra bókun/áfangastaði virða núverandi staðfestingu um óvistaðar breytingar. Ef notandi velur að halda áfram að vinna í bókuninni er innslætti ekki kastað. Að velja sama atriði endurstillir ekki gluggann.
+• Innritunargluggar hótela valda áfram ekki klukkuviðvörun; fyrri greining, kort, mynd, veður, kostnaður og báðar Í dag-birtingar halda sér.
+
+Prófanir:
+• 61 prófun fyrir ferðadagsflæði, viðvaranir og áfangastaði og 23 kortaprófanir standast (84 alls).
+• Tólf nýjar prófanir staðfesta röðun án breytingar á upprunagögnum, endurtekna borg með ólíkum dögum, tengingar áfangastaða við báðar gistibókanir, viðvaranir þegar gisting er utan dvalar, raunverulega HTML-birtingu gulu rammanna og gluggaviðvörunar, vörn óvistaðra breytinga og afmörkuð innsetning viðvarana undir korti.
+• SaveStop-flæðið er prófað með staðbundinni hermdri fyrirspurn: Hætta við veldur engri fyrirspurn/vistun; samþykkt veldur einni vistun á áfangastað en gistigögn breytast ekki.
+• JavaScript setningafræði og innihald/afþjöppun allra 13 zip-skráarfærslna sannreynt.
+
+Óstaðfest / næsta prófun hjá notanda:
+☐ Breyta upphafsdegi Prag þannig að hann skarist við Hamborg og ýta á Vista; athuga viðvörun áður en vistun fer fram.
+☐ Velja Hætta við og staðfesta að breytingin hafi ekki vistast; síðan prófa að vista samt.
+☐ Athuga tímaröð og gula ramma við báða staði, og tengdar gistiviðvaranir í dagatali, undir korti og inni í gistibókun.
+☐ Leiðrétta dagsetningarnar og staðfesta að tengdar viðvaranir/rammar hverfi.
+Raunveruleg vafra- og iPhone/iPad-prófun er enn ekki framkvæmd hér.
+Þekkt röðun „Næstu dagar“ er áfram ólokin; þessari útgáfu var beint að áfangastaðalistanum og viðvörunartengingum.
