@@ -551,3 +551,13 @@ Prófanir:
 ☐ Leiðrétta dagsetningarnar og staðfesta að tengdar viðvaranir/rammar hverfi.
 Raunveruleg vafra- og iPhone/iPad-prófun er enn ekki framkvæmd hér.
 Þekkt röðun „Næstu dagar“ er áfram ólokin; þessari útgáfu var beint að áfangastaðalistanum og viðvörunartengingum.
+
+
+27-10-2026 — Útgáfa 58: fínpússun viðvarana
+Beiðni: stytta og þétta framsetningu eftir skjámyndir notanda af útgáfu 57.
+• Viðvörun í dagatalsspjöldum fær eigin röð yfir alla breidd spjaldsins, utan textadálksins. Tími, staða og aðrir hnappar halda sér.
+• Styttri gulir borðar í dagatali, undir korti og í bókunarglugga. Yfirfara helst við textann, með línuskipti á mjög þröngum skjám.
+• Atriði til yfirferðar sýnir styttri skýringar á skörun áfangastaða og ósamræmi gistidaga. Nöfn, dagsetningar og tenglar að gistingu/áfangastöðum haldast; endurtekin sjálfvirkniskýring fjarlægð úr þessum birtingartexta.
+• Viðvaranareikningur, einstök talning, vistunarstaðfesting, gögn og dagsetningar óbreytt. Sömu birtingarstaðir haldast.
+Prófun: 61 fyrirliggjandi rök-/hermipróf ferða, viðvarana og áfangastaða og 23 kortapróf standast. Prófunarhleðsla uppfærð fyrir nýja birtingarhjálparfallið og styttan texta. JavaScript málskipan yfirfarin, breytingamunur skoðaður og zip sannreynt. Þetta er ekki vafra- eða tækjaprófun; útlit og snerting á iPhone/iPad bíður staðfestingar notanda.
+Notandaprófun: Athuga að gulur borði nýti alla breidd dagatalsspjalda, Yfirfara opni rétt atriði og talning breytist ekki við birtingu sama atriðis á fleiri stöðum.
