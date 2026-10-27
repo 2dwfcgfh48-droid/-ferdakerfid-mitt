@@ -481,3 +481,35 @@ Prófun:
 • JavaScript setningafræði og allar 13 skrár afhendingar sannreyndar.
 ☐ Röð útritunar og orðalag bíða staðfestingar notanda í keyrandi appi á iPhone/iPad.
 Leiðsagnarhnappar sjást á myndum, en opnun leiðsagnar og allra bókana er ekki staðfest með skjámyndunum einum.
+
+27-10-2026 — Útgáfa 56: eitt sameiginlegt yfirferðarspjald og mjóar viðvaranir í dagatali
+
+Samþykkt af notanda:
+• Byggja á núverandi spjaldi með gulum ramma, ekki stofna annað samhliða viðvörunarkerfi.
+• Eitt spjald nægir þótt viðvaranir séu margar. Sýna fjölda atriða og „Yfirfara“ sem opnar allan listann og leiðir í viðkomandi bókanir / áfangastaði.
+• Mjó viðvörun með gulum ramma við viðkomandi bókun í dagatalinu, stutt skýring og „Yfirfara“.
+• Koma á hótel fyrir upphaf innritunartíma kallar ekki á viðvörun. Aðgreina áætlaða komu á hótel frá innritunarglugga.
+• Notandi vill halda báðum núverandi Í dag-birtingum í bili (aðalspjald undir mynd og Í dag-flipi). Engin breyting á því hér.
+
+Útfært:
+• Fyrra samantektarspjaldið sameinar áfram eldri dagsetningarviðvaranir (utan ferðatímabils, skarandi dvalir og heimflug fyrir lok dvalar) og nýjar klukkuviðvaranir.
+• Nýjar viðvaranir: skarandi bókunartímar, komutími/lokatími fyrir upphaf, áætluð hótelkoma fyrir komu tengdra samgangna og of stuttar tengingar þegar nauðsynlegar upplýsingar eru skráðar.
+• Árekstur milli tveggja bókana er eitt atriði í sameiginlega spjaldinu en birtist við báðar viðkomandi dagatalsfærslur. Skýring við færslu er stutt; nákvæmir tímar, dagsetningar, tímabelti og nöfn sjást undir „Yfirfara“.
+• Yfirferðargluggi býður að opna viðkomandi bókanir beint. Eldri áfangastaðavandamál leiða áfram í yfirferð áfangastaða. Hnappar inni í dagatalskortum virkja ekki opnun foreldrakortsins.
+• Sameiginleg greining fyrir talningu, yfirferðarglugga og litlu viðvaranirnar. Hún er endurreiknuð út frá vistuðum gögnum; leiðrétting og venjuleg endurbirting bókunargagna fjarlægir leyst atriði.
+• Klukkugreining notar bókaðar, tímasettar færslur; sleppir opnum, loknum, afpöntuðum og allan-daginn færslum og viðbótarkostnaði. Óþekktur endatími gefur ekki tilbúna lengd; tvær tímasettar færslur á nákvæmlega sama augnabliki geta þó rekist á.
+• Tímabelti þurfa að vera þekkt; samanburður notar raunveruleg augnablik. Tiltekið tímabelti bókunar hefur forgang yfir almennt tímabelti áfangastaðar. Óljósir/ógildir sumartímaskiptatímar eru ekki giskaðir. Vistaðir skýrir UTC-tímastimplar mega nýtast þegar þeir liggja fyrir.
+• Hótelsamanburður notar aðeins skráða áætlaða komu (local_date/local_time), aldrei innritun-frá eða útritun-fyrir. Gisting þarf að vera rétt valin/tengd eða eini gildandi kosturinn á réttum stað og degi. Ekkert er sjálfvalið eða fært í gögnum.
+• Lágmarkstími tengingar er ekki búinn til. Athugun um of stutta tengingu krefst þess að næsta brottfararáætlun sé virk, upphaf hennar tengist komustað fyrri samgangna og ferðatími, mætingarfrestur og öryggisbil séu skráð. Skörun og of stutt tenging eru ekki tvítalin fyrir sömu tvo leggi.
+• Engar bókanir færast sjálfkrafa, engar push- eða tölvupóstsendingar og engin ný gagnagrunnsbreyting.
+
+Prófanir:
+• 23 nýjar viðvörunarprófanir, 26 fyrri ferðadagsprófanir og 23 kortaprófanir standast (72 alls).
+• Viðvörunarprófanir ná yfir innritunarglugga án viðvörunar, raunverulega áætlaða komu fyrir/eftir komu lestar, óþekkta tíma og tímabelti, gildar/ógildar gistitengingar, punkta/þekkta lengd, tímabelti og sumartímaskipti, heimferð, ferð yfir miðnætti, nægar/of stuttar tengingar, sameiginlega talningu, dagatalsbirtingu, opnun tengdra bókana, örugga textabirtingu og að atriði hverfi eftir leiðréttingu.
+• JavaScript setningafræði staðfest með node --check. Afþjöppun og innihald allra 13 skráa í zip staðfest.
+
+Ólokið / óstaðfest:
+☐ Skoða sameiginlega spjaldið, talningu og mjóar gular viðvaranir í keyrandi appi á iPhone/iPad.
+☐ Prófa „Yfirfara“, opna rétta bókun, leiðrétta tíma, vista og staðfesta að viðvörun hverfi.
+Raunveruleg vafra- og tækjaprófun hefur ekki verið framkvæmd hér.
+Fyrri þekkt röðun undir „Næstu dagar“ (opnum og bókuðum ferðum blandað) er enn ólokin; henni var ekki breytt í þessari útgáfu.
