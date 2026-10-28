@@ -723,3 +723,21 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Prófanir: 191 fyrirliggjandi Node/DOM/kortaprófun og 12 nýjar samþættar flæðiprófanir (203 alls). Nýju prófanirnar keyra raunverulega onclick handlara Sýna áfangastaði/Sýna alla ferðina áfram í merkjagerð, línugögn og kortaafmörkun. Prófað með Tenerife án skráðra dvalarstaða og fjölstaðaferð með KEF utan dvalarsvæðis.
 - Veski prófað með bókun+staðfestingu, viðbættu brottfararspjaldi, ótengdu skjali, týndri bókun, breytingu tengingar og tómu veski. Hvert skjal hefur eina birtingu og eitt sett Opna/Breyta/Eyða. JS syntax, eldri reitaauðkenni og ZIP yfirfarin.
 - Takmörk: prófanir í Node með hermdu DOM/korti, ekki raunvafraprófun á iPhone/iPad. Fyrri kóðaprófanir náðu ekki raunverulegri destinations hnappakeðju; hún er nú sérstaklega prófuð. Allar 16 vefskrár fylgja eins og áður.
+
+
+28-10-2026 · Staðfestingar notanda eftir útgáfu 75
+- Ferðasvæði, ferðaveski og læsileiki kortsins eru staðfest skýr og afgreidd hjá notanda. Varðveita samþykkta uppsetningu.
+- Notandi prófaði aftur og segir veskið virðast vistast fyrir notkun án nets. Ekki leggja sömu prófun aftur til án nýs vandamáls.
+
+28-10-2026 · Útgáfa 76 — Val við sambærilega innflutta bókun
+- Samþykkt: vörn gegn tvöföldum innflutningi og yfirferð tengdra ferla svo breytingin raski ekki samþykktri virkni.
+- Í 75 var þegar grunnvörn með skráarhashi eða bókunarnúmeri og einni tengiaðgerð. Nú birtast allir fundnir kostir í núverandi ferð með heiti, dagsetningu og skráðri leið: Opna bókun, Bæta skjalinu við þessa bókun eða Halda áfram með nýja bókun.
+- Sama bókunarnúmer eitt og sér veldur engri sjálfvirkri sameiningu. Notandi velur bókun. Samsvörun styður líka bókunarnúmer út-/heimferðar og skráarhash fyrri tengdra skjala. Ekki giskað út frá líkum heitum eða ólæsilegu bókunarnúmeri.
+- Við nýja bókun helst sama yfirferð og samþykkishak og áður. Opna eldri bókun hreinsar innflutningsdrög svo hún sé ekki vistuð óvart sem innflutningur.
+- Viðbætt skjal fær breytanlegt heiti og tegund. Brottfararspjald er merkt Miði / boarding pass þegar textinn segir það skýrt. Dagsetning tengda skjalsins kemur úr nýja skjalinu ef hún lasst, annars er hún auð. Ekki sett sjálfkrafa á útflugsdag eldri bókunar. Staðfesting og ný spjöld haldast aðskilin.
+- Tengiaðgerðin skrifar aðeins nýtt wallet_documents skjal og skrá í núverandi geymslu. Engin breyting á bókun, kostnaði eða eldri skjölum og engar breytingar á gagnagrunnsskipan eða aðgangsreglum. Sama hash við sömu bókun stofnar ekki annað skjal. Meðvitað val um nýja bókun er áfram heimilt.
+- Vistunarvörn hindrar tvísmell, að skipta innflutningsgögnum og að loka glugganum meðan skjal tengist. Við villu haldast drög, gölluð upphleðsla er hreinsuð samkvæmt fyrirliggjandi flæði og endurtilraun er möguleg. Til baka og skrúllstaða veskis varðveitt.
+- Ef ferð/notandi breytist meðan lestur eða tenging stendur yfir birtast gömul drög/skjöl ekki í nýrri ferð. Vistun sem þegar er hafin lýkur áfram við upprunalega ferð og notanda.
+- Prófanir: 203 fyrri Node-prófanir og 21 ný prófun á samsvörun, valkostum, varðveislu gagna, til baka, tvískráningu, vistunarvillu/endurtöku og ferðaskiptum. Alls 224 prófanir. JS setningafræði og varðveisla fyrri fastra formauðkenna yfirfarin.
+- Kort, kostnaðarkerfi, tímalína, dagatal og án nets eru utan breytingarinnar. Önnur vefgögn eru bæti-fyrir-bæti eins og í 75. Sjá PROFUN-76.md.
+- Ólokið: raunveruleg vafra-/iPhone-/iPad-prófun og innskráð prófun með lifandi gagnagrunni. Keyrsluskrár vafra vantar. Ekki fullyrða að öll notendaflæði séu heildarprófuð.
