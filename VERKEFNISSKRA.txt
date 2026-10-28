@@ -662,3 +662,15 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Lestrarniðurstöður frá lokaðri/endur-opnaðri skráningu, breyttum texta/skrá eða annarri ferð eru hunsaðar. Tímamörk og hreinsun worker/canvas; skýr textafallback ef skráarlestur bregst.
 - Prófanir: 123 fyrri Node-prófanir + 17 innflutningsprófanir + 5 OCR-líftímaprófanir standast. Tesseract.js las raunverulega mynd af tilbúnum sýnimiða og textinn var prófaður í dragaþáttara. JS syntax og varðveisla eldri formreita yfirfarin.
 - Takmörk: ekki prófað í raunvafra á iPhone/iPad eða með raunverulegum miðasniðum notanda. Myndlestur notar enskt/latneskt leslíkan; óvenjuleg uppsetning og óskýrar myndir geta þurft handvirka leiðréttingu. HEIC er ekki lesið; nota skjáskot/JPEG. Skannað PDF heldur fyrri textaflæði; nota mynd af síðunni fyrir myndlestur. Engin rauntenging við söluaðila.
+
+28-10-2026 · Útgáfa 70 — Flugmiðasnið með útflugi og heimflugi
+- Reglur og verkefnalisti lesin aftur. Lagfæring á innflutningi úr útgáfu 69 eftir skjáskot notanda, án breytinga á uppsetningu bókunarforms.
+- Orðið Flug greinir nú flugflokk. Íslensk mánaðarheiti með/án broddstafa og febraar (raunverulegur OCR-ranglestur á febrúar) lesast með fullu ártali og dagsetningargildisprófun.
+- Þekkt mynstur flugmiða með dagsettum köflum, flugnúmeri og tveimur þekktum flugvallarkóðum er lesið þótt Frá/Til eða Departure/Arrival merkingar vanti. Krefst tveggja tíma á sömu línu eða tveggja sjálfstæðra tímalína. Allt fer í drög með yfirferðarviðvörun.
+- Tveir leggir fara í sama fram-og-til-baka form aðeins þegar flugvellirnir snúast við og heimferð er ekki á undan útferð. Meiri/misvísandi fjölleggjaleið er ekki sameinuð sjálfkrafa. Engin þriggja-staða leið er túlkuð sem tveir endapunktar.
+- Bókunarnúmer getur fundist í fyrirsögn/dálkaröð þótt myndlesari setji Flug á sömu línu. Sérstök yfirferð stafa/talna er áréttuð. Misvísandi kóðar eru ekki valdir í þessum lestri.
+- Sömu heimferðarreitir og áður fá dag, tíma, flugvelli, flugnúmer og sameiginlegt bókunarnúmer. Ekkert nýtt gagnagrunns- eða geymslusnið. Upprunaleg mynd áfram til samanburðar og fylgir samþykktri bókun.
+- Komudagur er ekki áætlaður úr brottfarardegi. Við vistun innflutts flugs með komutíma en tóman komudag þarf notandi að skrá daginn svo eldri sjálfgefinn dagur formsins verði ekki notaður þegjandi. Verð og greiðslustaða eru áfram handvirk þegar upplýsingar vantar.
+- Prófað með Tesseract.js á upprunalega skjáskotinu sem notandi sendi: útflug KEF→TFS 27-02-2027 10:00–15:25, FI970; heimflug TFS→KEF 09-03-2027 16:25–21:55, FI971. Bókunarnúmer fannst; verð var ekki á myndinni og fyllist ekki.
+- Prófanir: 123 fyrri ferða-/korta-/viðvörunar-/forms-/verkefnalistaprófanir, 16 innflutningsprófanir, 5 OCR-líftímaprófanir og 12 flugmiðaprófanir (þar af raunverulegur OCR-texti úr sendu myndinni). JS syntax og varðveisla allra fyrri formreita yfirfarin.
+- Takmörk: lestrarprófun og Node-formprófun, ekki sjálfvirk prófun raunvafra á iPhone/iPad. Þetta lagar sýnda uppsetningu; önnur miðasnið geta enn þurft handvirkar leiðréttingar. Upprunalega skjáskotið og útdreginn einkatexti eru ekki hluti afhendingarpakkans.
