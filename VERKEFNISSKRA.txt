@@ -753,3 +753,14 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Samsvörunarreglur, mynd-/PDF-/textalestur, bókunardrög, samþykkishak, saveItem og saveBookingImportSource eru óbreytt. Sama gildir um kort, kostnaðarkerfi, tímalínu, dagatal, skjalskoðara, almenna skjalaskráningu og án nets. Allar aðrar 14 vefskrár eru bæti-fyrir-bæti óbreyttar.
 - Prófanir: 224 fyrri Node-prófanir endurkeyrðar; væntingar valprófana lagaðar að samþykktu tveggja skrefa flæði. 16 nýjar prófanir á einföldun, raunverulegum tengdum smellihöndlum, sýnileika, Til baka, enduropnun, blönduðum samsvörunum og ferðaskiptum. Alls 240 prófanir standast ásamt JS setningafræði.
 - Takmörk: prófanir nota hermt DOM/kort/geymslu. Raunvafra-/iPhone-/iPad-prófun og innskráð heildarprófun eru eftir; keyrsluskrár vafra vanta í umhverfinu. Engin lifandi gögn eða gagnagrunnsskipan breytt við vinnuna.
+
+
+28-10-2026 · Útgáfa 78 — Innflutningshnappur í veski opni réttan glugga
+- Villutilkynning: eftir fyrri innflutning opnaði „Innflytja bókun“ bókunardrög bak við opið veski. Við Loka sást dragaformið.
+- Orsök staðfest í kóða og prófun: fasti innflutningshnappur veskis og kvikur aukahnappur „Þetta er önnur bókun — halda áfram“ notuðu báðir id=newBookingImportBtn. showBookingImportMatches tengdi því newBookingImport við hnapp veskisins. Fyrri DOM-próf höfðu ekki sett föstu og kviku hnappana í sama auðkennarými.
+- Lagfæring: aukahnappurinn og binding hans nota continueNewBookingImportBtn. Fasti hnappur veskis heldur newBookingImportBtn og openBookingImport. Innflutningur úr veski byrjar aftur á nýju skráar-/textavali. Að fara í nýja bókun er eingöngu sérstakt val í samsvörunarskjánum.
+- Sýnilegi útgáfutextinn var enn harðkóðaður 75 í afhendingum 76 og 77. Hann er nú leiðréttur í 78; eldri skjátexti 75 staðfesti ekki einn og sér hvaða kóði var virkur.
+- Ný samsett prófun keyrir raunverulega bindingu fasta hnappsins, openBookingImport, readBookingImport, samsvörun, Hætta við og endurtekna opnun; einnig raunverulegt showBookingDraft/closeModal með nýrri bókun, lokað veski, yfirferð og endurkomu í veski. Notuð eru hermd DOM/gögn og stubbun ótengdra formhluta.
+- Prófunin fellur á óbreyttri útgáfu 77 þar sem fasti hnappurinn fær rangan handler og stenst í 78. Níu nýjar prófanir og 240 fyrri prófanir standast (249 alls), ásamt JS setningafræði og auðkennayfirferð.
+- Kóðasamanburður staðfestir að aðeins tvær tilvísanir í auðkenni kvika hnappsins og sýnilegur útgáfutexti breyttust frá 77. Engin breyting á vistun, myndlestri, samsvörun, veskiuppsetningu, korti, kostnaði, dagatali, tímalínu eða án nets; aðrar 14 vefskrár eru óbreyttar.
+- Takmörk: engin raunvafra-/iPhone-/iPad-prófun eða innskráð prófun með lifandi gagnagrunni. Engin lifandi notandagögn breytt. Notandi þarf að staðfesta lagfærða hnappakeðju í tækinu.
