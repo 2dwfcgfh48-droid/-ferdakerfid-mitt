@@ -674,3 +674,12 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Prófað með Tesseract.js á upprunalega skjáskotinu sem notandi sendi: útflug KEF→TFS 27-02-2027 10:00–15:25, FI970; heimflug TFS→KEF 09-03-2027 16:25–21:55, FI971. Bókunarnúmer fannst; verð var ekki á myndinni og fyllist ekki.
 - Prófanir: 123 fyrri ferða-/korta-/viðvörunar-/forms-/verkefnalistaprófanir, 16 innflutningsprófanir, 5 OCR-líftímaprófanir og 12 flugmiðaprófanir (þar af raunverulegur OCR-texti úr sendu myndinni). JS syntax og varðveisla allra fyrri formreita yfirfarin.
 - Takmörk: lestrarprófun og Node-formprófun, ekki sjálfvirk prófun raunvafra á iPhone/iPad. Þetta lagar sýnda uppsetningu; önnur miðasnið geta enn þurft handvirkar leiðréttingar. Upprunalega skjáskotið og útdreginn einkatexti eru ekki hluti afhendingarpakkans.
+
+28-10-2026 · Útgáfa 71 — Varðveita fluglegg þótt einn tími sé ólæsilegur
+- Reglur og verkefnalisti lesin aftur. Byggt á útgáfu 70; engar útlits- eða gagnagrunnsbreytingar.
+- Raunverulegur OCR-texti úr iPhone-skjáskotum notanda sýndi ólæsilegan komutíma heimferðar. Útgáfa 70 sleppti öllum leggnum þar sem hún krafðist tveggja læsilegra tíma.
+- Flugleggur með þekktum degi, flugnúmeri og tveimur þekktum flugvöllum helst nú í drögum þótt tíma vanti. Staðfestir reitir haldast en ólæsilegur tími verður auður. Tveir öfugir leggir mynda áfram fram-og-til-baka drög; sérstök viðvörun segir hvaða tíma heimferðar þarf að skrá.
+- Í tveggja dálka tímalínu með einum gildum tíma og einum ólæsilegum textabút er aðeins gildur tími tekinn í sinn dálk. Einn stakur tími án samhengis er ekki úthlutaður með ágiskun. Misvísandi eða of margir tímar haldast auðir. Skýr merking Departure time/Arrival time er áfram studd.
+- Fyrirsögn bókunarnúmers þekkist líka með afmörkuðum OCR-afbrigðum eins og Boékunarnumer og Békunarnumer. Bókunarkóðanum sjálfum er ekki breytt eða ágiskað; samanburður við mynd áfram nauðsynlegur.
+- Prófanir: 123 fyrri prófanir, 16 innflutningsprófanir, 5 OCR-líftímaprófanir og 19 flugmiðaprófanir (alls 163). Ný prófunargögn eru umrituð beint af OCR-texta í skjáskotum notanda. Sannreynt að báðir leggir haldist, bókunarnúmer finnist, brottför heim 16:25 haldist og ólæsilegur komutími verði auður með viðvörun.
+- JS syntax, varðveisla eldri formreita, einhlít reitaauðkenni og ZIP innihald yfirfarin. Engin sjálfvirk raunvafraprófun á iPhone/iPad; notandi þarf að prófa nýju útgáfuna þar. Engin persónuleg prófunargögn eða skjáskot fylgja ZIP.
