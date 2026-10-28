@@ -634,3 +634,12 @@ Samgönguábendingar greina nú milli óbókaðrar ferðar, óskráðs brottfara
 Óbreytt: planningTransportEdges, planningPath, planningIssueKey og Halda opnu vistun. Fyrri held-lyklar sem enn eiga við haldast. Vistun bókana/áfangastaða, almennar viðvaranir og samþykktar undantekningar, kostnaður, kort, Í dag og leiðsögn óbreytt. Offline planning summary notar sama endurreiknaða issue-lista og áður; nýji heimsóknakaflinn er upplýsingaframsetning í netappinu.
 Prófun: 106 fyrirliggjandi rök-/hermipróf + 14 ný planning-próf = 120 standast. Ný próf ná yfir dagsheimsókn með gistidvöl í kring, rétta næstu dvalartengingu, raunverulega skörun, ógilda daga, nákvæmar ástæður, óbókaða/áætlaða ferð, óbókaða/varagistingu, held-lykla, heimferð, ófullkomna hleðslu, hópa/kaflavarðveislu og textaescaping. Gögn prófunarferðar óbreytt eftir yfirferð. JavaScript málskipan og zip CRC/innihald yfirfarin. Raunvafra-/iPhone-/iPad prófun ekki framkvæmd.
 Notandaprófun: Feneyjar með 31-10-2026 í báðum dagareitum á að vera í Heimsóknir án gistinætur, ekki mynda öfugt Trieste → Feneyjar tímabil. Athuga Trieste → Garda, aðrar leiðir, gistingu, fellikafla og Halda opnu í bili. Skráður áfangastaðalisti og allar bókanir eiga að haldast.
+
+
+28-10-2026 — Útgáfa 67: loka undirköflum við enduropnun yfirlits
+Notandi tilkynnti að gluggar í Hvað vantar í ferðina héldust opnir eftir lokun/endur-opnun, þvert á samþykkta reglu.
+Orsök: útgáfa 66 varðveitti opin details[id] við renderPlanningChecklist án þess að takmarka það við opinn aðalkafla og án þess að endurstilla börn þegar aðalkafli var lokaður. Eldri resetOptionalDisclosures keyrði við opnun ferðar/glugga en ekki við native details lokun á þessu yfirliti.
+Lagfæring: toggle-binding á aðalkaflanum endurstillir alla undirkafla, bæði við lokun og enduropnun (einnig ef native toggle-events sameinast). Toggle á undirkafla hefur ekki áhrif á systkini. Endurteikning varðveitir kaflaval aðeins meðan aðalkaflinn er opinn; lokað yfirlit endurheimtir ekki opna kafla.
+Óbreytt: talning, áfangastaðaflokkun, bókanir, Viljandi opið og Samþykktar undantekningar. Engum vistuðum gögnum breytt.
+Prófun: 120 fyrirliggjandi rök-/hermipróf + 3 ný lokunar-/endur-opnunarpróf = 123 standast. JavaScript málskipan og zip CRC staðfest. Þetta eru rök-/DOM-hermipróf; raunvafra-/iPhone-/iPad prófun eftir.
+Notandaprófun: opna Hvað vantar í ferðina, opna Gisting/Samgöngur/Um yfirferðina, loka aðalkaflanum og opna aftur. Undirkaflar eiga að vera lokaðir.
