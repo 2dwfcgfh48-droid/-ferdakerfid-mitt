@@ -692,3 +692,10 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Opna í Google Maps við þessa flugvallareiti notar nú þekkt hnit úr sömu skrá fyrir hvern endapunkt, í stað almennrar leitar að kóðanum. Þetta er flugvallarpunktur, ekki nákvæmur inngangur/hlið.
 - Fallmyndir leitar halda sér við fókus í niðurstöðum þótt innsláttarreitur hafi nú birtingarhjúp.
 - Staðfesting: 163 fyrri Node-prófanir og 6 prófanir á flugvallabirtingu/kóðum/kortatenglum standast (169 alls). Syntax yfirfarið, gömlu formreitaauðkennin varðveitt og ZIP sannreynt. Útlit í raunvafra á iPhone/iPad óprófað; engin slík prófun fullyrt.
+
+28-10-2026 · Útgáfa 73 — Skýring við læsta vistun innfluttra draga
+- Reglur og verkefnalisti lesin aftur. Beiðni notanda: texti biðji um hak í samþykki efst í glugganum.
+- Við föstu vistunarhnappana birtist nú: „Til að vista þarftu fyrst að haka við „Ég hef yfirfarið upplýsingarnar og vil skrá bókunina“ efst í glugganum.“
+- Textinn sést aðeins í innfluttum drögum meðan samþykki vantar. Hverfur þegar hakað er við og birtist aftur ef hakið er tekið úr. Hnappurinn heldur fyrri samþykkisvörn og verður ekki virkur meðan vistun stendur yfir.
+- Textinn er ekki sýndur í venjulegri nýskráningu eða breytingu eldri bókunar. Engar aðrar breytingar á formi eða vistunarreglum.
+- JS syntax og afmörkuð yfirferð samþykkis/skýringar/vistunarstöðu standast. Ekki prófað í raunvafra á iPhone/iPad.
