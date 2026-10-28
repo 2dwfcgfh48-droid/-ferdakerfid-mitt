@@ -773,3 +773,10 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Hnappatengingar, samsvörun, skjalskoðari, yfirferð, samþykkishak og vistun eru óbreytt. Sama gildir um veskiuppsetningu utan spjaldmerkingarinnar, kort, kostnað, tímalínu, dagatal og án nets. Aðrar 14 vefskrár eru óbreyttar bæti fyrir bæti.
 - Allar 249 fyrirliggjandi Node-flæðiprófanir endurkeyrðar og standast. JavaScript-setningafræði, varðveisla auðkenna og afmörkun kóðabreytinga yfirfarin. Ekki bætt við prófum eingöngu fyrir lit eða texta.
 - Óstaðfest: raunvafra-/iPhone-/iPad-útlit merkjanna. Engin innskráð prófun með lifandi gagnagrunni og engum lifandi gögnum breytt.
+
+
+28-10-2026 · Útgáfa 80 — Stöðumerking á eigin línu
+- Skjámynd notanda staðfestir að græna merkið birtist, en inline-flex lét Icelandair-heitið liggja á sömu línu og alveg við merkið.
+- Merkið er nú block-level flex með width:fit-content og max-width:100%. Það tekur eigin línu ofan við bókunarheitið en heldur þéttri breidd. Sama regla gildir um grænu og gulu merkinguna.
+- Ein afmörkuð CSS-regla og sýnilegt útgáfunúmer breyttust. Allt JavaScript er óbreytt frá 79, sem og önnur vefgögn.
+- Allar 249 fyrirliggjandi flæðiprófanir og JavaScript-setningafræði standast. Raunvafra-/iPhone-útlit lagfæringarinnar óstaðfest. Engin lifandi gögn breytt.
