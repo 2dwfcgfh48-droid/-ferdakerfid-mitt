@@ -699,3 +699,16 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Textinn sést aðeins í innfluttum drögum meðan samþykki vantar. Hverfur þegar hakað er við og birtist aftur ef hakið er tekið úr. Hnappurinn heldur fyrri samþykkisvörn og verður ekki virkur meðan vistun stendur yfir.
 - Textinn er ekki sýndur í venjulegri nýskráningu eða breytingu eldri bókunar. Engar aðrar breytingar á formi eða vistunarreglum.
 - JS syntax og afmörkuð yfirferð samþykkis/skýringar/vistunarstöðu standast. Ekki prófað í raunvafra á iPhone/iPad.
+
+28-10-2026 · Útgáfa 74 — Ferðaveski, til baka-flæði og víðara yfirlitskort
+- Reglur og verkefnalisti lesin aftur. Samþykkt beiðni um viðgerðir á veski og kortaaðdrætti, byggt á útgáfu 73. Flugvallarheiti/kóðar, innflutningsyfirferð og texti um samþykkishak varðveitt.
+- Aðalspjald ferðaveskis sýnir aðskilið bókanir og skjöl, t.d. 1 bókun · 1 skjal. Innan veskis er eintala/fleirtala rétt.
+- Allar bókanir í veski fá Opna bókun. Tengd skjöl eru opnanleg við bókunina sjálfa, jafnframt áfram aðgengileg með breytingu/eyðingu á skjalalistanum. Bókun með tengdu skjali er sýnd líka þótt bókunarnúmer eða staðfestingartengil vanti.
+- Bæta við skjali / miða við bókun opnar sömu skjalaskráningu með rétta bókun forvalda. Ný brottfararspjöld bætast við sömu bókun; fyrra skjal helst. Engin ný bókun stofnuð af þessari aðgerð. Heiti getur greint farþega/útflug/heimflug og dagur greint flugdag. Ekki bætt við nýjum gagnagrunnsreitum.
+- Hætta við nýtt/breytt skjal, innflutning eða bókunardrög sem voru opnuð frá veski fer aftur í veskið og endurheimtir skrúllstöðu. Dirty-form og vistunarvarnir haldast. Að bæta við skjali innan bókunar heldur fyrra flæði aftur í skjalaval hennar. Heimferð glugga gildir aðeins fyrir sama notanda og ferð.
+- Skjalskoðari, niðurhal og deiling óbreytt. Loka skjali fer áfram aftur í gluggann þar sem það var opnað; skjalabreytingagluggi heldur sér bak við skoðarann. Skráarvarðveisla og skipta-um-skjal aðgerð óbreytt.
+- Ný innflutt bókunarskjöl fá heitið [bókun] — bókunarstaðfesting og tegund Bókunarstaðfesting. Eldri tengdar innfluttar skrár sem enn bera sjálfvirkt skráarheiti birtast með lesanlegu staðfestingarheiti, án breytinga á gagnagrunni. Handvirkt breytt heiti/tegund er virt. Raunverulegt skráarheiti er varðveitt fyrir opnun/niðurhal.
+- Upphafssýn og Sýna alla ferðina nota nú víðari yfirsýn: zoom 7 með einum punkti, maxZoom 9 við margra punkta yfirsýn; zoomOut viðbót virkar. Val á nákvæmum stað/áfangastað eða samgöngulegg heldur sérstöku aðdráttarflæði. Ekki breyting á kortastillingum notanda, gögnum eða vistaðri staðsetningu.
+- Almennur punktur ferðar án skráðra dvalarstaða er merktur Ferðasvæði bæði á merki og í táknaskýringu, með skýringu að hann sé ekki skráður dvalarstaður. Ekki boðin nákvæm leiðsögn að þessum almenna punkti. Enginn dvalarstaður stofnaður sjálfkrafa.
+- Prófanir: 169 fyrri Node-prófanir + 21 ný prófun á veskis-/til-baka-/kortaflæði + 1 prófun á Ferðasvæði tákni (191 alls). JS syntax, einstök reitaauðkenni, varðveisla allra gömlu formreita og ZIP innihald sannreynt.
+- Takmörk: prófanir með Node og hermdu DOM/korti; ekki prófað í raunvafra á iPhone/iPad. Engin gögn á þjónustu breytt við vinnuna. Notandi setur allar skrár pakkans á GitHub og prófar aftur til baka-flæði og aðdrátt í tækinu.
