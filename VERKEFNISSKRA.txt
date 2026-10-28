@@ -741,3 +741,15 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Prófanir: 203 fyrri Node-prófanir og 21 ný prófun á samsvörun, valkostum, varðveislu gagna, til baka, tvískráningu, vistunarvillu/endurtöku og ferðaskiptum. Alls 224 prófanir. JS setningafræði og varðveisla fyrri fastra formauðkenna yfirfarin.
 - Kort, kostnaðarkerfi, tímalína, dagatal og án nets eru utan breytingarinnar. Önnur vefgögn eru bæti-fyrir-bæti eins og í 75. Sjá PROFUN-76.md.
 - Ólokið: raunveruleg vafra-/iPhone-/iPad-prófun og innskráð prófun með lifandi gagnagrunni. Keyrsluskrár vafra vantar. Ekki fullyrða að öll notendaflæði séu heildarprófuð.
+
+
+28-10-2026 · Útgáfa 77 — Einfaldara val við innflutning
+- Samþykkt tillaga: þegar nákvæmlega sama skjal er þegar tengt birtist „Þetta skjal er þegar í ferðaveskinu“, samantekt bókunar og tveir aðalhnappar: Skoða skjalið / Opna bókun. Látlaus aukaaðgerð: Þetta er önnur bókun — halda áfram.
+- Heiti/tegund nýs skjals og brottfararspjaldaskýring eru falin við val bókunar. Upphaflegir skráar-/textareitir og Búa til drög eru einnig faldir eftir fundna samsvörun. Hætta við helst neðst. Enduropnun sýnir upphaflegu innflutningsreitina aftur.
+- Nýtt skjal: Bæta við þessa bókun opnar næsta skref með heiti og tegund. Til baka skilar í valið og varðveitir innslátt; engin vistun við val eða Til baka. Bæta við bókun notar áfram vistun frá 76 og má aðeins vista við valda bókun.
+- Skoða skjalið opnar fyrra skjalið beint í núverandi skjalskoðara, með innflutninginn á bak við. Loka skjali notar óbreytt lokunarflæði skoðarans.
+- Innri aðgerðir nota venjulegar hnappalínur. Ekki bætt við annarri fastri neðri aðgerðalínu innan gluggans. Nýr stíll fyrir aukaaðgerð er bundinn við bookingImportDuplicate.
+- Yfirferð samanborið við 76: aðeins statískur innflutningsgluggi, afmarkaður aukahnappastíll, openBookingImport, showBookingImportMatches og val-vörn linkBookingImport breyttust, ásamt nýjum hjálparföllum innflutnings. Allir fyrri fastir reitir varðveittir og engin tvítekin föst auðkenni. HTML-hópun upphafsreitanna yfirfarin.
+- Samsvörunarreglur, mynd-/PDF-/textalestur, bókunardrög, samþykkishak, saveItem og saveBookingImportSource eru óbreytt. Sama gildir um kort, kostnaðarkerfi, tímalínu, dagatal, skjalskoðara, almenna skjalaskráningu og án nets. Allar aðrar 14 vefskrár eru bæti-fyrir-bæti óbreyttar.
+- Prófanir: 224 fyrri Node-prófanir endurkeyrðar; væntingar valprófana lagaðar að samþykktu tveggja skrefa flæði. 16 nýjar prófanir á einföldun, raunverulegum tengdum smellihöndlum, sýnileika, Til baka, enduropnun, blönduðum samsvörunum og ferðaskiptum. Alls 240 prófanir standast ásamt JS setningafræði.
+- Takmörk: prófanir nota hermt DOM/kort/geymslu. Raunvafra-/iPhone-/iPad-prófun og innskráð heildarprófun eru eftir; keyrsluskrár vafra vanta í umhverfinu. Engin lifandi gögn eða gagnagrunnsskipan breytt við vinnuna.
