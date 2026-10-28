@@ -683,3 +683,12 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Fyrirsögn bókunarnúmers þekkist líka með afmörkuðum OCR-afbrigðum eins og Boékunarnumer og Békunarnumer. Bókunarkóðanum sjálfum er ekki breytt eða ágiskað; samanburður við mynd áfram nauðsynlegur.
 - Prófanir: 123 fyrri prófanir, 16 innflutningsprófanir, 5 OCR-líftímaprófanir og 19 flugmiðaprófanir (alls 163). Ný prófunargögn eru umrituð beint af OCR-texta í skjáskotum notanda. Sannreynt að báðir leggir haldist, bókunarnúmer finnist, brottför heim 16:25 haldist og ólæsilegur komutími verði auður með viðvörun.
 - JS syntax, varðveisla eldri formreita, einhlít reitaauðkenni og ZIP innihald yfirfarin. Engin sjálfvirk raunvafraprófun á iPhone/iPad; notandi þarf að prófa nýju útgáfuna þar. Engin persónuleg prófunargögn eða skjáskot fylgja ZIP.
+
+28-10-2026 · Útgáfa 72 — Flugvallarkóði og heiti í sömu reitum
+- Reglur og verkefnalisti lesin aftur; samþykkt tillaga um kóða og flugvallarheiti útfærð á útgáfu 71.
+- Allir fjórir Frá/Til reitir flugs (útleið/heimleið) sýna kóða og fullt heiti úr núverandi flugvallaskrá þegar þekktur IATA/ICAO kóði er í reitnum. Dæmi: KEF — Keflavik International Airport og TFS — Tenerife South Airport.
+- Við innslátt/fókus er áfram unnið með upprunalegan kóða í sama reit. Heitið birtist sem textalag yfir reitnum þegar fókus fer úr honum; fer á fleiri línur eftir þörfum og er tengt sem aðgengileg reitsskýring. Ekki nýr innsláttarreitur og ekki breyting á vistuðum gildum, flugleit, flugvöktun eða bókunarinnflutningi.
+- Heiti uppfærist við innslátt, val úr niðurstöðum, hreinsun, opnun eldri bókunar og yfirferð innfluttra draga. Óþekkt eða autt gildi sýnir engan gamlan flugvöll. Birting annarra samgönguflokka varðveitt.
+- Opna í Google Maps við þessa flugvallareiti notar nú þekkt hnit úr sömu skrá fyrir hvern endapunkt, í stað almennrar leitar að kóðanum. Þetta er flugvallarpunktur, ekki nákvæmur inngangur/hlið.
+- Fallmyndir leitar halda sér við fókus í niðurstöðum þótt innsláttarreitur hafi nú birtingarhjúp.
+- Staðfesting: 163 fyrri Node-prófanir og 6 prófanir á flugvallabirtingu/kóðum/kortatenglum standast (169 alls). Syntax yfirfarið, gömlu formreitaauðkennin varðveitt og ZIP sannreynt. Útlit í raunvafra á iPhone/iPad óprófað; engin slík prófun fullyrt.
