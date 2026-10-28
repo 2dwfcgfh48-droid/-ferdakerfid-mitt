@@ -652,3 +652,13 @@ Afmörkuð lagfæring: explicit display:none!important á öllum öðrum beinum 
 Prófun: JavaScript byte-identical við 67. Málskipan og 123 fyrirliggjandi rök-/hermipróf standast. Zip CRC og 13 skrár yfirfarin. Þetta sannreynir ekki að tóma svæðið sé horfið á iPhone; staðfesting notanda er eftir.
 Spjallsamhengi: aðgengileg saga sýnir 66 (hópar/aðgreining heimsókna án gistinætur) og 67 (undir-kaflar lokast við enduropnun). Ekki staðfest hvers vegna notandi sér ekki allt samtalið í ChatGPT.
 Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga að næsti kafli komi beint á eftir lokuðu fyrirsögninni, án tóms flatar.
+
+28-10-2026 · Útgáfa 69 — Mynd eða skjáskot í bókunardrög
+- Reglur og verkefnalisti lesin aftur; samþykkt útlitstillaga höfð að leiðarljósi. Byggt á útgáfu 68, fyrri yfirferð/undantekningar og verkefnalistar varðveittir.
+- Núverandi Innflytja bókun tekur PDF, PNG, JPEG og WebP (15 MB). Myndlestur með Tesseract.js 6.0.1 fer fram í vafra. Lesari/worker og Apache-2.0 leyfi fylgja; core 6.0.0 og eng 1.0.0 lesgögn sótt í neti við notkun. Þetta er ekki ný virkni án nets.
+- Sama bókunarform og samþykki og áður. Upprunaleg mynd sést í yfirferð; ófundin gildi haldast auð. Óviss myndlestur er merktur, öll mynddrög krefjast samanburðar við miðann. Lestur getur farið rangt með texta/tölur, jafnvel þegar heildaröryggi lesara er hátt.
+- Stöðvar/leið, dagur, tímar og bókunarnúmer úr skýrt merktum texta lestarmiða/ferjumiða fara í samsvarandi reiti. Fleiri en einn mögulegur tími velst ekki sjálfkrafa. Ekki ályktað um komudag úr brottfarardegi. Flokkur og allt form áfram breytanlegt.
+- Upprunaleg mynd vistast við bókun eftir samþykki með réttri skráarendingu/MIME, í sömu einkavörslu og önnur ferðaveskisskjöl. Fyrri tvískráningarvörn og endurtilraun við tengingu skjals varðveitt. Engar breytingar á gagnagrunnsskipulagi eða heimildum.
+- Lestrarniðurstöður frá lokaðri/endur-opnaðri skráningu, breyttum texta/skrá eða annarri ferð eru hunsaðar. Tímamörk og hreinsun worker/canvas; skýr textafallback ef skráarlestur bregst.
+- Prófanir: 123 fyrri Node-prófanir + 17 innflutningsprófanir + 5 OCR-líftímaprófanir standast. Tesseract.js las raunverulega mynd af tilbúnum sýnimiða og textinn var prófaður í dragaþáttara. JS syntax og varðveisla eldri formreita yfirfarin.
+- Takmörk: ekki prófað í raunvafra á iPhone/iPad eða með raunverulegum miðasniðum notanda. Myndlestur notar enskt/latneskt leslíkan; óvenjuleg uppsetning og óskýrar myndir geta þurft handvirka leiðréttingu. HEIC er ekki lesið; nota skjáskot/JPEG. Skannað PDF heldur fyrri textaflæði; nota mynd af síðunni fyrir myndlestur. Engin rauntenging við söluaðila.
