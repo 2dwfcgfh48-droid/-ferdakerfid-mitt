@@ -643,3 +643,12 @@ Lagfæring: toggle-binding á aðalkaflanum endurstillir alla undirkafla, bæði
 Óbreytt: talning, áfangastaðaflokkun, bókanir, Viljandi opið og Samþykktar undantekningar. Engum vistuðum gögnum breytt.
 Prófun: 120 fyrirliggjandi rök-/hermipróf + 3 ný lokunar-/endur-opnunarpróf = 123 standast. JavaScript málskipan og zip CRC staðfest. Þetta eru rök-/DOM-hermipróf; raunvafra-/iPhone-/iPad prófun eftir.
 Notandaprófun: opna Hvað vantar í ferðina, opna Gisting/Samgöngur/Um yfirferðina, loka aðalkaflanum og opna aftur. Undirkaflar eiga að vera lokaðir.
+
+
+28-10-2026 — Útgáfa 68: tómt pláss undir lokuðum kafla
+Notandi sýndi mjög stórt tómt svæði undir lokuðu Gisting · 5 í Hvað vantar í ferðina og sagði það hafa sést daginn áður. Reglur og verkefnalisti lesin fyrir breytinguna samkvæmt nýrri skýrri vinnureglu notanda.
+Yfirferð: engin föst height/min-height á yfirlitinu eða planning-group fannst sem skýrir myndina. Ekki hægt að endurskapa í iPhone/Safari hér; enginn staðbundinn vafra-keyrsluhamur til staðar. Því er nákvæm rót orsakar óstaðfest.
+Afmörkuð lagfæring: explicit display:none!important á öllum öðrum beinum börnum en summary í lokuðum undirköflum yfirlitsins, og á planningChecklistBody þegar aðalkaflinn er lokaður. Lokaður planning-group hefur auto height og min-height:0. Þetta tekur efnið skýrt úr uppsetningu, óháð sjálfgefinni details-felun. Engin breyting á upplýsingum, útreikningum, vistun, opnunarflæði eða reglum um lokaða kafla úr 67.
+Prófun: JavaScript byte-identical við 67. Málskipan og 123 fyrirliggjandi rök-/hermipróf standast. Zip CRC og 13 skrár yfirfarin. Þetta sannreynir ekki að tóma svæðið sé horfið á iPhone; staðfesting notanda er eftir.
+Spjallsamhengi: aðgengileg saga sýnir 66 (hópar/aðgreining heimsókna án gistinætur) og 67 (undir-kaflar lokast við enduropnun). Ekki staðfest hvers vegna notandi sér ekki allt samtalið í ChatGPT.
+Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga að næsti kafli komi beint á eftir lokuðu fyrirsögninni, án tóms flatar.
