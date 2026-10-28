@@ -764,3 +764,12 @@ Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga a�
 - Prófunin fellur á óbreyttri útgáfu 77 þar sem fasti hnappurinn fær rangan handler og stenst í 78. Níu nýjar prófanir og 240 fyrri prófanir standast (249 alls), ásamt JS setningafræði og auðkennayfirferð.
 - Kóðasamanburður staðfestir að aðeins tvær tilvísanir í auðkenni kvika hnappsins og sýnilegur útgáfutexti breyttust frá 77. Engin breyting á vistun, myndlestri, samsvörun, veskiuppsetningu, korti, kostnaði, dagatali, tímalínu eða án nets; aðrar 14 vefskrár eru óbreyttar.
 - Takmörk: engin raunvafra-/iPhone-/iPad-prófun eða innskráð prófun með lifandi gagnagrunni. Engin lifandi notandagögn breytt. Notandi þarf að staðfesta lagfærða hnappakeðju í tækinu.
+
+
+28-10-2026 · Útgáfa 79 — Stöðumerking við sambærilega bókun
+- Samþykkt tillaga útfærð: ef sama skjal er þegar tengt birtist grænt hak með „Skjalið er þegar til“ efst í viðkomandi bókunarspjaldi. Ef sambærileg bókun finnst en þetta skjal er ekki þegar tengt henni birtist gulur þríhyrningur með „Bókun gæti þegar verið til“.
+- Hver samsvörun fær sína merkingu, líka þegar bæði tilvik koma fyrir í sömu leit. Tákn er falið skjálesurum en skýr stöðutexti er sýnilegur og lesanlegur. Merkingin byggir á sama skráarhash-samanburði og fyrirliggjandi hnappar; engin ný ágiskun um samsvörun.
+- Aðeins birting showBookingImportMatches, stílar afmarkaðir við bookingImportDuplicate og sýnilegt útgáfunúmer 79 breyttust frá 78. Stöðumerking bætir ekki við hnöppum eða auðkennum. Fyrri aukasetning um tilvist skjals í blönduðum samsvörunum kemur nú fram í merkingunni.
+- Hnappatengingar, samsvörun, skjalskoðari, yfirferð, samþykkishak og vistun eru óbreytt. Sama gildir um veskiuppsetningu utan spjaldmerkingarinnar, kort, kostnað, tímalínu, dagatal og án nets. Aðrar 14 vefskrár eru óbreyttar bæti fyrir bæti.
+- Allar 249 fyrirliggjandi Node-flæðiprófanir endurkeyrðar og standast. JavaScript-setningafræði, varðveisla auðkenna og afmörkun kóðabreytinga yfirfarin. Ekki bætt við prófum eingöngu fyrir lit eða texta.
+- Óstaðfest: raunvafra-/iPhone-/iPad-útlit merkjanna. Engin innskráð prófun með lifandi gagnagrunni og engum lifandi gögnum breytt.
