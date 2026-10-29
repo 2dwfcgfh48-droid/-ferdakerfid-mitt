@@ -1,7 +1,7 @@
 /* Only public offline UI is cached. Private trips/files live in IndexedDB. */
-const CACHE='ferd-offline-shell-v5-20261029-tickets:'+self.registration.scope;
+const CACHE='ferd-offline-shell-v6-20261029-activity-times:'+self.registration.scope;
 const root=new URL(self.registration.scope);
-const shell=['offline.html','wallet-tickets.js','offline.js','offline-store.js'];
+const shell=['offline.html','wallet-tickets.js','activity-times.js','offline.js','offline-store.js'];
 const url=name=>new URL(name,root).href;
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);for(const name of shell){const response=await fetch(url(name),{cache:'reload'});if(!response.ok)throw new Error('Missing offline asset: '+name);await cache.put(url(name),response)}await self.skipWaiting()})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('ferd-offline-shell-')&&key.endsWith(':'+self.registration.scope)&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
