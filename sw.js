@@ -1,5 +1,5 @@
 /* Only public offline UI is cached. Private trips/files live in IndexedDB. */
-const CACHE='ferd-offline-shell-v6-20261029-activity-times:'+self.registration.scope;
+const CACHE='ferd-offline-shell-v7-20261029-visit-times:'+self.registration.scope;
 const root=new URL(self.registration.scope);
 const shell=['offline.html','wallet-tickets.js','activity-times.js','offline.js','offline-store.js'];
 const url=name=>new URL(name,root).href;
