@@ -1,0 +1,13 @@
+# Útgáfa 100 — prófun og afmörkun
+
+
+13. LEIÐRÉTT TÚLKUN SAMTENGDRA DAGA — AFHENDING 100, 30-10-2026
+Samþykkt samkvæmt skýrri áréttingu notanda: Frá dagur og brottfarardagur eru sami reitur í tveimur köflum; Til dagur og komudagur sömuleiðis. Túlkun 98–99 á mögulegu brottfarardagabili var misskilningur aðstoðarmanns og er felld úr gildi. Skjáskot notanda sýna að brottför 30-10-2026 hverfur þegar Til dags 31-10-2026 er skráð. Ekki merkja eldri samtengingu sem staðfesta af notanda.
+Útfært í sérstöku afriti 100, með 99 varðveitta: tvíátta dagapör í Akstri, Lestum og Bátum/ferjum. Einn dagur fyllir aðeins sitt par; klukkur og heimferð haldast sjálfstæð. Hreinsa/Afturkalla uppfæra aðeins samsvarandi par. Hjálpartexti og yfirlit áætlunarkafla greina Brottför og Komu. Komudagur einn má vistast í opinni ferð. Eldri misræmi samræmist í forminu með nákvæmum degi í forgangi; engin skrif við opnun eða Hætta við.
+Sannprófun í þessari lotu: 53 Chromium-vafraprófanir með prufugögnum standast (Chromium 153.0.8010.0). Þar af 36 varðveislupróf úr 99 fyrir bæði Í dag, viðvaranir, klukku, leiðsögn, myndareglu, kostnaðarfærslur, dagsetningar, PDF og lesafrit, og 17 próf á nýju dagaflæði, varðveislu og símabirtingu. Prófað í öllum þremur flokkunum: báðar innsláttaráttir, byrja í Til dags, 30.→31. október án hreinsunar brottfarar, endurteknir breytingaratburðir, hreinsun og afturköllun, titill einn, brottför ein, koma ein og sama dags ferð. Raunveruleg saveItem keyrð með hermdum gagnaskrifum og óvirkri kostnaðar-/skjalavistun: vistun/enduropnun, sömu auðkenni, heimleið, sérgögn og varðveisla fyrirliggjandi prufukostnaðar/miða. Ógild röð og dagur utan ferðar stöðva skrif án þess að eyða innslætti. Opnun/Hætta við breyta ekki vistaðri prufufærslu. JavaScript-málskipan staðfest. 320/393/430/768px prófað; Akstursform sjónskoðað við 393px.
+Samanburður við 99: aðeins index.html breytist af keyrsluskrám; engar stuðningsskrár, CSS-reglur eða gagnagrunnsskipan breytast. saveItem, kostnaðarútreikningar, viðvörunarútreikningar og Í dag-kjarninn eru óbreyttur kóði. Tengdar formsaðgerðir fyrir opnun, lestur og dagahreinsun breytast afmarkað.
+Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning/gagnaskrif, ytri netþjónustur og allir eldri gagnavalkostir. Engin ný staðfesting notanda á virkni 100. U96/U97 og V01–V04 haldast með fyrra afmörkuðu umfangi. Engin heildarábyrgð á villuleysi.
+Afhending: ZIP 100. Ef 99 er uppsett nægir að skipta út index.html.
+
+Keyrsla: NODE_PATH=/workspace/scratch/ee5a5bf5d23f/ocr71-test/node_modules node version100/profanir/browser-100.cjs
+Prófasöfn 98/99 eru varðveitt sem afhendingarsaga; eldri væntingar um dagabil eiga ekki lengur við. Nýtt safn browser-100.cjs skilgreinir núgildandi væntingar.
