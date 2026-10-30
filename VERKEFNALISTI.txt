@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi staða 30-10-2026 — útgáfa 96 og afmarkaðar staðfestingar notanda
+Gildandi staða 30-10-2026 — útgáfa 98 og afmarkaðar staðfestingar notanda
 
 Lesa þetta skjal og „Ferðakerfið mitt — gildandi ákvarðanir“ fyrir hverja breytingu. Regluskjalið geymir kröfur, þessi listi framkvæmda-/sannprófunarstöðu. Eldri sögulisti er varðveittur í yfirferðarskjalinu en er ekki nýr verkefnaforgangur.
 
@@ -120,5 +120,20 @@ Samþykkt framsetning J17: sjálfstæður kostnaður og kostnaðarfærslur sýnd
 Útfært í flokkalistum allra 16 flokka, sameiginlegum atriðaspjöldum (dagatal/bæði Í dag þegar kostnaður er sýndur í dagskrá), kortalista og stöðumerkingu atriða í PDF/lesafriti. Greidd heild birtist einu sinni á atriðaspjaldi; hlutagreiðslur sýna heild, greitt og eftirstöðvar. Aðeins kostnaðarfærslur fá viðeigandi símauppsetningu í flokkalista.
 Prófað nú: 37 Chromium-vafraprófanir með prufugögnum stóðust, þar á meðal 34 varðveisluprófanir úr 96 og ný kostnaðarpróf. Ný próf ná yfir 16 flokka, greiðslustöður, PDF-merkingu, lesafritsmerkingu, óbreytt gögn við birtingu, opnun rétts reiknings og 320/393/430/768px. Sjónskoðun flokkalista við 393px. Hermipróf staðfestir endurnýjun sjö opinberra lesafritsskráa og að aðeins gamla afmarkaða skeljuskjyndiminninu sé eytt.
 827 fyrirliggjandi nafngreind föll óbreytt; fjögur birtingarföll breytt og þrjú hjálparföll bætt við. Engin eldri nafngreind föll fjarlægð. Vistun, reiknivél/þjórfé/skipting, greiðsluútreikningar, viðvörunarreikningar, dagskrárval og Í dag-kjarninn bætisjafnir milli 96/97. Þetta er ekki sönnun um heildarheilbrigði kerfisins.
-Óstaðfest: raunverulegur iPhone/Safari, lifandi vistun og þjónustuvaktarauppfærsla í tæki. Notandi hefur ekki staðfest útgáfu 97. V01–V04 og fyrri afmarkaðar staðfestingar standa áfram.
+Óstaðfest utan U97-01: opnun/breyting reiknings, lifandi vistun, enduropnun, aðrir flokkar og þjónustuvaktarauppfærsla í tæki. Framsetning tveggja kostnaðarfærslna í Veitingastöðum er nú staðfest á iPhone; sjá U97-01. V01–V04 og fyrri afmarkaðar staðfestingar standa áfram.
 Afhending: ZIP 97. Ef 96 er uppsett þarf index.html, offline.js og sw.js. Aðeins opinber skeljuskjyndiminnisútgáfa breytist í sw.js; einkagögn eru ekki flutt eða endurskrifuð.
+
+10. VARANLEG STAÐFESTINGARSKRÁ — ÚTGÁFA 97, 30-10-2026
+U97-01 — FRAMSETNING KOSTNAÐARFÆRSLNA Á IPHONE STAÐFEST AF NOTANDA.
+Heimild: „Komið 👍“ og skjáskot IMG_0376.png eftir afhendingu 97; síðan bein fyrirmæli „Og fest í reglum“.
+Staðfest umfang: í Veitingastöðum sjást tvær færslur, Mat og Mata, dagsettar 18-10-2026. Báðar bera merkið „Kostnaður reiknings“ í stað „Bókað“. Greitt og upphæð birtast einu sinni á hvoru spjaldi: 1.100,00 DKK og 840,00 DKK. Merki, dagsetningar og upphæðir rúmast í sýndri iPhone-birtingu.
+Kröfur: J17, Q06 og varðveisla samkvæmt A14. Við breytingu á tengdum birtingarkóða skal aðstoðarmaður endurprófa þessa framsetningu og sambærilegar birtingar; venjulegar bókanir halda bókunarstöðu sinni. Ekki krefja notanda um sömu prófun aftur án rökstuddrar tækjasértækrar ástæðu.
+Ekki staðfest með þessari mynd: opnun/breyting reiknings, vistun og enduropnun, aðrir flokkar, PDF/lesafrit, útreikningar eða allt uppfærsluflæði þjónustuvaktar. Fyrri sjálfvirkar prófatölur eru afhendingarsaga, ekki nýjar prófanir. Engin keyrslupróf framkvæmd og engum keyrslukóða breytt við þessa skjalauppfærslu.
+
+
+11. SAMTENGDIR BROTTFARARDAGAR — AFHENDING 98, 30-10-2026
+Samþykkt: F14/F15. Samtenging dags milli Áætluð leið og dagar og nákvæmrar útleiðarbrottfarar í Akstri, Lestum og Bátum/ferjum; einn dagur samræmist, dagabil heldur brottfarardegi opnum, nákvæmur brottfarardagur fellir bilið í einn dag. Nýrra samþykki leysir af hólmi afmarkaðan hluta F12. Akstur notar Sótt – klukkan í báðum leggjum. Kaflar og uppsetning varðveitt.
+Útfært: index.html í sérstöku afriti 98, grunnur 97 varðveittur. Engin gögn endurskrifuð við opnun; breyting eða vistun samræmir reitina. Óbreyttar stuðningsskrár, þar með talin offline.js og sw.js.
+Prófað í þessari lotu: 46 Chromium-vafraflæðisprófanir með prufugögnum standast, þar af 37 fyrri varðveisluprófanir og 9 ný prófasöfn. Ný próf ná yfir alla þrjá flokka, stakan dag/dagabil, nákvæman dag, hreinsun/Afturkalla, sjálfstæða komu/heimferð/tíma/stöðu, undantekningu flugs, opnun eldri misræmis án gagnabreytinga og hætt við. Raunveruleg saveItem/readOpenJourneyPlan föll keyrð með hermdum skrifum fyrir vistun og enduropnun; óvirk skjalatenging og kostnaðarvistun í þeim prófum. Sama færsluauðkenni, sérgögn, staða, leiðarheiti og heimleið varðveitt; reiknings- og skjalagögn prufu ósnert. Heiti eitt og einn dagur vistast án tíma/bókunar; dagabil vistast án brottfarardags og ógilt bil er stöðvað fyrir skrif. Röðun yfirfarin eftir vistun. Símabreiddir 320/393/430/768px; nýtt Akstursform sjónskoðað við 393px. JavaScript-málskipan staðfest. Sjá PROFUN-98.md.
+Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning og gagnaskrif, ytri Maps/netþjónustur og allir mögulegir eldri gagnavalkostir. Ekki heildarábyrgð á villuleysi. V01–V04 og fyrri ólokin verk standa áfram. Engin ný notandastaðfesting á 98 er skráð. Fyrri U96/U97 staðfestingar varðveittar.
+Afhending: ZIP 98; ef 97 er uppsett nægir að skipta út index.html.

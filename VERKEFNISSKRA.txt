@@ -972,3 +972,5 @@ Prófað í þessari lotu: 34 Chromium-vafraflæðisprófanir með prufugögnum 
 30-10-2026: Festar afmarkaðar staðfestingar notanda á útgáfu 96. Sjá A14/Q01–Q05 í GILDANDI-AKVARDANIR.txt og U96-01–U96-05 í VERKEFNALISTI.txt. Bókun hreinsar viðvörun/ramma í sýndu flýtispjaldi og gula merkingu í ferðaleið; leiðsögn helst. Ekki allar birtingar eða tímamörk raunprófuð. Keyrslukóða ekki breytt.
 
 30-10-2026 — Útgáfa 97: J17 samþykkt; Kostnaður reiknings greinir kostnað frá bókun á sambærilegum atriðaspjöldum. Sjá PROFUN-97.md og VERKEFNALISTI.txt. Fyrri staðfestingar varðveittar.
+
+30-10-2026 — Útgáfa 98: Samtengdir dagar Aksturs/Lesta/Báta samkvæmt F14 og Sótt – klukkan í Akstri samkvæmt F15. Eldri F12 leiðrétt afmarkað; engin sjálfvirk gagnaflutningur við opnun. 46 vafraprófanir með prufugögnum standast; sjá PROFUN-98.md. U96/U97 staðfestingar varðveittar.
