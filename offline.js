@@ -5,6 +5,15 @@ const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<
 // Display dates only; persisted dates, comparisons and native picker values remain ISO.
 function displayDate(value){return String(value??'').replace(/\b(\d{4})-(\d{2})-(\d{2})(?=$|[T\s–.,])/g,'$3-$2-$1')}
 function displayStamp(value,timezone){const date=new Date(value);if(!Number.isFinite(date.getTime()))return '';const parts=new Intl.DateTimeFormat('en-GB',{...(timezone?{timeZone:timezone}:{}),year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(date),v=Object.fromEntries(parts.map(p=>[p.type,p.value]));return `${v.day}-${v.month}-${v.year}, ${v.hour}:${v.minute}:${v.second}`}
+function protectVisibleDates(root=document.body){
+ if(!root||!root.isConnected)return;
+ const skip='script,style,textarea,input,select,option,pre,code,[contenteditable]:not([contenteditable="false"]),.date-nowrap,.numeric-date-label,[data-original-document]';
+ const pattern=/\b\d{2}-\d{2}-\d{4}\b/g;
+ const texts=[];
+ if(root.nodeType===3)texts.push(root);
+ else if(root.nodeType===1){if(root.matches(skip))return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);while(walker.nextNode())texts.push(walker.currentNode);}
+ for(const node of texts){if(node.parentElement?.closest(skip))continue;const text=node.nodeValue;pattern.lastIndex=0;if(!pattern.test(text))continue;pattern.lastIndex=0;const fragment=document.createDocumentFragment();let start=0;for(const match of text.matchAll(pattern)){fragment.append(document.createTextNode(text.slice(start,match.index)));const date=document.createElement('span');date.className='date-nowrap';date.textContent=match[0];fragment.append(date);start=match.index+match[0].length;}fragment.append(document.createTextNode(text.slice(start)));node.replaceWith(fragment);}
+}
 function installDateDisplays(){
  if(typeof HTMLInputElement==='undefined'||typeof MutationObserver==='undefined')return;
  const descriptor=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');
@@ -13,8 +22,8 @@ function installDateDisplays(){
  Object.defineProperty(input,'value',{configurable:true,get(){return descriptor.get.call(this)},set(value){descriptor.set.call(this,value);sync()}});
  input.addEventListener('input',sync);input.addEventListener('change',sync);input.addEventListener('blur',sync);input.form?.addEventListener('reset',()=>queueMicrotask(sync));sync();
  }
- document.querySelectorAll('input[type="date"]').forEach(attach);
- new MutationObserver(records=>{for(const record of records){if(record.type==='attributes'){if(record.target.type==='date')attach(record.target)}else for(const node of record.addedNodes)if(node.nodeType===1){if(node.matches?.('input[type="date"]'))attach(node);node.querySelectorAll?.('input[type="date"]').forEach(attach)}}}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['type']});
+ document.querySelectorAll('input[type="date"]').forEach(attach);protectVisibleDates();
+ new MutationObserver(records=>{for(const record of records){if(record.type==='characterData'){protectVisibleDates(record.target)}else if(record.type==='attributes'){if(record.target.type==='date')attach(record.target)}else for(const node of record.addedNodes){protectVisibleDates(node);if(node.nodeType===1){if(node.matches?.('input[type="date"]'))attach(node);node.querySelectorAll?.('input[type="date"]').forEach(attach)}}}}).observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['type']});
 }
 
 const stamp=displayStamp;

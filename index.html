@@ -441,6 +441,13 @@ body .stop.stop-has-warning,body .today-warning-frame{position:relative}
 .navigation-actions{display:inline-flex;align-items:flex-end;flex-wrap:wrap;gap:8px;max-width:100%;margin:5px 0}.navigation-choice{display:block;font-size:12px;color:var(--mut)}.navigation-choice select{display:block;min-height:44px;max-width:150px;font:inherit;color:var(--text);background:var(--input-bg);border:1px solid var(--line);border-radius:10px;padding:8px}.navigation-form-choice{margin-top:10px}.navigation-actions .btn{white-space:normal;max-width:100%}
 
 .lodging-destination{display:block;color:var(--mut);font-size:13px;font-weight:700;margin:4px 0;overflow-wrap:anywhere}.navigation-mode-buttons{display:flex;gap:6px;margin:6px 0;flex-wrap:wrap}.navigation-mode-buttons .active{border-color:var(--accent);color:var(--accent);background:var(--primary-bg)}.navigation-origin-info{display:block;width:100%;color:var(--mut);font-size:12px}
+
+/* 30-10-2026 · 92: whole dates; compact day buttons keep their approved short year. */
+.date-nowrap{display:inline-block;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.today-local-clock{font-size:12px;line-height:1.4;letter-spacing:normal;font-weight:400}
+.today-local-clock .local-clock{max-width:100%;margin-top:6px}
+body .spotlight-hotel-compact.review-warning-card{padding:14px}
+
 </style>
 <style>#lodgingStayFields .lodging-stay-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#lodgingStayFields .field{min-width:0}#lodgingStayFields input{min-width:0;max-width:100%;width:100%}#lodgingStayNights{margin:4px 0 14px}.map-pin.route-endpoint .map-pin-disc{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--pin-color)}
 .map-view-buttons .btn{white-space:normal;overflow-wrap:anywhere;min-height:44px;max-width:100%}
@@ -724,6 +731,15 @@ function displayDate(value){return String(value??'').replace(/\b(\d{4})-(\d{2})-
 function displayStamp(value,timezone){const date=new Date(value);if(!Number.isFinite(date.getTime()))return '';const parts=new Intl.DateTimeFormat('en-GB',{...(timezone?{timeZone:timezone}:{}),year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(date),v=Object.fromEntries(parts.map(p=>[p.type,p.value]));return `${v.day}-${v.month}-${v.year}, ${v.hour}:${v.minute}:${v.second}`}
 // Project rule: app-generated visible dates and filenames use dd-mm-yyyy; ISO is for machine data.
 function dateForFilename(value=new Date(),timezone){return displayStamp(value,timezone).split(',')[0]}
+function protectVisibleDates(root=document.body){
+ if(!root||!root.isConnected)return;
+ const skip='script,style,textarea,input,select,option,pre,code,[contenteditable]:not([contenteditable="false"]),.date-nowrap,.numeric-date-label,[data-original-document]';
+ const pattern=/\b\d{2}-\d{2}-\d{4}\b/g;
+ const texts=[];
+ if(root.nodeType===3)texts.push(root);
+ else if(root.nodeType===1){if(root.matches(skip))return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);while(walker.nextNode())texts.push(walker.currentNode);}
+ for(const node of texts){if(node.parentElement?.closest(skip))continue;const text=node.nodeValue;pattern.lastIndex=0;if(!pattern.test(text))continue;pattern.lastIndex=0;const fragment=document.createDocumentFragment();let start=0;for(const match of text.matchAll(pattern)){fragment.append(document.createTextNode(text.slice(start,match.index)));const date=document.createElement('span');date.className='date-nowrap';date.textContent=match[0];fragment.append(date);start=match.index+match[0].length;}fragment.append(document.createTextNode(text.slice(start)));node.replaceWith(fragment);}
+}
 function installDateDisplays(){
  if(typeof HTMLInputElement==='undefined'||typeof MutationObserver==='undefined')return;
  const descriptor=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');
@@ -732,8 +748,8 @@ function installDateDisplays(){
  Object.defineProperty(input,'value',{configurable:true,get(){return descriptor.get.call(this)},set(value){descriptor.set.call(this,value);sync()}});
  input.addEventListener('input',sync);input.addEventListener('change',sync);input.addEventListener('blur',sync);input.form?.addEventListener('reset',()=>queueMicrotask(sync));sync();
  }
- document.querySelectorAll('input[type="date"]').forEach(attach);
- new MutationObserver(records=>{for(const record of records){if(record.type==='attributes'){if(record.target.type==='date')attach(record.target)}else for(const node of record.addedNodes)if(node.nodeType===1){if(node.matches?.('input[type="date"]'))attach(node);node.querySelectorAll?.('input[type="date"]').forEach(attach)}}}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['type']});
+ document.querySelectorAll('input[type="date"]').forEach(attach);protectVisibleDates();
+ new MutationObserver(records=>{for(const record of records){if(record.type==='attributes'){if(record.target.type==='date')attach(record.target)}else if(record.type==='characterData'){protectVisibleDates(record.target)}else for(const node of record.addedNodes){if(node.nodeType===1){if(node.matches?.('input[type="date"]'))attach(node);node.querySelectorAll?.('input[type="date"]').forEach(attach)}protectVisibleDates(node)}}}).observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['type']});
 }
 
 const fmtDate=displayDate;
@@ -1324,8 +1340,8 @@ function tripPdfHtml(detailed=true){const t=state.trip;if(!t)return '';const exp
 
 #manageStopsList .place-option.stop-has-warning,.stop.stop-has-warning{border:2px solid #d6ad55;border-radius:12px;box-sizing:border-box}#manageStopsList .place-option.stop-has-warning{margin:6px 0;padding:12px}.stop-warning-label{color:var(--text);display:block;margin-top:5px}#bookingReviewWarnings{margin-bottom:14px}#bookingReviewWarnings.hidden{display:none}
 
-</style></head><body><div class="toolbar"><button type="button" id="printTripPdf">Prenta / vista PDF</button><p>Veldu PDF í prentglugganum. Á iPhone: stækkaðu prentforskoðunina og veldu Deila → Vista í Skrár. Þetta skjal inniheldur engin viðhengi.</p></div><h1>${esc(t.name)}</h1><p>${esc(t.start_date?fmtDate(t.start_date):'Dagsetning opin')}${t.end_date?' – '+esc(fmtDate(t.end_date)):''} · ${nights(t)} nætur</p>${pdfRows([['Land',country(t.country_code).name],['Lýsing',t.description],['Staður',t.location_name],['Staða',isPastTrip(t)?'Farin ferð':statusLabel(t.status)],['Tímabelti',t.timezone]])}<p><strong>${esc(cost)}</strong></p><p class="notice">Kostnaður miðast við vistað bókunargengi og skráðar greiðslur. Ógreiddar upphæðir eru viðmið; engin ný gengisgögn eru sótt við útflutning.</p><h2>Áfangastaðir</h2>${stops||'<p>Engir áfangastaðir skráðir.</p>'}<h2>Bókanir og skipulag</h2>${bookings||'<p>Engin atriði skráð.</p>'}<h2>Kostnaður</h2>${costs||'<p>Enginn kostnaður skráður.</p>'}<h2>Til minnis</h2>${notes||'<p>Engar athugasemdir skráðar.</p>'}<h2>Ferðaveski</h2><p class="notice">Skjalalisti og ytri tenglar fylgja. Viðhengi, flugmiðar og QR-kóðar eru ekki felld inn í PDF. Sæktu þau sérstaklega áður en ferð er eytt. Ytri tenglar geta breyst eða krafist innskráningar.</p>${docs||'<p>Engin skjöl skráð.</p>'}<footer>Útbúið ${esc(new Date().toLocaleString('is-IS',{timeZone:'Atlantic/Reykjavik'}))} · Ferðakerfið mitt · ${detailed?'Ítarlegt skjal':'Stutt yfirlit'}. Lesafrit; ekki hægt að endurheimta ferð í appinu úr þessu PDF.</footer></body></html>`}
-function exportTripPdf(detailed=true){if(!state.trip)return;if(state.tripLoadError)return toast('Gögn ferðarinnar eru ófullkomin. Opnaðu ferðina aftur og reyndu síðan.');const win=window.open('about:blank','_blank');if(!win)return toast('Leyfðu nýjan glugga fyrir PDF-forskoðun og reyndu aftur.');try{win.opener=null;win.document.open();win.document.write(tripPdfHtml(detailed));win.document.close();win.document.getElementById('printTripPdf').onclick=()=>win.print();win.focus()}catch{win.close();toast('Ekki tókst að opna PDF-forskoðun. Reyndu aftur.')}}
+</style></head><body><div class="toolbar"><button type="button" id="printTripPdf">Prenta / vista PDF</button><p>Veldu PDF í prentglugganum. Á iPhone: stækkaðu prentforskoðunina og veldu Deila → Vista í Skrár. Þetta skjal inniheldur engin viðhengi.</p></div><h1>${esc(t.name)}</h1><p>${esc(t.start_date?fmtDate(t.start_date):'Dagsetning opin')}${t.end_date?' – '+esc(fmtDate(t.end_date)):''} · ${nights(t)} nætur</p>${pdfRows([['Land',country(t.country_code).name],['Lýsing',t.description],['Staður',t.location_name],['Staða',isPastTrip(t)?'Farin ferð':statusLabel(t.status)],['Tímabelti',t.timezone]])}<p><strong>${esc(cost)}</strong></p><p class="notice">Kostnaður miðast við vistað bókunargengi og skráðar greiðslur. Ógreiddar upphæðir eru viðmið; engin ný gengisgögn eru sótt við útflutning.</p><h2>Áfangastaðir</h2>${stops||'<p>Engir áfangastaðir skráðir.</p>'}<h2>Bókanir og skipulag</h2>${bookings||'<p>Engin atriði skráð.</p>'}<h2>Kostnaður</h2>${costs||'<p>Enginn kostnaður skráður.</p>'}<h2>Til minnis</h2>${notes||'<p>Engar athugasemdir skráðar.</p>'}<h2>Ferðaveski</h2><p class="notice">Skjalalisti og ytri tenglar fylgja. Viðhengi, flugmiðar og QR-kóðar eru ekki felld inn í PDF. Sæktu þau sérstaklega áður en ferð er eytt. Ytri tenglar geta breyst eða krafist innskráningar.</p>${docs||'<p>Engin skjöl skráð.</p>'}<footer>Útbúið ${esc(displayStamp(new Date(),'Atlantic/Reykjavik'))} · Ferðakerfið mitt · ${detailed?'Ítarlegt skjal':'Stutt yfirlit'}. Lesafrit; ekki hægt að endurheimta ferð í appinu úr þessu PDF.</footer></body></html>`}
+function exportTripPdf(detailed=true){if(!state.trip)return;if(state.tripLoadError)return toast('Gögn ferðarinnar eru ófullkomin. Opnaðu ferðina aftur og reyndu síðan.');const win=window.open('about:blank','_blank');if(!win)return toast('Leyfðu nýjan glugga fyrir PDF-forskoðun og reyndu aftur.');try{win.opener=null;win.document.open();win.document.write(tripPdfHtml(detailed).replace('</head>','<style>.date-nowrap{display:inline-block;white-space:nowrap;overflow-wrap:normal;word-break:normal}</style></head>'));win.document.close();protectVisibleDates(win.document.body);win.document.getElementById('printTripPdf').onclick=()=>win.print();win.focus()}catch{win.close();toast('Ekki tókst að opna PDF-forskoðun. Reyndu aftur.')}}
 
 function renderHome(){loadCancellationReminders();const active=state.trips.filter(t=>!isPastTrip(t)),past=state.trips.filter(isPastTrip);const next=[...active].sort((a,b)=>(a.start_date||'9999').localeCompare(b.start_date||'9999'))[0];renderNext(next);$('myTrips').innerHTML=active.length?active.map(t=>tripCard(t)).join(''):'<div class="empty">Engar væntanlegar ferðir skráðar.</div>';$('pastTripsCount').textContent=past.length;$('pastTrips').replaceChildren();$('morePastTripsBtn').classList.add('hidden');if($('pastTripsSection').open)renderPastTrips();document.querySelectorAll('#myTrips [data-trip]').forEach(bindTripCard)}
 function archivedExpenseIsk(e){if((e.currency_original||'ISK')==='ISK')return Number(e.amount_original)||0;const base=Number(e.booking_fx_to_isk)||(Number(e.amount_original)>0?Number(e.amount_isk_at_booking)/Number(e.amount_original):0);return expensePaidIsk(e)+expenseRemainingOriginal(e)*base}
@@ -1534,7 +1550,22 @@ function confirmNewTimelineWarnings(stops=state.stops,items=state.items){
  const added=linkedTripDateWarnings(stops,items).filter(relevant).filter(w=>!old.has(w.key+'|'+w.message));
  return !added.length||window.confirm('Athugaðu dagsetningarnar áður en þú vistar:\n\n'+added.map(w=>w.message).join('\n\n')+'\n\nBókanir og gisting færast ekki sjálfkrafa. Viltu samt vista?');
 }
-function tripReviewAllWarnings(){return [...linkedTripDateWarnings(),...bookingTimeWarnings()].map(w=>({...w,itemIds:w.itemIds||(w.itemId?[w.itemId]:[]),stopIds:w.stopIds||(w.stopId?[w.stopId]:[])}))}
+function todayLodgingWarning(day=tripTodayDate()){
+ if(state.tripLoadError||!tripInProgress(day)||day>=state.trip.end_date)return null;
+ const hotels=state.items.filter(i=>i.category==='lodging'&&!i.metadata?.quick_cost&&i.status!=='cancelled'&&lodgingUsed(i)&&i.local_date&&i.end_local_date&&i.local_date<=day&&day<i.end_local_date);
+ if(hotels.some(h=>['booked','done'].includes(h.status)))return null;
+ const stop=stopForDate(day);
+ return {key:'lodging-tonight:'+day,kind:'lodging-tonight',dates:[day],itemIds:hotels.map(h=>h.id),stopIds:[...new Set([...hotels.map(h=>h.stop_id),stop?.id].filter(Boolean))],message:'Engin valin bókuð gisting nær yfir kvöldið.'};
+}
+function todayLodgingWarningHtml(day){
+ const warning=tripReviewWarnings().find(w=>w.kind==='lodging-tonight'&&w.dates.includes(day));
+ return warning?'<section class="spotlight-hotel-compact review-warning-card">'+reviewWarningMarker(true)+'<strong>Gisting í kvöld þarf yfirferð</strong><p class="notice">'+esc(warning.message)+'</p><button type="button" class="btn small" data-spotlight-lodging>Yfirfara gistingu</button></section>':'';
+}
+function todayClockHtml(day){
+ const place=stopForDate(day),cached=travelWeatherCache.get(weatherPoint(place)?.key),zone=cached?.data?.timezone||place?.timezone||state.trip?.timezone;
+ return '<div class="today-local-clock">'+(localClockHTML(zone)||'<span class="notice">Staðartími óskráður</span>')+'</div>';
+}
+function tripReviewAllWarnings(){return [...linkedTripDateWarnings(),...bookingTimeWarnings(),...[todayLodgingWarning()].filter(Boolean)].map(w=>({...w,itemIds:w.itemIds||(w.itemId?[w.itemId]:[]),stopIds:w.stopIds||(w.stopId?[w.stopId]:[])}))}
 function tripReviewCanonical(value){if(Array.isArray(value))return value.map(tripReviewCanonical);if(value&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().map(k=>[k,tripReviewCanonical(value[k])]));return value}
 function tripReviewFingerprint(w){
  const select=(row,fields)=>row?Object.fromEntries(fields.map(k=>[k,row[k]??null])):null;
@@ -1687,7 +1718,7 @@ function bookingReviewRows(itemId,date,warnings=null){return (warnings||tripRevi
 function todayReviewWarnings(day){
  return tripReviewWarnings().filter(w=>{
   if(w.dates?.length&&!w.dates.includes(day))return false;
-  return w.itemIds.some(id=>{const item=state.items.find(i=>i.id===id);return item&&itemOccursOn(item,day)})||w.stopIds.some(id=>{const stop=state.stops.find(s=>s.id===id);return stop?.start_date&&stop?.end_date&&stop.start_date<=day&&day<stop.end_date});
+  return w.kind==='lodging-tonight'||w.itemIds.some(id=>{const item=state.items.find(i=>i.id===id);return item&&itemOccursOn(item,day)})||w.stopIds.some(id=>{const stop=state.stops.find(s=>s.id===id);return stop?.start_date&&stop?.end_date&&stop.start_date<=day&&day<stop.end_date});
  });
 }
 function todayHasReviewWarning(day){return todayReviewWarnings(day).length>0}
@@ -2099,7 +2130,7 @@ function todayJourneyLink(from,to,label,mode='walking',item=null,role='outbound'
  // Use exact saved points only. A city fallback is not a station or a quay.
  const valid=p=>p&&p.precise!==false&&mapCoordinate(p.latitude,p.longitude);
  if(!valid(from)||!valid(to))return '';
- if(globalThis.TravelNavigation)return navigationHtml(item,role,to.latitude+','+to.longitude,from.latitude+','+from.longitude,label,item?undefined:mode);
+ if(globalThis.TravelNavigation)return navigationHtml(item,role,to.latitude+','+to.longitude,from.latitude+','+from.longitude,label,item?undefined:mode,from.label);
  const plan={origin:from.label,origin_place:from,destination:to.label,destination_place:to};
  return '<a class="btn small" href="'+esc(departureDirections(plan,mode==='driving'?'driving':'walking'))+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a>';
 }
@@ -2125,7 +2156,8 @@ function todayJourneyHero(model){
   detail=[j.to.label,todayJourneyHotelPlace(j.destination)?.label].filter(Boolean).join(' → ');
   action=todayJourneyLink(j.to,todayJourneyHotelPlace(j.destination),'➤ Leiðsögn að gistingu',j.plan.mode,j.item,j.leg+'_arrival');
  }
- const review=bookingReviewDecoration(j.item,model.day);
+ const related=(!j.arrivalOnly&&(j.departureInstant===null||j.departureInstant>=j.now))?j.origin:j.destination;
+ const review=bookingReviewDecoration(j.item,model.day,related.warning||related.hotel&&bookingReviewRows(related.hotel.id,model.day).length);
  return '<section class="travel-day-next'+review.className+'">'+review.marker+'<div class="brand">NÆSTA SKREF</div><h3>'+esc(title)+'</h3>'+(clock?'<div class="spotlight-time">'+esc(clock)+'</div>':'')+'<p class="notice">'+esc(detail)+'</p><div class="departure-actions">'+action+todayJourneyEdit(j,j.open?'Skoða áætlun':'Skoða ferð')+'</div></section>';
 }
 function todayJourneyCheckoutStep(hotel){
@@ -2171,8 +2203,8 @@ function renderTripSpotlight(){
  const remainingCheckouts=journey.journeys.length?[]:model.checkouts;
  const checkoutHtml=remainingCheckouts.length?'<section class="spotlight-checkout"><div class="brand">ÚTRITUN Í DAG</div>'+remainingCheckouts.map(h=>'<div class="spotlight-small'+bookingReviewDecoration(h,day).className+'">'+bookingReviewDecoration(h,day).marker+'<div><strong>🛏 '+esc(h.title)+'</strong>'+lodgingDestinationHtml(h)+(lodgingStayTimes(h).checkout_before&&/^([01]\d|2[0-3]):[0-5]\d/.test(lodgingStayTimes(h).checkout_before)?'<div class="notice">Fyrir kl. '+esc(lodgingStayTimes(h).checkout_before.slice(0,5))+' · staðartími</div>':'')+'</div><button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div>').join('')+'</section>':'';
  const hotels=model.hotels.filter(h=>journey.journeys.length||h.id!==model.main?.item.id);
- const hotelHtml=hotels.length?'<section class="spotlight-hotel-compact"><div class="brand">GISTING Í KVÖLD</div>'+hotels.map(h=>'<div class="spotlight-hotel-row'+bookingReviewDecoration(h,day).className+'">'+bookingReviewDecoration(h,day).marker+'<strong>🛏 '+esc(h.title)+'</strong>'+lodgingDestinationHtml(h)+(lodgingStayTimes(h).checkin_from?'<div class="notice">Innritun frá kl. '+esc(lodgingStayTimes(h).checkin_from)+'</div>':'')+'<div class="spotlight-actions">'+spotlightHotelDirections(h)+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</section>':!model.hotels.length&&day<state.trip.end_date?'<section class="spotlight-hotel-compact review-warning-card">'+reviewWarningMarker(true)+'<strong>Gisting í kvöld þarf yfirferð</strong><p class="notice">Engin valin bókuð gisting nær yfir kvöldið.</p><button type="button" class="btn small" data-spotlight-lodging>Yfirfara gistingu</button></section>':'';
- host.innerHTML='<section class="card spotlight-current'+(todayHasReviewWarning(day)?' today-warning-frame':'')+'">'+reviewWarningMarker(todayHasReviewWarning(day))+'<div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div></div>'+weather+'<h2>'+esc(place?.name||state.trip.name)+'</h2></div>'+todayReviewWarningHtml(day)+destinationPhotoSlot(place,'today')+(journey.journeys.length?todayJourneyHtml(journey)+checkoutHtml:checkoutHtml+main)+hotelHtml+(extraEntries.length?'<section class="spotlight-other"><div class="brand">ANNAÐ Í DAG</div>'+extraEntries.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'')+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
+ const hotelHtml=hotels.length?'<section class="spotlight-hotel-compact"><div class="brand">GISTING Í KVÖLD</div>'+hotels.map(h=>'<div class="spotlight-hotel-row'+bookingReviewDecoration(h,day).className+'">'+bookingReviewDecoration(h,day).marker+'<strong>🛏 '+esc(h.title)+'</strong>'+lodgingDestinationHtml(h)+(lodgingStayTimes(h).checkin_from?'<div class="notice">Innritun frá kl. '+esc(lodgingStayTimes(h).checkin_from)+'</div>':'')+'<div class="spotlight-actions">'+spotlightHotelDirections(h)+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</section>':todayLodgingWarningHtml(day);
+ host.innerHTML='<section class="card spotlight-current'+(todayHasReviewWarning(day)?' today-warning-frame':'')+'">'+reviewWarningMarker(todayHasReviewWarning(day))+'<div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div>'+todayClockHtml(day)+'</div>'+weather+'<h2>'+esc(place?.name||state.trip.name)+'</h2></div>'+todayReviewWarningHtml(day)+destinationPhotoSlot(place,'today')+(journey.journeys.length?todayJourneyHtml(journey)+checkoutHtml:checkoutHtml+main)+hotelHtml+(extraEntries.length?'<section class="spotlight-other"><div class="brand">ANNAÐ Í DAG</div>'+extraEntries.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'')+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
  host.classList.remove('hidden');host.classList.add('spotlight-redesigned');paintDestinationPhotos();bindTodayReviewActions(host);
  host.querySelectorAll('[data-spotlight-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.spotlightItem));
  host.querySelectorAll('[data-spotlight-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.spotlightDocument));
@@ -2189,10 +2221,11 @@ function renderToday(){
  const d=tripTodayDate(),within=tripInProgress(d),journey=within?todayJourneyModel(d):{journeys:[]},journeyIds=new Set(journey.journeys.map(j=>j.item.id)),items=agendaItems().filter(x=>itemOccursOn(x,d)&&!journeyIds.has(x.id));
  items.sort((a,b)=>{const time=i=>todayLegs(i).find(l=>l.date===d)?.time||'99:99';return String(time(a)).localeCompare(String(time(b)))});
  $('todayNext').classList.toggle('today-warning-frame',within&&todayHasReviewWarning(d));
- $('todayNext').innerHTML=within?reviewWarningMarker(todayHasReviewWarning(d))+'<div class="today-date">'+esc(fmtDay(d))+'</div>'+todayReviewWarningHtml(d)+(journey.journeys.length?todayJourneyHtml(journey):nextTodayHtml(d)):'';
+ $('todayNext').innerHTML=within?reviewWarningMarker(todayHasReviewWarning(d))+'<div class="today-date">'+esc(fmtDay(d))+'</div>'+todayClockHtml(d)+todayReviewWarningHtml(d)+(journey.journeys.length?todayJourneyHtml(journey):nextTodayHtml(d))+todayLodgingWarningHtml(d):'';
  $('todayItems').innerHTML=within?weatherSlot(stopForDate(d),d)+(items.length?items.map(x=>itemHtml(x,d,reviewWarnings)).join(''):'<div class="empty">Engin atriði skráð í dag.</div>'):'<div class="empty">„Í dag“ verður virk þegar ferðin er í gangi. Þá birtast atriði dagsins og veðurspá.</div>';
  if(within&&!journey.journeys.length)renderOpenJourneys('todayOpenJourneys',d);else $('todayOpenJourneys').innerHTML='';
  bindTodayReviewActions($('todayNext'));
+ $('todayNext').querySelector('[data-spotlight-lodging]')?.addEventListener('click',()=>openCategory('lodging'));
  $('todayNext').querySelectorAll('[data-spotlight-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.spotlightItem));
  $('todayNext').querySelectorAll('[data-spotlight-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.spotlightDocument));
  $('todayNext').querySelectorAll('[data-next-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.nextItem));
@@ -2913,8 +2946,8 @@ function readNavigationFields(metadata,current){
  if(globalThis.TravelNavigation&&state.navigationModeDirty)metadata.navigation_modes={...(metadata.navigation_modes||{}),...state.navigationModes};
  if(!confirmNavigationTravelTime(current,metadata))throw new Error('Vistun hætt. Yfirfarðu ferðatímann.');
 }
-function navigationHtml(item,role,destination,origin='',title='Leiðsögn',selected){
- if(globalThis.TravelNavigation){const chosen=item?TravelNavigation.origin(item,role,state.items,h=>lodgingUsed(h)):{explicit:false},useChosen=chosen.explicit&&(!!item?.metadata?.navigation_origins?.[role]||!origin);if(useChosen&&chosen.blocked)return '<span class="notice navigation-origin-warning">Upphafsgisting þarf yfirferð. Veldu gistingu með staðsetningu í bókuninni.</span>';return TravelNavigation.html({item,role,destination,origin:useChosen?chosen.query:origin,title,selected,originLabel:useChosen?chosen.label:origin?'Skráð upphaf leiðar':'Núverandi staðsetning'});}
+function navigationHtml(item,role,destination,origin='',title='Leiðsögn',selected,originLabel=''){
+ if(globalThis.TravelNavigation){const chosen=item?TravelNavigation.origin(item,role,state.items,h=>lodgingUsed(h)):{explicit:false},useChosen=chosen.explicit&&(!!item?.metadata?.navigation_origins?.[role]||!origin);if(useChosen&&chosen.blocked)return '<span class="notice navigation-origin-warning">Upphafsgisting þarf yfirferð. Veldu gistingu með staðsetningu í bókuninni.</span>';return TravelNavigation.html({item,role,destination,origin:useChosen?chosen.query:origin,title,selected,originLabel:useChosen?chosen.label:origin?(originLabel||'Skráð upphaf leiðar'):'Núverandi staðsetning'});}
  return destination?'<a data-departure-link class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;destination='+esc(encodeURIComponent(destination))+'&amp;travelmode='+(selected==='driving'?'driving':'walking')+'" target="_blank" rel="noopener">'+esc(title)+'</a>':'';
 }
 async function saveNavigationMode(itemId,role,value){

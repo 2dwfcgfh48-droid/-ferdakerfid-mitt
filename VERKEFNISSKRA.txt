@@ -1,3 +1,17 @@
+Viðbót 30-10-2026 — leiðrétt dagsetningarregla og samræmi í báðum Í dag-yfirlitum
+
+Nýjustu skýru fyrirmæli notanda ganga framar eldri almennu dagsetningalýsingunni hér fyrir neðan:
+• Allar dagsetningar sem appið birtir eru dd-mm-yyyy. Hver dagsetning helst heil á einni línu; ef pláss vantar færist öll dagsetningin á næstu línu.
+• EINA samþykkta undanþágan frá fjögurra stafa ári eru dagahnappar, sem halda stutta sniðinu 15-10-’26 til að vera minni. Þetta er eldri samþykkt sem notandi áréttaði; ekki ný útlitstillaga.
+• Bæði Í dag-spjaldið sem flýtileið og Í dag í dagatali skulu varðveitt. Sömu viðvaranir og gular merkingar skulu birtast á báðum stöðum.
+• Spjöld með virkri viðvörun hafa gula útlínu OG viðvörunarþríhyrning. Samþykkt undantekning fjarlægir tengdar virkar merkingar á öllum sambærilegum stöðum.
+• Staðarklukka skal vera sýnileg í báðum Í dag-yfirlitum. Nota skráð tímabelti staðarins, ekki tímabelti símans sem sjálfgefna staðreynd um áfangastað. Ekki búa til óskráða bókunar- eða komutíma.
+• Fáni og áfangastaðarheiti við gistingu, leiðsögn frá réttum upphafsstað, skráðir tímar, miðar, kostnaður og vistun skulu varðveitt.
+
+Umfang útgáfu 92: samræmd fyrirliggjandi gistingarviðvörun fyrir kvöld dagsins í báðum Í dag-yfirlitum og á tengdum spjöldum; staðarklukka í báðum yfirlitum; heil dagsetning í birtingu, lesafriti og PDF; raunverulegt heiti upphafsstaðar við fyrirliggjandi leiðsagnartengil ferðadags. Engin endurhönnun, gagnamigrering eða breyting á kostnaði og vistun bókana. Dagahnappar óbreyttir.
+
+Staða: útfært í afhendingarafriti 92. Vafraprófun með prufugögnum í Chromium fór fram; raunveruleg iPhone/iPad- og lifandi gagnagrunnsprófun þessarar útgáfu er eftir. Ekki merkja heildarendurheimt allra fyrri samþykkta staðfesta. Sjá afmarkað stöðuyfirlit í PROFUN-92.md með kóðanum. Útgáfa 91 er varðveitt óbreytt.
+
 Viðbót 30-10-2026 — endurheimt samþykktrar viðvörunarbirtingar
 
 Samþykkt af notanda og staðfest með fyrri skjámynd: Spjöld með viðvörun skulu hafa bæði gula útlínu og gulan viðvörunarþríhyrning efst til hægri. Þetta gildir á öllum sambærilegum stöðum, þar með talið ferðaleið/tímalínu, dagatali, kortaspjöldum og báðum „Í dag“-yfirlitum. Varðveita núverandi viðvörunarreglur og samþykktar undantekningar; ekki merkja öll óbókuð atriði sjálfkrafa sem nýja viðvörun.
