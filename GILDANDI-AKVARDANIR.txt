@@ -1,0 +1,195 @@
+Ferðakerfið mitt — gildandi ákvarðanir og vinnureglur
+Sameinað 30-10-2026
+
+GILDI OG HEIMILDIR
+Þetta er gildandi regluhluti, sameinaður úr aðgengilegu samtali, fyrri heimildum og verkefnissögu. Nýrri skýr fyrirmæli Kristjáns ganga framar. Að ákvörðun vanti hér er EKKI heimild til að breyta fyrirliggjandi útfærslu eða fella fyrri samþykki úr gildi.
+Samþykkt krafa, útfærsla í kóða, sjálfvirk prófun og staðfesting notanda eru fjórir ólíkir hlutir. Reglurnar lýsa því sem á að halda; þær staðfesta ekki að allt virki núna.
+Heimildarlyklar: H1 = gildandi ákvörðunarskjal fyrir þessa sameiningu; H2 = verkefnalisti fyrir sameiningu; H3 = aðgengilegt samtal um útgáfur 88–92; H4 = VERKEFNISSKRA.txt við útgáfu 92, með dagsettum samþykktum og leiðréttingum; H5 = eldri verkefnisskrár frá 17–21-10-2026; H6 = endurheimtar fyrri samtalsákvarðanir; H7 = verkefnissamantekt sem fylgir samtalinu. H7 er ófullkomnari heimild en bein fyrirmæli. Kóði einn staðfestir ekki samþykki.
+Allt upprunalegt samtal er ekki tiltækt orðrétt. Takmörk og fyrri heimildir eru varðveitt í YFIRFERD-AKVARDANA-30-10-2026.md. Óviss umfangsatriði eru sér í verkefnalista, ekki gerð að nýrri samþykkt með þessum texta.
+
+A. VINNUREGLUR — FYRIR, MEÐAN OG EFTIR BREYTINGU [H1–H4, gildandi verkefnisfyrirmæli]
+A01. Svara á íslensku, skýrt og hnitmiðað. Aðgreina staðreyndir, tillögur og óvissu.
+A02. Lesa BÆÐI gildandi ákvarðanir og verkefnalista áður en breytingavinna hefst og þegar nýtt umfang er tekið fyrir.
+A03. Skoða núverandi kóða áður en honum er breytt. Afmarka fyrirfram flokka, glugga og virkni sem beiðnin nær til. Breyta aðeins því samþykkta umfangi.
+A04. Varðveita fyrri samþykktir og núverandi gögn, virkni og útlit utan umfangs. Ný beiðni fellir ekki sjálfkrafa eldri ákvarðanir úr gildi. Skrá skýrt ef ný ákvörðun leysir eldri af hólmi.
+A05. „Alls staðar“ og „heimfæra á allt“ nær til allra sambærilegra staða. Finna og yfirfara þá: stór/lítil spjöld, flýtileið, dagatal, bæði Í dag, tímalína, kort, flokkalistar, PDF og lesafrit eftir því sem við á.
+A06. Framkvæma skýrar breytingabeiðnir án endurtekinna samþykkisspurninga. Ósamþykkt útlitstillaga er ekki heimild til útfærslu. Ekki endurhanna þegar beðið er um afmarkaða viðgerð.
+A07. Varðveita fyrri afhendingu og bera saman við hana. Nafn eða fjöldi falla sannar ekki varðveislu hegðunar eða útlits.
+A08. Prófa breytt notendaflæði og tengda virkni, sérstaklega símaflæði: vistun, breytingu, enduropnun, villur, hætt við, tímasetningar og kostnað þegar við á. Samþykkt birting þarf einnig sjónræna yfirferð.
+A09. Segja aðeins „framkvæmt“ eða „prófað“ um það sem raunverulega var gert. Greina hermipróf, raunvafra, raunverulegan iPhone/iPad og staðfestingu notanda. „Komið“ eftir upphleðslu staðfestir ekki alla virkni.
+A10. Eftir breytingu: stutt lýsing á því sem breyttist, hvar það gildir og hvað er enn óstaðfest/ólokið. Ekki nota gamlar prófatölur sem nýjar niðurstöður.
+A11. Halda samþykktum ákvörðunum og óloknum verkum með kóðanum og uppfæra þau þegar ákvörðun breytist. Gildandi staða sé aðgreind frá afhendingarsögu.
+A12. Ef samtal, skrá eða kóði er ekki aðgengilegt, segja það. Ekki fylla í eyður eða fullyrða að allt eldra hafi verið skoðað.
+A13. NÝ ÁRÉTTING 30-10-2026: Ef samþykkt ákvörðun vantar eða er brotin í kóðanum skal vara Kristján við. Viðvörun nefnir ákvörðun, heimild, kóðastað, sýnilegt frávik og sannprófun. Greina „staðfest frávik“, „grunur/óstaðfest“ og „samþykkt en útfærsla fannst ekki“. Ekki kalla eitthvað nýlega horfið án samanburðar við eldri útfærslu. Skrá í verkefnalista; viðvörun heimilar ekki ótengda viðgerð.
+
+B. DAGSETNINGAR OG TÍMAR [H1–H4]
+B01. Allar dagsetningar sem appið birtir eða myndar fyrir notanda eru dd-mm-yyyy, með tveggja stafa degi/mánuði og fjögurra stafa ári.
+B02. HVER dagsetning skal haldast heil í sömu línu. Ef pláss vantar færist öll dagsetningin á næstu línu. Ekki minnka letur eða stytta árið til að fela umbrotsvanda.
+B03. EINA sniðundanþágan eru dagahnappar: 15-10-’26, til að minnka hnapp. Ekki breyta þeim í fjögurra stafa ár vegna almennu reglunnar.
+B04. Reglan nær til forma, spjalda, dagatals, ferðaleiðar, viðvarana, tilkynninga, PDF/prentunar, lesafrits og nýrra skráarheita sem appið myndar.
+B05. Innri vistun, API, JSON og vélgildi dagsetningarreita mega halda ISO. Ekki endurskrifa upprunaleg skjöl, frjálsan notandatexta eða eldri skráarheiti sjálfkrafa.
+B06. Varðveita skráða tíma og rétt tímabelti. Sýna staðartíma viðkomandi staðar/leggs. Ekki nota tímabelti símans sem staðreynd um áfangastað eða giska á óþekkt tímabelti.
+B07. Ekki búa til komudag, komutíma, lengd, mætingartíma eða ferðatíma úr ófullkomnum upplýsingum. Aðgreina áætlað, bókað og óskráð.
+B08. Sýnilegir tímar haldist á viðeigandi spjöldum og yfirlitum, líka við kort og í báðum Í dag-birtingum. Skráður tími 00:00 er gildur tími og má ekki hverfa sem tómt varagildi.
+
+C. GRUNNUPPBYGGING, STILLINGAR OG HAUS [H4–H7]
+C01. Vefapp fyrst, fyrir iPhone, iPad, Mac og Windows, með ferðum/deilingu og sameiginlegum ferðagögnum. Heimaskjánotkun og sótt lesafrit haldast; ekki jafna staðbundnar stillingar við samstillingu allra gagna.
+C02. Tvær aðalsíður: Forsíða og Ferðasíða. Stillingar og Ný ferð eru gluggar.
+C03. Bæði ferðaleið/tímalína og dagatal haldast, ásamt Í dag. Val á áfangastað tengist viðeigandi dögum og dagaval við áfangastað.
+C04. Varðveita samþykktar þema-, lit-, letur-, textastærðar-, þéttleika- og hreyfistillingar. Ljóst þema má ekki fela tákn, texta eða viðvaranir. Nákvæm stillingagildi eru ekki endurskilgreind hér.
+C05. Til baka er efst vinstra megin og Meira hægra megin, jafnstórir og í sömu hæð. Landkóði/FERÐASÍÐA yfir fána og ferðarheiti. Langur titill má brotna yfir dofna myndahlutann.
+C06. Tvær aðalaðgerðir undir haus: Atriði og Áfangastaður. Dagsetningar og nætur saman í sér röð; myndin má ekki þrengja þær inn í ólæsilega línu.
+C07. Meira geymir Fara í dag, Ferðaveski, Breyta áfangastöðum ofarlega, síðan viðeigandi ferða-/mynda-/PDF-aðgerðir. Hausmynd hefur undirvalmynd. Eyða ferð er neðst og heldur staðfestingar- og aðgangsreglum. Fara í dag er óvirkt þegar ferð er ekki í gangi.
+C08. Hausmynd er mjúk og bogadregið útþynnt, án sýnilegs ferhyrnds kassa eða ljósrar plötu yfir mynd. Stærðarsleði og sjálfstæð útþynning efri/neðri hluta haldast. Báðir stýra mjúkum láréttum skilum; ekki víð lóðrétt útþynning frá botni.
+C09. Forskoðun notar sömu mynd/stillingar. Breyting á sleða skiptir ekki um mynd eða leitar aftur. Stillingar og myndaval varðveitist í sínum samþykkta gildissviðum; ekki lofa samstillingu þeirra milli tækja.
+C10. Ferðaspjöld haldi lægri uppsetningu, mynd hægra megin með útþynningu, fána/heiti, heilum dagsetningum, nóttum, stöðu/mynt og opnunarör. Falið eða ótiltækt myndaval gefur nothæft textaspjald. Kostnaður farinna ferða varðveitist.
+C11. Ekki sameina samnefnda staði eða endurteknar dvalir í gögnunum út frá nafni einu. Réttur fáni, land, kortasvæði og mynt skulu fylgja viðkomandi landi/áfangastað.
+
+D. Í DAG — BÁÐAR BIRTINGAR [H1–H4]
+D01. Varðveita bæði efra Í dag-flýtispjaldið og Í dag í dagatals-/flipasýn. Þau skulu sýna samræmd gögn, viðvaranir, staðarklukku, miða, tímabil og leiðsagnarval. Ekki fella annað út til einföldunar.
+D02. Í ferð í gangi velst dagurinn í dag við opnun. Framtíðar- og farnar ferðir halda viðeigandi ferðaleiðarsýn.
+D03. Eitt stórt spjald sýnir næstu aðgerð dagsins; önnur atriði og næstu dagar fá minna vægi. Gisting á áframhaldandi dvöl er lítil; innritun getur verið aðalatriði komudag. Opnar samgöngur á ferðadegi mega hafa forgang fram yfir innritun þegar engin önnur tímasett næsta aðgerð gengur framar.
+D04. Dagskrá síðari daga má ekki líta út sem dagskrá í dag. Sýna tómt dagsástand og sérmerktar næstu bókanir. Áætlað dagabil er ekki staðfest brottför.
+D05. Ferðadagur sýnir samhengi: útritun → leið að stöð/flugvelli/höfn → samgöngur → leið að næstu gistingu → innritun. Miðar og leiðsögn við rétt skref. Nánari upplýsingar í opnanlegum köflum.
+D06. Útritun er fremst í keðjunni, einnig þótt leiðsagnarupphaf sé vistaður punktur án gistibókunartengingar. Ekki tvíbirta sömu samgöngufærslu sem annað sjálfstætt dagskráratriði í sömu sýn.
+D07. Aðgreina útritunarfrest, ráðlagða brottför, brottför samgangna, komu og leyfilegan innritunartíma. „Innritun frá“ er ekki okkar áætlaða koma og koma fyrir innritun er ekki sjálfkrafa villa.
+D08. Staðarklukka sé sýnileg í báðum yfirlitum og uppfærist. Dagsetning/staður/veður fylgi réttum degi. Klukkan sýnir tímann núna, ekki uppspunninn bókunartíma.
+D09. Samgönguspjöld sýni skráða Frá → Til leið og staðartíma rétta leggsins; heimleið hefur eigin enda. Hálfskráð leið sýni þekkta endann án ágiskunar.
+D10. Mynd í Í dag er breið, með ávölum hornum, án útþynningar, hreyfingar eða stærðarsleða. Staðarheiti fær heila línu. Veður ofan myndar er sjónrænt áberandi; hitastig að minnsta kosti í vægi fyrirsagnar, án sérstaks ramma.
+D11. „Nánari spá ⌄“ er saman undir veðri og opnar sama stað/dag. Myndaaðgerðir undir ⋯; utansmellur lokar án þess að virkja undirliggjandi hnapp.
+D12. Næsta skref er byggt á skráðum tímum og gögnum. Ekki álykta af raunstaðsetningu að mætt sé eða innritað, og ekki merkja sjálfkrafa Lokið.
+
+E. VIÐVARANIR OG UNDANTEKNINGAR [H1–H4]
+E01. Spjald með virkri viðvörun hefur BÆÐI gula útlínu og gulan viðvörunarþríhyrning efst til hægri. Gildir um sambærileg spjöld í tímalínu/ferðaleið, dagatali, kortalista og báðum Í dag-birtingum.
+E02. Ekki bæta löngum viðvörunartexta við hvert lítið spjald. Sameiginlegt yfirferðarspjald undir tímalínu sýnir fjölda og Yfirfara. Viðvörun innan breytingarforms má áfram skýra hvað þarf að laga.
+E03. Eitt sameiginlegt viðvörunarkerfi og einstök talning. Sama vandamál telur einu sinni þótt merking sjáist við fleiri tengdar færslur. Í dag sýnir dagsíu; heildaryfirlit öll virk atriði.
+E04. Viðvaranir ná meðal annars yfir skarandi dvalir, gistingu utan tengdra dvalardaga/ferðar, heimflug fyrir lok dvalar, tímaskörun, lok/komu fyrir upphaf og of stutta tengingu þegar nauðsynleg gögn eru til.
+E05. Nota skráða tíma og tímabelti. Ekki giska á lengd eða lágmarkstengitíma. Innritunargluggi hótels er ekki áætlaður komutími. Viðbótarkostnaður og opnar/aflýstar/loknar/allan-daginn færslur fá ekki tilbúna tímaskörun.
+E06. Nýr eða breyttur árekstur við vistun áfangastaðar/bókunar skal sýndur FYRIR skrif þegar gildandi athugun nær til hans. Höfnun heldur innslætti og skrifar ekki. „Vista samt“ er ekki það sama og samþykkt undantekning.
+E07. „Þetta er viljandi“ felur nákvæma viðvörun úr virkri talningu og öllum tengdum gulum merkingum. Hún finnst undir Samþykktar undantekningar með Afturkalla. Breytt tengt gagnasamhengi kallar á nýja yfirferð; óskyld breyting ekki.
+E08. Undantekningar eru staðbundnar við vafra/tæki í núverandi útfærslu; ekki lofa samstillingu þeirra. Hleðsluvilla má ekki þykjast leysa vandamál eða eyða samþykki.
+E09. Ekki merkja öll óbókuð atriði sjálfkrafa gul. Opin ferð er eðlilegur áætlunarhluti. Gistingarviðvörun kvöldsins fylgir fyrirliggjandi skilyrðum; sama niðurstaða og merking í báðum Í dag-birtingum og á tengdum spjöldum.
+E10. Leiðrétting gagna, samþykki og afturköllun endurnýi allar tengdar birtingar. Þema má ekki yfirskrifa gula merkingu. Engar bókanir færast sjálfkrafa við viðvörun.
+
+F. BÓKUNARGLUGGAR OG DAGSKRÁ [H2, H4–H6]
+F01. Varðveita alla 16 flokka: Flug; Gisting; Lestir; Bátar/ferjur; Akstur; Bílaleiga; Hjólaferðir; Gönguferðir; Dagsferðir; Áhugaverðir staðir; Veitingastaðir; Kaffihús; Barir/vínstaðir; Rooftop bar; Vistaðir staðir; Annað.
+F02. Samgöngur nota sameiginlega Frá/Til-tengingu, án tvítekins almenns áfangastaðavals þegar leiðin ræður tengingunni. Gisting og afþreying halda eigin áfangastaðavali.
+F03. Áfangastaðaval sýnir dvalardaga og nætur. „Nota daga áfangastaðar“ í gistingu er sérstakt val með afturköllun; val á stað/flokki yfirskrifar ekki sjálfkrafa bókunardaga.
+F04. Heiti er strax á eftir flokki/stöðu, á undan áætlaðri leið/dögum. Heiti eitt nægir fyrir opna lest/ferju/akstur. Ekki heimfæra þá undanþágu á flugkröfur án samþykkis.
+F05. Opnar ferðir nota valfrjálsa leið og áætlaðan dag/dagabil. Raunverulegir tímar, miðar og bókun bætast við síðar í SÖMU færslu. „Ganga frá ferð“ má ekki tvöfalda bókun eða kostnað.
+F06. Samgöngur hafa sambærilega kafla fyrir Brottför og Komu, útleið og heimleið. Stöð/flugvöllur/höfn, dagur, tími og tengd gisting saman við réttan enda.
+F07. Varðveita kaflana Miðar og bókun, Verð og greiðsla, Fleiri stillingar og stuttar hjálparskýringar. Almennir valfrjálsir kaflar byrja lokaðir við enduropnun og gluggi efst. Endurteikning opins forms fellir ekki saman val notanda.
+F08. Nýrri samgönguundanþága úr útgáfu 64 helst: ný opin lest/ferja/akstur byrjar með áætlun opna og nánari kafla lokaðan; eldri/bókaðar samgöngur og flug hafa aðalkafla nákvæmu leiðarinnar opinn. Þetta fellir ekki niður lokun annarra valfrjálsra kafla.
+F09. Í „Hvað vantar í ferðina?“ lokar lokun/endurskoðun aðalkafla undirköflum. Endurteikning meðan aðalkafli er opinn varðveitir val. Lokaðir kaflar skilja ekki eftir stórt tómt svæði.
+F10. Ný síða/gluggi opnast efst. Undirgluggar, kortaval og skjalskoðun varðveita óvistaðan innslátt; gildandi sérstakt endurkomuflæði í bókun/veski haldist. Óvistaðar breytingar hafa lokunarvörn.
+F11. Ein sýnileg bókunarstaða. Bókað er ekki sjálfkrafa Greitt. Bein skráning greiðslu getur merkt opna bókun bókaða með skýringu; ekki breyta eldri ósamræmdum bókunum þegjandi við opnun.
+F12. Dagsettar opnar og bókaðar færslur raðast tímarétt. Áætlaðir dagar merktir Áætlað; ódagsett neðst. Skráður brottfarardagur gengur framar áætlun, án breytingar á vistuðum dögum.
+F13. Við eyðingu bókunar skal staðfesta. Varðveita tengingar og sömu færsluauðkenni við venjulega breytingu/endurtöku eftir hlutavillu.
+
+G. LEIÐSÖGN OG STAÐAVAL [H3–H6]
+G01. Eitt sýnilegt „Gangandi | Í bíl“ val við LEIÐSÖGN AÐ STAÐNUM í bókuninni. Nýrra samþykkið leysir af hólmi endurtekin val við staðaval, dagatal, Í dag og önnur leiðsagnarspjöld. Þau nota vistað val.
+G02. Sama regla í öllum 16 flokkum og öllum sambærilegum leiðum. Engin þörf á tegund bíls/leigubíls í leiðsagnarvali. Leigubílskostnaður skráist eftir þörfum sem viðbótarkostnaður; leiðsögn stofnar hann ekki sjálf.
+G03. Sjálfstætt val fyrir útleið/heimleið, leið eftir komu og afhendingu/skil bílaleigu. Sami staður við afhendingu/skil þýðir ekki sami ferðamáti.
+G04. „Leggja af stað frá“ býður núverandi staðsetningu eða gilda gistingu viðkomandi dags/áfangastaðar. Útritunardagur má nota gistingu sem upphaf. Ekki velja komuhótel sem brottfararhótel eða yfirskrifa handval.
+G05. Google Maps fær raunverulegan upphafsstað sem origin þegar hótel/punktur er valinn. Að miðja staðaval á hóteli er ekki val á upphafi leiðsagnar. Frá-texti sýni raunverulegt heiti þegar það liggur fyrir.
+G06. Ef valið upphaf er horfið, ógilt, varabókun eða afbókað skal sýna yfirferðarskýringu; ekki falla hljóðlega á staðsetningu símans. Nákvæmur fyrri stöðvar-/flugvallarpunktur varðveitist.
+G07. Leiðsögn að brottfararstað og frá komustað að gistingu er óháð því hvort ráðlagður brottfarartími er virkur. Rétt lestarstöð getur uppfyllt staðartengingu án þess að velja gistingu í hennar stað.
+G08. Ferðamáti eða upphafsstaður breytir ekki skráðum ferðatíma, mætingarfresti eða öryggisbili sjálfkrafa. Breyting í virkri brottfararáætlun með óbreyttum ferðamínútum krefst yfirferðar.
+G09. Einfalt staðaval, skýrt valið heiti og Breyta staðsetningu; vistaðir staðir/leitar-/kortaval innan staðagluggans. Hætta við staðaval vistar ekki óstaðfest val.
+G10. Staðaleit og kort nota borg/dag viðkomandi leiðarenda. Almennt borgarmerki er ekki nákvæm stöð, höfn eða mætingarstaður. Nákvæmni skal varðveita og tillaga þarf staðfestingu.
+G11. „Skoða tillögu að staðsetningu hótels“ við kort og bókun opnar yfirferð; uppruni tillögunnar skýr. Tillaga er ekki staðfest hótelstaðsetning.
+G12. Tillaga að degi út frá gistingu fyllir aðeins við val „Nota daginn“. Ekki yfirskrifa skráðan dag eða færa bókaða ferð. Fleiri gistimöguleikar/ósamræmi gefa val eða skýringu, ekki ágiskun.
+G13. Lestarstöðvalisti komi við staðaval, með fyrri/nálægum stöðvum og handvirkri varaleið. Engin stöð er staðfest fyrr en notandi velur hana. Stöðvaskrá er ekki lifandi brottfararþjónusta.
+G14. Heimferð endurnýtir nákvæmar útferðarstöðvar í öfugri röð þegar við á. Sérvaldar heimferðarstöðvar haldast. Eldri borgarheiti fá sérstakt „Nota [stöð] úr útferð“ val, án þvingaðrar yfirskriftar.
+G15. Flugvallarreitir út-/heimferðar sýna þekktan kóða og fullt heiti; varðveita upprunalegan kóða og óþekkt gildi. Kortapunktur er flugvöllur, ekki nákvæmt hlið/inngangur.
+
+H. GISTING OG BÍLALEIGA [H3–H5]
+H01. Fáni og heiti TENGDS áfangastaðar skulu sjást við gistingu í dagatali, báðum Í dag-birtingum, litlum/stórum gistispjöldum, inn-/útritun, Gisting í kvöld, flokkayfirliti, kortaspjöldum og lesafriti. Ekki giska út frá næsta áfangastað.
+H02. Inn-/útritunardagar saman í dvalarhluta og nætur reiknaðar af þeim. Innritun frá / útritun fyrir eru valfrjálsir skilmálatímar, aðskildir frá áætlaðri komu okkar.
+H03. Við skarandi gistingu skal aðgreina nauðsynleg viðbótarherbergi frá valkostum/varabókun. Nauðsynleg herbergi teljast með kostnaði og dagskrá. Útritun og ný innritun sama dag eru ekki skörun sömu gistinætur.
+H04. Valin gisting og nauðsynleg herbergi teljast í heildaráætlun. Aðrar virkar bókanir sjást sem skuldbindingar með greiðslum/eftirstöðvum. Val afbókar ekki hjá söluaðila. Óleyst val merkir heild ófullgerða.
+H05. Gisting í kvöld og sjálfgefin hóteltillaga nota gistingu í notkun. Vara-/aflýst gisting helst aðgengileg í gistiyfirliti, korti og veski, skýrt merkt.
+H06. Greiðslufrestur og frjáls afbókunarfrestur eru aðskilin. Varabókanir halda eigin frestum. Ógreiddur gistigjalddagi birtist í áminningum þegar sjö dagar eða minna eru eftir; vantar afbókunarfrest er það óskráð, ekki ókeypis afbókun.
+H07. „Afbókað hjá söluaðila“ krefst staðfestingar notanda; appið afbókar ekki sjálft. Bókun, skjöl, upprunalegt verð og greiðslur varðveitist. Gjald og móttekin endurgreiðsla skráð sér; gjald telst kostnaður, endurgreiðsla eyðir ekki greiðslusögunni.
+H08. Varðveita tengda valkosti og eyðingarvarnir svo tengingar verði ekki óleysanlegar. Viðbótarkostnaður, t.d. matur við varahótel, hverfur ekki úr heild með gistiverðinu.
+H09. Bílaleiga er EIN bókun og EINN kostnaður. Afhending og skil eru tveir atburðir: Sækja bíl / Skila bíl á réttum dögum/tímum. Leigutíminn er ekki samfelld afþreying sem skarast við alla dagskrá.
+H10. Skiladagur, skilatími og skilastaður valfrjáls/sjálfstæð. „Sami staður og við afhendingu“ fylgir nýjasta afhendingarstaðnum. Ekki giska á skilastað eða tíma.
+H11. Afhending og skil sama dag sjást sem tveir atburðir og opna sömu bókun. Skilaleiðsögn notar skilastað. Upplýsingarnar fylgja PDF og sóttu lesafriti, án tvítalningar.
+
+I. VALFRJÁLS LOKATÍMI [H4, útgáfur 84 og 87]
+I01. Hefst kl. / Lýkur kl. (valfrjálst) gildir í hjólaferðum, gönguferðum, dagsferðum, áhugaverðum stöðum, veitingastöðum, kaffihúsum, börum/vínstöðum, rooftop bar, vistuðum stöðum og Annað.
+I02. Ekki forvelja lengd/lokatíma. Vistaður staður þarf ekki tímasetta heimsókn. Flug/lest/ferja/akstur halda eigin brottfarar-/komureitum; gisting og bílaleiga sínum reitum.
+I03. Gilt tímabil birtist samræmt í dagatali, Í dag, Næstu dagar, flokkayfirliti, kortaspjöldum, PDF og lesafriti. Atriði með lokatíma má halda forgangi þar til því lýkur; ekki merkja sjálfkrafa Lokið.
+I04. Ógild röð tíma kallar á leiðréttingu. Eldri fjöl­dagaendadagur varðveitist; hreinsun valfrjáls lokatíma eyðir ekki ótengdum eldri gögnum. Tímaskörun er yfirfarin fyrir vistun samkvæmt sameiginlegum reglum.
+
+J. KOSTNAÐUR, REIKNIVÉL OG UPPGJÖR [H1, H4–H5]
+J01. Röð: Flokkur → Tengist bókun? → Staður/heiti → Upphæð og útreikningur. Einfalt heiti eins og Kvöldmatur nægir.
+J02. Skrá kostnað stofnar nýjan reikning. Eldri færslu er breytt úr kostnaðaryfirliti eða við bókun. Tengival má ekki yfirskrifa eldri reikning óvart.
+J03. Flokkur sýnilegur ofarlega og breytanlegur, líka við eldri/tengdan kostnað. Opnað úr bókun: flokkur og tenging forvalin. Almenn flýtileið man síðasta vistaða flokk í sama vafra; ný tenging sjálfgefið Nei, sjálfstæður kostnaður.
+J04. Tengival yfirskrifar ekki innslátt heitis, flokks eða upphæðar. Kostnaður má hafa annan flokk en bókunin. Flokksbreyting flytur sömu færslu, stofnar ekki nýja. Viðbótarkostnaður sýnir emoji síns eigin flokks.
+J05. Tengdur kostnaður sést við bókun og í heildaryfirliti en telst EINU SINNI. Vistunarstaðfesting sýnir skýrt upphæð og greiðslustöðu.
+J06. Þjórfé: ekkert, 5%, 10%, 12%, 15% og eigin upphæð. Reiknast áður en skipt er. Þegar innifalið skal engu bætt við. Reiknivél heldur áfram frá innsláttri upphæð.
+J07. Fjöldi alls og Okkar fjöldi hlið við hlið, líka í síma; tala velst við snertingu. Okkar fjöldi sjálfgefið 2 og breytanlegur. Okkar hluti má líka vera handvirkur.
+J08. Aðeins okkar hluti telst ferðakostnaður. Reikningur, þjórfé, skipting og okkar hluti varðveitast til endurskoðunar/breytingar.
+J09. Val um að við greiddum allan reikninginn fyrir hóp. Aðgreina okkar ferðakostnað, greitt alls og það sem fæst til baka. Móttekin endurgreiðsla og afturköllun uppgjörs breyta ekki okkar ferðakostnaði; staðan helst við enduropnun og sést á viðeigandi stöðum.
+J10. Hætta við í kostnaðarskráningu lokar og geymir drög í sama vafra; drög teljast ekki kostnaður. Ef drög eru til þarf Halda áfram / Henda drögum áður en ný skráning tekur við. Lokun án vals yfirskrifar ekki eldri drög.
+J11. Ófullgerð ISK-heild sé merkt á ferðaspjaldi og í kostnaðaryfirliti ef gengi/skráð ISK-greiðsla vantar. Varðveita samanburð vistaðs bókunargengis og núverandi gengis; ekki endurskrifa bókunargengi þegjandi.
+J12. Innri vistunarupplýsingar mega ekki birtast sem athugasemdir. Tómar athugasemdir haldist tómar.
+J13. „+ Skrá viðbótarkostnað“ sést í öllum bókunarflokkum. Fyrir fyrstu vistun er hann óvirkur með skýringunni „Vistaðu bókunina fyrst til að bæta við kostnaði.“ Eftir vistun tengist hann réttri bókun.
+J14. Verð og greiðsla hefur lokaða skýringu „Hvað hefur þetta áhrif á?“. Samanlagt verð fram og til baka telst einu sinni; ekki skrá sama verð aftur sem viðbótarkostnað.
+J15. „Sýna líka í dagskrá“ er valfrjálst í kostnaði; nýr reikningur er sjálfgefið aðeins í kostnaði. Valin birting notar sömu færslu á kostnaðardegi/flokki, breytir ekki bókunarflokki og tvítelur ekki. Daglegur reikningur er ekki næsta tímasetta samgöngubókun eða margra nátta gisting.
+J16. Viðbót vegna útlagðs kostnaðar eða önnur afmörkuð breyting má ekki breyta reiknivél, þjórféshnöppum, skiptingu eða samþykktum reitum utan umfangs.
+
+K. FERÐAVESKI OG INNFLUTNINGUR [H2–H5]
+K01. Flugmiðar, QR-kóðar, staðfestingar og önnur ferðaskjöl haldist tengjanleg bókunum. Miði má vera eingöngu hjá söluaðila; viðhengi er ekki skilyrði fyrir bókun eða Bókað-stöðu.
+K02. Hvert tengt skjal birtist einu sinni undir réttri bókun, með opnun/breytingu/eyðingu. Ótengd skjöl finnast í Önnur skjöl; horfin bókunartenging felur ekki skjal. Bókun og staðfesting eru aðskilin tengd atriði.
+K03. Opna bókun og Bæta við skjali/miða við bókun nota sömu bókun. Nýtt brottfararspjald bætist við; fyrri staðfesting hverfur ekki. Telja bókanir og skjöl sér.
+K04. Tengja/aftengja skjal eyðir því ekki sjálfkrafa. Óvistaður bókunarinnsláttur varðveitist meðan skjalaval er opið. Skjal annarrar bókunar er ekki tekið yfir sjálfkrafa.
+K05. Skjalskoðari hefur Loka skjali, varðveitir undirliggjandi form/skrun og skilar til baka. Niðurhal og Opna í öðrum flipa eru skýrt aðgreind frá vistun í appi. Deiling einkaskrár deilir skrá, ekki útrunninni einkaslóð.
+K06. PDF/texti/mynd/skjáskot verða fyrst bókunardrög. Upprunaleg gögn tiltæk til samanburðar. Ólæsileg/óviss gildi ekki fyllt með ágiskun. Notandi yfirfer og hakar við samþykki fyrir vistun; leiðbeining um vantað hak sé við vistunarhnappa.
+K07. Út-/heimflug studd þegar leggir eru skýrir. Komudagur ekki búinn til úr brottför. Læsilegir reitir haldist þótt einn tími sé ólæsilegur; ólesinn reitur merktur/auður til yfirferðar.
+K08. Vörn gegn tvöföldum innflutningi. Sama númer eitt sér sameinar ekki bókanir sjálfkrafa. Bjóða handval á eldri bókun, tengja nýtt skjal eða halda áfram með nýja bókun.
+K09. Sama skjal þegar til: grænt hak og Skjalið er þegar til, Skoða skjalið / Opna bókun. Möguleg sambærileg bókun: gul merking Bókun gæti þegar verið til. Merkið á eigin línu. „Þetta er önnur bókun — halda áfram“ helst sérstakt val.
+K10. Innfluttur miði getur uppfært opna lest/ferju/akstur eftir handvali og samanburði, í sömu færslu. Varðveita heiti, athugasemdir, tengingar, heimferð, eldri skjöl og skráðan kostnað nema notandi breyti honum. Engin sjálfvirk sameining eða yfirskrift verðs/greiðslna.
+K11. Ef nýtt stöðvarheiti gerir eldri hnit/áætlun úrelt þarf yfirferð; ekki flytja gömul hnit á nýtt heiti. Villa eftir hluta vistunar má ekki stofna aðra bókun eða tvöfaldan kostnað við endurtilraun.
+K12. Valfrjáls miðamerking: Fyrir hvern? Ekki tilgreint / Mig / Maka minn / Okkur bæði; Ferðaleggur: Ekki tilgreint / Útferð / Heimferð / Öll bókunin. Ekki forvelja farþega út frá reikningi eða OCR.
+K13. Réttir miðar fyrir legg birtist fyrst í báðum Í dag-birtingum og á litlum spjöldum/Næstu dagar. Sameiginlegur miði hefur einn hnapp. Ómerktir miðar haldist aðgengilegir og önnur skjöl/leggir finnast áfram. Fjöldi skjala er ekki fjöldi farþega.
+
+L. KORT [H2, H4, H7]
+L01. Aðgreina Sýna alla ferðina og Sýna áfangastaði. Áfangastaðasýn sýnir áfangastaði eða almennt ferðasvæði, án hótela/stöðva/flugvalla og samgöngulína. Heildarsýn endurheimtir viðeigandi punkta/tengingar.
+L02. Almennur ferðasvæðispunktur stofnar ekki dvalarstað og er ekki nákvæmur leiðsagnaráfangastaður. Yfirsýn sé nógu víð; val á gistingu, stað eða legg hafi viðeigandi aðdrátt.
+L03. Röð kortahnappa: Sýna alla ferðina → Sýna áfangastaði → næsti ferðaleggur. Varðveita flokkasíur, röð og virkni.
+L04. Borgarheiti við minni merki, skýrari samgöngulínur með ljósri útlínu, valinn leggur/endapunktar dregnir fram. Samgöngutákn við staði, ekki ofan á leiðarlínum. Fluglitur gulur; lest blá. Ekki kalla tengilínu nákvæma aksturs-/lestarleið.
+L05. Sama kortatákn í merkjum, táknskýringum og kortasíum; fyllt flugvél/göngutákn haldist. Táknskýring sýni aðeins tákn sem eru sýnileg á kortinu, án tvítekninga.
+L06. Kort, stækkun, gististaðir og mætingarstaðir haldi samþykktu flæði og varðveiti gögn. Kortaval miði við réttan dag og gistingu þegar við á. Heiti/nákvæmni valins staðar sé sýnileg.
+L07. Varðveita heimildir OpenStreetMap og mynd-/táknagjafa, ásamt samþykktri lokuðu upplýsingastýringu. Ekki fela nauðsynlega heimild eða fjarlægja hana með útlitsbreytingu.
+
+M. VEÐUR OG HREYFINGAR [H1, H4, H6–H7]
+M01. Open-Meteo-veður haldist tengt réttum stað og völdum degi, sjálfstætt frá næstu bókun. Sól, léttskýjað, skýjað, rigning og snjór skýrt aðgreind. Tákn má ekki hverfa undir upplýsingaspjald.
+M02. Vindur í m/s og km/klst., m/s fyrst; rakastig og úrkomuupplýsingar varðveitist. Samanburður við árstíðarhita sé skýrt viðmið, ekki raunspá.
+M03. Varðveita samþykkta veðurgrafík, ský og úrkomu í ljósum/dökkum þemum. Aðgreina virkar veðurhreyfingar frá öðrum hlutum: kort, tímalína og aðrir hnappar/spjöld eiga ekki að hreyfast stöðugt. Virða minna/slökkt hreyfival.
+M04. „Næsti áfangastaður“ hefur ENGA staðarmynd og enga myndavalshnappa. Nýrri ákvörðun 21-10-2026 fellir eldri litlu-mynd-tillögu þar úr gildi. Hausmynd og mynd í Í dag haldast.
+M05. Staðartími í Næsta ferð og Næsti áfangastaður miðist við staðinn. Dagaskipti eða endurteikning má ekki skilja eftir spá fyrri staðar/dags.
+M06. Flug-/veður-/leiðsagnarupplýsingar sem þurfa net mega ekki birtast sem nýsóttar þegar þær eru úr gömlu afriti. Upplýsingar um sókn/óvissu haldist.
+
+N. ÁN NETS, AFRIT, PDF OG EYÐING [H4–H7]
+N01. „Sækja fyrir ferð“ sækir lesafrit af ferða-/bókunargögnum og þeim skjölum sem notandi velur. Ferðir án nets og Opna sótt afrit eru skýrar leiðir í afritið.
+N02. Afritið lesanlegt án nýrrar innskráningar eða útrunninna skjalaslóða. Aðgreina sótt skjal, óvalið skjal og nettengil. Birta uppfærslutíma og þegar endursækja þarf gögn.
+N03. Misheppnuð/stöðvuð ný sókn varðveitir fyrra afrit. Afrit staðbundið í tæki/vafra, ekki sönnun þess að öll skjöl séu sótt í öllum tækjum. Kort, Maps, ytri vefsíður og nýjar flug-/veðurupplýsingar þurfa áfram net.
+N04. Lesafrit breytir ekki netgögnum. Varðveita aðskilnað notenda og hreinsun við reikningsskipti/útskráningu; fjarlæging afrits úr tæki eyðir ekki netferð.
+N05. Færanlegt ZIP-öryggisafrit tekur eina eða allar aðgengilegar ferðir, hrá gögn og raunveruleg skjöl. Endurheimt yfirfarin og staðfest áður en skrif hefjast; stofnar ný eintök/auðkenni með réttum tengingum og yfirskrifar ekki upprunalegar ferðir.
+N06. Hlutavilla við endurheimt sé skýr og framhald noti sama endurheimtareintak; ekki lofa viðskiptum yfir allt ferlið. Varðveita þjórfé, skiptingu, útlagt og uppgjör.
+N07. PDF sýni varðveittar ferðaupplýsingar, réttar dagsetningar/tíma og kostnað án tvítalningar. PDF er ekki skjalabætaafrit af öllum viðhengjum; ferðaveski og ZIP-öryggisafrit hafa aðra merkingu.
+N08. Eyða ferð hefur tvö þrep og lokastaðfestingu. Bjóða Vista PDF áður en ég eyði og aðgang að ferðaveski. Að opna PDF eyðir engu og sannar ekki vistun þess. Réttindi og endanleg eyðingarstaðfesting haldist.
+N09. Eldri ákvörðun um útflutning á hverri ferð sem JSON, CSV og PDF er varðveitt sem samþykkt stefna [H6, 02-10-2026]. Það er EKKI fullyrðing um þrjár fullgerðar útflutningsleiðir; núverandi framkvæmda-/þekjustaða er í viðvörunarlista.
+
+O. VÖKTUN OG ÁMINNINGAR [H4–H7]
+O01. Varðveita fyrirliggjandi flugvöktun, stöðu/seinkun/hlið, og sýnilegt val til að slökkva. Ekki gera skráð bókunargildi að lifandi flugupplýsingum.
+O02. Varðveita greiðslu- og frjáls-afbókunaráminningar og tengdar dagatalsaðgerðir. Þær eru ekki falinn almennur hjálpartexti. Appið má ekki fullyrða að dagatalsfærsla hafi vistast í síma án staðfestingar.
+O03. Ekki lofa sjálfvirkri vöktun/push þegar appið er lokað ef það hefur ekki verið útfært og sannreynt. Fyrri ólokin ósk um slíkar áminningar er ekki felld niður með regluskjalsuppfærslu.
+
+P. ÞAÐ SEM ÞESSI SAMEINING SAMÞYKKIR EKKI
+P01. Tillögur um nýjar Frá-/Til-línur á sitthvorri línu, nýja borgar-/fánalínu efst á ferðadegi og nýtt orðalag óbókaðrar gistingar eru ekki sjálfkrafa samþykktar útfærslur. Fyrri samþykktar leiðarupplýsingar halda gildi.
+P02. Sameinað „Tilbúið fyrir ferð“ yfirlit er áfram til yfirferðar, án heimildar til að tvöfalda ferðaveski eða fyrirliggjandi afrit.
+P03. Ekki ný tenging Ferðatilboðsvaktar, nýtt app-tákn, ný gjaldskyld þjónusta eða breyting á bakenda með þessari sameiningu.
+P04. Kóðaeiginleiki sem finnst án ákvörðunarheimildar er skráður sem fyrirliggjandi útfærsla sem ber að varðveita utan umfangs, ekki nýlega samþykkt regla.

@@ -1,0 +1,76 @@
+Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
+Gildandi staða 30-10-2026 eftir sameiningu ákvarðana
+
+Lesa þetta skjal og „Ferðakerfið mitt — gildandi ákvarðanir“ fyrir hverja breytingu. Regluskjalið geymir kröfur, þessi listi framkvæmda-/sannprófunarstöðu. Eldri sögulisti er varðveittur í yfirferðarskjalinu en er ekki nýr verkefnaforgangur.
+
+1. VIÐVARANIR UM SAMÞYKKTIR OG KÓÐA
+
+V01 — STAÐFEST FRÁVIK: miðnættistími hverfur úr ferðaleið/tímalínu.
+Krafa: B06/B08 — varðveita og birta skráða tíma.
+Kóði: útgáfa 92, index.html, renderTimeline, línur 1775–1784. Birtingin útilokar e.time === '00:00', sem er einnig notað sem innra varagildi þegar tíma vantar.
+Endurgerð: raunverulegt renderTimeline keyrt með bókaðri prufulest, skráðum degi og local_time. 00:00 sást ekki; 00:01 og 12:30 sáust. Prófið er einangrað Node-keyrslupróf með hermdum DOM og óvirkum þjónustum, ekki iPhone-próf.
+Saga: sama skilyrði finnst í eldri útgáfuafritum. Ekki rétt að kalla þetta nýja bilun í 92 eða fullyrða að tímasetning hafi horfið úr gögnunum; frávikið er í birtingu.
+Staða: ólagað. Þessi lota breytir aðeins skjölum. Viðgerð þarf að greina gildan 00:00 frá óskráðum tíma, án þess að sýna tilbúinn miðnættistíma. Varðveita röðun, áætlaða daga, viðvaranir og heimleið.
+
+V02 — SAMÞYKKT STEFNA, ÚTFÆRSLA FANNST EKKI: CSV-útflutningur ferðar.
+Krafa: N09 — eldri samþykki 02-10-2026 um JSON/CSV/PDF-útflutning, endurheimt úr fyrra samtali.
+Athugun: í útgáfu 92 fannst PDF-forskoðun og ZIP-öryggisafrit með backup.json. Engin aðgerð/hnappur eða CSV-smíði fyrir útflutning ferðar fannst í afhentum vefskrám. CSV-textar í index.html eru flugvallarkóðinn CSV, ekki CSV-útflutningur. Ekki líta á þá sem útfærslu.
+Saga: engin samsvarandi útflutningsleið fannst í yfirförnum útgáfuafritum 50–86, 90–92. Ekki staðfest að hún hafi áður verið til; ekki merkja sem nýlega horfna.
+Staða: óuppfyllt/þarf nánari sögu ef hún verður tiltæk. Engin ný útflutningsútfærsla eða breyting á afritakerfi gerð hér. ZIP-JSON er ekki sjálfkrafa staðfesting á sérstakri JSON-útflutningsaðgerð.
+
+V03 — STAÐFEST ÓSAMRÆMI Í ÚTGÁFUTEXTA, EKKI SÖNNUN UM HORFINN EIGINLEIKA.
+Útgáfuafrit 92 hefur bookingBuildVersion textann „Útgáfa 29-10-2026 · 90“ í bókunarglugga (index.html, lína 624), þótt afhendingin sé 92.
+Staða: óbreytt í þessari skjalalotu. Gamalt sýnilegt númer má ekki nota eitt og sér til að álykta að notandi sé með gamlan kóða. Þetta er greiningarfrávik, ekki sönnun þess að samþykkt virkni sé horfin.
+
+V04 — ÞEKJUMÖRK: ekki hægt að staðfesta að ALLAR eldri ákvarðanir haldist.
+Aðgengilegt samtal er að hluta stytt. Ekki hafa allar eldri samþykktir verið endurheimtar orðrétt. Allar 21 afhendingarskrár 92 voru teknar í skráar-/háðayfirlit og viðeigandi virkni skoðuð; það jafngildir ekki handvirkri línu-fyrir-línu úttekt allra útgáfa eða heildarprófun með lifandi gögnum.
+Ekki merkja heilbrigði alls kerfisins staðfest. Skrá nýtt frávik með heimild/kóðastað þegar það finnst, í stað þess að láta óskráð samþykki falla úr gildi.
+
+2. STAÐFEST AF NOTANDA — AÐ AFMÖRKUÐU MARKI
+• Fyrri iPhone-yfirferð 17-10-2026: engar villur tilkynntar í yfirförnum hlutum, ekki allir ferðaflokkar prófaðir.
+• 25–26-10: lestarleiðsögn frá gistingu að stöð og frá komustöð að gistingu; rétt komuhótel birtist eftir skráningu komudags. Dagsetningartillaga vistuð og varðveitt eftir enduropnun.
+• Útgáfa 46: nákvæmar heimferðarstöðvar endurnýttar í öfugri röð og haldast eftir vistun/enduropnun á iPhone.
+• Útgáfa 63: notandi staðfesti samþykki undantekningar og aflétta gula merkingu í sýndu flæði. Það er ekki fullstaðfesting afturköllunar/villuferla í tæki.
+• Útgáfa 75: ferðasvæði, aðskildar kortasýnir og samþykkt uppsetning ferðaveskis. Notandi segir veskið virðast vistast án nets eftir endurprófun; ekki allar skrár/tæki fullstaðfest.
+• Útgáfa 83: miði maka birtist á litlu Næstu dagar-spjaldi og opnast; notandi staðfesti virkni.
+• Útgáfa 85: fyrir-vistunarviðvörun um tímaskörun og tímasetningar í sýndri iPhone-notkun.
+• Útgáfa 88: bílaleiguafhending/skil prófuð og sögð virka. Ekki þar með PDF/offline/allir möguleikar staðfestir.
+• Eftir útgáfu 90: „Leiðsögn virkar“; myndir staðfestu fána og áfangastaðarheiti við gistingu. Varðveita þessa virkni.
+
+3. ÚTFÆRT Í AFHENDINGARSÖGU — EKKI HEILDARSTAÐFEST
+Eftirfarandi verk eru til í útfærslu/sögu og á ekki að leggja fram aftur sem ný verkefni án tiltekins galla:
+• Bæði Í dag-yfirlit og samhengi ferðadags, minni gistispjöld og næstu dagar.
+• Opin samgönguskráning, áætlaðir dagar, gistibundnar tillögur og nákvæmt stöðvaval.
+• Sameiginlegar viðvaranir, dagsía, samþykktar undantekningar og fyrir-vistunarathuganir.
+• Innflutningur PDF/texta/mynda, yfirferð og tvískráningarval; uppfærsla opinnar áætlunar í sömu bókun.
+• Farþega-/leggmerking miða, birting þeirra á stórum/litlum spjöldum.
+• Valfrjáls lokatími í tíu heimsóknar-/afþreyingarflokkum.
+• Afhending/skil bílaleigu sem tveir atburðir sömu bókunar.
+• Sameiginlegt Gangandi/Í bíl val og gististaður sem upphaf; gistifáni og borgarlína.
+• Útgáfa 92: sameiginleg gistingarviðvörun/klukka í báðum Í dag, dagsetningavörn og raunverulegt heiti upphafsstaðar.
+
+Prófunarstaða 92 er samkvæmt varðveittu PROFUN-92.md: 19 vafraprófanir, 18 afmarkaðar varðveisluprófanir og 13 heil eldri söfn (192 prófanir) stóðust í fyrri lotu. Sjö eldri söfn stöðvuðust eins í grunninum og 92; þau teljast EKKI standast. Þessi skjalalota endurkeyrir ekki allt prófasafnið og gerir ekki þær tölur að nýjum niðurstöðum.
+
+4. RAUNVERULEGA ÓLOKIÐ / ÓSTAÐFEST
+☐ V01: laga miðnættisbiringu afmarkað þegar viðgerð er tekin fyrir.
+☐ V02: varðveita CSV-stefnu á lista; útfærsla/eldri saga ekki fundin.
+☐ Raunveruleg iPhone/iPad-/Safari-prófun útgáfu 92, lifandi innskráning/vistun og ný sótt ferð eftir uppfærslu eru ekki staðfest í aðgengilegu samtali.
+☐ Full yfirlits-/regluprófun allra 16 flokka og allra sambærilegra birtinga er ekki lokið. Skrá nákvæmt umfang hverrar staðfestingar.
+☐ „Tilbúið fyrir ferð“ sameinað yfirlit: bera fyrst saman við veski og afrit; engin ný útfærsla samþykkt.
+☐ Tilkynningar/vöktun þegar appið er lokað: fyrri ósk varðveitt, virkni ekki staðfest. Fyrirliggjandi opið-app vöktun og dagatalsútflutningur eru ekki sönnun á bakgrunnstilkynningum. Ekki stofna nýja sjálfvirkni við þessa skráningu.
+☐ Nákvæmt umfang eldri áminningaróskar, meðal annars laugardag kl. 13, þarf að endurheimta áður en henni er gefin ný útfærsla. Ekki merkja hana niðurfellda eða framkvæmd á grundvelli ófullkominnar samantektar.
+☐ Heildarflæði sambærilegra bókunarglugga á iPhone/iPad enn ófullstaðfest; ný útlitsendurskoðun ekki sjálfkrafa heimil.
+
+5. TILLÖGUR — EKKI SAMÞYKKTAR KÓÐABREYTINGAR
+• Sérstakar nýjar Frá-/Til-textalínur og ný 🇨🇿 Prag → 🇮🇹 Trieste fyrirsögn ferðadags.
+• Nýtt orðalag „Áætluð innritun · óbókað“ / nákvæmari gistingarviðvörun. Fyrri gul viðvörunarbirting skal halda óháð orðalagstillögu.
+• Sameining Ferðatilboðsvaktar við ferðakerfið, nýtt lokaval app-tákns eða ný þjónusta.
+Þetta breytir ekki fyrri samþykktum um sýnilega leið, fána, staðarheiti eða stöðu bókunar.
+
+6. NÆSTA SKREF OG BREYTINGASAGA ÞESSARAR LOTU
+Samþykkt verkefni: yfirfara/sameina ákvarðanir í reglur og vara við frávikum. Skjöl uppfærð og sett við útgáfu 92. Keyrslukóði og gögn óbreytt. Engin ný app-útgáfa afhent með þessari skjalalotu.
+Við áframhaldandi breytingu skal lesa báðar heimildir, tilgreina afmarkað viðgerðarumfang, bera saman við varðveitta 92 og skrá niðurstöður án þess að flytja gömul verkefni aftur í ólokið að ástæðulausu.
+
+
+30-10-2026 · ÚTGÁFA 93 — AFMÖRKUÐ VIÐGERÐ Á SPÁSSÍUM Í DAG
+Staðfest útlitsfrávik í 92: #todayNext hafði 0px padding og innri spjöld lágu upp að ytri ramma. Ein CSS-regla notar sömu 17px innri spássíur og flýtispjaldið; aðeins index.html breytt af vefskrám. 20 Chromium-prófanir stóðust með prufugögnum, þar með talin mæling í 64 stillingasamsetningum. iPhone/Safari og nákvæm endurheimt alls fyrra útlits eru óstaðfest. V01/V02/V03 eru óbreytt; JavaScript-kóði og gögn óbreytt. Sjá PROFUN-93.md.
