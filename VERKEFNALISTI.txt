@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi staða 30-10-2026 — útgáfa 98 og afmarkaðar staðfestingar notanda
+Gildandi staða 30-10-2026 — útgáfa 99 og afmarkaðar staðfestingar notanda
 
 Lesa þetta skjal og „Ferðakerfið mitt — gildandi ákvarðanir“ fyrir hverja breytingu. Regluskjalið geymir kröfur, þessi listi framkvæmda-/sannprófunarstöðu. Eldri sögulisti er varðveittur í yfirferðarskjalinu en er ekki nýr verkefnaforgangur.
 
@@ -137,3 +137,10 @@ Samþykkt: F14/F15. Samtenging dags milli Áætluð leið og dagar og nákvæmra
 Prófað í þessari lotu: 46 Chromium-vafraflæðisprófanir með prufugögnum standast, þar af 37 fyrri varðveisluprófanir og 9 ný prófasöfn. Ný próf ná yfir alla þrjá flokka, stakan dag/dagabil, nákvæman dag, hreinsun/Afturkalla, sjálfstæða komu/heimferð/tíma/stöðu, undantekningu flugs, opnun eldri misræmis án gagnabreytinga og hætt við. Raunveruleg saveItem/readOpenJourneyPlan föll keyrð með hermdum skrifum fyrir vistun og enduropnun; óvirk skjalatenging og kostnaðarvistun í þeim prófum. Sama færsluauðkenni, sérgögn, staða, leiðarheiti og heimleið varðveitt; reiknings- og skjalagögn prufu ósnert. Heiti eitt og einn dagur vistast án tíma/bókunar; dagabil vistast án brottfarardags og ógilt bil er stöðvað fyrir skrif. Röðun yfirfarin eftir vistun. Símabreiddir 320/393/430/768px; nýtt Akstursform sjónskoðað við 393px. JavaScript-málskipan staðfest. Sjá PROFUN-98.md.
 Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning og gagnaskrif, ytri Maps/netþjónustur og allir mögulegir eldri gagnavalkostir. Ekki heildarábyrgð á villuleysi. V01–V04 og fyrri ólokin verk standa áfram. Engin ný notandastaðfesting á 98 er skráð. Fyrri U96/U97 staðfestingar varðveittar.
 Afhending: ZIP 98; ef 97 er uppsett nægir að skipta út index.html.
+
+
+12. VIÐGERÐ 99 Á SAMTENGINGU DAGSETNINGA — 30-10-2026
+Notandi tilkynnti eftir 98: Frá degi virkar aðeins aðra leið, Til dags virkar ekki og tekur út Frá dag. Fyrri 46 sjálfvirk próf staðfestu því ekki fulla raunvirkni; ekki skrá 98 sem staðfesta af notanda.
+Viðgerð: endurtekinn atburður á óbreyttum degi og ófullgert badInput breytir ekki tengdum reitum; ein Til-dagsetning með tóman Frá-reit samræmist sem einn dagur. Fyrri Frá-dagur varðveitist þegar Til dags býr til dagabil. Síðustu tengdu gildi eru endurstillt við opnun nýrrar/eldri færslu án breytinga á vistuðum gögnum. Gildir um Akstur, Lestir og Báta/ferjur. F14/F15 og F16 haldast.
+Sannprófun í þessari lotu: 49 Chromium-vafrapróf með prufugögnum standast. Þar af 46 fyrri próf og þrjú ný flokkaflæði fyrir Til-fyrst, endurtekinn change eftir forritshreinsun brottfarar, venjulegt locator.fill innsláttarflæði, dagabil og varðveislu Frá dags. Nýja Til-fyrst prófið fellur á 98. Vistun/enduropnun með hermdri þjónustu, sömu auðkenni og sjálfstæðir komu-/heimferðardagar áfram prófuð; bæði Í dag og Kostnaður reiknings varðveisluprófuð. Símabreiddir 320–768px. Form við 393px sjónskoðað. Raunverulegur iPhone/Safari og lifandi gagnaskrif óprófuð; nákvæm tækjasértæk orsök tilkynningarinnar ekki endurgerð á raunverulegu tæki. V01–V04 og fyrri ólokin verk halda stöðu.
+Afhending 99: aðeins index.html breytist af keyrsluskrám frá 98; útgáfa 98 varðveitt. Skjöl uppfærð, ekki ný staðfesting notanda á virkni.
