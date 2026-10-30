@@ -968,3 +968,7 @@ Prófað í þessari lotu: 34 Chromium-vafraflæðisprófanir með prufugögnum 
 Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning/skrif, raunopnun Google Maps og lifandi myndaleit/veðursókn. Ekki fullyrt að allar eldri samþykktir í öllum flokkum séu fullsannreyndar. V01/V02/V03 hér að ofan standa áfram. Næsta sannprófun er raunnotkun Í dag á iPhone; ný villuskýrsla skal tengd nákvæmu flæði, ekki túlkuð sem heimild til ótengdra breytinga. Sjá PROFUN-95.md með afhendingunni.
 
 30-10-2026 / 96: Mynd eingöngu við haus Í dag-flýtispjalds, viðvörun fyrir ofan; dagatalsbirting án myndar. Útritun fyrir ferð sýnir röð fyrir brottför, ekki hótelfrest sem aðgerðartíma. Sjá gildandi D13/D18 og PROFUN-96.md.
+
+30-10-2026: Festar afmarkaðar staðfestingar notanda á útgáfu 96. Sjá A14/Q01–Q05 í GILDANDI-AKVARDANIR.txt og U96-01–U96-05 í VERKEFNALISTI.txt. Bókun hreinsar viðvörun/ramma í sýndu flýtispjaldi og gula merkingu í ferðaleið; leiðsögn helst. Ekki allar birtingar eða tímamörk raunprófuð. Keyrslukóða ekki breytt.
+
+30-10-2026 — Útgáfa 97: J17 samþykkt; Kostnaður reiknings greinir kostnað frá bókun á sambærilegum atriðaspjöldum. Sjá PROFUN-97.md og VERKEFNALISTI.txt. Fyrri staðfestingar varðveittar.

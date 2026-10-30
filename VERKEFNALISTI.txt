@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi staða 30-10-2026 eftir samþykkta Í dag-yfirferð og útgáfu 95
+Gildandi staða 30-10-2026 — útgáfa 96 og afmarkaðar staðfestingar notanda
 
 Lesa þetta skjal og „Ferðakerfið mitt — gildandi ákvarðanir“ fyrir hverja breytingu. Regluskjalið geymir kröfur, þessi listi framkvæmda-/sannprófunarstöðu. Eldri sögulisti er varðveittur í yfirferðarskjalinu en er ekki nýr verkefnaforgangur.
 
@@ -85,3 +85,40 @@ Prófað í þessari lotu: 34 Chromium-vafraflæðisprófanir með prufugögnum 
 
 7. LEIÐRÉTTING 96 — 30-10-2026
 Mynd aðeins í Í dag-flýtispjaldi, við haus og fyrir neðan viðvörun; engin mynd í dagatalsbirtingu. D13 leiðrétt samkvæmt beinum fyrirmælum. Útritun á ferðadegi sýnir nauðsynlega röð fyrir brottför; hótelfrestur í nánari upplýsingum. Sjá PROFUN-96.md fyrir raunverulega prófunarstöðu. Eldri prófatölur að ofan eru afhendingarsaga, ekki ný prófun.
+
+
+8. VARANLEG STAÐFESTINGARSKRÁ — ÚTGÁFA 96, 30-10-2026
+Þessi skrá bætist við fyrri staðfestingar í kafla 2; hún fellir þær ekki niður. Eldri lýsingar á óstaðfestum iPhone-prófum í afhendingarsögu gilda áfram utan nákvæms umfangs hér fyrir neðan. Aðstoðarmaður framkvæmdi engin ný keyrslupróf við þessa skjalauppfærslu.
+
+U96-01 — ÚTLITSBÓT STAÐFEST AF NOTANDA.
+Heimild: „Það lítur betur út“ eftir afhendingu 96. Staða: staðfest betra útlit, ekki fullstaðfesting allra útlitsatriða eða beggja glugga. Kröfur D13/D18 standa óbreyttar.
+
+U96-02 — RAUNNOTKUN Á IPHONE, BÓKUN OG VIÐVÖRUN Í FLÝTISPJALDI.
+Heimild: „Búinn að bóka viðvörun farin. Virkar“ og IMG_0373.jpeg. Fyrri IMG_0372.jpeg sýndi óbókaða gistingu, viðvörun og gulan ytri ramma. Eftir bókun sjást viðvörun og gulur ytri rammi ekki lengur; Frá/Til og hnappur leiðsagnar haldast sýnileg. Þetta staðfestir uppfærslu birtingar eftir bókun, ekki sjálfstæða endurhleðslu/vistun eftir enduropnun né opnun leiðsagnartengils í þessari prófun. Kröfur Q01/Q02, E10/E11/E13.
+
+U96-03 — FERÐALEIÐ/TÍMALÍNA STAÐFEST AF NOTANDA.
+Heimild: „Og virkaði líka í ferðaleið línunni gult farið“. Staða: tengd gul merking hverfur líka úr ferðaleið/tímalínu eftir bókun sömu gistingar. Ekki sérstaklega staðfest hér í dagatalsútgáfu Í dag eða öllum öðrum tegundum viðvarana. Kröfur Q01/Q02 og E10.
+
+U96-04 — TÍMABIRTING OG NÆSTA SKREF SAMÞYKKT.
+Heimild: IMG_0372.jpeg og „Okei flott“ eftir útskýringu á staðartíma 17:54, skráðri komu 14:29 og leið að gistingu eftir áætlaða komu. Staða: notandi samþykkti þessa hegðun; ekki sérstök raunprófun á sjálfvirkri skiptingu yfir brottfarar-/komumörk, miðnætti eða sumartímaskipti. Kröfur D12/D14/Q03.
+
+U96-05 — KÓÐASKOÐUN, EKKI RAUNPRÓFUN NOTANDA.
+Í fyrri svörum þessa samtals var útgáfa 96 skoðuð: refreshActiveToday/renderToday endurnýja báðar birtingar á 60000 ms fresti meðan ferðaskjár er sýnilegur og við visibilitychange; tripTodayDate og todayJourneyModel nota tímabeltagögn fyrir dag og ferðaleggi. Þetta er kóðaskoðun, ekki sönnun um rétta hegðun í öllum tímabeltum. Krafa Q04.
+
+ENDURPRÓFUN ÞEGAR TENGDUM KÓÐA ER BREYTT — A14
+• Bóka sömu áður óbókuðu gistingu: viðvörun, talning og tengdar gular merkingar hreinsast í báðum Í dag-birtingum og ferðaleið/tímalínu. Aðrar virkar viðvaranir haldast.
+• Leiðsögn, Frá/Til, staðarklukka og skráðir tímar haldast eftir að viðvörun hverfur.
+• Varðveita mynd eingöngu í flýtispjaldi, viðvörun ofan hennar og dagatalsbirtingu án myndar; heilar dagsetningar og undantekning dagahnappa haldast.
+• Þegar tíma-/uppfærslukóða er breytt: prófa fyrir/eftir skráða brottför og komu, óskráðan komutíma, mínútuuppfærslu, endurkomu í app og staðbundin dagaskipti. Ekki sjálfmerkja komu eða Lokið.
+• Þessi atriði eru kröfur um næstu viðeigandi endurprófun, ekki nýlega keyrð próf. Takmarka beiðni um endurprófun notanda við rökstutt tækjasértækt óstaðfest atriði.
+
+Enn óstaðfest sérstaklega í raunnotkun notanda: sama bókunarflæði í dagatalsútgáfu Í dag; önnur virk viðvörun samhliða; enduropnun eftir vistun; sjálfvirk tímamörk/dagaskipti. V01–V04 og önnur ólokin verk haldast.
+
+
+9. KOSTNAÐUR REIKNINGS — AFHENDING 97, 30-10-2026
+Samþykkt framsetning J17: sjálfstæður kostnaður og kostnaðarfærslur sýndar sem atriði eru merktar Kostnaður reiknings, ekki Bókað. Halda sínum flokki; opnun á sama reikningi.
+Útfært í flokkalistum allra 16 flokka, sameiginlegum atriðaspjöldum (dagatal/bæði Í dag þegar kostnaður er sýndur í dagskrá), kortalista og stöðumerkingu atriða í PDF/lesafriti. Greidd heild birtist einu sinni á atriðaspjaldi; hlutagreiðslur sýna heild, greitt og eftirstöðvar. Aðeins kostnaðarfærslur fá viðeigandi símauppsetningu í flokkalista.
+Prófað nú: 37 Chromium-vafraprófanir með prufugögnum stóðust, þar á meðal 34 varðveisluprófanir úr 96 og ný kostnaðarpróf. Ný próf ná yfir 16 flokka, greiðslustöður, PDF-merkingu, lesafritsmerkingu, óbreytt gögn við birtingu, opnun rétts reiknings og 320/393/430/768px. Sjónskoðun flokkalista við 393px. Hermipróf staðfestir endurnýjun sjö opinberra lesafritsskráa og að aðeins gamla afmarkaða skeljuskjyndiminninu sé eytt.
+827 fyrirliggjandi nafngreind föll óbreytt; fjögur birtingarföll breytt og þrjú hjálparföll bætt við. Engin eldri nafngreind föll fjarlægð. Vistun, reiknivél/þjórfé/skipting, greiðsluútreikningar, viðvörunarreikningar, dagskrárval og Í dag-kjarninn bætisjafnir milli 96/97. Þetta er ekki sönnun um heildarheilbrigði kerfisins.
+Óstaðfest: raunverulegur iPhone/Safari, lifandi vistun og þjónustuvaktarauppfærsla í tæki. Notandi hefur ekki staðfest útgáfu 97. V01–V04 og fyrri afmarkaðar staðfestingar standa áfram.
+Afhending: ZIP 97. Ef 96 er uppsett þarf index.html, offline.js og sw.js. Aðeins opinber skeljuskjyndiminnisútgáfa breytist í sw.js; einkagögn eru ekki flutt eða endurskrifuð.

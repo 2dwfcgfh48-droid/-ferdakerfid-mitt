@@ -22,6 +22,8 @@ A11. Halda samþykktum ákvörðunum og óloknum verkum með kóðanum og uppfæ
 A12. Ef samtal, skrá eða kóði er ekki aðgengilegt, segja það. Ekki fylla í eyður eða fullyrða að allt eldra hafi verið skoðað.
 A13. NÝ ÁRÉTTING 30-10-2026: Ef samþykkt ákvörðun vantar eða er brotin í kóðanum skal vara Kristján við. Viðvörun nefnir ákvörðun, heimild, kóðastað, sýnilegt frávik og sannprófun. Greina „staðfest frávik“, „grunur/óstaðfest“ og „samþykkt en útfærsla fannst ekki“. Ekki kalla eitthvað nýlega horfið án samanburðar við eldri útfærslu. Skrá í verkefnalista; viðvörun heimilar ekki ótengda viðgerð.
 
+A14. VARÐVEISLA STAÐFESTRAR VIRKNI — samþykkt 30-10-2026: Staðfesting notanda er varanleg sannprófunarheimild með nákvæmu umfangi, útgáfu, tæki og dagsetningu í verkefnalista. Varðveita eldri staðfestingar. Ekki láta notanda endurprófa sama óbreytta flæði sem venjubundna afhendingarathugun. Við breytingu á tengdum kóða skal aðstoðarmaður sjálfur endurprófa viðkomandi staðfest flæði og sambærilegar birtingar og bera saman við síðustu staðfestu útgáfu. Skrá niðurstöður; ef tækjapróf er nauðsynlegt skal skýra hvaða breyting kallar á það og hvað er enn óstaðfest. Ný bilun fellir ekki samþykkta kröfu úr gildi. Regluskrá kemur ekki í stað varðveisluprófa.
+
 B. DAGSETNINGAR OG TÍMAR [H1–H4]
 B01. Allar dagsetningar sem appið birtir eða myndar fyrir notanda eru dd-mm-yyyy, með tveggja stafa degi/mánuði og fjögurra stafa ári.
 B02. HVER dagsetning skal haldast heil í sömu línu. Ef pláss vantar færist öll dagsetningin á næstu línu. Ekki minnka letur eða stytta árið til að fela umbrotsvanda.
@@ -150,6 +152,7 @@ J12. Innri vistunarupplýsingar mega ekki birtast sem athugasemdir. Tómar athug
 J13. „+ Skrá viðbótarkostnað“ sést í öllum bókunarflokkum. Fyrir fyrstu vistun er hann óvirkur með skýringunni „Vistaðu bókunina fyrst til að bæta við kostnaði.“ Eftir vistun tengist hann réttri bókun.
 J14. Verð og greiðsla hefur lokaða skýringu „Hvað hefur þetta áhrif á?“. Samanlagt verð fram og til baka telst einu sinni; ekki skrá sama verð aftur sem viðbótarkostnað.
 J15. „Sýna líka í dagskrá“ er valfrjálst í kostnaði; nýr reikningur er sjálfgefið aðeins í kostnaði. Valin birting notar sömu færslu á kostnaðardegi/flokki, breytir ekki bókunarflokki og tvítelur ekki. Daglegur reikningur er ekki næsta tímasetta samgöngubókun eða margra nátta gisting.
+J17. Samþykkt 30-10-2026: Kostnaðarfærslur úr Skrá kostnað haldast í eigin flokki en birtast með merkinu „Kostnaður reiknings“ í stað bókunarstöðu á sambærilegum atriðaspjöldum. Upphæð og greiðslustaða birtast án óþarfa endurtekningar; mismunandi heild, greitt og eftirstöðvar haldast skýrt aðgreind. Opnun sýnir sama reikning til skoðunar/breytingar. Raunverulegar bókanir halda bókunarstöðu sinni. Valfrjáls dagskrárbirting, kostnaðarútreikningar og vistuð gögn haldast óbreytt. Sjá J02–J05/J15.
 J16. Viðbót vegna útlagðs kostnaðar eða önnur afmörkuð breyting má ekki breyta reiknivél, þjórféshnöppum, skiptingu eða samþykktum reitum utan umfangs.
 
 K. FERÐAVESKI OG INNFLUTNINGUR [H2–H5]
@@ -207,3 +210,11 @@ P03. Ekki ný tenging Ferðatilboðsvaktar, nýtt app-tákn, ný gjaldskyld þj�
 P04. Kóðaeiginleiki sem finnst án ákvörðunarheimildar er skráður sem fyrirliggjandi útfærsla sem ber að varðveita utan umfangs, ekki nýlega samþykkt regla.
 
 D18. Á ferðadegi skal útritunarskref sýna að ljúka þurfi útritun áður en lagt er af stað að brottfararstað. Nota skráða ráðlagða brottför ef hún er til, annars skýra röð og skráða brottför ferðar án tilbúins útritunartíma. Lokafrestur hótels varðveitist í nánari gistaupplýsingum; t.d. kl. 14:00 má ekki birtast sem tími skrefs fyrir lest kl. 09:10.
+
+
+Q. FEST STAÐFEST VIRKNI — SAMÞYKKI OG PRÓFUNARSTAÐA 30-10-2026
+Q01. Við bókun gistingar skal viðvörun um þá óbókuðu gistingu hverfa úr virkri talningu og öllum tengdum birtingum, þar með talið báðum Í dag-gluggum og ferðaleið/tímalínu. Guli ytri Í dag-ramminn hverfur þegar engin önnur virk viðvörun stendur eftir; aðrar gildar viðvaranir haldast. Rétt leiðsögn að gistingu helst aðgengileg. Kröfur E03/E09–E13 haldast.
+Q02. Staðfest af Kristjáni á iPhone í útgáfu 96: eftir bókun gistingar í Trieste hvarf viðvörun og gulur ytri rammi úr sýndu Í dag-flýtispjaldi; leiðsögnin hélst. Hann staðfesti sérstaklega að gula merkingin hvarf einnig úr ferðaleið/tímalínu. Þetta staðfestir ekki sérstaklega dagatalsbirtinguna, aðrar samtímis viðvaranir, afturköllun eða enduropnun eftir bókun. Sjá U96-02/U96-03 í verkefnalista.
+Q03. Samþykkt áframhaldandi hegðun: staðarklukka sýnir tímann núna, skráður komutími sýnir áætlun. Eftir liðna áætlaða komu má sýna leið að gistingu án þess að fullyrða raunverulega komu/innritun eða merkja sjálfkrafa Lokið. Dæmið 17:54 og skráð koma 14:29 var samþykkt af notanda. Sjá D12/D14 og U96-04.
+Q04. Fyrirliggjandi mínútuuppfærsla beggja Í dag-birtinga meðan ferð er opin/sýnileg og endurnýjun þegar app verður sýnilegt skal varðveitt. Dagskipti miðast við tímabelti sem útfærslan notar fyrir ferðadag. Þetta var skoðað í kóða 96; ekki staðfest með raunprófun notanda á miðnætti eða tímabeltaskiptum. Ekki breyta þeirri stöðu í fullprófað.
+Q05. Fyrri staðfestingar í kafla 2 verkefnalista haldast með sínu afmarkaða umfangi. Almenn umsögn „lítur betur út“ staðfestir útlitsbót en ekki alla virkni. Hver síðari afhending skal tilgreina hvaða staðfest flæði urðu fyrir áhrifum og niðurstöðu endurprófunar þeirra samkvæmt A14.
