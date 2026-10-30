@@ -46,7 +46,7 @@ C10. Ferðaspjöld haldi lægri uppsetningu, mynd hægra megin með útþynningu
 C11. Ekki sameina samnefnda staði eða endurteknar dvalir í gögnunum út frá nafni einu. Réttur fáni, land, kortasvæði og mynt skulu fylgja viðkomandi landi/áfangastað.
 
 D. Í DAG — BÁÐAR BIRTINGAR [H1–H4]
-D01. Varðveita bæði efra Í dag-flýtispjaldið og Í dag í dagatals-/flipasýn. Þau skulu sýna samræmd gögn, viðvaranir, staðarklukku, miða, tímabil og leiðsagnarval. Ekki fella annað út til einföldunar.
+D01. Varðveita bæði efra Í dag-flýtispjaldið og Í dag í dagatals-/flipasýn. Þau nota sameiginlega birtingu kjarnaupplýsinga: gögn, viðvaranir, staðarklukka, miðar, tímabil og leiðsagnarval. Ekki fella annað út til einföldunar. Áréttað/samþykkt 30-10-2026.
 D02. Í ferð í gangi velst dagurinn í dag við opnun. Framtíðar- og farnar ferðir halda viðeigandi ferðaleiðarsýn.
 D03. Eitt stórt spjald sýnir næstu aðgerð dagsins; önnur atriði og næstu dagar fá minna vægi. Gisting á áframhaldandi dvöl er lítil; innritun getur verið aðalatriði komudag. Opnar samgöngur á ferðadegi mega hafa forgang fram yfir innritun þegar engin önnur tímasett næsta aðgerð gengur framar.
 D04. Dagskrá síðari daga má ekki líta út sem dagskrá í dag. Sýna tómt dagsástand og sérmerktar næstu bókanir. Áætlað dagabil er ekki staðfest brottför.
@@ -58,6 +58,12 @@ D09. Samgönguspjöld sýni skráða Frá → Til leið og staðartíma rétta l
 D10. Mynd í Í dag er breið, með ávölum hornum, án útþynningar, hreyfingar eða stærðarsleða. Staðarheiti fær heila línu. Veður ofan myndar er sjónrænt áberandi; hitastig að minnsta kosti í vægi fyrirsagnar, án sérstaks ramma.
 D11. „Nánari spá ⌄“ er saman undir veðri og opnar sama stað/dag. Myndaaðgerðir undir ⋯; utansmellur lokar án þess að virkja undirliggjandi hnapp.
 D12. Næsta skref er byggt á skráðum tímum og gögnum. Ekki álykta af raunstaðsetningu að mætt sé eða innritað, og ekki merkja sjálfkrafa Lokið.
+
+D13. Samþykkt 30-10-2026: Röð í báðum Í dag-spjöldum: dagsetning/staður/staðarklukka og veður; virk viðvörun með aðgerð; Næsta skref; mynd fyrir neðan næstu aðgerð; ferðadagur og önnur atriði. Myndaaðgerðir haldast undir ⋯; aðalaðgerðin má ekki fara undir stórt tómt myndasvæði.
+D14. Ekki skipta yfir í staðfesta komu eða næstu aðgerð eftir komu af því að brottfarartími sé liðinn. Vanti komudag, komutíma eða tímabelti sem þarf til að ákvarða komu, sýna nákvæmlega hvað vantar og bjóða að yfirfara bókun. Leiðsögn eftir komu má vera aðgengileg sem undirbúningur. Liðinn skráður komutími er áætlun, ekki sönnun þess að komið sé.
+D15. Greina skýrt komutíma samgangna, ráðlagða brottför að stöð og útritunarfrest. Nota viðeigandi heiti: Komutími óskráður; Áætlun að brottfararstað ekki stillt; Útritun í síðasta lagi kl.; Innritun frá kl. Ekki giska á vantaða tíma.
+D16. Ekki tvíbirta sömu gistingu sem sjálfstætt dagskráratriði ef hún er þegar í ferðadagskeðjunni. Halda öðrum atriðum dagsins, þar með talið liðnum og opnum/óbókuðum, aðgengilegum. Samgönguleggir og bílaleiguatburðir halda eigin tíma/legg.
+D17. Dagsetning þarf ekki að endurtakast í staðarklukkunni þegar hún er sú sama og efst á spjaldinu. Sýna hana áfram þegar staðardagur er annar. Klukka uppfærist og notar skráð tímabelti. Reglur B01–B05, þar á meðal stutt ár dagahnappa, haldast.
 
 E. VIÐVARANIR OG UNDANTEKNINGAR [H1–H4]
 E01. Spjald með virkri viðvörun hefur BÆÐI gula útlínu og gulan viðvörunarþríhyrning efst til hægri. Gildir um sambærileg spjöld í tímalínu/ferðaleið, dagatali, kortalista og báðum Í dag-birtingum.
@@ -71,7 +77,9 @@ E08. Undantekningar eru staðbundnar við vafra/tæki í núverandi útfærslu; 
 E09. Ekki merkja öll óbókuð atriði sjálfkrafa gul. Opin ferð er eðlilegur áætlunarhluti. Gistingarviðvörun kvöldsins fylgir fyrirliggjandi skilyrðum; sama niðurstaða og merking í báðum Í dag-birtingum og á tengdum spjöldum.
 E10. Leiðrétting gagna, samþykki og afturköllun endurnýi allar tengdar birtingar. Þema má ekki yfirskrifa gula merkingu. Engar bókanir færast sjálfkrafa við viðvörun.
 
-E11. Árétting 30-10-2026: Eitt atriði í yfirferð merkir ekki að öll skref séu röng. Viðvörun um óbókaða gistingu kvöldsins merkir viðkomandi gistingu og gistingaryfirferð; hún litar ekki sjálfkrafa leiðsagnarskref, Næsta skref eða ytri Í dag-rammann. Gildir í BÁÐUM Í dag-birtingum. Aðrar raunverulegar viðvaranir og sameiginleg talning haldast.
+E11. Nýrra samþykki 30-10-2026: Þegar virk viðvörun er í Í dag skal vera GULUR YTRI RAMMI OG VIÐVÖRUNARÞRÍHYRNINGUR utan um allt núverandi Í dag-spjaldið í BÁÐUM birtingum. Þetta leysir af hólmi undanþágu útgáfu 94 sem faldi ytri rammann við gistingarviðvörun. Eitt undirliggjandi vandamál telst einu sinni þótt það sé merkt á fleiri viðeigandi stöðum.
+E12. Viðvörunin efst segir hvað þarf að gera, t.d. Gisting í kvöld er enn óbókuð, með gististað, fána/borg og Yfirfara gistingu þegar gögnin liggja fyrir. Staðfestir árekstrar fá skýrari texta/áherslu en almenn yfirferð. Óskráður valfrjáls tími er hlutlaus upplýsing en ekki sjálfkrafa talin viðvörun.
+E13. Gistingarviðvörun merkir gistingu/innritun og gistingaryfirferð. Hún litar ekki sjálfkrafa rétt leiðsagnarskref eða Næsta skref gult vegna bókunarstöðunnar einnar. Raunverulegar viðvaranir á leið/skrefi haldast. Engin sjálfvirk villa á öllum opnum samgöngum.
 
 F. BÓKUNARGLUGGAR OG DAGSKRÁ [H2, H4–H6]
 F01. Varðveita alla 16 flokka: Flug; Gisting; Lestir; Bátar/ferjur; Akstur; Bílaleiga; Hjólaferðir; Gönguferðir; Dagsferðir; Áhugaverðir staðir; Veitingastaðir; Kaffihús; Barir/vínstaðir; Rooftop bar; Vistaðir staðir; Annað.
@@ -104,6 +112,8 @@ G12. Tillaga að degi út frá gistingu fyllir aðeins við val „Nota daginn�
 G13. Lestarstöðvalisti komi við staðaval, með fyrri/nálægum stöðvum og handvirkri varaleið. Engin stöð er staðfest fyrr en notandi velur hana. Stöðvaskrá er ekki lifandi brottfararþjónusta.
 G14. Heimferð endurnýtir nákvæmar útferðarstöðvar í öfugri röð þegar við á. Sérvaldar heimferðarstöðvar haldast. Eldri borgarheiti fá sérstakt „Nota [stöð] úr útferð“ val, án þvingaðrar yfirskriftar.
 G15. Flugvallarreitir út-/heimferðar sýna þekktan kóða og fullt heiti; varðveita upprunalegan kóða og óþekkt gildi. Kortapunktur er flugvöllur, ekki nákvæmt hlið/inngangur.
+
+G16. Samþykkt 30-10-2026: Í ferðadagsleiðsögn og Næsta skrefi birta skýrar Frá:/Til:-línur, með löngum heitum sem mega flæða eðlilega. Sýna raunverulegt valið leiðsagnarupphaf. Ekki endurtaka sama Frá-textann aftur við leiðsagnarhnapp þegar hann er þegar skýr fyrir ofan. Fullt heiti varðveitist.
 
 H. GISTING OG BÍLALEIGA [H3–H5]
 H01. Fáni og heiti TENGDS áfangastaðar skulu sjást við gistingu í dagatali, báðum Í dag-birtingum, litlum/stórum gistispjöldum, inn-/útritun, Gisting í kvöld, flokkayfirliti, kortaspjöldum og lesafriti. Ekki giska út frá næsta áfangastað.
@@ -191,7 +201,7 @@ O02. Varðveita greiðslu- og frjáls-afbókunaráminningar og tengdar dagatalsa
 O03. Ekki lofa sjálfvirkri vöktun/push þegar appið er lokað ef það hefur ekki verið útfært og sannreynt. Fyrri ólokin ósk um slíkar áminningar er ekki felld niður með regluskjalsuppfærslu.
 
 P. ÞAÐ SEM ÞESSI SAMEINING SAMÞYKKIR EKKI
-P01. Tillögur um nýjar Frá-/Til-línur á sitthvorri línu, nýja borgar-/fánalínu efst á ferðadegi og nýtt orðalag óbókaðrar gistingar eru ekki sjálfkrafa samþykktar útfærslur. Fyrri samþykktar leiðarupplýsingar halda gildi.
+P01. Uppfært 30-10-2026: Frá-/Til-línur og skýrara orðalag gistingarviðvörunar hafa nú verið samþykkt í yfirferð Í dag; sjá D13–D17, E11–E13 og G16. Sérstök heildarleiðarfyrirsögn „Prag → Trieste“ efst á ferðadegi er áfram ekki sjálfkrafa samþykkt. Fyrri samþykktar leiðarupplýsingar halda gildi.
 P02. Sameinað „Tilbúið fyrir ferð“ yfirlit er áfram til yfirferðar, án heimildar til að tvöfalda ferðaveski eða fyrirliggjandi afrit.
 P03. Ekki ný tenging Ferðatilboðsvaktar, nýtt app-tákn, ný gjaldskyld þjónusta eða breyting á bakenda með þessari sameiningu.
 P04. Kóðaeiginleiki sem finnst án ákvörðunarheimildar er skráður sem fyrirliggjandi útfærsla sem ber að varðveita utan umfangs, ekki nýlega samþykkt regla.

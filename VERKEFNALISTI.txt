@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi staða 30-10-2026 eftir sameiningu ákvarðana
+Gildandi staða 30-10-2026 eftir samþykkta Í dag-yfirferð og útgáfu 95
 
 Lesa þetta skjal og „Ferðakerfið mitt — gildandi ákvarðanir“ fyrir hverja breytingu. Regluskjalið geymir kröfur, þessi listi framkvæmda-/sannprófunarstöðu. Eldri sögulisti er varðveittur í yfirferðarskjalinu en er ekki nýr verkefnaforgangur.
 
@@ -62,19 +62,23 @@ Prófunarstaða 92 er samkvæmt varðveittu PROFUN-92.md: 19 vafraprófanir, 18 
 ☐ Heildarflæði sambærilegra bókunarglugga á iPhone/iPad enn ófullstaðfest; ný útlitsendurskoðun ekki sjálfkrafa heimil.
 
 5. TILLÖGUR — EKKI SAMÞYKKTAR KÓÐABREYTINGAR
-• Sérstakar nýjar Frá-/Til-textalínur og ný 🇨🇿 Prag → 🇮🇹 Trieste fyrirsögn ferðadags.
-• Nýtt orðalag „Áætluð innritun · óbókað“ / nákvæmari gistingarviðvörun. Fyrri gul viðvörunarbirting skal halda óháð orðalagstillögu.
+• Sérstök 🇨🇿 Prag → 🇮🇹 Trieste heildarleiðarfyrirsögn ferðadags er áfram tillaga. Frá-/Til-línur í leiðsögn voru hins vegar samþykktar og útfærðar í 95.
+• „Áætluð innritun · óbókað“ er áfram tillaga. Nákvæmari gistingarviðvörun efst á Í dag var samþykkt og útfærð í 95.
 • Sameining Ferðatilboðsvaktar við ferðakerfið, nýtt lokaval app-tákns eða ný þjónusta.
 Þetta breytir ekki fyrri samþykktum um sýnilega leið, fána, staðarheiti eða stöðu bókunar.
 
-6. NÆSTA SKREF OG BREYTINGASAGA ÞESSARAR LOTU
-Samþykkt verkefni: yfirfara/sameina ákvarðanir í reglur og vara við frávikum. Skjöl uppfærð og sett við útgáfu 92. Keyrslukóði og gögn óbreytt. Engin ný app-útgáfa afhent með þessari skjalalotu.
-Við áframhaldandi breytingu skal lesa báðar heimildir, tilgreina afmarkað viðgerðarumfang, bera saman við varðveitta 92 og skrá niðurstöður án þess að flytja gömul verkefni aftur í ólokið að ástæðulausu.
+6. SAMÞYKKT Í DAG-YFIRFERÐ OG AFHENDING 95 — 30-10-2026
+Nýrra samþykki notanda endurheimtir gula ytri rammann á öllu Í dag-spjaldinu í BÁÐUM birtingum þegar virk viðvörun er til staðar. Undanþága 94 er felld úr gildi hvað ytri rammann varðar. Rétt leiðsögn verður áfram ekki gul vegna óbókaðrar gistingar einnar.
 
+Útfært í 95, með 94 varðveitta:
+• Sameiginleg birting beggja Í dag-spjalda: haus/staður/staðarklukka, veður, viðvörun, næsta aðgerð, mynd, ferðadagur, gisting og önnur atriði. Næstu dagar aðskildir.
+• Næsta aðgerð fyrir ofan mynd, starfandi myndaaðgerðir undir ⋯.
+• Óskráður komutími veldur ekki sjálfvirkri leið að gistingu sem staðfestu næsta skrefi; skýring, bókunaraðgerð og undirbúningsleiðsögn í staðinn. Skráð koma er skýrt áætluð.
+• Viðvörun nefnir vandamálið og aðgerð; staðfestur árekstur fær sterkari texta/áherslu. Engum nýjum giskuðum árekstrum bætt við.
+• Frá/Til á eigin línum; tímaheiti greina útritunarfrest, samgöngukomu og óstillta áætlun að stöð.
+• Gisting í ferðadagskeðju er ekki endurtekin sem sjálfstætt bókunarspjald. Önnur, liðin og opin dagskráratriði varðveitt í báðum gluggum.
+• Dagsetning úr klukku felld þegar sama dagsetning er þegar í haus; sýnd þegar staðardagur er annar. Öll dagsetningasnið og stutta dagahnappaárið varðveitt.
 
-30-10-2026 · ÚTGÁFA 93 — AFMÖRKUÐ VIÐGERÐ Á SPÁSSÍUM Í DAG
-Staðfest útlitsfrávik í 92: #todayNext hafði 0px padding og innri spjöld lágu upp að ytri ramma. Ein CSS-regla notar sömu 17px innri spássíur og flýtispjaldið; aðeins index.html breytt af vefskrám. 20 Chromium-prófanir stóðust með prufugögnum, þar með talin mæling í 64 stillingasamsetningum. iPhone/Safari og nákvæm endurheimt alls fyrra útlits eru óstaðfest. V01/V02/V03 eru óbreytt; JavaScript-kóði og gögn óbreytt. Sjá PROFUN-93.md.
+Prófað í þessari lotu: 34 Chromium-vafraflæðisprófanir með prufugögnum stóðust. Að auki var raunveruleg fyrirliggjandi myndavalsskrift prófuð í báðum gluggum með staðbundinni prufumynd og veðurhermi: báðar myndavalmyndir opnast/lokast og næsta aðgerð birtist á undan mynd. Prófað í 320–768px. Vistunar-, kostnaðar- og viðvörunarregluföll eru óbreytt; breytingar bundnar við Í dag-birtingu og mínútuuppfærslu klukku.
 
-
-30-10-2026 · ÚTGÁFA 94 — RÉTT TENGING GULRAR GISTINGARVIÐVÖRUNAR
-Notandi áréttar: eitt atriði þarfnast yfirferðar en of mörg spjöld eru gul. Í báðum Í dag-birtingum litar lodging-tonight ekki lengur leiðsagnarskref, Næsta skref eða ytri dagrammann. Gisting, innritunarspjald hennar og gistingaryfirferð halda merkingu. Talning, samþykki/aflétting og aðrar viðvaranir óbreytt. Í símabreidd <=600px fá booking-agenda-card spjöld tíma/stöðu ofan heitis, sem fær fulla breidd. Sama CSS gildir í dagatali og öðrum sambærilegum bókunarlistum; kort/PDF/lesafrit eru óbreytt. 22 Chromium-prófanir stóðust með prufugögnum. Raunverulegur iPhone/Safari óprófaður. Nákvæm endurheimt alls eldri útlits er ekki fullyrt. V01/V02/V03 eru áfram óleyst. Sjá PROFUN-94.md.
+Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning/skrif, raunopnun Google Maps og lifandi myndaleit/veðursókn. Ekki fullyrt að allar eldri samþykktir í öllum flokkum séu fullsannreyndar. V01/V02/V03 hér að ofan standa áfram. Næsta sannprófun er raunnotkun Í dag á iPhone; ný villuskýrsla skal tengd nákvæmu flæði, ekki túlkuð sem heimild til ótengdra breytinga. Sjá PROFUN-95.md með afhendingunni.
