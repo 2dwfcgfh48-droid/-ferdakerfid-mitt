@@ -2207,9 +2207,12 @@ function todayJourneyHero(model){
  const review=bookingReviewDecoration(j.item,model.day,todayJourneyConnectionWarning(related,model.day));
  return '<section class="travel-day-next'+review.className+'">'+review.marker+'<div class="brand">NÆSTA SKREF</div><h3>'+esc(title)+'</h3>'+(clock?'<div class="spotlight-time">'+esc(clock)+'</div>':'')+detail+'<div class="departure-actions">'+action+todayJourneyEdit(j,editLabel)+'</div></section>';
 }
-function todayJourneyCheckoutStep(hotel){
+function todayJourneyCheckoutStep(hotel,journey=null){
  const times=lodgingStayTimes(hotel);
- return todayJourneyStep('🏨','Útritun af gististað',times.checkout_before?'Útritun í síðasta lagi kl. '+times.checkout_before+' · staðartími':'Útritunartími óskráður','<p class="notice">'+esc(hotel.title)+'</p>'+lodgingDestinationHtml(hotel)+'<details><summary>Gisting og útritun</summary><div class="departure-actions"><button type="button" class="btn small" data-spotlight-item="'+esc(hotel.id)+'">Skoða gistingu</button></div></details>',hotel,hotel.end_local_date);
+ const deadline=times.checkout_before?'Útritunarfrestur hótels: kl. '+times.checkout_before+' · staðartími':'';
+ const context=journey?(journey.timing?'Ljúka útritun áður en lagt er af stað: '+departureTimeLabel(journey.timing.leaveLocal,journey.date):'Ljúka útritun áður en lagt er af stað að brottfararstað'):(deadline||'Útritunartími óskráður');
+ const departure=journey?'<p class="notice">'+esc('Brottför ferðar: '+todayJourneyClock(journey.date,journey.open?null:journey.time,journey.date,journey.zone))+'</p>':'';
+ return todayJourneyStep('🏨','Útritun af gististað',context,'<p class="notice">'+esc(hotel.title)+'</p>'+lodgingDestinationHtml(hotel)+departure+'<details><summary>Gisting og útritun</summary>'+(deadline?'<p class="notice">'+esc(deadline)+'</p>':'')+'<div class="departure-actions"><button type="button" class="btn small" data-spotlight-item="'+esc(hotel.id)+'">Skoða gistingu</button></div></details>',hotel,hotel.end_local_date);
 }
 
 function todayJourneyHtml(model,includeHero=true){
@@ -2219,7 +2222,7 @@ function todayJourneyHtml(model,includeHero=true){
   const inferred=c=>c.inferred?'<span class="notice">Tillaga út frá skráðri gistingu</span>':'';
   if(index===0)for(const h of model.checkouts||[])if(!model.journeys.some(x=>!x.arrivalOnly&&x.origin.hotel?.id===h.id&&h.end_local_date===x.date))steps.push(todayJourneyCheckoutStep(h));
   if(!j.arrivalOnly){
-   if(j.origin.hotel?.end_local_date===j.date)steps.push(todayJourneyCheckoutStep(j.origin.hotel));
+   if(j.origin.hotel?.end_local_date===j.date)steps.push(todayJourneyCheckoutStep(j.origin.hotel,j));
    let travelTime=j.timing?'Ráðlagt að leggja af stað: '+departureTimeLabel(j.timing.leaveLocal,model.day):'Áætlun að brottfararstað ekki stillt';
    let departureBody=lodgingDestinationHtml(j.origin.hotel)+todayJourneyRouteHtml(fromHotel,j.from,j.item,j.leg)+inferred(j.origin);
    if(j.origin.warning)departureBody+='<p class="notice">'+esc(j.origin.warning)+'</p>';
@@ -2262,7 +2265,7 @@ function renderTodaySurface(host){
  const remaining=agendaItems().filter(x=>itemOccursOn(x,day)&&!journeyIds.has(x.id)&&!represented.has(x.id));
  remaining.sort((a,b)=>String(a.local_time||'99:99').localeCompare(String(b.local_time||'99:99')));
  const other=remaining.length?'<section class="spotlight-other"><div class="brand">ÖNNUR ATRIÐI DAGSINS</div><div class="day-items">'+remaining.map(x=>itemHtml(x,day)).join('')+'</div></section>':'';
- host.innerHTML='<section class="card spotlight-current'+(todayHasFrameWarning(day)?' today-warning-frame':'')+'">'+reviewWarningMarker(todayHasFrameWarning(day))+'<div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div>'+todayClockHtml(day)+'</div>'+weather+'<h2>'+flag(place?.country_code)+' '+esc(place?.name||state.trip.name)+'</h2></div>'+todayReviewWarningHtml(day)+primary+destinationPhotoSlot(place,'today')+schedule+hotelHtml+extras+other+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
+ host.innerHTML='<section class="card spotlight-current'+(todayHasFrameWarning(day)?' today-warning-frame':'')+'">'+reviewWarningMarker(todayHasFrameWarning(day))+'<div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div>'+todayClockHtml(day)+'</div>'+weather+'<h2>'+flag(place?.country_code)+' '+esc(place?.name||state.trip.name)+'</h2></div>'+todayReviewWarningHtml(day)+(host.id==='tripSpotlight'?destinationPhotoSlot(place,'today'):'')+primary+schedule+hotelHtml+extras+other+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
  host.classList.remove('hidden');host.classList.add('spotlight-redesigned');paintDestinationPhotos();bindTodayReviewActions(host);
  host.querySelectorAll('[data-spotlight-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.spotlightItem));
  host.querySelectorAll('[data-spotlight-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.spotlightDocument));

@@ -966,3 +966,5 @@ Nýrra samþykki notanda endurheimtir gula ytri rammann á öllu Í dag-spjaldin
 Prófað í þessari lotu: 34 Chromium-vafraflæðisprófanir með prufugögnum stóðust. Að auki var raunveruleg fyrirliggjandi myndavalsskrift prófuð í báðum gluggum með staðbundinni prufumynd og veðurhermi: báðar myndavalmyndir opnast/lokast og næsta aðgerð birtist á undan mynd. Prófað í 320–768px. Vistunar-, kostnaðar- og viðvörunarregluföll eru óbreytt; breytingar bundnar við Í dag-birtingu og mínútuuppfærslu klukku.
 
 Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning/skrif, raunopnun Google Maps og lifandi myndaleit/veðursókn. Ekki fullyrt að allar eldri samþykktir í öllum flokkum séu fullsannreyndar. V01/V02/V03 hér að ofan standa áfram. Næsta sannprófun er raunnotkun Í dag á iPhone; ný villuskýrsla skal tengd nákvæmu flæði, ekki túlkuð sem heimild til ótengdra breytinga. Sjá PROFUN-95.md með afhendingunni.
+
+30-10-2026 / 96: Mynd eingöngu við haus Í dag-flýtispjalds, viðvörun fyrir ofan; dagatalsbirting án myndar. Útritun fyrir ferð sýnir röð fyrir brottför, ekki hótelfrest sem aðgerðartíma. Sjá gildandi D13/D18 og PROFUN-96.md.

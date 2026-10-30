@@ -59,7 +59,7 @@ D10. Mynd í Í dag er breið, með ávölum hornum, án útþynningar, hreyfing
 D11. „Nánari spá ⌄“ er saman undir veðri og opnar sama stað/dag. Myndaaðgerðir undir ⋯; utansmellur lokar án þess að virkja undirliggjandi hnapp.
 D12. Næsta skref er byggt á skráðum tímum og gögnum. Ekki álykta af raunstaðsetningu að mætt sé eða innritað, og ekki merkja sjálfkrafa Lokið.
 
-D13. Samþykkt 30-10-2026: Röð í báðum Í dag-spjöldum: dagsetning/staður/staðarklukka og veður; virk viðvörun með aðgerð; Næsta skref; mynd fyrir neðan næstu aðgerð; ferðadagur og önnur atriði. Myndaaðgerðir haldast undir ⋯; aðalaðgerðin má ekki fara undir stórt tómt myndasvæði.
+D13. Nýjasta leiðrétting notanda 30-10-2026: Mynd er EINGÖNGU í Í dag-flýtispjaldinu, við haus/fyrirsögn, fyrir ofan Næsta skref. Virk viðvörun er ofan myndar. Röð flýtispjalds: haus með dagsetningu/stað/klukku/veðri; viðvörun; mynd og ⋯; Næsta skref; dagskrá. Í dag í dagatali hefur enga mynd eða myndaaðgerðir, en sömu kjarnaupplýsingar og viðvaranir. Þetta leysir af hólmi mynd-fyrir-neðan-aðgerð og mynd-í-báðum útfærslu 95.
 D14. Ekki skipta yfir í staðfesta komu eða næstu aðgerð eftir komu af því að brottfarartími sé liðinn. Vanti komudag, komutíma eða tímabelti sem þarf til að ákvarða komu, sýna nákvæmlega hvað vantar og bjóða að yfirfara bókun. Leiðsögn eftir komu má vera aðgengileg sem undirbúningur. Liðinn skráður komutími er áætlun, ekki sönnun þess að komið sé.
 D15. Greina skýrt komutíma samgangna, ráðlagða brottför að stöð og útritunarfrest. Nota viðeigandi heiti: Komutími óskráður; Áætlun að brottfararstað ekki stillt; Útritun í síðasta lagi kl.; Innritun frá kl. Ekki giska á vantaða tíma.
 D16. Ekki tvíbirta sömu gistingu sem sjálfstætt dagskráratriði ef hún er þegar í ferðadagskeðjunni. Halda öðrum atriðum dagsins, þar með talið liðnum og opnum/óbókuðum, aðgengilegum. Samgönguleggir og bílaleiguatburðir halda eigin tíma/legg.
@@ -205,3 +205,5 @@ P01. Uppfært 30-10-2026: Frá-/Til-línur og skýrara orðalag gistingarviðvö
 P02. Sameinað „Tilbúið fyrir ferð“ yfirlit er áfram til yfirferðar, án heimildar til að tvöfalda ferðaveski eða fyrirliggjandi afrit.
 P03. Ekki ný tenging Ferðatilboðsvaktar, nýtt app-tákn, ný gjaldskyld þjónusta eða breyting á bakenda með þessari sameiningu.
 P04. Kóðaeiginleiki sem finnst án ákvörðunarheimildar er skráður sem fyrirliggjandi útfærsla sem ber að varðveita utan umfangs, ekki nýlega samþykkt regla.
+
+D18. Á ferðadegi skal útritunarskref sýna að ljúka þurfi útritun áður en lagt er af stað að brottfararstað. Nota skráða ráðlagða brottför ef hún er til, annars skýra röð og skráða brottför ferðar án tilbúins útritunartíma. Lokafrestur hótels varðveitist í nánari gistaupplýsingum; t.d. kl. 14:00 má ekki birtast sem tími skrefs fyrir lest kl. 09:10.

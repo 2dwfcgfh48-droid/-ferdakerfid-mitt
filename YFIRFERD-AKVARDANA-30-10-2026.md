@@ -1,0 +1,1341 @@
+# Ferðakerfið mitt — yfirferð ákvarðana, 30-10-2026
+
+155 auðkenndar reglufærslur sameinaðar í gildandi ákvörðunarskjal. Samþykktum kröfum og framkvæmdastöðu haldið aðskildum. Keyrslukóða og gögnum ekki breytt.
+
+## Frávik og þekjumörk
+
+- V01: Staðfest birtingarfrávik. Skráð 00:00 hverfur í renderTimeline. Raunverulegt fall endurkeyrt með prufufærslu og hermdum DOM; 00:01 og 12:30 birtast. Sama skilyrði er í eldri afritum; ekki nýlega horfið úr 92 og ekki horfið úr vistuðum gögnum.
+- V02: CSV-útflutningsstefna finnst í endurheimtu fyrra samþykki en útfærsla fannst ekki. Einu CSV-orðin í index.html eru flugvallarkóðar. Fyrirliggjandi PDF og ZIP með backup.json eru ekki CSV-útflutningur. Ekki staðfest að CSV hafi áður verið útfært.
+- V03: Gamall útgáfutexti 90 er í bókunarglugga afhendingar 92. Það segir ekki eitt og sér hvaða kóði sé settur upp hjá notanda. Þetta er greiningarfrávik, ekki sönnun um horfinn eiginleika.
+- V04: Ekki er hægt að staðfesta að allar eldri samþykktir haldist. Eldra spjall er að hluta stytt og engin heildarprófun á lifandi kerfi fór fram hér.
+
+## Umfang
+
+40 staðbundin útgáfuafrit, 50–86 og 90–92, tekin í skráar-/fallayfirlit. Allar 21 afhendingarskrár 92 teknar í skráar-/háðayfirlit. Viðeigandi núverandi birtingar, tímareglur, staðaval, leiðsögn, viðvaranir, miðar, kostnaður og hjálparskrár skoðuð með áherslu á ákvörðunarskráningu. Gögn frá þriðja aðila og minífuð lesarasöfn eru ekki sjálfstæðar notandaákvarðanir.
+
+Þetta er ekki handvirk línu-fyrir-línu úttekt allra útgáfa eða heildarprófun hvers notendaflæðis. Lifandi vefur, GitHub og bakendi voru ekki sótt eða borin saman í þessari lotu. Fyrirliggjandi eldri git-vinnusafn hefur breytingar og er ekki jafnað við nýjustu afhendingu.
+
+Notað var sýnilegt samtal, Sources-skjölin, VERKEFNISSKRA við 92, eldri verkefnisskrár 17–21-10 og endurheimtar fyrri samtalsákvarðanir. Ekki er fullyrt að sérhver ákvörðun frá upphafi hafi fundist. Kóði einn staðfestir ekki samþykki; að samþykki vanti í skrá veitir enga heimild til að breyta fyrirliggjandi virkni.
+
+## Heimildir reglna
+
+| Lykill | Heimild og notkun |
+|---|---|
+| H1 | Gildandi Sources-ákvörðunarskjal fyrir sameiningu; óbreytt neðar. |
+| H2 | Sources-verkefnalisti fyrir sameiningu; óbreytt neðar. |
+| H3 | Sýnilegt samtal um útgáfur 88–92 og ný fyrirmæli 30-10-2026. |
+| H4 | VERKEFNISSKRA.txt við 92; dagsettar samþykktir og leiðréttingar, óbreytt saga neðar. |
+| H5 | Eldri verkefnisskrár: gistivalkostir-og-ferdaveski, ferd-an-nets, oryggisafrit-og-endurheimt og haus-mynd-stillingar frá 17–21-10-2026. Nýrri ákvarðanir ganga framar. |
+| H6 | Endurheimtar samtalsákvarðanir frá 02–03-10 um grunnuppbyggingu/útflutningsstefnu, 11-10 um veður og 18–25-10 um haus/Í dag/skráningu/staðaval. Ekki orðrétt heildarafrit spjalls. |
+| H7 | Verkefnissamantekt sem fylgdi samtalinu. Óljósar eldri beiðnir eru varðveittar en ekki gerðar að nýjum útfærslum. |
+
+## Nýrri ákvarðanir leysa eldri af hólmi
+
+| Atriði | Gildandi | Eldra millistig |
+|---|---|---|
+| Dagsetningar | dd-mm-yyyy heil; dagahnappar einir 15-10-’26 | Fjögurra stafa ár án skráðrar undanþágu |
+| Viðvaranir | Gul útlína OG þríhyrningur | Aðeins rammi eða endurtekin textaröð |
+| Leiðsögn | Eitt Gangandi / Í bíl val við Leiðsögn að staðnum | Endurtekin val í mörgum gluggum |
+| Veðurspjald | Engin staðarmynd í Næsti áfangastaður | Prufa með lítilli mynd þar |
+| Hausmynd | Stærð og tvær mjúkar sjálfstæðar útþynningar | Einn sleði og hafnað móðukennt yfirlag |
+| Kaflar | Valfrjálsir lokaðir; samgönguaðalkafli samkvæmt sérreglu 64 | Óaðgreind regla um að allir kaflar séu alltaf lokaðir |
+| Daglegur kostnaður | Valfrjálst Sýna líka í dagskrá; sama færsla | Eldri fullyrðing um sjálfvirkt nýtt veitingaatriði |
+
+## Ný sannprófun í þessari lotu
+
+Einangrað Node-próf keyrði raunverulegt renderTimeline með 00:00, 00:01 og 12:30. Leitað var að CSV-smíði/aðgerðum, PDF/ZIP-JSON og útgáfutexta. Skráayfirlit og SHA-256 tekin fyrir allar skrár 92. Keyrsluskrár bornar saman eftir skjalabreytingar.
+
+Ekki var endurkeyrt allt prófasafn appsins eða prófað með innskráningu, raunverulegum iPhone/iPad, Safari eða Maps-appi. Fyrri 92-niðurstöður eru merktar sem fyrri prófanir í verkefnalista og eru ekki nýjar niðurstöður hér.
+
+## Kóðastaðir fyrir áframhaldandi varðveisluprófun
+
+| Fall / efni | Staður í afhendingu 92 |
+|---|---|
+| renderTripSpotlight | index.html:2198 |
+| renderToday | index.html:2218 |
+| todayJourneyModel | index.html:2102 |
+| todayClockHtml | index.html:1564 |
+| todayLodgingWarning | index.html:1553 |
+| tripReviewWarnings | index.html:1591 |
+| bookingReviewDecoration | index.html:1716 |
+| renderTimeline | index.html:1768 |
+| renderCalendar | index.html:1832 |
+| bookingOverlapWarnings | index.html:1663 |
+| confirmNewBookingOverlaps | index.html:1673 |
+| saveItem | index.html:3429 |
+| saveExpenseForItem | index.html:3117 |
+| saveWalletDocument | index.html:2322 |
+| openWalletDocument | index.html:2354 |
+| tripPdfHtml | index.html:1326 |
+| fitMapView | index.html:3580 |
+| renderMapLegend | index.html:3626 |
+| resetOptionalDisclosures | index.html:3645 |
+| updateTransportJourneyLayout | index.html:2755 |
+| openDeleteTripConfirm | index.html:1042 |
+| advanceTripDeletion | index.html:1043 |
+| restoreBackup | index.html:3791 |
+| Lokatímar | activity-times.js; index.html; offline.js |
+| Bílaleiga | rental-cars.js; dagatals-/Í dag-tengingar |
+| Miðamerkingar | wallet-tickets.js; veski og stór/lítil spjöld |
+| Leiðsögn/gististaðasamhengi | travel-navigation-v90.js |
+| Myndir | destination-photos.js / destination-photos-menu-dialog.js / destination-photos.css |
+| Stöðvar | railway-stations.js / railway-stations.json |
+| Lesafrit | offline.html / offline.js / offline-store.js / sw.js |
+
+Tilvist þessara staða er ekki staðfesting á öllum reglunum. Sjá V01–V04 í verkefnalista.
+
+## Óbreytt viðmið afhendingar 92
+
+| Skrá | Bæti | SHA-256 fyrir þessa lotu |
+|---|---:|---|
+| PROFUN-92.md | 5853 | `c85fdbc97dd9df8e9527256367204a89b09725a04a6cdb4e94678538979ae890` |
+| VERKEFNISSKRA.txt | 163513 | `c0282d2be5894ec3c6d8d8ab77ab6b88bab762a5010751f355b06fd9c537c2af` |
+| activity-times.js | 1273 | `da69aebde000d12c99a5877d7378fb0b2235bd25e6a0d69fe39ab79d0fb93a63` |
+| destination-photos-menu-dialog.js | 18634 | `f70048d33161af57a06003c8bee5a8972062ce4b69ee7f01c0c9ecf086902c8f` |
+| destination-photos.css | 14841 | `402b0b7eaf553dcd970486a3d4507f31c78825813b29723d9e17d5427fcf18c6` |
+| destination-photos.js | 18634 | `f70048d33161af57a06003c8bee5a8972062ce4b69ee7f01c0c9ecf086902c8f` |
+| index.html | 1416795 | `0bc1bb253c6a80b44b9113ad27b219614c7cc96e24d7614533451d48a550eaf5` |
+| map-icons-LICENSE.txt | 11688 | `8b3e9256fe6e677d1c559c0894d5571e45db62f95f6d0944de89a6bbda423af1` |
+| offline-store.js | 2938 | `39686a6aede793cde5eeebd9ee3eb264967e064fcb4ce3c4755a80de86f0ae63` |
+| offline.html | 7804 | `a2e4f69fecd030c213c2d9381aa257cd2be20c66bc49b81c20d556b1803293d9` |
+| offline.js | 23499 | `d22f0858061b43429b7a766c5864981a081dfc21bc31038e8c7257b538513499` |
+| railway-stations-LICENSE.txt | 25789 | `c5da9a0b157c450fd9c1781f3ee109bcada753451e3e30939d4a508e5e5569bd` |
+| railway-stations.js | 6703 | `2ceba42e15413ddf5d8d607ab81eeb5ab1bd273d6368c81b192feb7f8f3a2466` |
+| railway-stations.json | 1476309 | `6adfad5cd2ebcb9bcb6a40a969cc2fb8c59a6f94fc1dd784a70b2aa4544f30fd` |
+| rental-cars.js | 1707 | `ed278674dce9ead5835250143066327acef92eecc648e0c521767b7a4130b72f` |
+| sw.js | 2345 | `b004da15c57bce449f4079104ad6eecc33d1ae0fcfa9bad7fa62f9bb414d641d` |
+| tesseract-LICENSE.txt | 11357 | `b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1` |
+| tesseract-worker.min.js | 111162 | `38645599043239c0eb6db08a6504a92dcdc292200535f3e9339cd77c4443b842` |
+| tesseract.esm.min.js | 63220 | `da6267cfe5036ae718a59eece3b5744a4655b0b8faa9f16259362b783d74c9bb` |
+| travel-navigation-v90.js | 6160 | `df78ee149e3c6e4c5990ffa51f8f3185e60f3e830eed2ef8acf3fc04fa6169dc` |
+| wallet-tickets.js | 1953 | `82276dad44dc4f6dc43e6649e9cce367896c405f63a01180c32f0dcd7ad0bdd4` |
+
+## Varðveittar frumheimildir — saga, ekki gildandi verkefnaforgangur
+
+### H1 — fyrra ákvörðunarskjal
+
+```text
+Viðbót 30-10-2026 — leiðrétt dagsetningarregla og samræmi í báðum Í dag-yfirlitum
+
+Nýjustu skýru fyrirmæli notanda ganga framar eldri almennu dagsetningalýsingunni hér fyrir neðan:
+• Allar dagsetningar sem appið birtir eru dd-mm-yyyy. Hver dagsetning helst heil á einni línu; ef pláss vantar færist öll dagsetningin á næstu línu.
+• EINA samþykkta undanþágan frá fjögurra stafa ári eru dagahnappar, sem halda stutta sniðinu 15-10-’26 til að vera minni. Þetta er eldri samþykkt sem notandi áréttaði; ekki ný útlitstillaga.
+• Bæði Í dag-spjaldið sem flýtileið og Í dag í dagatali skulu varðveitt. Sömu viðvaranir og gular merkingar skulu birtast á báðum stöðum.
+• Spjöld með virkri viðvörun hafa gula útlínu OG viðvörunarþríhyrning. Samþykkt undantekning fjarlægir tengdar virkar merkingar á öllum sambærilegum stöðum.
+• Staðarklukka skal vera sýnileg í báðum Í dag-yfirlitum. Nota skráð tímabelti staðarins, ekki tímabelti símans sem sjálfgefna staðreynd um áfangastað. Ekki búa til óskráða bókunar- eða komutíma.
+• Fáni og áfangastaðarheiti við gistingu, leiðsögn frá réttum upphafsstað, skráðir tímar, miðar, kostnaður og vistun skulu varðveitt.
+
+Umfang útgáfu 92: samræmd fyrirliggjandi gistingarviðvörun fyrir kvöld dagsins í báðum Í dag-yfirlitum og á tengdum spjöldum; staðarklukka í báðum yfirlitum; heil dagsetning í birtingu, lesafriti og PDF; raunverulegt heiti upphafsstaðar við fyrirliggjandi leiðsagnartengil ferðadags. Engin endurhönnun, gagnamigrering eða breyting á kostnaði og vistun bókana. Dagahnappar óbreyttir.
+
+Staða: útfært í afhendingarafriti 92. Vafraprófun með prufugögnum í Chromium fór fram; raunveruleg iPhone/iPad- og lifandi gagnagrunnsprófun þessarar útgáfu er eftir. Ekki merkja heildarendurheimt allra fyrri samþykkta staðfesta. Sjá afmarkað stöðuyfirlit í PROFUN-92.md með kóðanum. Útgáfa 91 er varðveitt óbreytt.
+
+Ferðakerfið mitt — gildandi ákvarðanir
+
+Viðbót 30-10-2026 — endurheimt samþykktrar viðvörunarbirtingar
+
+Samþykkt af notanda og staðfest með fyrri skjámynd: Spjöld með viðvörun skulu hafa bæði gula útlínu og gulan viðvörunarþríhyrning efst til hægri. Þetta gildir á öllum sambærilegum stöðum, þar með talið ferðaleið/tímalínu, dagatali, kortaspjöldum og báðum „Í dag“-yfirlitum. Varðveita núverandi viðvörunarreglur og samþykktar undantekningar; ekki merkja öll óbókuð atriði sjálfkrafa sem nýja viðvörun.
+
+Afmarkað umfang útgáfu 91: endurheimt framsetningar við fyrirliggjandi viðvaranir. Engar breytingar á leiðsögn, Frá/Til-línum, fyrirsögnum, bókunargögnum, kostnaði, vistun eða útreikningum.
+Staða: 18 sérprófanir og samanburður við útgáfu 90 standast. iPhone/iPad-útlit og snertiprófun eru óstaðfest. Ekki merkja notandaprófun lokið fyrr en hún hefur farið fram.
+
+
+Viðbót 29-10-2026 — skyldubundnar vinnureglur við allar breytingar
+
+Samþykkt af notanda:
+1. Áður en breyting er gerð á Ferðakerfið mitt skal lesa yfir báðar heimildirnar „Ferðakerfið mitt — gildandi ákvarðanir“ og „Ferðakerfið mitt — verkefnalisti“. Þetta á við í hvert sinn sem ný breytingavinna hefst eða nýtt umfang er tekið fyrir.
+2. Afmarka skal fyrirfram hvaða flokkar, gluggar og virkni falla undir samþykkta breytingu. Aðeins má breyta þeim flokkum og hlutum sem fyrirfram hafa verið ákveðnir í gildandi beiðni notanda.
+3. Fyrri ákveðnar og samþykktar breytingar, útlit, gögn og virkni utan þess umfangs skulu varðveitt. Nýrri skýr fyrirmæli notanda geta breytt fyrri ákvörðun; ekki má álykta að ótengdar samþykktir séu felldar úr gildi.
+4. Bera skal breytinguna saman við fyrri útgáfu og sannreyna að viðkomandi samþykkt flæði haldist. Fyrri útgáfa skal varðveitt. Aðgreina skal kóðaprófun frá því sem notandi hefur staðfest á tæki.
+
+Þessi viðbót setur vinnureglur; hún merkir ekki eldri verkefni sjálfkrafa lokið eða endurheimilar breytingar utan gildandi beiðni.
+
+Viðbót 18-10-2026 — föst vinnuregla um dagsetningar
+
+Samþykkt af notanda: Allar dagsetningar sem appið birtir eða býr til fyrir notanda skulu vera dagur-mánuður-ár, með tveggja stafa degi og mánuði og fjögurra stafa ári: dd-mm-yyyy, t.d. 18-10-2026. Reglan gildir yfir allt kerfið, líka nýja virkni, skjái, dagatal/tímalínu, form, tilkynningar og viðvaranir, lesafrit án nets, PDF/prentun og skráarheiti öryggisafrita eða annarra skráa sem appið myndar. Nota sameiginleg birtingarföll og sannreyna sniðið við breytingar.
+
+Innri vistun, API, JSON-öryggisafrit og vélgildi innbyggðra dagsetningarreita mega halda ISO-sniði þar sem þess er tæknilega þörf. Birting fyrir notanda skal samt vera dd-mm-yyyy og rétt tímabelti skal varðveitt. Upprunaleg viðhengi, frjáls notandatexti og eldri skráarheiti eru ekki endurskrifuð sjálfkrafa.
+
+Þessi regla bætist við samþykktar kröfur hér fyrir neðan og gildir við allar áframhaldandi breytingar á verkefninu.
+
+Umfang: Samantektin byggist á samtalsbrotunum og verkefnissamantektinni sem eru aðgengileg hér. Hluti eldra samtals er styttur eða vantar. Kóði var ekki skoðaður og engu var breytt.
+
+Staða útfærslu: Fyrri svör segja breytingarnar hér að neðan framkvæmdar og prófaðar með prufugögnum. Það staðfestir ekki sjálfstætt hvað er í núverandi GitHub-útgáfu eða hvernig það virkar á iPhone.
+
+1. Samþykktar reglur um útlit og hegðun
+
+* Varðveita núverandi útlit og virkni utan þess sem breytingabeiðni nær til. Viðbót vegna útlagðs kostnaðar má ekki breyta reiknivél, þjórféshnöppum eða öðrum samþykktum reitum fyrir ofan hana.
+* „Alls staðar“ og „heimfæra á allt“ merkir að breyting gildi á öllum sambærilegum stöðum og samræmi sé yfirfarið.
+* Tímalína og dagatalssýn haldast bæði. Val á áfangastað í tímalínu leiðir að viðeigandi dögum; val á degi merkir viðkomandi áfangastað.
+* Stöðug hreyfing er aðeins í „Næsti áfangastaður“. Aðrir hlutar fá aðeins mjúkar hreyfingar við val, opnun eða skipti.
+* Kostnaðargluggi hefur röðina: Flokkur → Tengist bókun? → Staður / heiti kostnaðar → Upphæð og útreikningur.
+* „Fjöldi alls“ og „Okkar fjöldi“ eru hlið við hlið, einnig í síma. Við snertingu velst talan svo hægt sé að skrifa yfir hana beint.
+* Viðbótarkostnaður við bókun sýnir emoji eigin kostnaðarflokks.
+
+2. Samþykkt virkni
+
+Skráning og breyting kostnaðar
+
+* „Skrá kostnað“ stofnar nýjan reikning. Val á tengdri bókun má ekki óvart yfirskrifa eldri reikning.
+* Eldri færslu er breytt með því að opna hana úr kostnaðaryfirliti eða undir „Viðbótarkostnaður við bókun“.
+* Einfalt heiti, t.d. „Kvöldmatur“, nægir; nákvæmt nafn staðar er ekki skilyrði.
+* Eftir vistun á staðfesting að sýna skýrt hvað vistaðist, þar á meðal upphæð og greiðslustöðu.
+
+Flokkur og tenging við bókun
+
+* Flokkur er sýnilegur ofarlega og alltaf breytanlegur, líka í eldri kostnaðarfærslu og þegar kostnaður tengist bókun.
+* Þegar glugginn er opnaður úr bókun er flokkur hennar forval og tengingin þegar valin.
+* Almenna flýtileiðin man síðasta vistaða flokk í sama vafra.
+* Sjálfgefin tenging í almennri nýskráningu er „Nei, sjálfstæður kostnaður“.
+* Val á tengdri bókun má ekki yfirskrifa flokk, heiti eða upphæð sem þegar hefur verið valin eða slegin inn.
+* Kostnaður má hafa annan flokk en bókunin, t.d. Veitingastaðir tengdir hóteli, án þess að breyta hótelbókuninni.
+* Tengdur kostnaður finnst í kostnaðaryfirliti og við bókunina og telst aðeins einu sinni.
+* Breyting á flokki eldri kostnaðarfærslu flytur sömu færslu milli flokka; hún stofnar ekki nýja.
+
+Reiknivél, þjórfé og skipting
+
+* Þjórfé hefur flýtival: ekkert, 5%, 10%, 12%, 15% og eigin upphæð.
+* Þjórfé reiknast af reikningnum áður en honum er skipt. Sé það þegar innifalið er engu bætt við.
+* Reiknivélin á að halda áfram frá innsláttu upphæðinni.
+* Skipting notar fjölda alls og okkar fjölda. Okkar fjöldi er sjálfgefið tveir, en breytanlegt.
+* Einnig má skrá okkar hlut handvirkt.
+* Aðeins okkar hluti fer í ferðakostnaðinn. Reikningur, þjórfé, skipting og okkar hluti varðveitast með færslunni til endurskoðunar og breytinga.
+
+Útlagður kostnaður og uppgjör
+
+* Við greiðsluna er val um að við höfum greitt allan reikninginn fyrir hópinn.
+* Aðgreina skal okkar ferðakostnað, það sem við greiddum og það sem við eigum eftir að fá til baka.
+* Hægt er að merkja endurgreiðslu móttekna og afturkalla uppgjör.
+* Endurgreiðsla breytir ekki okkar ferðakostnaði.
+* Uppgjörsstaða varðveitist við enduropnun og sést í kostnaðaryfirliti og við tengda bókun.
+
+Drög og lokun
+
+* „Hætta við“ á að loka glugganum og varðveita ólokna skráningu sem drög í sama vafra. Drög teljast ekki ferðakostnaður.
+* Ef drög eru þegar til þarf að velja „Halda áfram“ eða „Henda drögum“ áður en ný skráning hefst.
+* Lokun án þess að velja má ekki yfirskrifa eldri drög.
+
+ISK-heild og gagnabirting
+
+* Þegar gengi eða skráða ISK-greiðslu vantar skal merkja ISK-heild ófullgerða, bæði á ferðaspjaldi og í kostnaðaryfirliti.
+* Innri vistunarupplýsingar mega ekki birtast sem athugasemdir. Tómar athugasemdir haldast tómar.
+
+Staðsetning hótels
+
+* Flýtileiðin heitir „Skoða tillögu að staðsetningu hótels“, bæði undir korti og í bókunarglugga.
+* Skýring segir hvaðan tillagan kemur. Kort opnast til yfirferðar áður en staðsetning er vistuð.
+* Tillagan er ekki staðfesting á því að punkturinn sé hótelið.
+
+3. Ólokið, þekkt vandamál og óvissa
+
+* iPhone-prófun er óstaðfest. Ekki liggur fyrir staðfesting á heildarflæðinu þar, sérstaklega tölureitum, lokun, drögum og enduropnun.
+* Núverandi útgáfa er óstaðfest. Nýjasta afhenta skráin í aðgengilega samtalinu er kostnadur-fjoldi-hlid-vid-hlid/index.html; ekki sést hvort hún hafi verið sett á GitHub.
+* Eldri villur voru sagðar lagaðar: föst lokun með „Hætta við“, innri gögn í athugasemdum, yfirskrift draga og ómerkt ófullgerð ISK-heild. Engin þeirra er hér staðfest enn opin, en lagfæringarnar hafa ekki verið sannreyndar í núverandi útgáfu.
+* Kostnaðarflokkur er ekki dagskráratriði. Nýjasta skýringin segir að kvöldmatur tengdur hóteli stofni ekki sjálfkrafa sérstakt atriði í Veitingastöðum. Eldri fullyrðing um það var leiðrétt. Sérstök skýring á þessum mun í viðmótinu er ekki staðfest.
+* „Í dag“ og „Ferðaveski“ eru skráð sem samþykkt stefna í verkefnissamantektinni, en upprunalegi textinn er styttur. Nákvæm umfangslýsing og framkvæmdastaða liggja ekki fyrir.
+* Ekki liggur fyrir að samþykktar ákvarðanir og ólokin verk hafi verið færð í verkefnisskrá með núverandi kóða, eins og vinnureglurnar kveða á um.
+
+Tillögur sem ekki fengu skýrt samþykki eru ekki taldar gildandi kröfur hér.
+```
+
+### H2 — fyrri verkefnalisti
+
+```text
+Viðbót 30-10-2026 — leiðrétt dagsetningarregla og samræmi í báðum Í dag-yfirlitum
+
+Nýjustu skýru fyrirmæli notanda ganga framar eldri almennu dagsetningalýsingunni hér fyrir neðan:
+• Allar dagsetningar sem appið birtir eru dd-mm-yyyy. Hver dagsetning helst heil á einni línu; ef pláss vantar færist öll dagsetningin á næstu línu.
+• EINA samþykkta undanþágan frá fjögurra stafa ári eru dagahnappar, sem halda stutta sniðinu 15-10-’26 til að vera minni. Þetta er eldri samþykkt sem notandi áréttaði; ekki ný útlitstillaga.
+• Bæði Í dag-spjaldið sem flýtileið og Í dag í dagatali skulu varðveitt. Sömu viðvaranir og gular merkingar skulu birtast á báðum stöðum.
+• Spjöld með virkri viðvörun hafa gula útlínu OG viðvörunarþríhyrning. Samþykkt undantekning fjarlægir tengdar virkar merkingar á öllum sambærilegum stöðum.
+• Staðarklukka skal vera sýnileg í báðum Í dag-yfirlitum. Nota skráð tímabelti staðarins, ekki tímabelti símans sem sjálfgefna staðreynd um áfangastað. Ekki búa til óskráða bókunar- eða komutíma.
+• Fáni og áfangastaðarheiti við gistingu, leiðsögn frá réttum upphafsstað, skráðir tímar, miðar, kostnaður og vistun skulu varðveitt.
+
+Umfang útgáfu 92: samræmd fyrirliggjandi gistingarviðvörun fyrir kvöld dagsins í báðum Í dag-yfirlitum og á tengdum spjöldum; staðarklukka í báðum yfirlitum; heil dagsetning í birtingu, lesafriti og PDF; raunverulegt heiti upphafsstaðar við fyrirliggjandi leiðsagnartengil ferðadags. Engin endurhönnun, gagnamigrering eða breyting á kostnaði og vistun bókana. Dagahnappar óbreyttir.
+
+Staða: útfært í afhendingarafriti 92. Vafraprófun með prufugögnum í Chromium fór fram; raunveruleg iPhone/iPad- og lifandi gagnagrunnsprófun þessarar útgáfu er eftir. Ekki merkja heildarendurheimt allra fyrri samþykkta staðfesta. Sjá afmarkað stöðuyfirlit í PROFUN-92.md með kóðanum. Útgáfa 91 er varðveitt óbreytt.
+
+Ferðakerfið mitt — verkefnalisti, uppfært 29-10-2026
+
+Viðbót 30-10-2026 — endurheimt samþykktrar viðvörunarbirtingar
+
+Samþykkt af notanda og staðfest með fyrri skjámynd: Spjöld með viðvörun skulu hafa bæði gula útlínu og gulan viðvörunarþríhyrning efst til hægri. Þetta gildir á öllum sambærilegum stöðum, þar með talið ferðaleið/tímalínu, dagatali, kortaspjöldum og báðum „Í dag“-yfirlitum. Varðveita núverandi viðvörunarreglur og samþykktar undantekningar; ekki merkja öll óbókuð atriði sjálfkrafa sem nýja viðvörun.
+
+Afmarkað umfang útgáfu 91: endurheimt framsetningar við fyrirliggjandi viðvaranir. Engar breytingar á leiðsögn, Frá/Til-línum, fyrirsögnum, bókunargögnum, kostnaði, vistun eða útreikningum.
+Staða: 18 sérprófanir og samanburður við útgáfu 90 standast. iPhone/iPad-útlit og snertiprófun eru óstaðfest. Ekki merkja notandaprófun lokið fyrr en hún hefur farið fram.
+
+
+Viðbót 29-10-2026 — skyldubundnar vinnureglur við allar breytingar
+
+Samþykkt af notanda:
+1. Áður en breyting er gerð á Ferðakerfið mitt skal lesa yfir báðar heimildirnar „Ferðakerfið mitt — gildandi ákvarðanir“ og „Ferðakerfið mitt — verkefnalisti“. Þetta á við í hvert sinn sem ný breytingavinna hefst eða nýtt umfang er tekið fyrir.
+2. Afmarka skal fyrirfram hvaða flokkar, gluggar og virkni falla undir samþykkta breytingu. Aðeins má breyta þeim flokkum og hlutum sem fyrirfram hafa verið ákveðnir í gildandi beiðni notanda.
+3. Fyrri ákveðnar og samþykktar breytingar, útlit, gögn og virkni utan þess umfangs skulu varðveitt. Nýrri skýr fyrirmæli notanda geta breytt fyrri ákvörðun; ekki má álykta að ótengdar samþykktir séu felldar úr gildi.
+4. Bera skal breytinguna saman við fyrri útgáfu og sannreyna að viðkomandi samþykkt flæði haldist. Fyrri útgáfa skal varðveitt. Aðgreina skal kóðaprófun frá því sem notandi hefur staðfest á tæki.
+
+Þessi viðbót setur vinnureglur; hún merkir ekki eldri verkefni sjálfkrafa lokið eða endurheimilar breytingar utan gildandi beiðni.
+
+GILDANDI STAÐA 28-10-2026
+Þessi stöðuyfirferð gengur framar eldri ólokið-merkingum hér fyrir neðan. Eldri listi er varðveittur sem verk- og ákvörðunarsaga; hann er ekki sjálfkrafa listi yfir næstu verk.
+
+Lokið í afhentum útfærslum
+☑ Heildstætt samhengi ferðadags í „Í dag“: gisting, stöð/höfn, samgöngur og næsta gisting. Bæði efra Í dag-spjald og Í dag-flipi haldast að ósk notanda.
+☑ Einfaldari skráning opinna lestar- og bátaferða með leið og áætluðum degi; nákvæm bókun bætist við síðar.
+☑ Yfirferð áhrifa dagsetningabreytinga og viðvaranir um tímaárekstra þegar nauðsynlegar upplýsingar liggja fyrir. Bókanir færast ekki sjálfkrafa.
+☑ Tillögur að upphafi leiðsagnar og ferðadegi út frá gistingu; afmarkað lestarflæði áður staðfest af notanda.
+☑ Endurnýting stöðva í heimferð til staðar í útfærslu. Ekki ný krafa um að útfæra sama verk aftur.
+☑ Mynd/skjáskot lesið í bókunardrög til yfirferðar. Ólæsilegir reitir haldast auðir; notandi þarf að samþykkja. Útflug og heimflug studd í sama innflutningi.
+☑ Flugvallarkóðar, heiti og þekktir kortapunktar í komu- og brottfararreitum út- og heimferðar. Punktar tákna flugvöll, ekki nákvæmt hlið eða inngang; skráin er ekki fullyrðing um alla flugvelli heims.
+☑ Skýr leiðbeining við vistunarhnappa þegar samþykkishak efst í innflutningsglugga vantar.
+☑ „Hvað vantar í ferðina?“ hópað og afgreitt með fyrri staðfestingu notanda.
+
+Nýjustu staðfestingar notanda — útgáfa 75
+☑ Ferðasvæði og ferðaveski samþykkt í sýndri uppsetningu.
+☑ „Sýna áfangastaði“ aðskilið frá „Sýna alla ferðina“; Tenerife sýnir ferðasvæði með víðari yfirsýn. Almennur ferðasvæðispunktur stofnar ekki skráðan dvalarstað.
+☑ Tengd skjöl birtast einu sinni undir bókun í veski. Bókun og staðfesting eru aðgreind, tengd atriði.
+☑ Notandi prófaði aftur og segir veskið virðast vistast til notkunar án nets. Sú afmarkaða prófun er skráð; ekki leggja sömu prófun aftur til sem nýtt verkefni án nýs vandamáls.
+
+Prófunarmörk
+Útfært eða prófað með hermdu DOM/korti jafngildir ekki heildarprófun á iPhone/iPad. Nýjustu skjámyndir og athugasemdir notanda staðfesta ofangreinda afmarkaða notkun. Engin fullyrðing um að öll skjöl í öllum tækjum séu tiltæk án nets.
+
+Raunverulega ólokið / þarf ákvörðun
+☐ Sameiginlegt „Tilbúið fyrir ferð“ yfirlit: hvort nauðsynlegir miðar fyrir okkur bæði séu til staðar og hvað sé sótt í viðkomandi tæki. Fyrst bera saman við núverandi yfirlit; aðeins leggja til viðbót ef skýr þörf er óuppfyllt. Ekki tvöfalda veski eða fyrirliggjandi virkni án nets. Engin ný útfærsla samþykkt með þessari stöðufærslu.
+☐ Heildaryfirferð sambærilegra bókunarglugga á iPhone/iPad er ekki fullstaðfest. Vinna út frá tilteknu vandamáli ef það kemur fram, ekki endurhanna samþykkt flæði sjálfkrafa.
+
+Næsta skref
+Engin ný kóðabreyting ákveðin. Nota gildandi stöðu til að forðast endurtekningar; varðveita samþykkta uppsetningu veskis og korts. Velja eitt afmarkað ólokið verk áður en ný tillaga er útfærð.
+
+ELDRI VERKEFNALISTI OG VIÐBÆTUR — SAGA FRÁ 25–26-10-2026
+
+Markmið: Einfalt ferðayfirlit fyrir okkur bæði, þar sem næsta skref, leiðsögn, miðar og gisting finnast auðveldlega.
+
+Lokið
+☑ Endurbæta „Í dag“ spjaldið.
+☑ Sýna gistingu í kvöld í minna spjaldi þegar annað er aðalatriði dagsins.
+☑ Gefa bókunum seinni daga minna vægi.
+☑ Hafa „Nánari spá ⌄“ saman undir veðrinu.
+
+Ólokið — í forgangsröð
+
+☐ 1. Heildstætt yfirlit á dögum þegar skipt er um stað.
+Sýna samhengi dagsins: brottför af hóteli → stöð eða höfn → lest eða bátur → næsta gisting. Leiðsögn og miðar við viðeigandi skref.
+Mikilvægi: Mest notagildi næst. Minnkar leit og óvissu á ferðadögum.
+
+☐ 2. Einfalda skráningu opinna lestar- og bátaferða.
+Byrja með leið og áætluðum degi. Bæta tíma, miðum og bókunarupplýsingum við þegar ferðin er bókuð. Opnar ferðir eru eðlilegur hluti áætlunarinnar.
+Mikilvægi: Gagnlegt fyrir okkar ferðamáta, en núverandi skráning er þegar nothæf.
+
+☐ 3. Sýna áhrif dagsetningabreytinga áður en vistað er.
+Sýna hvaða gististaðir, samgöngur og dagskráratriði þurfa yfirferð. Engar bókanir færast sjálfkrafa.
+Mikilvægi: Mikilvægt þegar ferðaáætlun breytist; minna aðkallandi meðan dagsetningar haldast.
+
+☐ 4. Sameina „Tilbúið fyrir ferð“ yfirlit.
+Sýna hvort nauðsynlegir miðar og gögn fyrir okkur bæði séu til staðar og hvað er aðgengilegt án nets í viðkomandi tæki.
+Mikilvægi: Gagnlegt fyrir brottför. Byggja á núverandi ferðaveski og virkni án nets.
+
+Sjálfvirkni — bætt við 25-10-2026
+
+Staða: Verkefni til útfærslu og yfirferðar; þessi viðbót breytir ekki kóða. Forgangur innan þessa kafla er 1 og 2 fyrst. Lestur miðamynda (5) er einnig sérstaklega áhugaverður fyrir notanda.
+
+☐ 1. Rétt hótel sem tillaga að upphafi leiðsagnar.
+Stinga upp á gististaðnum sem við förum frá, líka á útritunardegi. Nota brottfararstað ferðarinnar til að forðast að velja hótelið á komustaðnum. Tillagan sé sýnileg og breytanleg.
+
+☐ 2. Tillaga að ferðadegi út frá gistingu.
+Nota útritun á fyrri stað og innritun á næsta stað til að leggja til dag fyrir opna lestar- eða bátaferð. Notandi samþykkir; ekki yfirskrifa skráðar dagsetningar eða færa bókaðar ferðir sjálfkrafa.
+
+☐ 3. Endurnýta nákvæmar lestarstöðvar í heimferð.
+Bjóða sömu stöðvar í öfugri röð, með vistuðum kortapunktum. Byggja á núverandi viðsnúningi heita og leyfa breytingar þegar heimferð notar aðrar stöðvar.
+
+☐ 4. Finna tímaárekstra.
+Benda á skörun dagskrár, áætlaða hótelkomu fyrir komu lestar og of stuttar tengingar þegar nauðsynlegar tíma- og ferðatímaupplýsingar liggja fyrir. Ekki búa til óþekkta tíma eða gefa í skyn lifandi vöktun.
+
+☐ 5. Lesa miðamynd eða skjáskot í bókunardrög.
+Draga út stöðvar, dagsetningar, brottfarar- og komutíma og bókunarnúmer þegar þau sjást. Notandi yfirfer og samþykkir áður en vistað er; óviss eða ólæsileg gildi séu merkt. Byggja á núverandi innflutningi PDF/texta.
+Miði má áfram vera aðeins í appi söluaðila; innflutningur eða viðhengi er ekki skilyrði fyrir bókun.
+
+☐ 6. Sýna áhrif dagsetningabreytinga.
+Sama verkefni og liður 3 í aðalforgangslistanum, ekki tvö aðskilin verk. Sýna hvaða gististaðir, samgöngur og dagskrá þurfa yfirferð áður en breyting er vistuð. Engar bókanir færast sjálfkrafa.
+
+Vinnureglur
+• Taka eitt verkefni í einu, byrja á útlitstillögu og samþykkja áður en kóða er breytt.
+• Varðveita samþykkta virkni, tímalínu, dagatal og kostnaðarkerfi.
+• Birta dagsetningar sem dd-mm-yyyy.
+• Prófa breytingar í síma og iPad.
+
+Næsta skref í sjálfvirkni: Tillaga að réttu upphafi leiðsagnar og ferðadegi út frá gistingu (liðir 1 og 2). Yfirfara núverandi útfærslu áður en breytingar hefjast.
+
+
+Viðbót 26-10-2026 — flæði og sýnileiki í bókunargluggum
+
+☐ Yfirfara flæði, röðun og sýnileika í öllum sambærilegum bókunargluggum.
+• Færa tengd atriði nær hvert öðru, sérstaklega komudag og val á gistingu eftir komu.
+• Gera dagsetningartillögur og „Nota daginn“ auðfundið. Aðgreina stöðu bókunar, áætlað dagabil og skráðan brottfarar-/komudag.
+• Skýra hvers vegna val er ekki tiltækt og sýna næsta skref við viðeigandi reit, án þess að þurfa að leita langt í glugganum.
+• Skoða lengd glugga, hópun reita og samræmi hnappa, sérstaklega á iPhone og iPad.
+• Útbúa hugmyndir að hóflegri og samræmdri notkun emoji við fyrirsagnir til að auðvelda yfirsýn, t.d. 📅 Dagsetningar, 🏨 Gisting, 🚆 Lest, 🎫 Miðar og skjöl og 💰 Kostnaður. Tákn styðji texta; útlitstillaga til samþykktar áður en kóða er breytt.
+Staða: skráð til yfirferðar og tillögugerðar, ekki framkvæmd. Fyrri ólokin verk halda sér; nýr forgangur ekki ákveðinn.
+
+Afmarkaðar staðfestingar notanda 25–26-10-2026:
+• Í lestarferð virka leiðsögn frá gistingu að brottfararstöð og frá komustöð að gistingu; samræmd uppsetning beggja gistispjalda sést á skjámyndum.
+• Tillaga að brottfarardegi 30-10-2026 var notuð í Prag → Trieste, vistuð og varðveitt eftir enduropnun.
+• Gististaður í Trieste, skráður óbókaður/opinn, birtist til vals eftir að komudagur lestar var skráður. Óbókuð staða hótels var ekki hindrunin.
+Þetta staðfestir þessi afmörkuðu lestarflæði, ekki heildarprófun allra ferðaflokka. Sjálfvirkniliðir 1 og 2 eru því útfærðir og staðfestir að þessu marki; samsvarandi prófun annarra flokka er eftir. Næsti sjálfvirkniliður sem ræddur var: endurnýting nákvæmra lestarstöðva í heimferð (liður 3).
+
+
+Viðbót 26-10-2026 — læsileiki áfangastaða og ferðaleiðar á korti
+
+☐ Bæta sýnileika borgarheita og ferðaleiðar, sérstaklega á iPhone.
+Athugun notanda og skjámyndir: mörg stór merki sýna aðeins „Áfangastaður“ og hylja borgarheiti grunnkortsins. Merki og textaspjöld skarast í þéttri yfirsýn. Ferðaleiðin er dauf og erfitt að sjá röð staða og hvaða leggur er valinn.
+Tillögur til yfirferðar, ekki samþykkt útfærsla:
+• Sýna borgarheiti við merki í stað almenna textans „Áfangastaður“; minni merki og þéttari heitisspjöld með samræmdu letri og skýrum bakgrunni.
+• Forðast skörun merkja/heitisspjalda þegar kortið er fjarlægt. Við val á borg eða ferðalegg sjást heitið og tengdir staðir skýrt.
+• Skýrari leiðarlínur með meiri birtuskilum, ljósri útlínu og samþykktum samgöngulitum; örvar eða númer geta skýrt ferðastefnu og röð.
+• Við val á ferðalegg draga fram þann legg og endapunkta hans og minnka vægi annarra leiða; samræma „Sýna áfangastaði“, „Sýna alla ferðina“ og flokkasíur.
+• Greina skýrt milli tengilínu milli staða og staðfestrar/nákvæmrar samgönguleiðar; ekki gefa í skyn að einföld tengilína sé raunveruleg lestar- eða akstursleið.
+Næsta skref: skoða núverandi kortaútfærslu og sýna útlitstillögu til samþykktar áður en kóða er breytt. Prófa læsileika í yfirsýn og aðdrætti á iPhone/iPad.
+Staða: verkefni skráð að beiðni notanda; enginn kortakóði breyttur og nýr forgangur ekki ákveðinn.
+
+```
+
+### H4 — fyrri verkefnissaga með kóðanum
+
+```text
+Viðbót 30-10-2026 — leiðrétt dagsetningarregla og samræmi í báðum Í dag-yfirlitum
+
+Nýjustu skýru fyrirmæli notanda ganga framar eldri almennu dagsetningalýsingunni hér fyrir neðan:
+• Allar dagsetningar sem appið birtir eru dd-mm-yyyy. Hver dagsetning helst heil á einni línu; ef pláss vantar færist öll dagsetningin á næstu línu.
+• EINA samþykkta undanþágan frá fjögurra stafa ári eru dagahnappar, sem halda stutta sniðinu 15-10-’26 til að vera minni. Þetta er eldri samþykkt sem notandi áréttaði; ekki ný útlitstillaga.
+• Bæði Í dag-spjaldið sem flýtileið og Í dag í dagatali skulu varðveitt. Sömu viðvaranir og gular merkingar skulu birtast á báðum stöðum.
+• Spjöld með virkri viðvörun hafa gula útlínu OG viðvörunarþríhyrning. Samþykkt undantekning fjarlægir tengdar virkar merkingar á öllum sambærilegum stöðum.
+• Staðarklukka skal vera sýnileg í báðum Í dag-yfirlitum. Nota skráð tímabelti staðarins, ekki tímabelti símans sem sjálfgefna staðreynd um áfangastað. Ekki búa til óskráða bókunar- eða komutíma.
+• Fáni og áfangastaðarheiti við gistingu, leiðsögn frá réttum upphafsstað, skráðir tímar, miðar, kostnaður og vistun skulu varðveitt.
+
+Umfang útgáfu 92: samræmd fyrirliggjandi gistingarviðvörun fyrir kvöld dagsins í báðum Í dag-yfirlitum og á tengdum spjöldum; staðarklukka í báðum yfirlitum; heil dagsetning í birtingu, lesafriti og PDF; raunverulegt heiti upphafsstaðar við fyrirliggjandi leiðsagnartengil ferðadags. Engin endurhönnun, gagnamigrering eða breyting á kostnaði og vistun bókana. Dagahnappar óbreyttir.
+
+Staða: útfært í afhendingarafriti 92. Vafraprófun með prufugögnum í Chromium fór fram; raunveruleg iPhone/iPad- og lifandi gagnagrunnsprófun þessarar útgáfu er eftir. Ekki merkja heildarendurheimt allra fyrri samþykkta staðfesta. Sjá afmarkað stöðuyfirlit í PROFUN-92.md með kóðanum. Útgáfa 91 er varðveitt óbreytt.
+
+Viðbót 30-10-2026 — endurheimt samþykktrar viðvörunarbirtingar
+
+Samþykkt af notanda og staðfest með fyrri skjámynd: Spjöld með viðvörun skulu hafa bæði gula útlínu og gulan viðvörunarþríhyrning efst til hægri. Þetta gildir á öllum sambærilegum stöðum, þar með talið ferðaleið/tímalínu, dagatali, kortaspjöldum og báðum „Í dag“-yfirlitum. Varðveita núverandi viðvörunarreglur og samþykktar undantekningar; ekki merkja öll óbókuð atriði sjálfkrafa sem nýja viðvörun.
+
+Afmarkað umfang útgáfu 91: endurheimt framsetningar við fyrirliggjandi viðvaranir. Engar breytingar á leiðsögn, Frá/Til-línum, fyrirsögnum, bókunargögnum, kostnaði, vistun eða útreikningum.
+Staða: 18 sérprófanir og samanburður við útgáfu 90 standast. iPhone/iPad-útlit og snertiprófun eru óstaðfest. Ekki merkja notandaprófun lokið fyrr en hún hefur farið fram.
+
+Ferðakerfið mitt — gildandi ákvarðanir
+
+Viðbót 18-10-2026 — föst vinnuregla um dagsetningar
+
+Samþykkt af notanda: Allar dagsetningar sem appið birtir eða býr til fyrir notanda skulu vera dagur-mánuður-ár, með tveggja stafa degi og mánuði og fjögurra stafa ári: dd-mm-yyyy, t.d. 18-10-2026. Reglan gildir yfir allt kerfið, líka nýja virkni, skjái, dagatal/tímalínu, form, tilkynningar og viðvaranir, lesafrit án nets, PDF/prentun og skráarheiti öryggisafrita eða annarra skráa sem appið myndar. Nota sameiginleg birtingarföll og sannreyna sniðið við breytingar.
+
+Innri vistun, API, JSON-öryggisafrit og vélgildi innbyggðra dagsetningarreita mega halda ISO-sniði þar sem þess er tæknilega þörf. Birting fyrir notanda skal samt vera dd-mm-yyyy og rétt tímabelti skal varðveitt. Upprunaleg viðhengi, frjáls notandatexti og eldri skráarheiti eru ekki endurskrifuð sjálfkrafa.
+
+Þessi regla bætist við samþykktar kröfur hér fyrir neðan og gildir við allar áframhaldandi breytingar á verkefninu.
+
+Umfang: Samantektin byggist á samtalsbrotunum og verkefnissamantektinni sem eru aðgengileg hér. Hluti eldra samtals er styttur eða vantar. Kóði var ekki skoðaður og engu var breytt.
+
+Staða útfærslu: Fyrri svör segja breytingarnar hér að neðan framkvæmdar og prófaðar með prufugögnum. Það staðfestir ekki sjálfstætt hvað er í núverandi GitHub-útgáfu eða hvernig það virkar á iPhone.
+
+1. Samþykktar reglur um útlit og hegðun
+
+* Varðveita núverandi útlit og virkni utan þess sem breytingabeiðni nær til. Viðbót vegna útlagðs kostnaðar má ekki breyta reiknivél, þjórféshnöppum eða öðrum samþykktum reitum fyrir ofan hana.
+* „Alls staðar“ og „heimfæra á allt“ merkir að breyting gildi á öllum sambærilegum stöðum og samræmi sé yfirfarið.
+* Tímalína og dagatalssýn haldast bæði. Val á áfangastað í tímalínu leiðir að viðeigandi dögum; val á degi merkir viðkomandi áfangastað.
+* Stöðug hreyfing er aðeins í „Næsti áfangastaður“. Aðrir hlutar fá aðeins mjúkar hreyfingar við val, opnun eða skipti.
+* Kostnaðargluggi hefur röðina: Flokkur → Tengist bókun? → Staður / heiti kostnaðar → Upphæð og útreikningur.
+* „Fjöldi alls“ og „Okkar fjöldi“ eru hlið við hlið, einnig í síma. Við snertingu velst talan svo hægt sé að skrifa yfir hana beint.
+* Viðbótarkostnaður við bókun sýnir emoji eigin kostnaðarflokks.
+
+2. Samþykkt virkni
+
+Skráning og breyting kostnaðar
+
+* „Skrá kostnað“ stofnar nýjan reikning. Val á tengdri bókun má ekki óvart yfirskrifa eldri reikning.
+* Eldri færslu er breytt með því að opna hana úr kostnaðaryfirliti eða undir „Viðbótarkostnaður við bókun“.
+* Einfalt heiti, t.d. „Kvöldmatur“, nægir; nákvæmt nafn staðar er ekki skilyrði.
+* Eftir vistun á staðfesting að sýna skýrt hvað vistaðist, þar á meðal upphæð og greiðslustöðu.
+
+Flokkur og tenging við bókun
+
+* Flokkur er sýnilegur ofarlega og alltaf breytanlegur, líka í eldri kostnaðarfærslu og þegar kostnaður tengist bókun.
+* Þegar glugginn er opnaður úr bókun er flokkur hennar forval og tengingin þegar valin.
+* Almenna flýtileiðin man síðasta vistaða flokk í sama vafra.
+* Sjálfgefin tenging í almennri nýskráningu er „Nei, sjálfstæður kostnaður“.
+* Val á tengdri bókun má ekki yfirskrifa flokk, heiti eða upphæð sem þegar hefur verið valin eða slegin inn.
+* Kostnaður má hafa annan flokk en bókunin, t.d. Veitingastaðir tengdir hóteli, án þess að breyta hótelbókuninni.
+* Tengdur kostnaður finnst í kostnaðaryfirliti og við bókunina og telst aðeins einu sinni.
+* Breyting á flokki eldri kostnaðarfærslu flytur sömu færslu milli flokka; hún stofnar ekki nýja.
+
+Reiknivél, þjórfé og skipting
+
+* Þjórfé hefur flýtival: ekkert, 5%, 10%, 12%, 15% og eigin upphæð.
+* Þjórfé reiknast af reikningnum áður en honum er skipt. Sé það þegar innifalið er engu bætt við.
+* Reiknivélin á að halda áfram frá innsláttu upphæðinni.
+* Skipting notar fjölda alls og okkar fjölda. Okkar fjöldi er sjálfgefið tveir, en breytanlegt.
+* Einnig má skrá okkar hlut handvirkt.
+* Aðeins okkar hluti fer í ferðakostnaðinn. Reikningur, þjórfé, skipting og okkar hluti varðveitast með færslunni til endurskoðunar og breytinga.
+
+Útlagður kostnaður og uppgjör
+
+* Við greiðsluna er val um að við höfum greitt allan reikninginn fyrir hópinn.
+* Aðgreina skal okkar ferðakostnað, það sem við greiddum og það sem við eigum eftir að fá til baka.
+* Hægt er að merkja endurgreiðslu móttekna og afturkalla uppgjör.
+* Endurgreiðsla breytir ekki okkar ferðakostnaði.
+* Uppgjörsstaða varðveitist við enduropnun og sést í kostnaðaryfirliti og við tengda bókun.
+
+Drög og lokun
+
+* „Hætta við“ á að loka glugganum og varðveita ólokna skráningu sem drög í sama vafra. Drög teljast ekki ferðakostnaður.
+* Ef drög eru þegar til þarf að velja „Halda áfram“ eða „Henda drögum“ áður en ný skráning hefst.
+* Lokun án þess að velja má ekki yfirskrifa eldri drög.
+
+ISK-heild og gagnabirting
+
+* Þegar gengi eða skráða ISK-greiðslu vantar skal merkja ISK-heild ófullgerða, bæði á ferðaspjaldi og í kostnaðaryfirliti.
+* Innri vistunarupplýsingar mega ekki birtast sem athugasemdir. Tómar athugasemdir haldast tómar.
+
+Staðsetning hótels
+
+* Flýtileiðin heitir „Skoða tillögu að staðsetningu hótels“, bæði undir korti og í bókunarglugga.
+* Skýring segir hvaðan tillagan kemur. Kort opnast til yfirferðar áður en staðsetning er vistuð.
+* Tillagan er ekki staðfesting á því að punkturinn sé hótelið.
+
+3. Ólokið, þekkt vandamál og óvissa
+
+* iPhone-prófun er óstaðfest. Ekki liggur fyrir staðfesting á heildarflæðinu þar, sérstaklega tölureitum, lokun, drögum og enduropnun.
+* Núverandi útgáfa er óstaðfest. Nýjasta afhenta skráin í aðgengilega samtalinu er kostnadur-fjoldi-hlid-vid-hlid/index.html; ekki sést hvort hún hafi verið sett á GitHub.
+* Eldri villur voru sagðar lagaðar: föst lokun með „Hætta við“, innri gögn í athugasemdum, yfirskrift draga og ómerkt ófullgerð ISK-heild. Engin þeirra er hér staðfest enn opin, en lagfæringarnar hafa ekki verið sannreyndar í núverandi útgáfu.
+* Kostnaðarflokkur er ekki dagskráratriði. Nýjasta skýringin segir að kvöldmatur tengdur hóteli stofni ekki sjálfkrafa sérstakt atriði í Veitingastöðum. Eldri fullyrðing um það var leiðrétt. Sérstök skýring á þessum mun í viðmótinu er ekki staðfest.
+* „Í dag“ og „Ferðaveski“ eru skráð sem samþykkt stefna í verkefnissamantektinni, en upprunalegi textinn er styttur. Nákvæm umfangslýsing og framkvæmdastaða liggja ekki fyrir.
+* Ekki liggur fyrir að samþykktar ákvarðanir og ólokin verk hafi verið færð í verkefnisskrá með núverandi kóða, eins og vinnureglurnar kveða á um.
+
+Tillögur sem ekki fengu skýrt samþykki eru ekki taldar gildandi kröfur hér.
+Viðbót 21-10-2026 — fyrirsögn og hnappar í ferðahaus
+Samþykkt: Til baka vinstra megin og Meira hægra megin, jafn stórir og í sömu hæð. Landkóði og FERÐASÍÐA yfir fána og ferðarheiti. Fyrirsögn má liggja yfir mynd og brotnar í línur ef hún er löng. Aðrar aðgerðir eru undir Meira. Varðveita myndahlutföll og stærðar-/útfeidunarsleða.
+Útfært í þessum pakka: Leiðsöguhnappar báðir 110 px breiðir, að lágmarki 44 px háir. Fyrirsögn ofar í myndsvæði með allt að 94% breidd. Staðsetning á einnig við um forskoðun myndastillinga. Núverandi myndahlutföll, vistun og aðgerðir varðveitt.
+Sannprófun: JavaScript skrár standast node --check. Sjónræn vafraprófun og prófun á iPhone ólokin: vafrakeyrslur voru ekki tiltækar og ekki tókst að sækja þær.
+Pakkinn sem barst inniheldur aðeins index.html og destination-photos.js/.css. Aðrar skrár sem index.html vísar á, t.d. offline-store.js, fylgdu ekki. Þessi pakki staðfestir því ekki heildarvirkni appsins sjálfstætt. Halda öðrum núverandi verkefnisskrám við uppfærslu.
+
+Viðbót 21-10-2026 — myndir áfangastaða og Í dag
+Samþykkt: Áfangastaður hefur myndaval sem nýtist líka í Í dag. Mynd í Í dag er breið undir staðarheiti, með ávölum hornum, án útþynningar, hreyfingar eða stærðarsleða. Minni mynd með útþynningu í Næsti áfangastaður.
+Útfært: Næsti áfangastaður notar nú sameiginlega myndavalshluta destination-photos. Sama staðarheiti og land nota sama vistaða myndaval í sama vafra og reikningi. Breyta/fela/sýna helst sameiginlegt milli spjalda. Í dag sýnir mynd 150–230 px háa eftir skjábreidd. Haus og hausmyndastillingar haldast.
+Sannprófun: Allt innfellt JavaScript og destination-photos.js standast setningafræðiprófun. Ekki tókst að staðfesta útlit í vafra/iPhone eða innskráða myndaleit í þessu umhverfi. Vistun myndavals er áfram staðbundin í vafra, ekki samstilling milli tækja.
+
+Leiðrétting 21-10-2026 — nýrri fyrirmæli ganga framar: Engin staðarmynd og engir myndahnappar eiga að vera á veðurspjaldinu „Næsti áfangastaður“. Myndasvæðið þar hefur verið fjarlægt. Mynd í Í dag og hausmynd haldast. Fyrri ákvörðun um litla mynd á veðurspjaldi fellur úr gildi. JavaScript setningafræði staðfest; iPhone útlit óprófað.
+
+Viðbót 21-10-2026: Veður dagsins birtist hægra megin við áfangastaðarheiti ofan við mynd í Í dag, án hnapps/ramma eða örvar. Notar daginn í dag og stað þess dags, sjálfstætt frá næstu bókun. Sérstök spá við bókun annars dags/staðar helst. Myndaaðgerðir í Í dag færðar undir ⋯ með Escape-lokun. JavaScript setningafræði staðfest. Vafra-/iPhone-prófun og innskráð veðursókn óstaðfest.
+
+Viðbót 21-10-2026: Samþykkt að áfangastaðarheiti í Í dag fái heila línu neðan við dagsetningu og veður. Veðurtákn stærra (34 px), hitastig jafn stórt og fyrirsögn (22 px), lýsing minni. Myndaval lokast við snertingu utan valmyndar, við fókus utan hennar, Escape og aftur á ⋯. Útfært í þessum pakka. Allt JavaScript stenst setningafræðiprófun; sjónræn iPhone-prófun og snertiprófun óstaðfest.
+
+Leiðrétting 21-10-2026: Fyrri pointerdown-lokun gat hleypt síðari click-atburði í undirliggjandi veðurhnapp. Lokun myndavals notar nú click í capture-fasa, hindrar sjálfgefna aðgerð og stöðvar atburðinn áður en hann nær undirliggjandi hnöppum. Fyrsta snerting utan opinnar myndavalmyndar lokar aðeins valmynd. iPhone-prófun óstaðfest.
+
+Leiðrétting 21-10-2026: Notandi staðfesti að fyrri lokun lagaði ekki vandann. Details-fellivalmynd skipt út fyrir innbyggðan modal dialog með bakgrunni sem hindrar undirliggjandi smelli, Loka-hnappi og lokun við smell utan glugga. Nýtt skráarnafn destination-photos-menu-dialog.js notað til að sækja nýju útfærsluna óháð gömlu JS skyndiminni. destination-photos.js haldið samhljóða til samræmis. Setningafræði JS staðfest, hegðun iPhone óprófuð.
+
+Leiðrétting 21-10-2026 — opnun ferða: clamp-hjálparfall féll út þegar fyrri utansmellsmeðhöndlun var fjarlægð. Endurheimt í báðum myndaskrám. Villan gat stöðvað refreshTripHeading áður en showScreen birti ferð. Keyrslupróf með prufugögnum staðfestir opnun ferðasíðu í gegnum myndauppsetningu og greinir sérstaklega gömlu clamp-villuna. 188 fastir HTML-hnappar og 63 beint nafngreindir atburðahandlarar yfirfarnir í kóða; engin tvítekin föst HTML-auðkenni. Sjá PROFUN-HNAPPA.md fyrir umfang og takmarkanir. Raunveruleg iPhone-prófun allra hnappa og full endaprófun með innskráningu og gagnagrunni ólokin.
+
+Viðbót 21-10-2026: Dagsetning í lýsingu veðurspjalds er nú valinn spádagur en ekki upphafsdagur áfangastaðar. Endurtekin renderDestination notar valinn dag og stað þess dags. Dagur án áfangastaðar heldur ekki eftir fyrri spá. Staðartími núna helst óbreyttur. Keyrslupróf weather-date.cjs með prufugögnum stenst fyrir dagaskipti, staðaskipti og endurteikningu; opnunar- og myndapróf standast áfram. iPhone/raunveðurgögn óstaðfest.
+
+Viðbót 21-10-2026: Dagsetningar í lýsingu veðurspjalds og staðartímum haldast heilar á einni línu með date-nowrap. Ef pláss vantar færist dagsetningin öll niður. Sameiginleg klukkubirting og regluleg uppfærsla varðveita umbrotsvörnina. Dagsetningarsnið helst dd-mm-yyyy.
+
+Viðbót 21-10-2026 — ferðaspjöld
+Samþykkt útlitstillaga: Lægri spjöld með mynd hægra megin og mjúkri útþynningu, fána við ferðarheiti, heilum dagsetningum, fjölda nátta, látlausum stöðu-/myntmerkingum og opnunarör. Hlýr litur og ávöl horn haldast. Mynd notuð úr sama vistaða vali og ferðahaus.
+Útfært á virkum og förnum ferðum. Kostnaðarupplýsingar farinna ferða varðveittar. Spjald opnast með snertingu, Enter eða bili; ljósmyndatenglar opnast sjálfstætt. Myndaval er aðeins lesið úr sama vafra/reikningi; engin ný myndaleit fer af stað á heimaskjá. Falið eða ótiltækt myndaval sýnir textaspjald. Ljósmyndahöfundur og Unsplash-tengill varðveitt.
+Prófað með Node-prufugögnum: myndaval ferðahauss á spjaldi, aðskilnaður reikninga, falið/ógilt myndaval, dagsetningar/nætur, kostnaður safns, örugg textabirting, opnun með smelli og lyklaborði og sjálfstæðir myndatenglar. Eldri opnunar-, myndaaðgerða- og veðurdagapróf standast. JavaScript setningafræði staðfest. Sjónræn vafra-/iPhone-prófun óstaðfest.
+
+Viðbót 22-10-2026 — tveir útþynningarsleðar hausmyndar
+Samþykkt: Stærðarsleði helst. Í stað eins útfeidunarsleða koma Útþynning efri hluta og Útþynning neðri hluta; báðir þynna frá vinstri til hægri með mjúkum bognum skilum. Fyrirsögn helst eins. Engin útþynning upp frá neðri brún myndarinnar. Gildir aðeins á hausmynd ferðasíðu og forskoðun hennar; ferðaspjöld og Í dag haldast.
+Útfært: Sjálfstæð 0–100% gildi, SVG-gríma með bognum skilum og láréttri mýkingu. 0/0 fjarlægir grímuna. Stærð, fyrirsögn og staðsetning myndar óbreytt. Vistað á sama stað fyrir sama reikning/ferð/vafra. Eldri stærð varðveitt; eldri útfeidun færð á efri sleða og neðri fær minna gildi. Engin gagnabreyting fyrr en sleði eða Endurstilla er notað. Endurstilla: stærð 100%, efri 65%, neðri 25%.
+Prófað með prufugögnum: flutningur eldri stillinga, sjálfstæðir sleðar, vistun/enduropnun, forskoðun, bogin lárétt gríma án botnútþynningar, 0/0, endurstilling og aðskilnaður ferða. Eldri keyrslupróf standast. JavaScript setningafræði staðfest. Sjónræn Safari/iPhone-prófun óstaðfest.
+
+Leiðrétting 22-10-2026 — blikk við myndasleða
+Notandi sér blikk í Safari þegar sleðar eru dregnir. SVG-data-URL var endursmíðað í hverjum input-atburði; líkleg orsök en ekki staðfest með Safari-greiningu. Skipt yfir í fastar CSS radial-gradient grímur þar sem aðeins efri/neðri radíus breytist. Mynd og DOM endurnýtast. Útlínur eru áfram mjúkar og bognar, neðri brún án lóðréttrar útþynningar. Útfærslan getur gefið örlítið aðra útþynningu við sömu prósentu en SVG-gríman.
+Útlitsuppfærsla afmörkuð við requestAnimationFrame. Skrifa aðeins við sleppingu/change, blur eða lokun. Fyrirsögn, stærð og valin mynd haldast. Vörn gegn því að óvistuð stilling færist á aðra ferð við lokun.
+Keyrslupróf staðfesta tvo sleða, vistun/enduropnun, forskoðun, engar skrifanir við drag, endurstillingu og ferðaafmörkun. Öll fjögur keyrslupróf og setningafræði standast. Hvort blikkið sé horfið á iPhone er enn óstaðfest.
+
+Leiðrétting 22-10-2026 — fyrri bogadregin útþynning endurheimt
+Notandi hafnar móðukenndri CSS radial-gradient útþynningu og skörpum myndajaðri. Nú er stöðugt innfellt SVG-lag yfir mynd með bogadregnum skilum frá vinstri. Sleðar færa eingöngu ferilinn; engin ný SVG-data-slóð er búin til. Mynd, fyrirsögn og stærð haldast. Efri og hægri brún eru mýkt og aðeins örmjó mýking (3 px) á neðri brún til að eyða skörpum myndakassa; engin víð botnútþynning. Þetta er nýrri leiðrétting á fyrri útfærslu. Sleðarnir tveir, rAF-uppfærsla og frestuð vistun haldast.
+Prófað: sami bogni ferill á haus/forskoðun, breyting efri/neðri gilda, 0/0 felur vinstri útþynningarlagið, vistun/enduropnun og fyrri keyrslupróf. Öll fjögur próf og JavaScript setningafræði standast. Raunverulegt útlit og blikk á iPhone óstaðfest.
+
+Leiðrétting 22-10-2026 — gagnsæ mynd með breiðri bogadreginni útþynningu
+Samþykkt eftir skjáskot: sama mjúka útfærsla á efri/neðri hluta og boga. Ljós plata yfir mynd skal hverfa. Mynd sjálf verður gagnsæ yfir breiðara svæði.
+Útfært: SVG-image með innbyggðri alpha-grímu. Ekkert lag í bakgrunnslit yfir mynd. Sami bogni ferill og sama lárétta mýking fyrir báða enda. Mýking stækkuð úr 70/1000 í 180/1000 af myndbreidd. Jaðramýking frá vinstri hindrar sýnilega upphafsbrún. Sleðar, fyrirsögn, stærð, rAF-uppfærsla og vistun við sleppingu haldast. Gríma og mynd endurnýtast í stað nýrrar SVG-slóðar við hverja hreyfingu. Samanburður við eldri SVG-útgáfu getur þurft fínstillingu sleða.
+Prófað: allir fjórir keyrsluprófaflokkar og JavaScript setningafræði standast. Prófin staðfesta gildi, sama feril í haus/forskoðun, vistun og tengda virkni; þau staðfesta ekki SVG-teikningu í Safari. Sjónræn prófun, myndhlutföll og blikk á iPhone óstaðfest.
+
+Leiðrétting 22-10-2026 — stökk við val á liðnum degi
+Þegar veðurspjald styttist í „Dagurinn er liðinn“ færist dagaval upp á skjánum. Ný sameiginleg dagvalsaðgerð heldur efri brún dagavals í sömu skjástöðu með tafarlausri skrunleiðréttingu og eftirfylgni í næsta teikniramma. Færslu til hliðar í dagavali er haldið við endurteikningu. Eldri teiknirammaleiðrétting er hunsuð ef valinn dagur hefur breyst. Engin gögn eða dagsetningar færðar.
+Próf calendar-scroll.cjs staðfestir með hermdu skipulagi að samdráttur/stækkun veðurspjalds haldi dagavali kyrru og varðveiti lárétta færslu. Öll fimm keyrslupróf og setningafræði standast. Raunveruleg Safari-skrunhegðun/iPhone óstaðfest.
+
+Viðbót 23-10-2026 — samþykkt endurhönnun aðalspjaldsins Í dag
+Markmið: Konan geti séð næsta skref án þess að þekkja skráningarhluta kerfisins. Staður, mynd og veður halda staðsetningu. Veður er sjónrænt án ramma með ⌄/Nánari spá; snerting opnar nánari spá fyrir sama stað og dag í Næsti áfangastaður. Ferðaleið, Dagatal, neðri Í dag sýn og kort haldast.
+Eitt stórt spjald sýnir næstu aðgerð dagsins. Staðfestir tímar nota fyrirliggjandi brottfararáætlun til forgangsröðunar ef hún er tiltæk. Afþreying og samgöngur geta verið aðalatriði. Innritun getur verið aðalatriði komudaginn; gisting á áframhaldandi dvöl er lítil. Þegar aðeins seinni daga bókanir eru framundan birtist Engin tímasett dagskrá í dag (eða Engin fleiri tímasett atriði í dag eftir tímasett atriði). Óbókuð samgöngufærsla fyrir staðaskiptadag fær aðalvægi ef engin önnur næsta tímasett aðgerð hefur forgang; hún gengur framar innritun síðar sama dag.
+Miðar/skjöl opnast með raunverulegum heitum og tengingum; ekki gert ráð fyrir að fjöldi skjala jafngildi fjölda farþega. Leiðsögn og brottfarartímar nota skráð gögn. Gisting án staðfests kortapunkts heldur eldri staðaskoðun fremur en að búa til nákvæma leiðsögn.
+Ófullgerður tími/tímabelti helst sýnilegt til yfirferðar. Færslur annarra daga og opnar samgöngur næstu sjö daga eru í minna spjaldi neðan við gistinguna. Áætlað dagabil er merkt, ekki kynnt sem staðfest brottför í dag. Aðrar færslur dagsins eru minni. Ekki breytt gagnagrunni, vistun, bókunum eða tengingum.
+Innritun er ekki greind sjálfkrafa af raunstaðsetningu; framsetning byggist á skráðum komudegi/tíma og stöðu færslunnar. Bókuð gisting sem er merkt Lokið fær ekki aðalvægi en getur áfram birst sem gisting í kvöld.
+Prófað: today-spotlight.cjs með hermdu DOM og prufugögnum fyrir hjólaferð, frjálsan dag, opna lest, innritun, lokið/afbókað/varagistingu, vantaðan tíma/tímabelti, lokin tímasett atriði, brottfararforgang, fram/tilbaka flug, dagabil, réttan veðurdag og tengingar í bókanir/skjöl. Fimm eldri keyrslupróf standast áfram. Allt innfellt JavaScript stenst setningafræðiprófun. Raunverulegt vafra-/iPhone-/iPad-próf og innskráðar ytri þjónustur óstaðfestar.
+
+Viðbót 23-10-2026: Veðurtengill í aðalspjaldi Í dag er nú undirstrikað Nánari spá með ⌄ á sömu línu undir veðurlýsingu. Örin er ekki lengur við veðurlýsinguna sjálfa. Tengingin á sama dag/stað óbreytt.
+
+24-10-2026 — Hótelskipti í Í dag
+Samþykkt útlit varðveitt. Valin bókuð/notuð gisting sem lýkur í dag fær litla útritunarlínu fyrir ofan aðalatriðið. end_local_time birtist aðeins ef gilt vistað gildi er til; enginn tími áætlaður. Gisting í kvöld er áfram aðskilin. Óbókuð ferð sýnir að tími sé óákveðinn. Vantað viðhengi breytir ekki bókunarstöðu; skjámyndir/PDF nota núverandi ferðaveski. Engin ný tenging við lestaröpp eða sérreitur fyrir miðageymslu útfærður í þessari útgáfu.
+Prófun: öll sex Node-prófasöfn standast og málskipun innfelldra skrifta yfirfarin. Raunprófun í síma/iPad eftir uppfærslu er eftir.
+
+24-10-2026 — Gistibókun: sameinað dvalarsvæði
+Innritunar- og útritunardagur saman fyrir ofan staðsetningu, fjöldi nátta reiknaður eftir dagsetningum. Innritun frá og útritun fyrir eru nýir valfrjálsir reitir, aðskildir frá eldri áætlaðri komu okkar (local_time). Skilmálatímar vistast í metadata.lodging_times; engin gagnagrunnsbreyting. Eldri end_local_time lesinn ef ný útritunarstilling vantar; tæming nýja reitsins gengur framar eldra gildi. Tímar sýndir í viðeigandi Í dag hluta og PDF. Sömu dagsetningarreitir færðir innan forms, ekki afritaðir, svo eldri viðburðatengingar og hreinsun haldast. Önnur bókunarform og kostnaðarvirkni varðveitt.
+Prófun: sjö Node-prófasöfn, þar með raunveruleg saveItem keyrsla með hermdum gagnagrunni, flokkskipti, enduropnun tíma, tæming og fjöldi nátta við sumartímaskipti; málskipun allra innfelldra skrifta og einstök HTML auðkenni standast. Engin raunprófun í vafra eða síma; vafrakeyrsluskrár eru ekki uppsettar hér.
+
+24-10-2026 — Meira valmynd
+Bætt við Fara í dag, Ferðaveski og Breyta áfangastöðum fyrir ofan Breyta ferð. Hausmynd opnar undirvalmynd með Til baka og sömu eldri velja/stilla/fela aðgerðum. Eyða ferð heldur eldri sýnileikaskilyrðum og staðfestingum, neðst með auknu bili. Fara í dag er óvirkt utan ferðar í gangi eða við hleðsluvillu. Lokun endurstillir undirvalmynd; Escape fer fyrst til baka úr Hausmynd og lokar svo Meira. Núverandi gluggar og vistun notuð óbreytt.
+Prófun: átta Node-prófasöfn standast, þar á meðal ný trip-more prófun á aðgerðatengingum, undirvalmynd, bakfærslu, Escape, lokun utan valmyndar og fókus/skrun á Í dag. Málskipun skrifta og einstök HTML auðkenni yfirfarin. Engin raunprófun í síma/vafra hér.
+
+24-10-2026 — Dagsetningar áfangastaða í bókun
+Áfangastaðaval sýnir vistað dagabil í dd-mm-yyyy. Undir valinu birtist áætluð dvöl og fjöldi nátta þegar dagabilið er gilt. Gistibókun fær Nota daga áfangastaðar sem fyllir inn innritunar- og útritunardag; eldri gildi haldast tiltæk í Afturkalla val. Skipti um áfangastað eða flokk yfirskrifa ekki bókunardaga. Hnappur falinn fyrir aðra flokka og ófullkomið/ógilt dagabil. Upplýsingar sjást líka í öðrum bókunarflokkum.
+Prófun: níu Node-prófasöfn standast og málskipun innfelldra skrifta yfirfarin. Raunprófun í síma er eftir.
+
+24-10-2026 — Afmörkun dagsetningar- og tímareita í skrunanlegum bókunarglugga
+Notandi lýsir röngu snertimarki í iPhone Safari: dagsetning opnar tíma eða næsta hnapp. Orsök ekki endurgerð hér. Lagfæring afmarkar innbyggða date/time snertifleti innan sýnilegra reita, heldur minnst 16px letri til að forðast sjálfvirkan fókus-aðdrátt og notar stöðugt svh bókunargluggasvæði og eigin teiknilag. Gistireitir eru ekki endurfærðir innan DOM ef þeir eru þegar í réttum stað. Engar grípandi snerti- eða smellatilfærslur bættar við.
+Prófun: níu Node-prófasöfn og málskipun skrifta standast. Þetta staðfestir ekki viðgerð Safari snertivillunnar; nauðsynlegt er að prófa sýnilega dagsetningar- og tímareiti eftir skrun í síma.
+
+24-10-2026 — Eitt skrunsvæði fyrir bókunarglugga
+Notandi staðfesti að fyrri snertilagfæring dugði ekki; Heildarverð opnaði gjaldmiðilsval. Fjarlægð fyrri tilraun með svh, transform og sérsnertifleti date/time. itemModal yfirlagið sér nú eitt um lóðrétt skrun; dialog er í venjulegu flæði án eigin skrunar, max-height eða transform. Allir innsláttar-/valreitir bókunar hafa minnst 16px letur. Þetta nær til verðs og gjaldmiðils jafnt sem dagsetninga. Aðrir gluggar óbreyttir.
+Prófun: níu Node-prófasöfn og málskipun innfelldra skrifta standast. Raunverulegt Safari snertifrávik hefur ekki verið endurgert hér og þarf staðfestingu í síma eftir uppfærslu.
+
+24-10-2026 — Opnun efst og stöðugur uppruni snertiflata
+Fundinn installModalPageScrollGuard sem festi body, færði það um neikvæða scrollY og kallaði window.scrollTo(0,0) við opnun á iOS. Því skipt út fyrir overflow-læsingu á bakgrunni án tilfærslu uppruna eða skrunkalls við opnun. Scrollstaða endurheimt aðeins ef hún breyttist við lokun síðasta glugga; upprunaleg inline overflow gildi varðveitt. Þetta er líkleg orsök, ekki staðfest endurgerð af Safari villunni.
+Nýjar openModal opnanir núllstilla bæði overlay og dialog scrollTop/scrollLeft; opinn gluggi sem endurtekið er vísað í heldur stöðu. Til baka í bókun úr ferðaveski varðveitir raunverulegt overlay skrun eftir breytingu á skrunsvæði, og ferðaveskislisti heldur stöðu úr skjalaviðbót. Kortundirgluggi lætur opinn bókunarglugga óhreyfðan. showScreen fer efst með instant skrun; Fara í dag og aðrar markvissar flýtileiðir óbreyttar.
+Prófun: tíu Node-prófasöfn standast. Ný modal-scroll keyrir raunveruleg openModal/returnToBooking/scroll guard föll með hermdu DOM og prófar nýja opnun, enduropnun, undirglugga, uppruna og endurheimt stíla. Málskipun allra innfelldra skrifta standast. Reynt að undirbúa Playwright WebKit en vafrakeyrsla ekki möguleg vegna vantar kerfissafna/uppsetningarheimilda. Raunprófun í iPhone er eftir.
+
+24-10-2026 — Örugg lokun og WebKit raunprófun (útgáfa 26)
+Verðreitur enn sagður ónothæfur í iPhone. Engin ný tilgátubreyting á snertiflötum gerð. Nú tókst að keyra WebKit 26.5/Playwright með kerfissöfnum sóttum og afpökkuðum í QA-möppu án kerfisuppsetningar. Prófun á raunverulegu HTML/CSS og allri meginskrift með raunverulegri bindUI/openNewItem keyrslu, en gerviferð og Supabase/kort óvirkt: símaútlit 393x852, snerting eftir skrun á dagsetningu, inn-/útritunarklukkum, komutíma, verði og bókunarnúmeri; réttur reitur fær fókus og verð tekur við 150. Þetta endurgerir EKKI iOS-villuna og er ekki staðfesting á viðgerð hennar.
+Bætt við vörn fyrir óvistaðar breytingar í bókun: Hætta við/backdrop krefst staðfestingar áður en breytt bókun lokast. Hætta við í staðfestingu heldur innslætti. Vistað keepOpen endurnýjar samanburðargrunn. Undirgluggar varðveita gögn og skrun áfram. Sýnilegt útgáfunúmer 24-10-2026 · 26 efst í bókunarglugga hjálpar að staðfesta rétta uppfærslu.
+Prófun: tíu Node-söfn standast og málskipun innfelldra skrifta. WebKit full-form prófun staðfesti einnig verðinnslátt, ferð í miðaval og til baka með sömu upphæð/scrollstöðu, afturkallaða lokun, staðfesta lokun og nýja opnun efst. Raunprófun í iPhone enn eftir; engin lifandi notandagögn eða gagnagrunnur notaður í vafraprófi.
+
+24-10-2026 — Sameina áfangastaðatengingu opinna samgangna (útgáfa 27)
+Áfangastaðareitur falinn fyrir opnar lestar-/ferju-/akstursferðir og bókaðar færslur með völdum Frá/Til áfangastöðum. Til ræður stop_id tengingu, annars Frá. Eldri almenn tenging varðveitt ef ekkert leiðarval til staðar. Gisting, afþreying og aðrir flokkar halda almennu áfangastaðavali. Við breytingu í Bókað fyllast aðeins auðir útleiðarreitir úr leiðarvalinu; nákvæm stöðvarheiti og tímasetningar ekki yfirskrifuð. Óvistuð leiðaráætlun varðveitt við fyrstu vistun þótt staða hafi verið breytt í Bókað.
+Prófun: ellefu Node-prófasöfn og málskipun innfelldra skrifta standast. Ný journey-association prófun nær yfir val, bókunarstöðuskipti, varðveislu leiðaráætlunar, handskráð stöðvarheiti og eldri tengingar. WebKit-prófunarhandrit uppfært en ekki keyrt í þessari umferð því fyrri vafrauppsetning hefur horfið úr keyrsluumhverfinu. Notandi staðfesti hnappar virka í útgáfu 26; engar breytingar á snertingu eða skruni í 27.
+
+24-10-2026 — Skýrari listi vistaðra staða (útgáfa 28)
+Heiti staðar sér í feitu letri, síðan stutt nákvæmnisskýring og smærra samhengi með dagsetningu/tíma ef skráð. Enginn langur texti um óskráða klukku. Vistaðir nákvæmir punktar raðast á undan nafnaleit og borgarpunktum; flokksforgangur aðeins innan sama nákvæmnishóps. Titill fyrir leiðarreiti lestar er Velja lestarstöð. Upplýsingar áfram afmarkaðar við núverandi ferð.
+Leiðrétt varðveisla nákvæmni: endurnotkun borgarpunkts af gerð Borg/bær getur ekki lengur orðið Nákvæmur kortapunktur vegna textaprófs sem þekkti aðeins orðið áfangastaðar. Upprunalegt precision gildi varðveitt við endurnotkun. Engin gagnagrunnsbreyting eða breyting á sjálfri leiðinni.
+Prófun: tólf Node-söfn og málskipun innfelldra skrifta standast; ný saved-places prófun nær yfir flokkun, merkingar, dagsetningu, valhnapp, textaöryggi og varðveislu precision. Útlitsprófun í síma eftir.
+
+24-10-2026 — Heildstætt stöðvaval samgangna (útgáfa 29)
+Leiðrétt rangt borgarsamhengi: ný transportEndpointContext notar hvorn leiðarenda sérstaklega úr Frá/Til áætlun, vistaðri source_stop_id eða ótvíræðri heitapörun. Generic itemStop og hótel á komustað geta ekki ráðið leit að brottfararstöð. Útleið og heimleið nota sína enda og komu/brottfarardag. Kort notar borg þess enda á undan punkti hins enda.
+Valdar borgir fylla auða leiðarreiti líka fyrir opnar ferðir. Reitir lestar heita Brottfararstöð/Komustöð; kortahnappur Velja lestarstöð. Finna borg/bæ falinn þegar borg er þegar valin. Leit fyrir almennt borgarheiti undirbýr railway station í réttri borg (ferry terminal fyrir ferju); valið nákvæmt stöðvarheiti varðveitt. Engin stöð staðfest sjálfkrafa og enginn tími áætlaður.
+Tvítekinn almennur bookingLocationField falinn fyrir lest/ferju/akstur; val úr routeOut Origin uppfærir sama booking place og brottfararáætlun. Eldri nákvæmur mætingarpunktur nýttur í leiðaruppruna þegar enginn nákvæmur leiðaruppruni er til. Aðrir bókunarflokkar halda staðsetningarreit.
+Prófun: þrettán Node-söfn og málskipun innfelldra skrifta standast. Ný transport-endpoints prófun nær yfir Kaupmannahöfn frá/Hamborg til þrátt fyrir itemStop Hamborg, réttar dagsetningar, heimleið, að leit noti ekki hótel/titil, varðveislu stöðvarheitis og óþekkta borg án ágiskunar. saved-places prófun staðfestir að valin brottfararstöð uppfæri sameiginlegan mætingarpunkt. Raunprófun í síma á nýju flæði er eftir.
+
+24-10-2026 — Ein bókunarstaða og réttur brottfararstaðartími (útgáfa 30)
+Eina sýnilega bókunarstöðuv​​alið er nú Staða bókunar efst. Kostnaðarstaða verður sjálfkrafa booked fyrir booked/done, annars estimated; kostnaðarval í itemModal falið og lesanleg skýring sýnir tenginguna. Greiðslustaða áfram sérstök og Bókað merkir ekki Greitt. Bein notandabreyting í greiðslu að hluta/fullu merkir opna/hugmyndabókun Bókað með sýnilegum skilaboðum. Vistunarvörn bannar opna bókun með skráðri greiðslu.
+Eldra misræmi (opin bókun með bókuðum kostnaði/greiðslu) birtir skýringu og Merkja bókun sem bókaða. Engin sjálfvirk breyting á vistuðum gömlum bókunum við opnun. Almenn quick-cost form með form override halda eigin kostnaðarstöðu og reiknivél/þjórfé/uppgjör óbreytt.
+Í dag velur brottfararborg og tímabelti úr uppruna leiðarinnar/route_plan fremur en komuborg eða gistingardegi; heimleið snýr uppruna við. Óþekktur uppruni birtir Staðartími bókunar í stað rangrar borgar. Sama tímabeltisforgangi bætt í næsta atriði neðri Í dag sýnar.
+Prófun: fjórtán Node-söfn og málskipun innfelldra skrifta standast. Ný booking-status prófun sannreynir eina stöðu, eldri misræmisábendingu án sjálfvirkrar gagnabreytingar, greiðsluviðbragð, að Bókað setji ekki Greitt, done/maybe og vistunarvörn. Today próf staðfestir Kaupmannahöfn frá/Hamborg til og heimleið. Raunprófun í síma eftir.
+
+24-10-2026 — Sýnileg leið á Í dag spjaldi (útgáfa 31)
+Samgöngur í aðal- og minni Í dag spjöldum sýna skráða Frá → Til leið undir heiti. Skráð leiðar-/stöðvarheiti hafa forgang; áfangastaðir route_plan eru varagildi. Heimleið snýr valinu við. Ef aðeins annar endi er þekktur er Frá: eða Til: sýnt, án ágiskunar. Almenn lestartitil eins og Lest fær → komuborg; sértæk notandaheiti haldast. Ör notuð í fyrirsögn í stað þess að giska á eignarfallsbeygingu borgarheita. Tímar og staðartímamerking óbreytt.
+Prófun: today-spotlight prófar leiðina fyrir København H/Hamburg Hbf, áfangastað í titli, heimleið, sértitil, hálfskráða leið og escaping. Prófið og málskipun innfelldra skrifta standast. Sjónræn yfirferð í síma eftir.
+
+25-10-2026 — Stöðvalisti áður en slegið er inn (útgáfa 32)
+Velja lestarstöð opnar nú listaval fyrir viðkomandi leiðarenda. Stöðvar úr staðbundinni Trainline EU stöðvaskrá síaðar innan 30 km af borgarpunkti og eftir landi; áfangastaður fyrirsagnar ræður ekki báðum endum. Allt að 8 næstu færslur fyrst, Sýna fleiri stöðvar upp í 24. Fyrri val og nákvæmir staðir úr núverandi ferð efst. Val opnar hreinni kortayfirferð með heiti/stað og staðfestingarhnappi; engin breyting á leiðinni fyrr en Nota þennan stað er valið. Finn ekki stöðina opnar fyrri leitar-/innlímingarvirkni; hægt að fara til baka í listann.
+Nýlega valdar stöðvar geymdar í sama vafra með aðgreiningu eftir notanda og borg; völdum stöðvarhnitum, auðkenni og tímabelti fylgt í núverandi route_places vistun þegar bókun er vistuð. Þær stöðvar fylgja því bókuninni á öðrum tækjum en vafrasagan sjálf er staðbundin. Skráin er ekki tímatöflu-/lifandi brottfararþjónusta og velur ekki stöð sjálfvirkt.
+Nýjar skrár sem þurfa að fylgja GitHub uppfærslu: railway-stations.js, railway-stations.json og railway-stations-LICENSE.txt. Catalogue: 19.605 færslur úr opinni Trainline EU stations.csv, síuð á suggestable, non-city, UIC og gild hnit, augljós bus/ZOB heiti tekin út og duplicate UIC sameinað. ODbL leyfi og heimild fylgja og birtast við listann. Ófullkomin borgarhnit eða skrá án viðkomandi stöðvar hefur handvirka leið áfram. Bilun í skrársókn varðveitir fyrri val og handvirka leit.
+Prófun: fimmtán Node-prófasöfn standast ásamt málskipun. Ný railway-stations prófun notar raunverulega stöðvaskrá, Kaupmannahöfn/Hamborg/Róm, land-/fjarlægðarsíun, skyndiminni, notanda-/borgaraðgreiningu, hnappaval, stale svarvörn og bilun/offline fallback. WebKit 26.5 prófaði raunverulegt staðbundið UI í símastærð: réttir stöðvalistar, val breytir ekki reit fyrr en staðfest, réttur leiðarendi uppfærist, fyrri val efst, leit og Til baka og óbreyttur gagnstæður leiðarendi. Sjónræn yfirferð gerð í sand þema með stóru letri. Kortaflísar/kortaþjónusta og gagnagrunnur hermd/óvirk í því prófi; raunprófun á korti og iPhone er eftir.
+
+25-10-2026 — Tímaröð áætlaðra og staðfestra bókana (útgáfa 33)
+Flokkalistar raða eftir gildandi brottfarardegi; fyrir opnar lestir/ferjur/akstur án skráðs brottfarardags er upphaf áætlaðs dagabils notað. Dagsettar áætlanir blandast tímarétt við bókaðar færslur og fá merkinguna Áætlað. Ódagsettar færslur neðst, óskráður tími síðast innan sama dags. Staðfestur/handfærður brottfarardagur gengur framar áætluninni. Engum vistuðum dagsetningum eða stöðum breytt.
+Sama röðun og áætlunarmerking í PDF svo útflutningur fylgi listanum. Dagatal fær ekki tilbúna staðfestingu eða klukku fyrir áætlanir.
+Prófun: ný booking-order Node prófun sannreynir 19/21/25/ódagsett röð, raunverulegt openCategory HTML, tíma innan dags, forgang skráðs dags og óbreytt gögn. Prófið og málskipun innfelldra skrifta standast. WebKit prófun á raunverulegu staðbundnu viðmóti með gervigögnum staðfesti sömu röð í flokkalista og PDF og sýnilega Áætlað merkingu. Raunprófun í síma eftir.
+
+25-10-2026 — útgáfa 38: gistibundnar tillögur í lestar- og bátaformi
+Samþykkt: lítil viðbót við núverandi bókunarglugga. Gistiform og „Í dag“ breytast ekki.
+• Opnar lestir/bátar: leggja til dag þegar útritun á brottfararstað og innritun á komustað falla saman. Aðeins „Nota daginn“ fyllir tóman brottfarardag. Bókaðar ferðir og hringferðir fá ekki dagsetningartillögu.
+• Leiðsögn að stöð/höfn: miða hóteltillögu við brottfararstað viðkomandi leggs, einnig útritunardag. Heimleið miðar við sinn brottfararstað.
+• Fleiri hótel, ósamræmi eða óþekktur dagur/staður: skýring og handvirkt val; hvorki ágiskun né yfirskrift.
+• Vistaðir upphafsstaðir og dagsetningar breytast ekki sjálfkrafa. Tillögur nota núverandi vistaða gistingu, sleppa varabókunum/afbókuðum valkostum.
+Staða: kóði útfærður; rökprófanir keyrðar. Prófun á raunverulegum iPhone/iPad og staðfesting notanda bíður. Uppsetning á GitHub bíður.
+
+25-10-2026 — útgáfa 39: snerting staðareits og afritað heimilisfang
+• Birtingarreitur „Gististaður / Staður“ opnar nú sama staðaval og „Líma / velja á korti“, einnig með Enter/bilslá.
+• Staðaleit reynir upprunalegan texta fyrst. Ef engar niðurstöður fást eru mest tvö afmörkuð heimilisfangssnið reynd til viðbótar (þ.m.t. tékkneskt tvöfalt húsnúmer og einföldun póstnúmers/hverfis). Aldrei sjálfvirk vistun punkts.
+• Niðurstöður varaleitar eru merktar með leitartextanum og beiðni um að yfirfara húsnúmer. Þjónustuvillur verða áfram sýnilegar.
+• Prófun: rök og atburðameðhöndlun með hermdum leitarniðurstöðum standast. Lifandi leitarniðurstaða fyrir heimilisfang notanda, vistun við bakenda og raunveruleg iPhone/iPad-prófun óstaðfest.
+• Við yfirferð skilaði GitHub útgáfumerki 33; afhent útgáfa 39 byggir á vinnuútgáfu 38 og varðveitir samþykktar breytingar 37–38. Uppsetning bíður notanda.
+
+25-10-2026 — útgáfa 40: einfalt og samræmt staðaval
+Samþykkt: einn valhnappur; heiti eftir val og „Breyta staðsetningu“. „Nota vistaðan stað“ inni í staðavalinu.
+• Gisting, almennir mætingarstaðir og upphaf/mæting í brottfararáætlun: falinn gagnareitur í stað sýnilegs innsláttarlíks reits; valið heiti birtist sem texti. Gagnasnið og vistun haldast.
+• Vistaðir staðir, handvirk kortaleit og hreinsun aðgengileg inni í staðaglugganum. Lestarstöðval og leiðarinnsláttur haldast; flýtihnappur í vistaða staði flyst inn í valið.
+• Dagsetningar- og hóteltillögur 38 og heimilisfangsleit 39 varðveittar.
+Prófanir: setningafræði og hermd flæði fyrir val, endurbirtingu, hreinsun, staðaskipti, gistitillögur og leit standast. Raunveruleg iPhone/iPad- og bakendaprófun er eftir. Ekki uppsett á GitHub.
+
+25-10-2026 — útgáfa 41: gististaður sýnilegur í ferðabókun
+• Upphafsstaður leiðsagnar ásamt hóteltillögu fluttur úr földum ítarhluta fram fyrir brottfararstöð/höfn. Sama flæði á útleið og heimleið, lest/bát, bókað/opið.
+• Sömu gagnareitir og departure_plans varðveittir. Valið kveikir ekki sjálfkrafa á útreikningi brottfarartíma og krefst ekki skráðra ferðatímamínútna.
+• Þegar upphaf og brottfararstöð liggja fyrir birtist leiðsögn beint frá völdum upphafsstað að þeirri stöð/höfn. Tómur upphafsstaður gefur ekki í skyn valið hótel.
+• Önnur bókunarform halda fyrri staðsetningu ítarreita. Stöðvaval sjálft ekki endurhannað í þessari afmörkuðu lagfæringu.
+Prófun: hermd DOM-flæði fyrir út-/heimleið, flokkaskipti, engar tvítekningar, leiðartengil og varðveislu vistunargagna standast ásamt eldri rökprófunum. Raunveruleg iPhone/iPad, bakendavistun og lifandi kortaþjónusta óprófuð.
+Afhending: ein zip-skrá með öllum nauðsynlegum vefskrám og verkefnisskrá. Notandi afþjappar og hleður innihaldi í rót GitHub-verkefnis.
+
+25-10-2026 — útgáfa 42: samræmdar tengingar við gistingu báðum megin samgangna
+Samþykkt umfang: flug, lest, bátur/ferja, akstur; útleið og heimleið, bókað/opið.
+• Upphafsstaður og hóteltillaga sýnileg við brottför í öllum þessum flokkum. Valið hótel felur samsvarandi „Nota gististað“ tillögu; aukatexti/punktaskoðun þétt.
+• Gisting eftir komu við komustöð. Tillaga notar nákvæman komudag, virka gistingu og tengdan komustað. Óþekktur komudagur gefur enga ágiskun; þegar komustaður er óþekktur velur notandi sjálfur úr gistingu á þeim degi. Fleiri kostir krefjast vals. Engin sjálfvirk yfirskrift.
+• Google Maps leiðsögn að stöð/flugvelli/höfn og frá komustað að valinni gistingu. Tenging notar vistaða kortapunkta þegar þeir eru til, annars heitileit. Engin leið teiknuð í innbyggðu korti og engin lifandi umferðarvöktun.
+• Val eftir komu geymist sem departure_plans[leg].arrival_place og endurheimtist við breytingu bókunar. Lokunarviðvörun tekur tillit til breytingar þess. Breyting á gistingu/dagsetningu/komustað sem gerir val ógilt krefst yfirferðar.
+• Hnappar í tengispjöldum vefjast innan breiddar og raðast lóðrétt á þröngum skjá. Leiðsagnarheiti nefnir Google Maps.
+• Notandi staðfesti fyrra val á brottfarargistingu og leiðsögn; val birtist með töf. Almenn tafagreining enn ólokin.
+Prófun 42: hermd val-/vistunar-/endurheimtuflæði og leiðartenglar fyrir alla fjóra flokka og báða leggi standast. Sannreynd tilvik: komudagur eftir miðnætti, óþekktur dagur, útritun, tvíræð gisting, valin tillaga, engin tvítekin spjöld, flokkskipti. Vafraútlit og bakendi á raunverulegu iPhone/iPad eru enn óprófuð.
+
+25-10-2026 — útgáfa 43: sama uppsetning tenginga fyrir brottför og eftir komu
+• Fyrirsagnir „Gisting fyrir brottför“ / „Gisting eftir komu“, sama letur, heiti hótels og röð hnappa: Breyta → Hreinsa → Leiðsögn í Google Maps · ferðamáti.
+• Sömu bil og lóðrétt röðun í síma; engin breyting á leiðarhnitum eða vistun.
+• Notandi staðfesti virkni Google Maps leiðsagnar og sýndi bæði út-/komuleið. Ekki jafngilt staðfestingu á öllum ferðaflokkum eða vistun eftir enduropnun.
+Prófun: eldri hermd flæði og leiðartenglar standast. Raunveruleg útlitsprófun í iPhone/iPad eftir breytingu óstaðfest.
+Afhending: zip búið til undir tímabundnu nafni, lokað, afþjappað, borið saman við allar frumskrár og síðan fært á endanlegt nafn. Niðurhalshlekkur afhentur eftir vistun.
+
+25-10-2026 — útgáfa 44: varðveita samræmda hnappa við endurteikningu
+Orsök: compactPlaceControl endurstillti hótelupphaf í „Breyta staðsetningu“ og faldi Hreinsa þegar paintBookingPlace eða paintRoutePointHints keyrði á eftir flutningssértækri birtingu.
+Lagfæring: almenna fallið þekkir nú upphafsstað samgöngubókunar og varðveitir Breyta/Hreinsa þegar staður er valinn; autt val sýnir Velja gististað. Gildir fyrir flug/lest/bát/akstur og út-/heimleið. Engar breytingar á leiðsögn, gistivali eða vistunarsniði.
+Prófun: sérstök endurtekningarprófun (þrjár endurteikningar) fyrir alla flokka/báða leggi og eldri prófanir standast. Raunveruleg símaprófun á 44 enn óstaðfest. Notandi staðfesti rétta leiðsögn að Carlton.
+
+
+Viðbót 26-10-2026 — flæði og sýnileiki í bókunargluggum
+
+☐ Yfirfara flæði, röðun og sýnileika í öllum sambærilegum bókunargluggum.
+• Færa tengd atriði nær hvert öðru, sérstaklega komudag og val á gistingu eftir komu.
+• Gera dagsetningartillögur og „Nota daginn“ auðfundið. Aðgreina stöðu bókunar, áætlað dagabil og skráðan brottfarar-/komudag.
+• Skýra hvers vegna val er ekki tiltækt og sýna næsta skref við viðeigandi reit, án þess að þurfa að leita langt í glugganum.
+• Skoða lengd glugga, hópun reita og samræmi hnappa, sérstaklega á iPhone og iPad.
+• Útbúa hugmyndir að hóflegri og samræmdri notkun emoji við fyrirsagnir til að auðvelda yfirsýn, t.d. 📅 Dagsetningar, 🏨 Gisting, 🚆 Lest, 🎫 Miðar og skjöl og 💰 Kostnaður. Tákn styðji texta; útlitstillaga til samþykktar áður en kóða er breytt.
+Staða: skráð til yfirferðar og tillögugerðar, ekki framkvæmd. Fyrri ólokin verk halda sér; nýr forgangur ekki ákveðinn.
+
+Afmarkaðar staðfestingar notanda 25–26-10-2026:
+• Í lestarferð virka leiðsögn frá gistingu að brottfararstöð og frá komustöð að gistingu; samræmd uppsetning beggja gistispjalda sést á skjámyndum.
+• Tillaga að brottfarardegi 30-10-2026 var notuð í Prag → Trieste, vistuð og varðveitt eftir enduropnun.
+• Gististaður í Trieste, skráður óbókaður/opinn, birtist til vals eftir að komudagur lestar var skráður. Óbókuð staða hótels var ekki hindrunin.
+Þetta staðfestir þessi afmörkuðu lestarflæði, ekki heildarprófun allra ferðaflokka. Sjálfvirkniliðir 1 og 2 eru því útfærðir og staðfestir að þessu marki; samsvarandi prófun annarra flokka er eftir. Næsti sjálfvirkniliður sem ræddur var: endurnýting nákvæmra lestarstöðva í heimferð (liður 3).
+
+
+26-10-2026 — útgáfa 45: nákvæmar lestarstöðvar í heimferð
+Samþykkt: endurnýta stöðvar útferðar í öfugri röð með sömu kortapunktum þegar Fram og til baka er valið; heimferðarstöðvar áfram breytanlegar.
+• Óvaldar heimferðarstöðvar fá heiti, hnit, stöðvarauðkenni, tímabelti og tengingu við áfangastað úr útferð. Engin ný staðaleit þarf fyrir vistaða punkta.
+• Virkar líka ef Fram og til baka er valið áður en útferðarstöðvar eru valdar. Sama heimferðarheiti án sérstaks punkts getur fengið samsvarandi útferðarpunkt.
+• Sérvaldar heimferðarstöðvar/punktar eru ekki yfirskrifuð, jafnvel þótt heitið sé eins. Breytt heiti útferðar yfirskrifar ekki þegar fyllt heimferðarheiti; notandi getur breytt því sérstaklega.
+• Sama route_places vistunarsnið áfram. Engum vistuðum bókunum er breytt utan bókunargluggans. Engin breyting á útliti.
+Prófanir: 7 sjálfvirkar prófunarskrár standast. Ný rökprófun nær yfir viðsnúning, nákvæm hnit og stöðvarauðkenni, sérstakt heimferðarval, endurteknar uppfærslur, aðra flokka og endurheimt hermds vistunarpakka.
+Takmarkanir: vafraprófun ræstist ekki vegna þess að vafraforrit vantar í umhverfið. Raunveruleg vistun í bakenda og iPhone/iPad-prófun útgáfu 45 eru óstaðfest. Útfært, bíður staðfestingar notanda; ekki merkt fullprófað/lokið.
+Afhending: ein zip-skrá með sömu 12 vef-/verkefnisskrám og útgáfa 44; afþjöppun og bætasamanburður sannreynd fyrir afhendingu.
+
+
+26-10-2026 — útgáfa 46: sýnileg endurnýting stöðva þegar heimferð hefur borgarheiti
+Athugun notanda á 45: útleið Trieste Centrale → Venezia Santa Lucia var með stöðvapunkta en heimleið sýndi Feneyjar → Trieste. Opnun stöðvalista sýndi fyrri stöð sem handvirkt val; það staðfesti ekki viðsnúninginn. Orsök í kóða: ólík, óauð borgarheiti útilokuðu sjálfgefnu afritunina.
+• Heimferðarreitir með texta/borgarpunkti fá nú beinan hnapp „Nota [stöð] úr útferð“ ef samsvarandi útferðarendi hefur nákvæman punkt. Gildir fyrir báða enda lestarheimferðar, líka þegar eldri bókun er opnuð.
+• Notandi velur tillöguna sérstaklega; heiti, kortapunktur og stöðvargögn fylgja. Tillagan hverfur eftir val. Fyrirfram valdar nákvæmar heimferðarstöðvar eru varðveittar. Borgarpunktur útferðar er ekki boðinn sem nákvæm stöð.
+• Fyrri sjálfgefin hegðun fyrir tóma heimferðarreiti helst. Dagsetningum, gistivali og öðrum ferðaflokkum ekki breytt.
+Prófun: 7 prófunarskrár standast. Nýtt hermt viðmótsflæði endurgerir skjámyndatilvikið með eldri borgarheitum og borgarpunkti, samþykki hvorrar tillögu, nákvæm hnit, endurbirtingu án tvítekninga, endurheimt vistunarpakka og vernd sérvalinna stöðva.
+Takmörkun: raunverulegur vafri, bakendavistun og iPhone/iPad óprófuð. Ekki staðfest lokið hjá notanda.
+Afhending: ein zip-skrá, allar 12 skrár afþjappaðar og bætasamanburður við frumskrár sannreyndur.
+
+26-10-2026 — staðfesting notanda á útgáfu 46
+Notandi staðfestir: valið vistað og bókun opnuð aftur; það heldur sér. Skjámyndir sýna tillögurnar við Feneyjar/Trieste fyrir val og nákvæmar heimferðarstöðvar Venezia Santa Lucia → Trieste Centrale eftir val, með hnitum 45.44140, 12.32046 og 45.65741, 13.77043; tillöguhnappar horfnir eftir val.
+Staðfest að þessu marki: endurnýting útferðarstöðva í heimferð og varðveisla eftir vistun/endur­opnun í þessari lestarferð á iPhone. Ekki sjálfstæð staðfesting Google Maps leiðsagnar frá þessum stöðvum eða allra annarra tilvika. Engum appkóða breytt við skráningu staðfestingarinnar.
+
+26-10-2026 — útgáfa 47: samþykkt uppsetning bókunarglugga og lokaðir kaflar
+Samþykkt af notanda: skýrari fyrirsagnir og samþykkt útlitstillaga, opnanlegir kaflar sem stytta gluggann; mjóar hjálparskýringar „Hvað hefur þetta áhrif á?“ og „Skýring“. Við lokun/endur­opnun bókunar eiga allir kaflar að vera lokaðir og glugginn efst. Heimfæra á alla sambærilega bókunarglugga.
+• Flug/lest/bátur/akstur: aðskildir hópar fyrir brottför og komu, á útleið og heimleið. Dagsetning og klukka hjá viðeigandi stöð/flugvelli/höfn og gistingu. Fyrirsagnir nefna tengdan áfangastað þegar hann er þekktur. Útsýnisferð sýnir Lok ferðar við lokadag/tíma.
+• Sameiginlegir kaflar fyrir allar bókunartegundir: 🎫 Miðar og bókun, 💰 Verð og greiðsla, ⚙️ Fleiri stillingar; afbókun/áminningar þar undir. Núverandi reitir fluttir, ekki tvíteknir; öll upphafleg auðkenni, innsláttareigindi og valmöguleikar varðveitt. Viðbótarkostnaður áfram tengdur sömu færslum.
+• Föst almenn leiðbeiningatexta er hægt að opna undir Skýring. Virkar villur, tillögur og næsta skref með dýnamískum reitum haldast sýnileg. Greiðsludagatals- og brottfararáhrif fá viðeigandi skýringar.
+• Ráðlagður brottfarartími skýrir: Sýnir hvenær þú þarft að leggja af stað. Leiðsögn í Google Maps virkar líka án þessa vals. Reitir útreiknings opnast áfram aðeins þegar valið er virkt. Lokun kafla slekkur ekki á vistuðu vali.
+• Raunveruleg lokun lokar köflum og endurstillir skrun án þess að breyta innslætti. Enduropnun byrjar efst með lokaða kafla; sama regla við endurkomu úr ferðaveski. Hætt við lokun varðveitir opinn kafla og skrun. Venjuleg endurteikning í opnu formi fellir ekki saman kafla notandans.
+• Falin greiðslustaða sem vantar við samþykki innflutnings er opnuð og fær fókus þegar vistun bendir á villuna.
+Prófanir: átta JavaScript-prófunarskrár standast, ásamt DOM-yfirferð með raunverulegu HTML. Ný prófun á lokun/endur­opnun fyrir sex flokka, endurkomu úr ferðaveski, afturköllun lokunar og endurteikningu. Hótelupphaf helst í brottfararhópi og leiðartenglar varðveitast við endurteikningu í öllum fjórum samgönguflokkum. Hver upphaflegur innsláttarreitur og valkostur borinn saman við 46. Fyrri prófanir á leiðsögn, gistivali, stöðvum, dagsetningartillögum, kostnaðartengdum staðavali og áfangastöðum standast.
+Takmarkanir: ekki raunveruleg vafra-/bakendavistunarprófun eða iPhone/iPad-prófun á 47. Tilraun til að sækja prófunarvafra mistókst vegna netaðgangs umhverfisins. Ekki merkja þessa útgáfu staðfesta hjá notanda fyrir afhendingu.
+Afhending: ein zip-skrá með 12 nauðsynlegum vef-/verkefnisskrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — útgáfa 48: samræmdar undirkaflafyrirsagnir og skýringar
+Samþykkt: jafna Ráðlagðan brottfarartíma og Afbókun og áminningar í minni fyrirsagnarstærð, fjarlægja innri AFBÓKUN-tvítekningu og fella langan ferðatímainngang undir Skýring. Notandi staðfesti beyginguna Feneyjar / Feneyjar / Feneyjum / Feneyja.
+• Báðir undirkaflar nota sömu stærð, þykkt og línuhæð undir Fleiri stillingar í öllum bókunarflokkum. Eldri leturregla sem náði til allra summary-afkomenda brottfararáætlunar fjarlægð.
+• Ferðatímainngangur er í lokuðum Skýring-kafla. Hvað hefur þetta áhrif á? við út-/heimleið heldur sinni minni hjálparframsetningu. Lokunar-/endur­opnunarregla 47 varðveitt.
+• Fyrirsagnir nota Brottför frá Feneyjum / Koma til Feneyja á báðum leggjum í öllum samgönguflokkum. Heiti áfangastaðar í gögnum/valmynd helst Feneyjar. Aðrar staðarheitabeygingar ekki ágiskaðar.
+Prófanir: átta JavaScript-prófunarskrár standast; sérstaklega sannreyndar fyrirsagnir fyrir alla fjóra samgönguflokka og báða leggi, óbreytt vistað staðarheiti, sameiginleg leturregla, lokuð skýring og engin tvítekin afbókunarfyrirsögn. Raunveruleg vafra-/iPhone-/iPad-prófun á 48 óstaðfest.
+Afhending: ein zip-skrá með 12 nauðsynlegum vef-/verkefnisskrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — útgáfa 49: viðbótarkostnaður og áhrif skráninga
+Samþykkt: hnappur við bókun heitir „+ Skrá viðbótarkostnað“. Við Verð og greiðslu kemur lokaður kafli „Hvað hefur þetta áhrif á?“ sem skýrir heildarverð, greiðslustöðu og viðbótarkostnað, samanlagt verð fram og til baka aðeins einu sinni og að skrá ekki sama verð aftur sem viðbótarkostnað.
+Gildir í sameiginlega bókunarglugganum fyrir alla flokka. Almenna kostnaðarskráningin heldur eigin heiti. Reikningar, vistunarsnið og greiðsluútreikningar óbreytt. Kaflinn fylgir reglunni um lokaða kafla við enduropnun.
+Prófun: átta fyrirliggjandi JavaScript-prófunarskrár og raunveruleg HTML-yfirferð standast. Útlit á iPhone/iPad og lifandi vafraflæði útgáfu 49 óstaðfest.
+Afhending: ein zip-skrá með 12 skrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — útgáfa 50: viðbótarkostnaðarhnappur sýnilegur fyrir vistun
+Samþykkt: „+ Skrá viðbótarkostnað“ skal sjást í öllum bókunarflokkum, líka nýjum óvistuðum bókunum. Þar er hann óvirkur með skýringunni „Vistaðu bókunina fyrst til að bæta við kostnaði.“ Í vistaðri bókun er hann virkur og tengir nýjan viðbótarkostnað við rétta bókun.
+Lagfæring: sameiginlega birtingarfallið felur ekki lengur hnappinn þegar editingItemId vantar. Native disabled og aria-describedby tengja óvirka hnappinn við skýringuna. Eldri viðbótarkostnaðarfærslur halda breytingarhnöppum sínum.
+Prófanir: ný hermd prófun nær yfir alla 16 bókunarflokka, nýja/vistaða bókun og skipti úr vistaðri í nýja án gamals smelliviðbragðs. Allar 9 JavaScript-prófunarskrár og HTML-yfirferð standast. Raunverulegt iPhone/iPad-/vafraflæði á 50 óstaðfest.
+Afhending: ein zip-skrá með 12 skrám; afþjöppun og bætasamanburður sannreynd.
+
+26-10-2026 — Útgáfa 51: læsilegra kort og næsti ferðaleggur
+
+Samþykkt af notanda í þessu samtali:
+• Röð efstu kortahnappa: Sýna alla ferðina → Sýna áfangastaði → næsti ferðaleggur, t.d. 🚆 Prag ➡️ Trieste.
+• Flokkasíurnar undir halda sömu röð og virkni (Allt, Flug, Gisting, Lestir o.fl.).
+• Engin samgöngutákn á leiðarlínunum. Tákn fylgja staðarpunktum: lestarstöð, bryggja, upphaf hjólaferðar, gisting o.fl.
+• Borgarheiti við minni merki; skýrari línur með ljósri útlínu og samgöngulitum. Valinn ferðaleggur og endapunktar áberandi, aðrar línur daufari.
+
+Útfært í þessari afhendingu:
+• Ný röð hnappa og hnappur fyrir næsta dagsetta ferðalegg, óháð flokkasíu.
+• Útleið og heimleið skoðaðar sérstaklega; opnar ferðir nota áætlaðan dag úr skráðum tengdum áfangastöðum. Óþekktur dagur er ekki búinn til. Loknum og afpöntuðum færslum og útsýnis-/hringferðum báta sleppt.
+• Liðnir dagar eru útilokaðir; liðinn brottfarartími í dag einnig þegar tímabelti er þekkt. Ef enginn næsti dagsettur leggur finnst er hnappurinn falinn. Vanti kortapunkta opnast bókun til yfirferðar með skýringu.
+• Næsti-leggs-hnappur sýnir báða endapunkta á korti. Dagsetning í hjálpartexta og aðgengisheiti er dd-mm-yyyy.
+• Merki sýna staðar-/bókunarheiti í stað almenns flokksheitis. Borgarpunktur sem kemur í stað óþekktrar stöðvar/hafnar heldur borgartákni.
+• Minni tákn, tilraun til að færa heitisspjöld til við skörun; ef ekkert pláss finnst felst heitisspjaldið en tákn og opnanlegar upplýsingar haldast. Aðdráttur gefur meira pláss.
+• Endurteknar dvalir á nákvæmlega sama kortapunkti deila borgarmerki en dagsetningar og auðkenni hverrar dvalar varðveitast í upplýsingunum.
+• Samgöngulínur með ljósri útlínu: flug gult, lest blátt og aðrir flokkar nota núverandi flokkaliti. Strikalínur eru tengingar milli punkta, ekki nákvæm lestar-/akstursleið.
+• Upphaf hjólaferðar fær hjólatákn; önnur upphafstákn haldast.
+• Flokkasíukóðinn, gagnavistun og gagnagrunnssnið óbreytt.
+
+Prófanir hér:
+• 17 rök- og hermiprófanir standast: næsti leggur, heimleið, áætlaðir dagar, óþekktir dagar, tímabeltisreikningur dagsins, kortapunktar, endurteknar borgir, samgöngulitir, línulög, hnappatexti, merki, skörunarútreikningur og varðveisla flokkasía.
+• JavaScript setningafræði staðfest með node --check.
+• Þessar prófanir staðfesta ekki raunverulegt útlit eða snertiflæði. Sjálfvirkur prófunarvafri fékkst ekki uppsettur: niðurhal skilaði ógildri zip-skrá. Vafra-, iPhone- og iPad-prófun er eftir hjá notanda.
+
+Ólokið og næsta staðfesting:
+☐ Skoða alla ferðina og borgarheiti á iPhone/iPad, bæði yfirsýn og aðdrátt.
+☐ Velja næsta ferðalegg og staðfesta fókus/endapunkta og daufari aðrar leiðir.
+☐ Athuga lestarstöðvar, bryggjur, hótel og upphaf hjólaferðar með réttum táknum.
+☐ Athuga að flokkasíur, kortastækkun, opnun bókunar og leiðsögn virki áfram.
+Engin notandastaðfesting á útgáfu 51 liggur fyrir við afhendingu.
+
+26-10-2026 — Útgáfa 52: fyllt kortatákn og skýringar sem fylgja sýnilegum merkjum
+
+Samþykkt af notanda:
+• Prófa fylltu flugvélar- og göngutáknin úr síðustu útlitstillögu.
+• Táknskýringar undir korti sýna aðeins þau tákn sem birtast á sýnilegum hluta kortsins hverju sinni.
+• Bókunarflokkar og flokkasíur halda sér óbreytt.
+• Tvöföld heitisspjöld voru ekki staðfest sem útlitsgalli: notandi benti á að þau hefðu hjálpað við að greina að nákvæma lestarstöð vantaði í bókun. Sú hegðun er varðveitt.
+
+Útfært:
+• Kortamerki og upplýsingaspjald kortsins nota fyllt Material Design flugvélar- og göngutákn. Engin breyting á flokkatáknum í bókunum eða flokkasíum.
+• Táknin eru innbyggð í index.html; engin ný netbeiðni er nauðsynleg til að birta þau. Heimild og Apache-2.0 leyfi fylgja í map-icons-LICENSE.txt.
+• Fasta táknskýringin er fjarlægð. Ný skýring safnar aðeins tákntegundum þeirra kortamerkja sem hafa verið metin sýnileg, með nákvæmlega sama tákni og lit og merkin.
+• Eitt skýringaratriði fyrir hverja sýnilega tákntegund. Röð er stöðug og skýring felst ef engin merki sjást.
+• Uppfærist eftir kortafærslu, aðdrátt, stærðarbreytingu, flokkasíun og opnun/lokun upplýsingaspjalds. Merki utan korts eða falin undir stýringum/spjöldum teljast ekki sýnileg.
+• Upphafsfáni birtist ekki í skýringum nema sýnilegt kortamerki noti hann.
+• Skýringar eru nákvæmari þar sem það á við: Flugvöllur, Lestarstöð, Bryggja / höfn, Gönguferð og Hjólaferð.
+
+Prófað:
+• 23 rök- og hermiprófanir standast, þar af 17 fyrri kortaprófanir og sex viðbótarprófanir fyrir útgáfu 52.
+• Nýjar prófanir ná yfir alla 16 bókunarflokka og borgarmerki, fylltu táknin, óbreytt flokkatákn, samsvörun lita/tákna, tvítekningar, fjarverandi/sýnilegan fána, tómt kort og hermda færslu merkis inn/út úr sýn og undir upplýsingaspjald.
+• JavaScript setningafræði staðfest með node --check. Zip-skrá afþjöppuð og öll innihaldsgögn borin saman við afhendingarmöppu.
+
+Staðfestingar úr síðustu skjámyndum:
+• Útlit korts, borgarheita, ferðalína, efstu hnappa og flokkasía í sýndum iPhone-sýnum af útgáfu 51 hefur verið yfirfarið með notanda.
+• Það staðfestir ekki öll flæði eða alla flokka á iPhone/iPad.
+
+Ólokið:
+☐ Notandi yfirfer nýju flugvélar- og göngutáknin á iPhone/iPad.
+☐ Staðfesta að táknskýringar fylgi raunverulegum sýnilegum merkjum við aðdrátt, færslu, flokkasíun og opnun kortaupplýsinga í vafra.
+Raunveruleg vafraprófun útgáfu 52 hefur ekki farið fram; prófunarvafri er ekki tiltækur í umhverfinu.
+
+26-10-2026 — Útgáfa 53: sömu tákn í litlu kortasíuhnöppunum
+
+Beiðni notanda: litlu hnapparnir við kortið sýna gömlu flugvélar- og göngutáknin, þótt nýju táknin sjáist á kortinu og í skýringunum.
+
+Breyting:
+• Kortasíuhnapparnir nota nú sama táknagjafa og kortamerki og táknskýringar. Fyllta flugvélin og gangandi manneskjan samræmast á þessum þremur stöðum.
+• Heiti, röð, fjöldi og síuvirkni hnappanna haldast. Bókunarflokkar utan kortsins haldast óbreyttir.
+• Engin önnur breyting á appkóða en val táknagjafa í kortasíum og útgáfumerking.
+
+Staðfest af síðustu skjámyndum notanda:
+• Ný flugvél og gangandi manneskja birtast á kortinu í sýndum iPhone-sýnum.
+• Táknskýringar í þessum sýnum samsvara flugvelli/hóteli annars vegar og áfangastað/hóteli/gönguferð hins vegar. Enginn upphafsfáni sést í skýringunum.
+• Þetta er afmörkuð staðfesting, ekki staðfesting á öllum kortafærslum eða öllum flokkum.
+
+Prófanir hér:
+• Fyrri 23 rök- og hermiprófanir standast, með samanburðarprófun aðlöguð fyrir samþykkta táknabreytingu síuhnappa.
+• JavaScript setningafræði staðfest. Samanburður við útgáfu 52 staðfestir aðeins tvær breyttar kóðalínur: táknagjafa síuhnappa og útgáfunúmer.
+• Zip-skráin afþjöppuð og innihald allra 13 skráa borið saman við afhendingarmöppu.
+☐ Nýju táknin í síuhnöppum bíða staðfestingar notanda á iPhone/iPad; raunveruleg vafraprófun hér er ekki framkvæmd.
+
+26-10-2026 — Útgáfa 54: heildstætt ferðadagsyfirlit undir mynd í „Í dag“
+
+Samþykkt útlit og umfang:
+• Næsta skref efst, síðan útritun → leið að brottfararstað → samgöngur → leið frá komustað að gistingu → innritun.
+• Nánari upplýsingar í lokuðum, opnanlegum köflum; miðar og leiðsögn við viðeigandi skref.
+• Núverandi mynd, áfangastaðarheiti, veður, myndastýringar og myndheimild halda sér. Útlitstillagan notaði dæmitíma; þeir eru ekki notaðir í appinu.
+
+Útfært:
+• Ferðadagsyfirlitið kemur undir núverandi mynd í aðalspjaldinu „Í dag“ og samsvarandi ferðaflæði er sýnt í Í dag-flipanum.
+• Á ferðadögum er heildarleiðin sýnd; aðrir dagar halda fyrri birtingu. Annað dagskrárefni, veður og gisting í kvöld varðveitast. Samgöngufærslur í nýja flæðinu eru ekki tvíteknar í sömu dagskrársýn.
+• Flug, lest, bátur/ferja og akstur nota sömu uppbyggingu. Útsýnis-/hringferðir báta halda eldri birtingu. Heimleið notar eigin stöðvar, tíma og tengingar.
+• Valinn gististaður úr bókun hefur forgang; tenging er sannreynd við dagsetningu og áfangastað. Ef aðeins einn virkur gististaður passar má sýna hann sem tillögu. Ekki giskað þegar fleiri koma til greina eða eldri tenging er ógild.
+• Útritunarfrestur hótels er aðgreindur frá ráðlögðum tíma til að leggja af stað. Ráðlagður tími notar aðeins vistaða, virka brottfararáætlun og hennar ferðatíma, mætingarfrest, öryggisbil og tímabelti.
+• Leiðsögn getur virkað þó ráðlagður brottfarartími sé óvirkur. Nýju leiðsagnarhnapparnir nota nákvæma vistaða punkta og samgöngumáta úr áætluninni. Borgarpunktur er ekki túlkaður sem nákvæm stöð/höfn; þá er vísað í bókun til yfirferðar.
+• Miðar tengdir samgöngubókun opnast úr ferðaveskinu. Ekkert skilyrði um að miðinn sé vistaður í appinu. Gistibókun er áfram aðgengileg fyrir innritunarupplýsingar og staðfestingu.
+• Komudagur, komutími og tímabelti eru ekki búin til út frá brottför. Opnar ferðir sýna áætlaðan dag og óskráða tíma. Komur yfir miðnætti og næsta dags gisting nota sínar dagsetningar.
+• Næsta-skrefs-spjald byggist á skráðum tímum, ekki lifandi staðsetningu eða sjálfvirkri staðfestingu þess að notandi sé búinn að mæta.
+• Dagsetningar birtast sem dd-mm-yyyy. Engin breyting á gagnagrunnssniði eða vistun ferðagagna.
+
+Prófanir:
+• 23 nýjar rök- og hermiprófanir fyrir ferðadagsyfirlitið standast; meðal annars full röð, mynd/veður, réttar gistitengingar, óvirk brottfararáætlun, vantar dag/tíma/stað, ógildar/óljósar tengingar, heimleið, ferð yfir miðnætti, opnar ferðir, miðatengingar, aðrir dagar og önnur dagskrá, tímabelti/sumartímaskipti, samræmi aðalspjalds og Í dag-flipa og afritun úr gögnum án breytinga.
+• Fyrri 23 kortaprófanir standast áfram (46 rök-/hermiprófanir alls).
+• JavaScript setningafræði staðfest með node --check. Myndaföll, myndastýringar, veðurfall og flokkalisti borin saman við útgáfu 53 og eru óbreytt.
+• Zip-skrá afþjöppuð og allar 13 skrár bornar saman við afhendingarmöppu.
+
+Óstaðfest hjá notanda:
+☐ Útlit og snertiflæði í keyrandi vafra á iPhone/iPad.
+☐ Opnun gistibókunar, samgöngubókunar og eigin miðaskjala úr nýju yfirliti.
+☐ Leiðsögn frá fyrri gistingu að stöð/höfn og frá komustað að réttri næstu gistingu.
+☐ Opnun/lokun kafla, lengd yfirlits og mynd/veður/myndastýringar á ferðadegi.
+Raunverulegur prófunarvafri er ekki tiltækur hér. Engin fullyrðing um fulla vafra- eða tækjaprófun er gerð.
+
+26-10-2026 — Útgáfa 55: útritun fremst í ferðadegi og skýrara heiti brottfarartíma
+
+Athugun út frá skjámyndum eftir útgáfu 54:
+• Ferðadagsflæðið, næsta-skrefs-spjald, opnanlegir kaflar og gisting eftir komu sjást í iPhone-sýnum notanda.
+• Útritun Hotel Hafen Hamburg sést hins vegar í eldri kafla neðan við innritun í Prag og vantar fremst í keðjuna.
+• 11:45 efst er skráður brottfarartími lestar; ráðlagður tími að stöðinni er óreiknaður. Innritun frá 12:00 er upphaf leyfilegs innritunartíma, ekki áætluð koma á hótelið.
+
+Lagfæring:
+• Dagsettar útritanir eru hluti af ferðadagslíkaninu, líka þegar upphafsstaður leiðsagnar er vistaður kortapunktur án tengingar við auðkenni gistibókunar.
+• Þessar útritanir birtast fremst í ferðadeginum, án tvískráningar þegar gistingin er þegar tengd samgöngufærslu. Eldri útritunarkafli neðst birtist ekki á ferðadögum.
+• Þegar ráðlagður tími er óreiknaður er tíminn í næsta-skrefs-spjaldi sérstaklega merktur „Brottför ferðar“ til að aðgreina hann frá brottför frá hóteli.
+• Enginn tími eða staðartenging er búin til og gögn bókunar eru ekki breytt.
+
+Prófun:
+• 26 ferðadagsprófanir og 23 fyrri kortaprófanir standast (49 alls).
+• Nýjar prófanir ná sérstaklega yfir útritun þegar upphafsstaður er ótengdur kortapunktur, staðsetningu útritunar í aðalspjaldi og merkingu óreiknaðs brottfarartíma.
+• JavaScript setningafræði og allar 13 skrár afhendingar sannreyndar.
+☐ Röð útritunar og orðalag bíða staðfestingar notanda í keyrandi appi á iPhone/iPad.
+Leiðsagnarhnappar sjást á myndum, en opnun leiðsagnar og allra bókana er ekki staðfest með skjámyndunum einum.
+
+27-10-2026 — Útgáfa 56: eitt sameiginlegt yfirferðarspjald og mjóar viðvaranir í dagatali
+
+Samþykkt af notanda:
+• Byggja á núverandi spjaldi með gulum ramma, ekki stofna annað samhliða viðvörunarkerfi.
+• Eitt spjald nægir þótt viðvaranir séu margar. Sýna fjölda atriða og „Yfirfara“ sem opnar allan listann og leiðir í viðkomandi bókanir / áfangastaði.
+• Mjó viðvörun með gulum ramma við viðkomandi bókun í dagatalinu, stutt skýring og „Yfirfara“.
+• Koma á hótel fyrir upphaf innritunartíma kallar ekki á viðvörun. Aðgreina áætlaða komu á hótel frá innritunarglugga.
+• Notandi vill halda báðum núverandi Í dag-birtingum í bili (aðalspjald undir mynd og Í dag-flipi). Engin breyting á því hér.
+
+Útfært:
+• Fyrra samantektarspjaldið sameinar áfram eldri dagsetningarviðvaranir (utan ferðatímabils, skarandi dvalir og heimflug fyrir lok dvalar) og nýjar klukkuviðvaranir.
+• Nýjar viðvaranir: skarandi bókunartímar, komutími/lokatími fyrir upphaf, áætluð hótelkoma fyrir komu tengdra samgangna og of stuttar tengingar þegar nauðsynlegar upplýsingar eru skráðar.
+• Árekstur milli tveggja bókana er eitt atriði í sameiginlega spjaldinu en birtist við báðar viðkomandi dagatalsfærslur. Skýring við færslu er stutt; nákvæmir tímar, dagsetningar, tímabelti og nöfn sjást undir „Yfirfara“.
+• Yfirferðargluggi býður að opna viðkomandi bókanir beint. Eldri áfangastaðavandamál leiða áfram í yfirferð áfangastaða. Hnappar inni í dagatalskortum virkja ekki opnun foreldrakortsins.
+• Sameiginleg greining fyrir talningu, yfirferðarglugga og litlu viðvaranirnar. Hún er endurreiknuð út frá vistuðum gögnum; leiðrétting og venjuleg endurbirting bókunargagna fjarlægir leyst atriði.
+• Klukkugreining notar bókaðar, tímasettar færslur; sleppir opnum, loknum, afpöntuðum og allan-daginn færslum og viðbótarkostnaði. Óþekktur endatími gefur ekki tilbúna lengd; tvær tímasettar færslur á nákvæmlega sama augnabliki geta þó rekist á.
+• Tímabelti þurfa að vera þekkt; samanburður notar raunveruleg augnablik. Tiltekið tímabelti bókunar hefur forgang yfir almennt tímabelti áfangastaðar. Óljósir/ógildir sumartímaskiptatímar eru ekki giskaðir. Vistaðir skýrir UTC-tímastimplar mega nýtast þegar þeir liggja fyrir.
+• Hótelsamanburður notar aðeins skráða áætlaða komu (local_date/local_time), aldrei innritun-frá eða útritun-fyrir. Gisting þarf að vera rétt valin/tengd eða eini gildandi kosturinn á réttum stað og degi. Ekkert er sjálfvalið eða fært í gögnum.
+• Lágmarkstími tengingar er ekki búinn til. Athugun um of stutta tengingu krefst þess að næsta brottfararáætlun sé virk, upphaf hennar tengist komustað fyrri samgangna og ferðatími, mætingarfrestur og öryggisbil séu skráð. Skörun og of stutt tenging eru ekki tvítalin fyrir sömu tvo leggi.
+• Engar bókanir færast sjálfkrafa, engar push- eða tölvupóstsendingar og engin ný gagnagrunnsbreyting.
+
+Prófanir:
+• 23 nýjar viðvörunarprófanir, 26 fyrri ferðadagsprófanir og 23 kortaprófanir standast (72 alls).
+• Viðvörunarprófanir ná yfir innritunarglugga án viðvörunar, raunverulega áætlaða komu fyrir/eftir komu lestar, óþekkta tíma og tímabelti, gildar/ógildar gistitengingar, punkta/þekkta lengd, tímabelti og sumartímaskipti, heimferð, ferð yfir miðnætti, nægar/of stuttar tengingar, sameiginlega talningu, dagatalsbirtingu, opnun tengdra bókana, örugga textabirtingu og að atriði hverfi eftir leiðréttingu.
+• JavaScript setningafræði staðfest með node --check. Afþjöppun og innihald allra 13 skráa í zip staðfest.
+
+Ólokið / óstaðfest:
+☐ Skoða sameiginlega spjaldið, talningu og mjóar gular viðvaranir í keyrandi appi á iPhone/iPad.
+☐ Prófa „Yfirfara“, opna rétta bókun, leiðrétta tíma, vista og staðfesta að viðvörun hverfi.
+Raunveruleg vafra- og tækjaprófun hefur ekki verið framkvæmd hér.
+Fyrri þekkt röðun undir „Næstu dagar“ (opnum og bókuðum ferðum blandað) er enn ólokin; henni var ekki breytt í þessari útgáfu.
+
+27-10-2026 — Útgáfa 57: raðaðir áfangastaðir, viðvörun við vistun og tengd gisting
+
+Beiðni notanda og skjámyndir:
+• Áfangastaðalistinn á að fylgja dagsetningum eftir breytingu á dvalardögum.
+• Nýr árekstur við breytingu á áfangastað á að birtast strax við vistun.
+• Áfangastaðirnir sem tengjast vandamálinu, t.d. Hamborg og Prag, eiga að fá gulan ramma.
+• Viðvörunin þarf að vísa í gistingu og sjást við tengdar gistifærslur í dagatali og atriðisglugga.
+• Fyrri skjámyndir staðfesta sameiginlega spjaldið, fjölda og opnun yfirferðarlista á iPhone. Það staðfestir ekki allar klukkuprófanir.
+
+Orsök:
+• saveStop kallaði ekki á fyrirliggjandi confirmNewTimelineWarnings áður en gögn voru skrifuð.
+• Stop-overlap viðvörunin geymdi auðkenni dvalarstaða en tengdi þau ekki við virkar gistibókanir. Viðvörunin kom því ekki með gistifærslunum í dagatalinu.
+
+Útfært:
+• Áfangastaðastjórnun raðast eftir upphafsdegi, lokadegi og fyrri röð við jafnar dagsetningar; ódagsettir staðir eru síðastir. Sama birtingarröð er notuð í áfangastaðavali bókunar og opinna ferða og tillögulista samgangna. Röðun breytir ekki auðkennum, gistigögnum eða vistuðum order_index-gildum.
+• Nýr eða breyttur árekstur er reiknaður út frá fyrirhuguðum áfangastaðagögnum áður en saveStop sendir breytinguna til vistunar. Notandi getur hætt við eða vistað samt. Tilvísun í bókanir og gistingu kemur fram; ekkert færist sjálfkrafa.
+• Fyrri vistunarathugun í saveItem heldur sér og nær nú líka yfir gistidaga sem passa ekki við tengda dvöl. Þessi vistunarviðvörun fjallar um dagsetningavandamál, ekki alla mögulega klukkuárekstra.
+• Skarandi áfangastaðir og önnur dagsetningavandamál á stöðum fá gulan ramma í áfangastaðalistanum og viðkomandi áfangastaðaspjöldum í ferðaleið. Textamerking fylgir listamerkingu.
+• Viðvaranir á áfangastöðum tengjast virkum gistibókunum þeirra. Þar kemur skýrt fram að dvalardagar staðanna skarist; ekki er fullyrt að gistibókanirnar sjálfar skarist þegar gistidagar eru óbreyttir.
+• Viðbótarathugun sýnir þegar gistidagar eru utan dagabils tengds áfangastaðar. Hún breytir engum dögum.
+• Tengdar gistiviðvaranir sjást í dagatalinu, við færslur undir kortinu og efst í atriðis-/bókunarglugga þegar vistuð bókun er opnuð. Sama sameiginlega yfirlitið og talningin eru notuð.
+• Yfirferðarlistinn og áfangastaðastjórnun bjóða að opna viðkomandi gistibókanir. Skipti úr opinni bókun yfir í aðra bókun/áfangastaði virða núverandi staðfestingu um óvistaðar breytingar. Ef notandi velur að halda áfram að vinna í bókuninni er innslætti ekki kastað. Að velja sama atriði endurstillir ekki gluggann.
+• Innritunargluggar hótela valda áfram ekki klukkuviðvörun; fyrri greining, kort, mynd, veður, kostnaður og báðar Í dag-birtingar halda sér.
+
+Prófanir:
+• 61 prófun fyrir ferðadagsflæði, viðvaranir og áfangastaði og 23 kortaprófanir standast (84 alls).
+• Tólf nýjar prófanir staðfesta röðun án breytingar á upprunagögnum, endurtekna borg með ólíkum dögum, tengingar áfangastaða við báðar gistibókanir, viðvaranir þegar gisting er utan dvalar, raunverulega HTML-birtingu gulu rammanna og gluggaviðvörunar, vörn óvistaðra breytinga og afmörkuð innsetning viðvarana undir korti.
+• SaveStop-flæðið er prófað með staðbundinni hermdri fyrirspurn: Hætta við veldur engri fyrirspurn/vistun; samþykkt veldur einni vistun á áfangastað en gistigögn breytast ekki.
+• JavaScript setningafræði og innihald/afþjöppun allra 13 zip-skráarfærslna sannreynt.
+
+Óstaðfest / næsta prófun hjá notanda:
+☐ Breyta upphafsdegi Prag þannig að hann skarist við Hamborg og ýta á Vista; athuga viðvörun áður en vistun fer fram.
+☐ Velja Hætta við og staðfesta að breytingin hafi ekki vistast; síðan prófa að vista samt.
+☐ Athuga tímaröð og gula ramma við báða staði, og tengdar gistiviðvaranir í dagatali, undir korti og inni í gistibókun.
+☐ Leiðrétta dagsetningarnar og staðfesta að tengdar viðvaranir/rammar hverfi.
+Raunveruleg vafra- og iPhone/iPad-prófun er enn ekki framkvæmd hér.
+Þekkt röðun „Næstu dagar“ er áfram ólokin; þessari útgáfu var beint að áfangastaðalistanum og viðvörunartengingum.
+
+
+27-10-2026 — Útgáfa 58: fínpússun viðvarana
+Beiðni: stytta og þétta framsetningu eftir skjámyndir notanda af útgáfu 57.
+• Viðvörun í dagatalsspjöldum fær eigin röð yfir alla breidd spjaldsins, utan textadálksins. Tími, staða og aðrir hnappar halda sér.
+• Styttri gulir borðar í dagatali, undir korti og í bókunarglugga. Yfirfara helst við textann, með línuskipti á mjög þröngum skjám.
+• Atriði til yfirferðar sýnir styttri skýringar á skörun áfangastaða og ósamræmi gistidaga. Nöfn, dagsetningar og tenglar að gistingu/áfangastöðum haldast; endurtekin sjálfvirkniskýring fjarlægð úr þessum birtingartexta.
+• Viðvaranareikningur, einstök talning, vistunarstaðfesting, gögn og dagsetningar óbreytt. Sömu birtingarstaðir haldast.
+Prófun: 61 fyrirliggjandi rök-/hermipróf ferða, viðvarana og áfangastaða og 23 kortapróf standast. Prófunarhleðsla uppfærð fyrir nýja birtingarhjálparfallið og styttan texta. JavaScript málskipan yfirfarin, breytingamunur skoðaður og zip sannreynt. Þetta er ekki vafra- eða tækjaprófun; útlit og snerting á iPhone/iPad bíður staðfestingar notanda.
+Notandaprófun: Athuga að gulur borði nýti alla breidd dagatalsspjalda, Yfirfara opni rétt atriði og talning breytist ekki við birtingu sama atriðis á fleiri stöðum.
+
+
+27-10-2026 — Útgáfa 59: viðvörun innan bókunar og rammi í Í dag
+Samþykkt beiðni: í dagatali skal viðvörun vera innan bókunarspjaldsins og guli ramminn utan um allt spjaldið. Í Í dag skal nota gulan ramma án þess að lengja spjaldið með viðvörunartexta. Sameiginlega viðvörunarspjaldið færist niður fyrir tímalínuna.
+Útfært: viðkomandi dagatalsspjald fær gulan ytri ramma; innri viðvörunarrammi fjarlægður þar, texti og Yfirfara haldast inni í spjaldinu. Í dag notar sömu síun eftir bókun/degi en sýnir aðeins ytri ramma, ekki nýja textaröð. Aðalspjaldið fyrir Í dag og samsvarandi hluti í Í dag flipanum fá innfelldan gulan ramma þegar bókun dagsins þarf yfirferð; ramminn breytir ekki stærð. Sameiginlega spjaldið er eftir tímalínunni í HTML, áfram aðgengilegt í öðrum flipum. Kortabókunarlistinn óbreyttur.
+Viðvaranareikningur, talning, vistun og öll gögn óbreytt.
+Prófun: 61 fyrirliggjandi rök-/hermipróf og 23 kortapróf standast; hermiumhverfi uppfært vegna nýrra birtingarhjálparfalla og classList. JavaScript málskipan, DOM röð, breytingamunur og zip yfirfarin. Raunveruleg vafra- og iPhone/iPad prófun ekki framkvæmd.
+Notandaprófun: guli ramminn um alla viðkomandi dagatalsbókun, texti inni í honum; Í dag fær ramma án nýs texta/lengingar; sameiginleg viðvörun fyrir neðan tímalínuna.
+
+
+27-10-2026 — Útgáfa 60: aðeins gulur rammi við spjöld
+Samþykkt: gulur rammi nægir við dagatal, Í dag og bókanir undir kortinu. Guli ramminn í tímalínu helst. Notandi hefur ekki sett útgáfu 59 inn; þessi heildarútgáfa tekur við af 58 og inniheldur líka breytingar 59.
+Útfært: aukatexti og Yfirfara-röð fjarlægð úr einstökum dagatalsspjöldum og kortabókunarlista. Viðkomandi spjöld halda gulum ytri ramma. Í dag og tímalína halda gulu merkingunni úr 59. Sameiginleg viðvörun undir tímalínu heldur fjölda og Yfirfara; atriðaglugginn heldur skýringum og tenglum. Viðvörun inni í breytingarformi bókunar helst til að hjálpa við leiðréttingu. Engin breyting á greiningu, talningu, gögnum eða vistun.
+Prófun: 61 fyrirliggjandi rök-/hermipróf og 23 kortapróf standast; vænt framsetning í prófum uppfærð fyrir ramma án aukatexta. Málskipan, óbreytt viðvaranagreining, áframhaldandi tímalínurammi og röðun sameiginlegu viðvörunarinnar yfirfarin. Zip sannreynt. iPhone/iPad útlit og snerting bíður notandaprófunar.
+
+
+27-10-2026 — Útgáfa 61: guli ramminn yfirskrifaðist af stillingum
+Notandaprófun 60: gulur rammi sást á todayNext en vantaði á aðalspjald Í dag og við einstakar bókanir; skjámyndir sýna áfram tvö atriði til yfirferðar.
+Orsök í kóða: body.settings-applied .card, .item og .btn höfðu meiri CSS sértækni en nýju rammareglurnar og settu border-color aftur á var(--line); .card yfirskrifaði líka innfellda box-shadow rammann.
+Lagfæring: afmarkaðar rammareglur fyrir viðkomandi dagatalsspjöld, kortabókanir og aðalspjald Í dag með meiri sértækni. Gulur rammi í tímalínu og todayNext helst óbreyttur. Box-shadow á aðalspjaldi sameinar fyrri skugga og innfellda gula merkingu. Engin stærðar-, efnis-, gagnabreyting eða viðbótarviðvörunartexti.
+Prófun: JavaScript hluti byte-identical við 60; málskipan og 61 rök-/hermipróf + 23 kortapróf standast. CSS sértækni og staðsetning í virkum stíl yfirfarin. Zip CRC sannreynt. Raunvafra-/iPhone-/iPad prófun ekki framkvæmd.
+Notandaprófun: endurhlaða og athuga gulan ramma utan um aðalspjald Í dag og viðkomandi bókunarspjöld í dagatali/undir korti meðan viðvaranir eru til. Skipta milli þema til að staðfesta að ramminn haldist.
+
+
+27-10-2026 — Útgáfa 62: litlir viðvörunarþríhyrningar og yfirferð í Í dag
+Notandi samþykkti: halda báðum Í dag birtingunum og flýtileiðinni; bæta litlum þríhyrningi við gula ramma þar sem hann vantar; þétt lína efst í Í dag sýnir aðeins vandamál dagsins og opnar sameiginlegan yfirferðarglugga.
+Útfært: litlir merktir þríhyrningar á ramma dagatalsspjalds, kortabókunar og tímalínuáfangastaðar. Ekki ný textaröð við þessi spjöld. Áfangastaðastýring hefur þegar þríhyrning og fær ekki tvöföld tákn.
+Í dag: lína fyrir neðan haus/dagsetningu/veður og fyrir ofan mynd í aðalspjaldi; samsvarandi lína undir dagsetningu í Í dag flipanum. Telur einstök viðvörunaratriði sem tengjast bókun dagsins eða dvöl á deginum; skráð dagsviðvaranabil takmarkar valið fyrst. Gamlar eða óskyldar viðvaranir sjást áfram aðeins í heildaryfirliti. Yfirfara opnar sömu yfirferð með dagsíu og dagsetningu í heiti. Núverandi tenglar að bókunum/áfangastöðum og vörn fyrir óvistaðar breytingar haldast. Engin bókun færð eða ný viðvörunagreining; mynd/veður og tvær Í dag birtingar haldast.
+Prófun: 63 rök-/hermipróf, þar af tvö ný um dagsíu, sameiginlega talningu og aðgerð, ásamt 23 kortaprófum standast. JavaScript málskipan, staðsetning birtinga, varðveisla viðvaranagreiningar/ferðadagsflæðis og zip sannreynd. Raunveruleg vafra-/iPhone-/iPad prófun eftir.
+Notandaprófun: sjá þríhyrninga á merktum spjöldum; Í dag sýni aðeins vandamál sem tengjast deginum, Yfirfara opni sömu dagsíu; heildarspjaldið telji áfram öll atriði; eftir leiðréttingu og vistun endurnýist báðar birtingar og rammar.
+
+
+27-10-2026 — Útgáfa 63: samþykktar undantekningar
+Samþykkt ákvörðun: hægt að merkja viðvörun Þetta er viljandi. Hún hverfur úr virkri talningu og gulum merkingum, helst aðgengileg undir Samþykktar undantekningar með Afturkalla. Ný breyting á tengdum upplýsingum kallar viðvörun fram aftur.
+Notandastaðfesting áður: notandi sagði Okei þetta virkar eftir prófun á gistidögum utan dvalar og lýsti því að hann væri að hræra í prufugögnum. Þetta staðfestir það afmarkaða prófunarflæði, ekki heildarprófun allra viðvarana.
+Útfært: sameiginlegur yfirferðargluggi hefur Þetta er viljandi við hvert virkt atriði. Samþykktar undantekningar finnast í fellihluta og hafa Afturkalla ásamt tenglum að viðkomandi bókun/áfangastað. Þegar engar virkar viðvaranir eru eftir helst hlutlaus aðgangshnappur undir tímalínunni; áfangastaðastýring hefur líka aðgang.
+Vistun: sér localStorage-færsla afmörkuð af vefslóð/appslóð, notanda og ferð. Skýrt merkt í viðmóti að valið gildir í þessum vafra/tæki. Ekki samstillt milli iPhone/iPad og ekki bætt í eldri afrit/endurheimtarflæði í þessari útgáfu. Engin Supabase-skrifun, töflubreyting eða færð bókun.
+Samþykkið nær aðeins til nákvæms gagnasnapshots af viðvörunarlykli, ferðadögum/tímabelti og tengdum bókunum/áfangastöðum, með stöðugri röðun reita. Tengd dagsetning, tenging, tími, tímabelti eða bókunarlýsigögn sem breytast gera samþykki ógilt. Óskyld atriði gera það ekki. Úreldu samþykki er eytt þegar nýtt ástand er lesið svo endursnúningur dagsetninga virkji það ekki aftur. Samþykki við leysta viðvörun er einnig hreinsað. Tímabundið vantar gögn / tripLoadError hreinsar ekki samþykki. Vistunarvilla skilur viðvörun virka og er sýnd notanda. Aðgerð á úreltum opnum glugga samþykkir ekki breytt atriði án nýrrar yfirferðar.
+Sömu virku atriðin stýra heildartalningu, dagsíu, gulum römmum/þríhyrningum, dagatali, kortalista, bókunarformi og áfangastaðalista. Eftir breytingu endurteiknast birtingarnar án þess að enduropna/endurhlaða óvistað bókunarform. Viðvaranagreining, vistunarstaðfesting dagsetninga, ferðadagskeðja, myndir og veður óbreytt.
+Prófun: 63 fyrirliggjandi rök-/hermipróf + 23 kortapróf + 13 ný undantekningapróf = 99. Ný próf ná yfir samþykki/endurlesningu, afturköllun, dagsíu/ramma, endurkomu eftir breytingu eða leiðréttingu, óskyldar breytingar, notanda-/ferða-/slóðaskiptingu, úreltan hnapp, geymsluvillur, ófullkomna hleðslu, áframhaldandi aðgang þegar talning verður núll og örugga textabirtingu. JavaScript málskipan, óbreytt greining og zip sannreynd. Engin raunvafra-/iPhone-/iPad prófun eða gagnagrunnsskrifun framkvæmd.
+Notandaprófun: samþykkja prufuviðvörun, staðfesta að hún og gulu merkingarnar hverfi, endurhlaða og opna Samþykktar undantekningar, afturkalla og staðfesta endurkomu. Samþykkja aftur, breyta tengdum dögum og vista: viðvörunin á að koma aftur.
+
+
+27-10-2026 — Útgáfa 64: einfaldari upphafsskráning í núverandi samgöngugluggum
+Samþykkt umfang: byggja áfram á núverandi gluggum; ekki skipta út stöðvavali, gistingu, leiðsögn, dagsetningartillögum eða viðvörunum. Notandi bætti við að kaflaskiptingin skyldi gilda í öllum samgöngugluggum.
+Útfært: núverandi flightFields vafið í sameiginlegan fellikafla fyrir flug, lestir, báta/ferjur og akstur, með flokksréttu heiti (Flugvellir/Stöðvar/Hafnir/Staðir, tímar og gisting). Allir fyrri reitir, Brottför/Koma og heimleiðarkaflar haldast með sínum auðkennum og viðburðabindingum.
+Ný tóm opin lestar-/báts-/akstursfærsla: núverandi Áætluð leið og dagar opnast efst, nánari kaflinn byrjar lokaður. Eldri færslur og bókaðar ferðir byrja með nánari kaflann opinn. Flug heldur núverandi flugvallaskráningu, opnast með nánari kaflanum sýnilegum og fær sömu kaflaskiptingu; ekki búin til ný áætlunarleið eða ný gagnamerking fyrir flug. Vali notanda á opnum/lokuðum kafla er ekki snúið við við hverja uppfærslu.
+Núverandi tillaga um ferðadag út frá gistingu færist upp í opnu áætlunina og aftur við brottfarardag þegar bókun er ekki opin. Sami tillögureitur og sama Nota daginn aðgerð; ekki annar uppruni dagsetninga. Þegar tillaga er notuð opnast rétti brottfararreiturinn, með eldri Hreinsa/Afturkalla virkni. Skráður brottfarardagur er aldrei yfirskrifaður af tillögu.
+Valfrjáls hnappur Nota leið sem heiti birtist þegar Frá/Til er valið og heitisreitur er auður. Heiti fyllist aðeins við val notanda og yfirskrifar ekki innslátt.
+Óbreytt: vistun, route_plan merking, kostnaður, viðvaranir/undantekningar, kort, stöðva-/hafnaval, gisting fyrir/eftir komu, leiðsögn, ráðlagður brottfarartími, heimleið, miðar og greiðslukaflar. Engar Supabase- eða skemabreytingar.
+Staðfesting 63 frá notanda: Virkar, mjög flott ásamt mynd sem sýnir samþykkta undantekningu og aflétta gula merkingu. Afturköllun, endurkoma eftir breytingu og geymsluvillur eru áfram ekki sérstaklega staðfest í tæki.
+Prófun: 63 fyrirliggjandi rök-/hermipróf + 23 kortapróf + 13 undantekningapróf + 7 ný kaflaskiptingarpróf = 106. Ný próf ná yfir alla fjóra flokka, nýja/eldri/opna/bókaða skráningu, varðveislu kaflavals og reitagilda, valfrjálsa heitisnotkun og einn tillögureit sem færist án yfirskrifta. Stöðug HTML-yfirferð með lxml staðfestir að hver fyrri reitur sé enn einu sinni og óbreyttur og Brottför/Koma í báðar áttir séu innan nýja kaflans. JavaScript málskipan og zip sannreynd. Raunvafra-/iPhone-/iPad prófun ekki framkvæmd.
+Notandaprófun: stofna opna lest/ferju, velja leið og áætlaða daga og vista; opna aftur sömu færslu, athuga stöðvar, gistingartengingar og leiðsögn, merkja bókað og varðveita gögn; athuga sama kafla í flugi/akstri og fram-og-til-baka.
+
+
+27-10-2026 — Útgáfa 65: heiti á réttum stað í sameiginlegum bókunarglugga
+Notandastaðfesting 64: heiti eitt nægði til að vista opna prufuferð. Ekki staðfest heildarprófun annarra flokka eða fyrri tenginga.
+Samþykkt: færa heiti strax á eftir flokki/stöðu og á undan áætlaðri leið/dögum; stytta skýringu. Gildir alls staðar í samgöngugluggum.
+Útfært: sami itemTitle reitur færður í sameiginlegu formi, þannig að ný staðsetning gildir fyrir flug, lestir, báta/ferjur og akstur og fyrir nýjar/eldri, opnar/bókaðar færslur. Flokksréttar heitismerkingar haldast. Opna ferðaskýringin er nú: Heiti nægir til að vista. Öðrum upplýsingum má bæta við síðar. Langur listi af óákveðnum reitum fjarlægður úr þessum skýringartexta; greining á ófrágengnum atriðum annars staðar óbreytt. Núverandi skýringarsvið tekur áfram til lesta/ferja/aksturs, eins og áður. Flugvallakröfur fyrir flug ekki rýmkaðar eða breytt.
+Engin breyting á vistun, gildum, kostnaði, viðvörunum, leiðsögn, gistingu, stöðva-/hafnavali eða stöðu ferða. Sami heitisreitur og sama auðkenni, ekki nýr afritsreitur.
+Prófun: málskipan og 106 fyrirliggjandi rök-/hermipróf standast. DOM-röð staðfest með lxml: flokkur/staða → heiti → skýring → áætluð leið/dagar → nánari reitir. Allir fyrri formreitir eru einu sinni og óbreyttir. Zip CRC/innihald sannreynt. iPhone/iPad útlitsprófun eftir.
+
+
+27-10-2026 — Útgáfa 66: fínpússun Hvað vantar í ferðina
+Samþykkt næsta skref eftir skjámyndir: sannreyna flokkun gistingar/dagsferða/staðaskipta og bæta framsetningu núverandi yfirlits. Miða- og offline-yfirlit bíður seinna skrefs, ekki innleitt hér.
+Orsök Trieste → Feneyjar 01-11-2026 – 31-10-2026: planningChecklist taldi alla trip_stops sem samfellda dvalarkeðju, líka stað þar sem start_date=end_date.
+Lagfæring afmörkuð við túlkun þessa yfirlits: staðir með gilda sömu komu-/brottfarardagsetningu eru aðgreindir sem Heimsóknir án gistinætur og ekki reiknaðir sem skipti um gististað. Þeir sjást áfram í sér kafla til yfirferðar með tengli í sama áfangastaðaform. Appið ályktar ekki að þeir séu staðfestar dagsferðir; færir/eyðir/breytir engum trip_stops eða bókunum og býr ekki til dagsferð sjálfkrafa. Samgönguleiðir geta áfram farið um slík millistopp í planningPath þegar skráðar tengingar og dagar passa.
+Þetta leiðir í dæminu til yfirferðar Trieste → Garda fyrir gististaðaskipti; Feneyjar sjást sér. Raunveruleg skörun gistidvala og ógildar dagsetningar eru áfram atriði til yfirferðar. Baklægt tímabil birtist ekki lengur sem venjulegt dagabil heldur Dvalardagar skarast og skýring með raunverulegum lokum/upphafi dvalar.
+Framsetning: fellanlegir kaflar Áfangastaðir og ferðadagar, Gisting og Samgöngur, með fjölda. Einnig Heimsóknir án gistinætur og Viljandi opið þegar við á. Opnir undirkaflar haldast við endurteikningu. Stuttar tölur um nætur og skipti um gististað; endurteknar lýsingar styttar. Fyrri fyrirvarar um heimildir/viðbótarherbergi/tengitíma og staðbundið Halda opnu fluttir í Um yfirferðina.
+Samgönguábendingar greina nú milli óbókaðrar ferðar, óskráðs brottfarardags/tíma, óstaðfestrar brottfarar-/komutengingar, brottfarar utan staðaskiptadaga og komu eftir upphaf næstu dvalar. Aðgerð Yfirfara ferð við tenginga-/dagsetningavanda; Ganga frá ferð helst við opnar ferðir. Engin ágiskun um óþekkta tíma eða breyting á skráðum gildum.
+Óbreytt: planningTransportEdges, planningPath, planningIssueKey og Halda opnu vistun. Fyrri held-lyklar sem enn eiga við haldast. Vistun bókana/áfangastaða, almennar viðvaranir og samþykktar undantekningar, kostnaður, kort, Í dag og leiðsögn óbreytt. Offline planning summary notar sama endurreiknaða issue-lista og áður; nýji heimsóknakaflinn er upplýsingaframsetning í netappinu.
+Prófun: 106 fyrirliggjandi rök-/hermipróf + 14 ný planning-próf = 120 standast. Ný próf ná yfir dagsheimsókn með gistidvöl í kring, rétta næstu dvalartengingu, raunverulega skörun, ógilda daga, nákvæmar ástæður, óbókaða/áætlaða ferð, óbókaða/varagistingu, held-lykla, heimferð, ófullkomna hleðslu, hópa/kaflavarðveislu og textaescaping. Gögn prófunarferðar óbreytt eftir yfirferð. JavaScript málskipan og zip CRC/innihald yfirfarin. Raunvafra-/iPhone-/iPad prófun ekki framkvæmd.
+Notandaprófun: Feneyjar með 31-10-2026 í báðum dagareitum á að vera í Heimsóknir án gistinætur, ekki mynda öfugt Trieste → Feneyjar tímabil. Athuga Trieste → Garda, aðrar leiðir, gistingu, fellikafla og Halda opnu í bili. Skráður áfangastaðalisti og allar bókanir eiga að haldast.
+
+
+28-10-2026 — Útgáfa 67: loka undirköflum við enduropnun yfirlits
+Notandi tilkynnti að gluggar í Hvað vantar í ferðina héldust opnir eftir lokun/endur-opnun, þvert á samþykkta reglu.
+Orsök: útgáfa 66 varðveitti opin details[id] við renderPlanningChecklist án þess að takmarka það við opinn aðalkafla og án þess að endurstilla börn þegar aðalkafli var lokaður. Eldri resetOptionalDisclosures keyrði við opnun ferðar/glugga en ekki við native details lokun á þessu yfirliti.
+Lagfæring: toggle-binding á aðalkaflanum endurstillir alla undirkafla, bæði við lokun og enduropnun (einnig ef native toggle-events sameinast). Toggle á undirkafla hefur ekki áhrif á systkini. Endurteikning varðveitir kaflaval aðeins meðan aðalkaflinn er opinn; lokað yfirlit endurheimtir ekki opna kafla.
+Óbreytt: talning, áfangastaðaflokkun, bókanir, Viljandi opið og Samþykktar undantekningar. Engum vistuðum gögnum breytt.
+Prófun: 120 fyrirliggjandi rök-/hermipróf + 3 ný lokunar-/endur-opnunarpróf = 123 standast. JavaScript málskipan og zip CRC staðfest. Þetta eru rök-/DOM-hermipróf; raunvafra-/iPhone-/iPad prófun eftir.
+Notandaprófun: opna Hvað vantar í ferðina, opna Gisting/Samgöngur/Um yfirferðina, loka aðalkaflanum og opna aftur. Undirkaflar eiga að vera lokaðir.
+
+
+28-10-2026 — Útgáfa 68: tómt pláss undir lokuðum kafla
+Notandi sýndi mjög stórt tómt svæði undir lokuðu Gisting · 5 í Hvað vantar í ferðina og sagði það hafa sést daginn áður. Reglur og verkefnalisti lesin fyrir breytinguna samkvæmt nýrri skýrri vinnureglu notanda.
+Yfirferð: engin föst height/min-height á yfirlitinu eða planning-group fannst sem skýrir myndina. Ekki hægt að endurskapa í iPhone/Safari hér; enginn staðbundinn vafra-keyrsluhamur til staðar. Því er nákvæm rót orsakar óstaðfest.
+Afmörkuð lagfæring: explicit display:none!important á öllum öðrum beinum börnum en summary í lokuðum undirköflum yfirlitsins, og á planningChecklistBody þegar aðalkaflinn er lokaður. Lokaður planning-group hefur auto height og min-height:0. Þetta tekur efnið skýrt úr uppsetningu, óháð sjálfgefinni details-felun. Engin breyting á upplýsingum, útreikningum, vistun, opnunarflæði eða reglum um lokaða kafla úr 67.
+Prófun: JavaScript byte-identical við 67. Málskipan og 123 fyrirliggjandi rök-/hermipróf standast. Zip CRC og 13 skrár yfirfarin. Þetta sannreynir ekki að tóma svæðið sé horfið á iPhone; staðfesting notanda er eftir.
+Spjallsamhengi: aðgengileg saga sýnir 66 (hópar/aðgreining heimsókna án gistinætur) og 67 (undir-kaflar lokast við enduropnun). Ekki staðfest hvers vegna notandi sér ekki allt samtalið í ChatGPT.
+Notandaprófun: opna/loka Gisting og öðrum undirköflum í iPhone og athuga að næsti kafli komi beint á eftir lokuðu fyrirsögninni, án tóms flatar.
+
+28-10-2026 · Útgáfa 69 — Mynd eða skjáskot í bókunardrög
+- Reglur og verkefnalisti lesin aftur; samþykkt útlitstillaga höfð að leiðarljósi. Byggt á útgáfu 68, fyrri yfirferð/undantekningar og verkefnalistar varðveittir.
+- Núverandi Innflytja bókun tekur PDF, PNG, JPEG og WebP (15 MB). Myndlestur með Tesseract.js 6.0.1 fer fram í vafra. Lesari/worker og Apache-2.0 leyfi fylgja; core 6.0.0 og eng 1.0.0 lesgögn sótt í neti við notkun. Þetta er ekki ný virkni án nets.
+- Sama bókunarform og samþykki og áður. Upprunaleg mynd sést í yfirferð; ófundin gildi haldast auð. Óviss myndlestur er merktur, öll mynddrög krefjast samanburðar við miðann. Lestur getur farið rangt með texta/tölur, jafnvel þegar heildaröryggi lesara er hátt.
+- Stöðvar/leið, dagur, tímar og bókunarnúmer úr skýrt merktum texta lestarmiða/ferjumiða fara í samsvarandi reiti. Fleiri en einn mögulegur tími velst ekki sjálfkrafa. Ekki ályktað um komudag úr brottfarardegi. Flokkur og allt form áfram breytanlegt.
+- Upprunaleg mynd vistast við bókun eftir samþykki með réttri skráarendingu/MIME, í sömu einkavörslu og önnur ferðaveskisskjöl. Fyrri tvískráningarvörn og endurtilraun við tengingu skjals varðveitt. Engar breytingar á gagnagrunnsskipulagi eða heimildum.
+- Lestrarniðurstöður frá lokaðri/endur-opnaðri skráningu, breyttum texta/skrá eða annarri ferð eru hunsaðar. Tímamörk og hreinsun worker/canvas; skýr textafallback ef skráarlestur bregst.
+- Prófanir: 123 fyrri Node-prófanir + 17 innflutningsprófanir + 5 OCR-líftímaprófanir standast. Tesseract.js las raunverulega mynd af tilbúnum sýnimiða og textinn var prófaður í dragaþáttara. JS syntax og varðveisla eldri formreita yfirfarin.
+- Takmörk: ekki prófað í raunvafra á iPhone/iPad eða með raunverulegum miðasniðum notanda. Myndlestur notar enskt/latneskt leslíkan; óvenjuleg uppsetning og óskýrar myndir geta þurft handvirka leiðréttingu. HEIC er ekki lesið; nota skjáskot/JPEG. Skannað PDF heldur fyrri textaflæði; nota mynd af síðunni fyrir myndlestur. Engin rauntenging við söluaðila.
+
+28-10-2026 · Útgáfa 70 — Flugmiðasnið með útflugi og heimflugi
+- Reglur og verkefnalisti lesin aftur. Lagfæring á innflutningi úr útgáfu 69 eftir skjáskot notanda, án breytinga á uppsetningu bókunarforms.
+- Orðið Flug greinir nú flugflokk. Íslensk mánaðarheiti með/án broddstafa og febraar (raunverulegur OCR-ranglestur á febrúar) lesast með fullu ártali og dagsetningargildisprófun.
+- Þekkt mynstur flugmiða með dagsettum köflum, flugnúmeri og tveimur þekktum flugvallarkóðum er lesið þótt Frá/Til eða Departure/Arrival merkingar vanti. Krefst tveggja tíma á sömu línu eða tveggja sjálfstæðra tímalína. Allt fer í drög með yfirferðarviðvörun.
+- Tveir leggir fara í sama fram-og-til-baka form aðeins þegar flugvellirnir snúast við og heimferð er ekki á undan útferð. Meiri/misvísandi fjölleggjaleið er ekki sameinuð sjálfkrafa. Engin þriggja-staða leið er túlkuð sem tveir endapunktar.
+- Bókunarnúmer getur fundist í fyrirsögn/dálkaröð þótt myndlesari setji Flug á sömu línu. Sérstök yfirferð stafa/talna er áréttuð. Misvísandi kóðar eru ekki valdir í þessum lestri.
+- Sömu heimferðarreitir og áður fá dag, tíma, flugvelli, flugnúmer og sameiginlegt bókunarnúmer. Ekkert nýtt gagnagrunns- eða geymslusnið. Upprunaleg mynd áfram til samanburðar og fylgir samþykktri bókun.
+- Komudagur er ekki áætlaður úr brottfarardegi. Við vistun innflutts flugs með komutíma en tóman komudag þarf notandi að skrá daginn svo eldri sjálfgefinn dagur formsins verði ekki notaður þegjandi. Verð og greiðslustaða eru áfram handvirk þegar upplýsingar vantar.
+- Prófað með Tesseract.js á upprunalega skjáskotinu sem notandi sendi: útflug KEF→TFS 27-02-2027 10:00–15:25, FI970; heimflug TFS→KEF 09-03-2027 16:25–21:55, FI971. Bókunarnúmer fannst; verð var ekki á myndinni og fyllist ekki.
+- Prófanir: 123 fyrri ferða-/korta-/viðvörunar-/forms-/verkefnalistaprófanir, 16 innflutningsprófanir, 5 OCR-líftímaprófanir og 12 flugmiðaprófanir (þar af raunverulegur OCR-texti úr sendu myndinni). JS syntax og varðveisla allra fyrri formreita yfirfarin.
+- Takmörk: lestrarprófun og Node-formprófun, ekki sjálfvirk prófun raunvafra á iPhone/iPad. Þetta lagar sýnda uppsetningu; önnur miðasnið geta enn þurft handvirkar leiðréttingar. Upprunalega skjáskotið og útdreginn einkatexti eru ekki hluti afhendingarpakkans.
+
+28-10-2026 · Útgáfa 71 — Varðveita fluglegg þótt einn tími sé ólæsilegur
+- Reglur og verkefnalisti lesin aftur. Byggt á útgáfu 70; engar útlits- eða gagnagrunnsbreytingar.
+- Raunverulegur OCR-texti úr iPhone-skjáskotum notanda sýndi ólæsilegan komutíma heimferðar. Útgáfa 70 sleppti öllum leggnum þar sem hún krafðist tveggja læsilegra tíma.
+- Flugleggur með þekktum degi, flugnúmeri og tveimur þekktum flugvöllum helst nú í drögum þótt tíma vanti. Staðfestir reitir haldast en ólæsilegur tími verður auður. Tveir öfugir leggir mynda áfram fram-og-til-baka drög; sérstök viðvörun segir hvaða tíma heimferðar þarf að skrá.
+- Í tveggja dálka tímalínu með einum gildum tíma og einum ólæsilegum textabút er aðeins gildur tími tekinn í sinn dálk. Einn stakur tími án samhengis er ekki úthlutaður með ágiskun. Misvísandi eða of margir tímar haldast auðir. Skýr merking Departure time/Arrival time er áfram studd.
+- Fyrirsögn bókunarnúmers þekkist líka með afmörkuðum OCR-afbrigðum eins og Boékunarnumer og Békunarnumer. Bókunarkóðanum sjálfum er ekki breytt eða ágiskað; samanburður við mynd áfram nauðsynlegur.
+- Prófanir: 123 fyrri prófanir, 16 innflutningsprófanir, 5 OCR-líftímaprófanir og 19 flugmiðaprófanir (alls 163). Ný prófunargögn eru umrituð beint af OCR-texta í skjáskotum notanda. Sannreynt að báðir leggir haldist, bókunarnúmer finnist, brottför heim 16:25 haldist og ólæsilegur komutími verði auður með viðvörun.
+- JS syntax, varðveisla eldri formreita, einhlít reitaauðkenni og ZIP innihald yfirfarin. Engin sjálfvirk raunvafraprófun á iPhone/iPad; notandi þarf að prófa nýju útgáfuna þar. Engin persónuleg prófunargögn eða skjáskot fylgja ZIP.
+
+28-10-2026 · Útgáfa 72 — Flugvallarkóði og heiti í sömu reitum
+- Reglur og verkefnalisti lesin aftur; samþykkt tillaga um kóða og flugvallarheiti útfærð á útgáfu 71.
+- Allir fjórir Frá/Til reitir flugs (útleið/heimleið) sýna kóða og fullt heiti úr núverandi flugvallaskrá þegar þekktur IATA/ICAO kóði er í reitnum. Dæmi: KEF — Keflavik International Airport og TFS — Tenerife South Airport.
+- Við innslátt/fókus er áfram unnið með upprunalegan kóða í sama reit. Heitið birtist sem textalag yfir reitnum þegar fókus fer úr honum; fer á fleiri línur eftir þörfum og er tengt sem aðgengileg reitsskýring. Ekki nýr innsláttarreitur og ekki breyting á vistuðum gildum, flugleit, flugvöktun eða bókunarinnflutningi.
+- Heiti uppfærist við innslátt, val úr niðurstöðum, hreinsun, opnun eldri bókunar og yfirferð innfluttra draga. Óþekkt eða autt gildi sýnir engan gamlan flugvöll. Birting annarra samgönguflokka varðveitt.
+- Opna í Google Maps við þessa flugvallareiti notar nú þekkt hnit úr sömu skrá fyrir hvern endapunkt, í stað almennrar leitar að kóðanum. Þetta er flugvallarpunktur, ekki nákvæmur inngangur/hlið.
+- Fallmyndir leitar halda sér við fókus í niðurstöðum þótt innsláttarreitur hafi nú birtingarhjúp.
+- Staðfesting: 163 fyrri Node-prófanir og 6 prófanir á flugvallabirtingu/kóðum/kortatenglum standast (169 alls). Syntax yfirfarið, gömlu formreitaauðkennin varðveitt og ZIP sannreynt. Útlit í raunvafra á iPhone/iPad óprófað; engin slík prófun fullyrt.
+
+28-10-2026 · Útgáfa 73 — Skýring við læsta vistun innfluttra draga
+- Reglur og verkefnalisti lesin aftur. Beiðni notanda: texti biðji um hak í samþykki efst í glugganum.
+- Við föstu vistunarhnappana birtist nú: „Til að vista þarftu fyrst að haka við „Ég hef yfirfarið upplýsingarnar og vil skrá bókunina“ efst í glugganum.“
+- Textinn sést aðeins í innfluttum drögum meðan samþykki vantar. Hverfur þegar hakað er við og birtist aftur ef hakið er tekið úr. Hnappurinn heldur fyrri samþykkisvörn og verður ekki virkur meðan vistun stendur yfir.
+- Textinn er ekki sýndur í venjulegri nýskráningu eða breytingu eldri bókunar. Engar aðrar breytingar á formi eða vistunarreglum.
+- JS syntax og afmörkuð yfirferð samþykkis/skýringar/vistunarstöðu standast. Ekki prófað í raunvafra á iPhone/iPad.
+
+28-10-2026 · Útgáfa 74 — Ferðaveski, til baka-flæði og víðara yfirlitskort
+- Reglur og verkefnalisti lesin aftur. Samþykkt beiðni um viðgerðir á veski og kortaaðdrætti, byggt á útgáfu 73. Flugvallarheiti/kóðar, innflutningsyfirferð og texti um samþykkishak varðveitt.
+- Aðalspjald ferðaveskis sýnir aðskilið bókanir og skjöl, t.d. 1 bókun · 1 skjal. Innan veskis er eintala/fleirtala rétt.
+- Allar bókanir í veski fá Opna bókun. Tengd skjöl eru opnanleg við bókunina sjálfa, jafnframt áfram aðgengileg með breytingu/eyðingu á skjalalistanum. Bókun með tengdu skjali er sýnd líka þótt bókunarnúmer eða staðfestingartengil vanti.
+- Bæta við skjali / miða við bókun opnar sömu skjalaskráningu með rétta bókun forvalda. Ný brottfararspjöld bætast við sömu bókun; fyrra skjal helst. Engin ný bókun stofnuð af þessari aðgerð. Heiti getur greint farþega/útflug/heimflug og dagur greint flugdag. Ekki bætt við nýjum gagnagrunnsreitum.
+- Hætta við nýtt/breytt skjal, innflutning eða bókunardrög sem voru opnuð frá veski fer aftur í veskið og endurheimtir skrúllstöðu. Dirty-form og vistunarvarnir haldast. Að bæta við skjali innan bókunar heldur fyrra flæði aftur í skjalaval hennar. Heimferð glugga gildir aðeins fyrir sama notanda og ferð.
+- Skjalskoðari, niðurhal og deiling óbreytt. Loka skjali fer áfram aftur í gluggann þar sem það var opnað; skjalabreytingagluggi heldur sér bak við skoðarann. Skráarvarðveisla og skipta-um-skjal aðgerð óbreytt.
+- Ný innflutt bókunarskjöl fá heitið [bókun] — bókunarstaðfesting og tegund Bókunarstaðfesting. Eldri tengdar innfluttar skrár sem enn bera sjálfvirkt skráarheiti birtast með lesanlegu staðfestingarheiti, án breytinga á gagnagrunni. Handvirkt breytt heiti/tegund er virt. Raunverulegt skráarheiti er varðveitt fyrir opnun/niðurhal.
+- Upphafssýn og Sýna alla ferðina nota nú víðari yfirsýn: zoom 7 með einum punkti, maxZoom 9 við margra punkta yfirsýn; zoomOut viðbót virkar. Val á nákvæmum stað/áfangastað eða samgöngulegg heldur sérstöku aðdráttarflæði. Ekki breyting á kortastillingum notanda, gögnum eða vistaðri staðsetningu.
+- Almennur punktur ferðar án skráðra dvalarstaða er merktur Ferðasvæði bæði á merki og í táknaskýringu, með skýringu að hann sé ekki skráður dvalarstaður. Ekki boðin nákvæm leiðsögn að þessum almenna punkti. Enginn dvalarstaður stofnaður sjálfkrafa.
+- Prófanir: 169 fyrri Node-prófanir + 21 ný prófun á veskis-/til-baka-/kortaflæði + 1 prófun á Ferðasvæði tákni (191 alls). JS syntax, einstök reitaauðkenni, varðveisla allra gömlu formreita og ZIP innihald sannreynt.
+- Takmörk: prófanir með Node og hermdu DOM/korti; ekki prófað í raunvafra á iPhone/iPad. Engin gögn á þjónustu breytt við vinnuna. Notandi setur allar skrár pakkans á GitHub og prófar aftur til baka-flæði og aðdrátt í tækinu.
+
+28-10-2026 · Útgáfa 75 — Ein birting skjals og aðskilin kortasýn
+- Reglur og verkefnalisti lesin aftur. Yfirferð á flæði veskis/korts eftir skjáskot notanda af útgáfu 74.
+- Leiðrétt mistök í 74: fitMapView fór ekki lengur sérstaklega með mapView=destinations og Sýna áfangastaði endaði í yfirsýn allrar ferðarinnar. Nýr skýr destinations armur afmarkar eingöngu vistaða áfangastaði eða almennt ferðasvæði; víðari aðdráttur frá 74 helst.
+- Sýna áfangastaði sýnir áfangastaðamerki, eða ferðasvæði ef skráða staði vantar, án flugvallar-/hótel-/stöðvamerkja og samgöngulína. Sýna alla ferðina endurheimtir alla viðeigandi punkta og tengingar. Næsti ferðaleggur, einstakur valinn staður og flokkasíur halda sínu flæði. Aria-pressed sýnir val á yfirlitshnöppunum.
+- Ferðaveski sýnir hvert tengt skjal aðeins einu sinni, undir viðkomandi bókun. Opna/Breyta/Eyða er við sömu skrá þar. Skjöl án tiltækrar bókunar birtast í Önnur skjöl. Týnd bókunartenging felur ekki skjal. Haus/tómur aukalisti er falinn þegar öll skjöl eiga heima undir bókunum.
+- Hófleg bókunarhópun kemur í stað tvöfaldrar bókunar-/skjalabirtingar. Sjálfvirkt staðfestingarheiti undir bókun endurtekur ekki nafn hennar; skráarheiti er undir lokuðum upplýsingum. Handvirk heiti skjala, dagsetningar brottfararspjalda og öll aðgerðatengsl varðveitt.
+- Opna bókun, Bæta við skjali / miða, Hætta við og endurkoma á sama stað í veski úr 74 haldast. Engum skjölum, bókunum, áfangastöðum eða stillingum er breytt í gagnagrunni með þessari uppfærslu. Aðgerðir við nýtt skjal nota sömu skráningu og áður.
+- Prófanir: 191 fyrirliggjandi Node/DOM/kortaprófun og 12 nýjar samþættar flæðiprófanir (203 alls). Nýju prófanirnar keyra raunverulega onclick handlara Sýna áfangastaði/Sýna alla ferðina áfram í merkjagerð, línugögn og kortaafmörkun. Prófað með Tenerife án skráðra dvalarstaða og fjölstaðaferð með KEF utan dvalarsvæðis.
+- Veski prófað með bókun+staðfestingu, viðbættu brottfararspjaldi, ótengdu skjali, týndri bókun, breytingu tengingar og tómu veski. Hvert skjal hefur eina birtingu og eitt sett Opna/Breyta/Eyða. JS syntax, eldri reitaauðkenni og ZIP yfirfarin.
+- Takmörk: prófanir í Node með hermdu DOM/korti, ekki raunvafraprófun á iPhone/iPad. Fyrri kóðaprófanir náðu ekki raunverulegri destinations hnappakeðju; hún er nú sérstaklega prófuð. Allar 16 vefskrár fylgja eins og áður.
+
+
+28-10-2026 · Staðfestingar notanda eftir útgáfu 75
+- Ferðasvæði, ferðaveski og læsileiki kortsins eru staðfest skýr og afgreidd hjá notanda. Varðveita samþykkta uppsetningu.
+- Notandi prófaði aftur og segir veskið virðast vistast fyrir notkun án nets. Ekki leggja sömu prófun aftur til án nýs vandamáls.
+
+28-10-2026 · Útgáfa 76 — Val við sambærilega innflutta bókun
+- Samþykkt: vörn gegn tvöföldum innflutningi og yfirferð tengdra ferla svo breytingin raski ekki samþykktri virkni.
+- Í 75 var þegar grunnvörn með skráarhashi eða bókunarnúmeri og einni tengiaðgerð. Nú birtast allir fundnir kostir í núverandi ferð með heiti, dagsetningu og skráðri leið: Opna bókun, Bæta skjalinu við þessa bókun eða Halda áfram með nýja bókun.
+- Sama bókunarnúmer eitt og sér veldur engri sjálfvirkri sameiningu. Notandi velur bókun. Samsvörun styður líka bókunarnúmer út-/heimferðar og skráarhash fyrri tengdra skjala. Ekki giskað út frá líkum heitum eða ólæsilegu bókunarnúmeri.
+- Við nýja bókun helst sama yfirferð og samþykkishak og áður. Opna eldri bókun hreinsar innflutningsdrög svo hún sé ekki vistuð óvart sem innflutningur.
+- Viðbætt skjal fær breytanlegt heiti og tegund. Brottfararspjald er merkt Miði / boarding pass þegar textinn segir það skýrt. Dagsetning tengda skjalsins kemur úr nýja skjalinu ef hún lasst, annars er hún auð. Ekki sett sjálfkrafa á útflugsdag eldri bókunar. Staðfesting og ný spjöld haldast aðskilin.
+- Tengiaðgerðin skrifar aðeins nýtt wallet_documents skjal og skrá í núverandi geymslu. Engin breyting á bókun, kostnaði eða eldri skjölum og engar breytingar á gagnagrunnsskipan eða aðgangsreglum. Sama hash við sömu bókun stofnar ekki annað skjal. Meðvitað val um nýja bókun er áfram heimilt.
+- Vistunarvörn hindrar tvísmell, að skipta innflutningsgögnum og að loka glugganum meðan skjal tengist. Við villu haldast drög, gölluð upphleðsla er hreinsuð samkvæmt fyrirliggjandi flæði og endurtilraun er möguleg. Til baka og skrúllstaða veskis varðveitt.
+- Ef ferð/notandi breytist meðan lestur eða tenging stendur yfir birtast gömul drög/skjöl ekki í nýrri ferð. Vistun sem þegar er hafin lýkur áfram við upprunalega ferð og notanda.
+- Prófanir: 203 fyrri Node-prófanir og 21 ný prófun á samsvörun, valkostum, varðveislu gagna, til baka, tvískráningu, vistunarvillu/endurtöku og ferðaskiptum. Alls 224 prófanir. JS setningafræði og varðveisla fyrri fastra formauðkenna yfirfarin.
+- Kort, kostnaðarkerfi, tímalína, dagatal og án nets eru utan breytingarinnar. Önnur vefgögn eru bæti-fyrir-bæti eins og í 75. Sjá PROFUN-76.md.
+- Ólokið: raunveruleg vafra-/iPhone-/iPad-prófun og innskráð prófun með lifandi gagnagrunni. Keyrsluskrár vafra vantar. Ekki fullyrða að öll notendaflæði séu heildarprófuð.
+
+
+28-10-2026 · Útgáfa 77 — Einfaldara val við innflutning
+- Samþykkt tillaga: þegar nákvæmlega sama skjal er þegar tengt birtist „Þetta skjal er þegar í ferðaveskinu“, samantekt bókunar og tveir aðalhnappar: Skoða skjalið / Opna bókun. Látlaus aukaaðgerð: Þetta er önnur bókun — halda áfram.
+- Heiti/tegund nýs skjals og brottfararspjaldaskýring eru falin við val bókunar. Upphaflegir skráar-/textareitir og Búa til drög eru einnig faldir eftir fundna samsvörun. Hætta við helst neðst. Enduropnun sýnir upphaflegu innflutningsreitina aftur.
+- Nýtt skjal: Bæta við þessa bókun opnar næsta skref með heiti og tegund. Til baka skilar í valið og varðveitir innslátt; engin vistun við val eða Til baka. Bæta við bókun notar áfram vistun frá 76 og má aðeins vista við valda bókun.
+- Skoða skjalið opnar fyrra skjalið beint í núverandi skjalskoðara, með innflutninginn á bak við. Loka skjali notar óbreytt lokunarflæði skoðarans.
+- Innri aðgerðir nota venjulegar hnappalínur. Ekki bætt við annarri fastri neðri aðgerðalínu innan gluggans. Nýr stíll fyrir aukaaðgerð er bundinn við bookingImportDuplicate.
+- Yfirferð samanborið við 76: aðeins statískur innflutningsgluggi, afmarkaður aukahnappastíll, openBookingImport, showBookingImportMatches og val-vörn linkBookingImport breyttust, ásamt nýjum hjálparföllum innflutnings. Allir fyrri fastir reitir varðveittir og engin tvítekin föst auðkenni. HTML-hópun upphafsreitanna yfirfarin.
+- Samsvörunarreglur, mynd-/PDF-/textalestur, bókunardrög, samþykkishak, saveItem og saveBookingImportSource eru óbreytt. Sama gildir um kort, kostnaðarkerfi, tímalínu, dagatal, skjalskoðara, almenna skjalaskráningu og án nets. Allar aðrar 14 vefskrár eru bæti-fyrir-bæti óbreyttar.
+- Prófanir: 224 fyrri Node-prófanir endurkeyrðar; væntingar valprófana lagaðar að samþykktu tveggja skrefa flæði. 16 nýjar prófanir á einföldun, raunverulegum tengdum smellihöndlum, sýnileika, Til baka, enduropnun, blönduðum samsvörunum og ferðaskiptum. Alls 240 prófanir standast ásamt JS setningafræði.
+- Takmörk: prófanir nota hermt DOM/kort/geymslu. Raunvafra-/iPhone-/iPad-prófun og innskráð heildarprófun eru eftir; keyrsluskrár vafra vanta í umhverfinu. Engin lifandi gögn eða gagnagrunnsskipan breytt við vinnuna.
+
+
+28-10-2026 · Útgáfa 78 — Innflutningshnappur í veski opni réttan glugga
+- Villutilkynning: eftir fyrri innflutning opnaði „Innflytja bókun“ bókunardrög bak við opið veski. Við Loka sást dragaformið.
+- Orsök staðfest í kóða og prófun: fasti innflutningshnappur veskis og kvikur aukahnappur „Þetta er önnur bókun — halda áfram“ notuðu báðir id=newBookingImportBtn. showBookingImportMatches tengdi því newBookingImport við hnapp veskisins. Fyrri DOM-próf höfðu ekki sett föstu og kviku hnappana í sama auðkennarými.
+- Lagfæring: aukahnappurinn og binding hans nota continueNewBookingImportBtn. Fasti hnappur veskis heldur newBookingImportBtn og openBookingImport. Innflutningur úr veski byrjar aftur á nýju skráar-/textavali. Að fara í nýja bókun er eingöngu sérstakt val í samsvörunarskjánum.
+- Sýnilegi útgáfutextinn var enn harðkóðaður 75 í afhendingum 76 og 77. Hann er nú leiðréttur í 78; eldri skjátexti 75 staðfesti ekki einn og sér hvaða kóði var virkur.
+- Ný samsett prófun keyrir raunverulega bindingu fasta hnappsins, openBookingImport, readBookingImport, samsvörun, Hætta við og endurtekna opnun; einnig raunverulegt showBookingDraft/closeModal með nýrri bókun, lokað veski, yfirferð og endurkomu í veski. Notuð eru hermd DOM/gögn og stubbun ótengdra formhluta.
+- Prófunin fellur á óbreyttri útgáfu 77 þar sem fasti hnappurinn fær rangan handler og stenst í 78. Níu nýjar prófanir og 240 fyrri prófanir standast (249 alls), ásamt JS setningafræði og auðkennayfirferð.
+- Kóðasamanburður staðfestir að aðeins tvær tilvísanir í auðkenni kvika hnappsins og sýnilegur útgáfutexti breyttust frá 77. Engin breyting á vistun, myndlestri, samsvörun, veskiuppsetningu, korti, kostnaði, dagatali, tímalínu eða án nets; aðrar 14 vefskrár eru óbreyttar.
+- Takmörk: engin raunvafra-/iPhone-/iPad-prófun eða innskráð prófun með lifandi gagnagrunni. Engin lifandi notandagögn breytt. Notandi þarf að staðfesta lagfærða hnappakeðju í tækinu.
+
+
+28-10-2026 · Útgáfa 79 — Stöðumerking við sambærilega bókun
+- Samþykkt tillaga útfærð: ef sama skjal er þegar tengt birtist grænt hak með „Skjalið er þegar til“ efst í viðkomandi bókunarspjaldi. Ef sambærileg bókun finnst en þetta skjal er ekki þegar tengt henni birtist gulur þríhyrningur með „Bókun gæti þegar verið til“.
+- Hver samsvörun fær sína merkingu, líka þegar bæði tilvik koma fyrir í sömu leit. Tákn er falið skjálesurum en skýr stöðutexti er sýnilegur og lesanlegur. Merkingin byggir á sama skráarhash-samanburði og fyrirliggjandi hnappar; engin ný ágiskun um samsvörun.
+- Aðeins birting showBookingImportMatches, stílar afmarkaðir við bookingImportDuplicate og sýnilegt útgáfunúmer 79 breyttust frá 78. Stöðumerking bætir ekki við hnöppum eða auðkennum. Fyrri aukasetning um tilvist skjals í blönduðum samsvörunum kemur nú fram í merkingunni.
+- Hnappatengingar, samsvörun, skjalskoðari, yfirferð, samþykkishak og vistun eru óbreytt. Sama gildir um veskiuppsetningu utan spjaldmerkingarinnar, kort, kostnað, tímalínu, dagatal og án nets. Aðrar 14 vefskrár eru óbreyttar bæti fyrir bæti.
+- Allar 249 fyrirliggjandi Node-flæðiprófanir endurkeyrðar og standast. JavaScript-setningafræði, varðveisla auðkenna og afmörkun kóðabreytinga yfirfarin. Ekki bætt við prófum eingöngu fyrir lit eða texta.
+- Óstaðfest: raunvafra-/iPhone-/iPad-útlit merkjanna. Engin innskráð prófun með lifandi gagnagrunni og engum lifandi gögnum breytt.
+
+
+28-10-2026 · Útgáfa 80 — Stöðumerking á eigin línu
+- Skjámynd notanda staðfestir að græna merkið birtist, en inline-flex lét Icelandair-heitið liggja á sömu línu og alveg við merkið.
+- Merkið er nú block-level flex með width:fit-content og max-width:100%. Það tekur eigin línu ofan við bókunarheitið en heldur þéttri breidd. Sama regla gildir um grænu og gulu merkinguna.
+- Ein afmörkuð CSS-regla og sýnilegt útgáfunúmer breyttust. Allt JavaScript er óbreytt frá 79, sem og önnur vefgögn.
+- Allar 249 fyrirliggjandi flæðiprófanir og JavaScript-setningafræði standast. Raunvafra-/iPhone-útlit lagfæringarinnar óstaðfest. Engin lifandi gögn breytt.
+
+
+28-10-2026 · Útgáfa 81 — Innfluttur miði uppfærir opna ferð eftir yfirferð
+- Útfærð fyrsta úrbót úr nýrri vöruyfirferð, í framhaldi af sýndri tillögu og fyrirmælum notanda um að fara yfir allt flæðið og vernda ótengda hluti.
+- Opnar/mögulegar lestar-, báta- og akstursáætlanir af sama flokki í núverandi ferð eru boðnar til handvirks vals eftir innflutning. Listinn fullyrðir ekki að leiðir samsvari og ekkert er valið eða sameinað sjálfkrafa. Flug og aðrir flokkar fara ekki í þetta flæði.
+- Bókun sem þegar passar á bókunarnúmeri/skráarhashi heldur fyrirliggjandi tvískráningarflæði. Opin áætlun í slíkri samsvörun fær Yfirfara og bóka áætlun þegar nýtt skjal finnst; skjal sem þegar er til heldur Skoða skjalið.
+- Nota þessa áætlun sýnir samanburð á áætlun og lesnum degi/leið/tíma/númeri. Dagur utan áætlaðs dagabils er sérstaklega nefndur. Áfram í bókunarform opnar sömu færslu í breytingu. Engin vistun fyrr en núverandi yfirferðarhak er samþykkt og vistað. Til baka og önnur/ný bókun eru sjálfstæðir valkostir.
+- Við uppfærslu haldast heiti notanda, athugasemdir, áfangastaðatenging, áætlunarupplýsingar, heimferð og eldri skjöl. Aðeins læsilegir innfluttir reitir fyllast yfir eldri gildi; ólesnir reitir halda skráðum gildum með skýringu um yfirferð.
+- Skráð verð, gjaldmiðill og greiðslur eru ekki yfirskrifuð með lesnu verði. Lesið verð er sýnt til samanburðar. Ef kostnaður er óbreyttur í öllum formreitum er honum ekki endurskrifað. Við breytingu úr áætluðu í bókað fylgir kostnaðarstaða gildandi samstillingu bókunar og venjulegu vistunarflæði. Handvirkar verð-/greiðslubreytingar nota óbreytt saveExpenseForItem. Miði án eldri kostnaðar getur fyllt lesið verð; greiðslustöðu þarf þá að velja sérstaklega.
+- Sama færsluauðkenni er uppfært með vörn fyrir ferð, auðkenni, fyrri stöðu og updated_at þegar það er til staðar. Breyting á færslu eða kostnaði í hlaðnum gögnum meðan yfirferð stendur yfir stöðvar vistun. Ef geymsla skilar útgáfuárekstri er beðið um enduropnun. Endurtilraun eftir vistaða bókun en misheppnaða kostnaðar-/skjalavistun notar áfram sama auðkenni og nýjustu vistuðu útgáfu.
+- Ef stöðvarheiti breytast notar flæðið núverandi staðarval með heitinu einu, án þess að færa eldri hnit yfir á nýtt heiti. Viðkomandi leiðarpunktar þarfnast yfirferðar; ráðlagður brottfarartími útferðar er gerður óvirkur þar til notandi yfirfer og virkjar aftur. Gistival og heimferð haldast.
+- Innflutnings- og aukahnappar nota aðskilin auðkenni, þar með talið newOpenPlanBookingImportBtn. Föst formauðkenni eru óbreytt. Engin ný gagnagrunnsskipan, aðgangsregla, þjónusta eða gögn á lifandi þjónustu breytt við vinnuna.
+- Kóðabreytingar utan nýrra innflutningsfalla afmarkast við showBookingImportMatches, newBookingImport, readBookingImport og skilyrtar varnir/vistun í saveItem. Aðrir flokkar nota áfram fyrri vistunarleið. Kort, dagatal, tímalína, almenn skjalaskráning, skjalskoðari, kostnaðarreikningar og án nets eru óbreytt; allar 14 aðrar vefskrár eru eins og í 80.
+- Prófanir: 249 fyrri sviðsmyndir, 26 nýjar sviðsmyndir um val/varðveislu/sömu uppfærslu/kostnað/endurtöku/árekstra og 6 viðbótarsviðsmyndir í samsettu innflutningshnappaflæði. Alls 281 kóðaprófun. Keyrð raunveruleg innflutnings- og saveItem-föll með hermdu DOM, gagnagrunni og ótengdum formhlutum. Venjuleg breyting eldri færslu prófuð sérstaklega með fyrri fyrirspurn og kostnaðarleið.
+- Takmörk: ekki raunvafra-/iPhone-/iPad-prófun eða innskráð prófun með lifandi gagnagrunni. Ekki sjálfvirk merking á öruggri leiðarsamsvörun; notandi ber saman og velur. Ekki fullyrða að allar samsetningar notkunar hafi verið prófaðar.
+- Úrbætur 2–5 úr vöruyfirferð (farþega-/leggval skjala, lengd afþreyingar, samantekt ólokinna vistunarreita og staða sóttra skjala við hvert skjal) eru áfram tillögur, ekki útfærðar eða samþykktar með þessari afhendingu.
+
+
+29-10-2026 · Útgáfa 82 — Farþegi og ferðaleggur skjals
+- Samþykkt útlitstillaga fyrir lið 2 úr vöruyfirferð útfærð á afriti af útgáfu 81. Fyrri útgáfur og afhendingar eru óbreyttar; útgáfa 81 hefur verið borin saman við upprunalega ZIP-skrá og er eins bæti fyrir bæti.
+- Í núverandi skjalaglugga birtast tveir valfrjálsir reitir þegar Miði / boarding pass tengist flugi, lest, báti/ferju eða akstri: Fyrir hvern? (Ekki tilgreint / Mig / Maka minn / Okkur bæði) og Hvaða ferðaleggur? (Ekki tilgreint / Útferð / Heimferð / Öll bókunin). Einnig hægt innan nýrrar/eldri bókunar áður en skjalatenging er vistuð. Ekkert er merkt sjálfkrafa út frá myndlestri, dagsetningu eða innskráðum reikningi.
+- Merking er metadata.ticket_assignment með enum-gildum traveller:self|partner|both og leg:outbound|return|all. Tóm merking þarf engan nýjan reit og eldri/óþekkt gildi eru lesin sem ómerkt. Aðrar metadata varðveitast. Engin gagnagrunnsskipan, aðgangsregla eða bókun breytist vegna merkinga.
+- Merkingar sjást við skjal í veski og við tengd skjöl bókunar. Í báðum fyrirliggjandi Í dag birtingum koma miðar með réttum legg eða Öll bókunin fyrst. Einn miði fyrir bæði hefur einn hnapp. Miðar án ferðaleggsmerkingar eru áfram sýnilegir til yfirferðar. Staðfestingar og miðar annarra leggja eru aðgengileg undir Önnur skjöl. Sé enginn miði merktur heldur fyrri birting skjala sér.
+- Allir fjórir samgönguflokkar nota sömu reglu; hótel og aðrir flokkar halda fyrri miða-/skjalabirtingu. Óþekkt eða tóm farþegamerking felur ekki miða. Merkingarnar eru ekki staðfesting á gildum miða eða fullri ferðafærni.
+- Ný hrein hjálparskrá wallet-tickets.js heldur sömu merkinga-/flokkunarreglum fyrir aðalapp og lesafrit án nets. Merkingar fylgja metadata sem þegar vistast með wallet í offlineSnapshot. Eldri afrit án merkja halda fyrri birtingu. Nýtt sótt afrit þarf til að nýjar merkingar berist í tækið. Ný skránni bætt í offline.html og skyndiminnisskel v5-20261029-tickets; geymslugögn og offline-store eru óbreytt.
+- Vistun merkinga breytir sama wallet_documents skjali og heldur skrá, upprunalegum OCR-texta, skráarhashi og öðrum metadata þegar aðeins merking/heiti breytist. Skipta um skjal heldur merkingum en hreinsar úrelt OCR-/hash-gögn gamla skjalsins. Breyting í vefslóð heldur merkingum; óbreytt slóð hreinsar ekki metadata við merkingabreytingu.
+- Vistunarvilla hreinsar nýja óvistaða upphleðslu en ekki gamla skjalið. Skrá sem þegar er vísuð í eftir heppnaða DB-vistun er ekki eytt þótt endurteikning yfirlits bregðist. Ferða-/notandaskipti meðan upphleðsla stendur yfir stöðva rangtengi; vistuð niðurstaða úr fyrri ferð er ekki sett í nýja ferð. Merkingabreyting endurteiknar viðeigandi núverandi Í dag yfirlit og stöðu sótta afritsins.
+- Varðveitt: saveItem, saveExpenseForItem, v81 val/uppfærsla opinnar áætlunar, tvískráningarreglur, kostnaðarreikningar, kortaafmörkun, tímalína, dagatal, skjalskoðari, opna/deila/niðurhal og fyrri til baka-vörn. Nýr kóði bætir ekki við föstum HTML-auðkennum sem skarast við fyrri hnappeiningar.
+- Prófanir: 281 fyrri kóðaprófun og 31 ný merkinga-/varðveisluprófun standast (312 alls). Prófað út/heim, sameiginlegur miði, ómerkt/óþekkt gildi, allar fjórar samgöngur, varðveisla allra skjala, escaping, nýskráning, breyting, enduropnun, hreinsun merkja, skráaskipti, slóðarskipti, villur, fyrri OCR-/hash-gögn, sótt afrit og ferðaskipti. JS syntax, fyrri föst auðkenni, ný asset-tilvísun og skyndiminnisskel yfirfarin.
+- Takmörk: Node-prófanir með hermdu DOM/geymslu, ekki raunvafra-/iPhone-/iPad-prófun eða innskráð lifandi DB-vistun. Prófanir á sýnidæminu staðfesta ekki útfærsluna í appinu. Engin lifandi gögn breytt við vinnuna. Allar 18 skrár pakkans þurfa að fylgja afhendingunni, þar með talin wallet-tickets.js.
+
+
+29-10-2026 · Útgáfa 83 — Miðar líka á litlum spjöldum
+- Notandi staðfesti að tengdur miði birtist í Í dag hluta dagatals en vantaði á aðalspjaldið undir Næstu dagar. Kóðayfirferð sýndi að litla spjaldið skilaði HTML áður en skjalabirting var reiknuð.
+- spotlightEntryHtml reiknar nú fyrirliggjandi skjalabirtingu áður en það velur litla eða stóra spjaldið. Lítil samgönguspjöld birta sömu skjöl og sömu farþega-/ferðaleggsflokkun: flug, lest, bátur/ferja og akstur. Gildir líka um sambærileg lítil samgönguspjöld í Annað í dag.
+- Ómerktir og eldri miðar haldast aðgengilegir. Skoða bókun og fyrirliggjandi opnun skjala nota óbreytta handlera. Ný stílregla er afmörkuð við miðahluta litlu spjaldanna og leyfir línuskipti.
+- Einungis spotlightEntryHtml, afmarkað CSS og sýnilegt útgáfunúmer breytt í appinu. Engin breyting á vistun, gögnum, kostnaði, innflutningi, dagatali, kortum, skjalskoðara eða sóttu afriti. Aðrar vefskrár óbreyttar. Útgáfa 82 varðveitt og borin saman við fyrri ZIP.
+- Allar 312 fyrri kóðaprófanir standast; 9 nýjar prófanir á litlum spjöldum standast (321 alls). Þær ná til allra samgönguflokka, út-/heimferðar, sameiginlegs miða, ómerktra skjala, varðveislu fyrri stórrar birtingar og ótengdra flokka, escaping og brottfalls hjálparskrár. JS syntax og föst HTML-auðkenni yfirfarin.
+- Takmörk: prófanir keyrðar í Node með hermdu samhengi. Raunvafra-/iPhone-/iPad-útlit nýju litlu spjaldanna og lifandi gögn ekki prófuð. Engum lifandi gögnum breytt.
+
+
+29-10-2026 · Staðfesting notanda á útgáfu 83
+- Skjámynd sýnir Miði maka / Svava undir Næstu dagar. Notandi staðfesti síðan að miðinn opnaðist og virkaði. Birting og opnun þessarar afmörkuðu leiðar á iPhone eru staðfest; ekki heildarprófun allra samgönguflokka.
+
+29-10-2026 · Útgáfa 84 — Valfrjáls lokatími afþreyingar
+- Samþykkt tillaga: Hefst kl. og Lýkur kl. (valfrjálst). Nýr reitur í hjólaferðum, gönguferðum, dagsferðum og áhugaverðum stöðum. Staðartími sama dags; engin ágiskun um lengd eða lokatíma. Fyrirliggjandi fjöl­dagaafþreying heldur eldri lokadegi og hann er nefndur við reitinn.
+- Tímabil birtist á samræmdan hátt í dagatali/dagskrárspjöldum, flokkayfirliti bókana, báðum Í dag leiðum, Næstu dagar og öðrum litlum samgildum spjöldum, stuttu og ítarlegu PDF og lesafriti án nets. Tímar án lokatíma halda fyrri birtingu. Afþreying með gildum lokatíma helst í báðum Í dag forgangsleiðum þar til henni lýkur. Ekkert merkt sjálfkrafa Lokið.
+- Veðurgluggi afþreyingar notar skráð tímabil þegar það er gilt. Án lokatíma helst fyrri þriggja klukkustunda viðmiðun og skýring. Ekki ný veðurþjónusta eða ný netbeiðni.
+- ActivityTimes í nýju activity-times.js er sameiginleg hrein flokkun og birting fyrir aðalapp og offline. HTML hleður henni fyrir notkun; skráin er í nýrri útgáfu þjónustuvinnsluskeljar. Eldri sótt afrit virka áfram. Uppfæra þarf sótt ferðaafrit til að nývistaðir tímar fylgi því.
+- Vistun notar fyrirliggjandi end_local_time/end_local_date í trip_items. Engin ný tafla, schema, RLS eða API. Nýtt tímabil miðast við sama dag; jafnir eða öfugir tímar og vantaður upphafsdagur/tími stöðva vistun með skýringu og leiða í viðeigandi reit. Hreinsa/Afturkalla val nýtir núverandi reitakerfi. Lokunargát og snapshot sjá nýja reitinn. Enduropnun endurheimtir vistað gildi; nýskráning hreinsar fyrra gildi.
+- Óbreyttir endareitir senda engan nýjan tímaviðauka; eldri bókanir eru ekki uppfærðar sjálfkrafa. Við breytt tímabil hreinsast úrelt end_at; skráður lokatími merkir tímabundið atriði (all_day:false). Hreinsun eyðir eingöngu viðeigandi lokatíma; fyrirliggjandi fjöl­dagaendadagur er varðveittur. Óþekkt/ógild eldri gildi eru ekki endurskrifuð ef reitirnir eru óbreyttir. Ef ný hjálparskrá vantar heldur birting fyrri leið og vistun varðveitir eldri gögn.
+- Varðveitt: tímareitir samgangna, gistinga og annarra flokka, bókunarstaða, miðamerkingar og v83 miðahnappar, innflutningur, kostnaðarreikningar og vistun þeirra, kort og staðarval, dagatalsval og dagsetningareglur. Engin gagnabreyting á lifandi þjónustu. Fyrri útgáfur og afhent v83 ZIP varðveitt óbreytt.
+- Prófanir: 321 fyrri kóðaprófun og 28 nýjar prófanir standast (349 alls). Ný prófun keyrir raunverulegt saveItem með hermdum gagnagrunni, raunverulegt openEditItem með stubbun ótengdra hluta, sameiginlega tímalesningu, framsetningu, Í dag val, offline og PDF. Prófað nýskráningu/breytingu/hreinsun, óbreytt eldri gildi, villur, sama auðkenni/ferðarsíur, metadata-varðveislu, allir fjórir afþreyingarflokkar og óbreyttir ótengdir flokkar. JS syntax, einstök ný auðkenni, varðveisla eldri auðkenna, staðbundnar asset-slóðir og skyndiminnisskel yfirfarin.
+- Takmörk: Node-prófanir með hermdum samhengi og gagnagrunni; engin raunvafra-/iPhone-/iPad-prófun á nýja reitnum og engin innskráð DB-prófun. Afhending inniheldur 19 skrár, með nýrri activity-times.js.
+
+
+29-10-2026 · Afmörkuð staðfesting notanda á útgáfu 84
+- Skjámyndir sýna reitina Hefst kl. og Lýkur kl. í síma og vistaða tímaskörunarviðvörun eftir enduropnun. Notandi tilkynnti að engin skörunarviðvörun kæmi við vistun, þótt skörun sæist eftir á. Ekki staðfesting á öllum nýjum birtingarleiðum.
+
+29-10-2026 · Útgáfa 85 — Tímaskörun yfirfarin fyrir vistun
+- Orsök: saveItem yfirfór ákveðnar dagsetningaviðvaranir á fyrirhuguðum gögnum, en tímaskörun var einungis reiknuð út frá þegar vistuðum bókunum. Lokatíminn vistaðist og viðvörunin varð því fyrst sýnileg eftir vistun/endurtengingu.
+- bookingWarningEvents tekur nú valfrjálsan bókunarlista. Sömu skörunarreglur eru færðar í sameiginlegt bookingOverlapWarnings(events); bæði fyrirliggjandi yfirferð og ný vistunarstaðfesting nota það fall. Fyrri lyklar, textar, viðvörunarröð og útilokanir haldast. Tenging lesta/flugleiða/hótela og aðrar tímaviðvaranir eru óbreyttar.
+- saveItem býr til fyrirhugaðan bókunarlista eftir lesningu lokatíma og athugar nýja eða breytta tímaskörun áður en skrif í bókun, kostnað eða tengingar hefjast. Nýr eða breyttur skörunartími fær staðfestingu með nöfnum/dagsetningum/tímum úr fyrirliggjandi viðvörun. Hætta við skilar í óvistað form og finally endurvirkjar hnappinn. Samþykki heldur venjulegri vistun áfram.
+- Samanburður notar atburðalykla og reiknaða upphafs-/lokatíma. Því er lenging þegar skarandi ferðar endurmetin þótt fyrri viðvörunartexti hafi ekki breyst. Óbreytt fyrirliggjandi skörun, heitis-/athugasemdabreyting og samsvarandi sekúndusnið kalla ekki á endurtekna staðfestingu. Endir við upphaf næsta atriðis skarast ekki, samkvæmt fyrri reglu. Sama regla gildir um allar sambærilegar tímasettar bókanir.
+- Fyrirhuguð yfirferð breytir ekki state.items, samþykktum undantekningum eða vistuðum gögnum. Að velja að vista samt er ekki sjálfkrafa samþykkt undantekning; viðvörunin helst sýnileg eftir vistun. Vantar tímabelti eða aðrar nauðsynlegar tímaupplýsingar er engin skörun áætluð.
+- Eingöngu aðalkóði index.html og útgáfunúmer breytt í vefgögnum. Engin gagnagrunns-, þjónustu-, skráageymslu-, skyndiminnis-, skjalskoðara-, kortapunkta-/aðdráttar-, kostnaðarreikni- eða offline-breyting. Fyrri HTML-auðkenni og aðrar vefskrár óbreytt. Útgáfa 84 staðfest óbreytt miðað við afhenta ZIP.
+- Viðbót samkvæmt nýjum fyrirmælum notanda: listinn við kortið sýndi aðeins dagsetningar og stöðu, svo tímasetningar vantaði á sýnd spjöld. renderMapBookings birtir nú skráð tímabil á sérlínu undir heitinu með sameiginlegu activityTimeLabel. Án lokatíma birtist upphaf; samgöngur sýna skráðan brottfarartíma. Ódagsett/ótímasett atriði fá ekki ágiskaðan tíma. Stíll afmarkaður við map-booking-time; gildandi viðvörunarmerki, staðarlýsing, síur, opnun bókunar, kortapunktar og aðdráttur haldast. Dagatalsspjaldið itemHtml, flokkayfirlit og bæði Í dag yfirlit halda fyrirliggjandi v84 tímabirtingu.
+- Prófanir: allar 349 fyrri prófanir standast; 15 nýjar skörunarprófanir og 9 nýjar birtingarprófanir standast (373 alls). Ný prófun keyrir raunverulegt saveItem úr 84 og endurskapar vantaða staðfestingu; sama sviðsmynd í 85 stöðvar skrif við höfnun. Prófað samþykki, endurtilraun, ný bókun, lenging fyrirliggjandi skörunar, óbreyttir tímar, eyðing skörunar, mörk tímabila, sama upphaf, óþekkt tímabelti, opið/aflýst/kostnaðarfærslur, fjórir afþreyingarflokkar, allar fjórar samgöngur, margar skaranir í einum glugga og varðveisla viðvörunar eftir samþykki. Nýjar spjaldaprófanir keyra raunverulegt renderMapBookings fyrir alla fjóra afþreyingarflokka, brottfarartíma allra samgangna, engin tímagögn, escaping, viðvörunarmerki og bókunarhnapp. Setningafræði og auðkenni yfirfarin.
+- Takmörk: Node með hermdum gagnagrunni og window.confirm; ekki raunvafra-/iPhone-/iPad- eða lifandi DB-prófun. Engum lifandi gögnum breytt. Afhending er sér ZIP með öllum 19 skrám.
+
+
+29-10-2026 · Staðfesting notanda á útgáfu 85
+- Notandi segir viðvörunina virka. Skjámynd sýnir staðfestingarglugga fyrir vistun vegna Hjólatur/Labbilabb skörunar og sýnilega tíma á bókunarspjöldum. Fyrir-vistunarviðvörun og tímasetningabirting í þeirri afmörkuðu iPhone-notkun eru staðfest. Höfnun, samþykki og öll önnur flæði eru ekki þar með fullprófuð á tæki.
+
+29-10-2026 · Útgáfa 86 — Dagsetning helst á einni línu
+- Ný skjámynd sýndi að 15-10-2026 brotnaði á milli lína í hótelspjaldi við kortið. Dagsetningatexti á bókunarspjöldum við kortið og í flokkayfirliti er nú umvafinn fyrirliggjandi date-nowrap merkingu. Dagsetning færist heil á næstu línu ef pláss vantar; hún skiptist ekki sjálf. Hvorki leturminnkun né breyting á dd-mm-yyyy.
+- Aðeins tvær dagsetningabirtingar og sýnilegt útgáfunúmer breyttust í index.html. Fyrirliggjandi sameiginlegt CSS endurnýtt; enginn nýr gagnareitur, vistunarbreyting eða breyting á viðvörunum. Allar aðrar vefskrár óbreyttar. Útgáfa 85 og fyrri ZIP varðveitt óbreytt.
+- Allar 373 fyrirliggjandi kóðaprófanir standast. JS setningafræði og varðveisla/einstæði HTML-auðkenna yfirfarin. Ekki ný prófun eingöngu fyrir afmarkaðan stíl. Ný línuskipting í raunvafra/iPhone er óstaðfest; engum lifandi gögnum breytt. Afhending 19 skrár.
+
+
+29-10-2026 · Útgáfa 87 — Lokatími í öllum samþykktum heimsóknarflokkum
+- Notandi benti á að Kaffihús, Barir / vínstaðir, Rooftop bar, Vistaðir staðir og Annað vantaði Lýkur kl. Sama regla var samþykkt fyrir Veitingastaði. Fyrirmæli: fara yfir alla þessa flokka og ekki breyta öðru sem virkar.
+- Sameiginlegur supports-flokkalisti ActivityTimes inniheldur nú restaurant, cafe, bar, rooftop_bar, saved_place og other til viðbótar við bike_tour, walking_tour, day_trip og attraction. Öll 16 flokksgildi yfirfarin: þessir 10 nota valfrjálsan heimsóknar-/afþreyingarlokatíma; flug, lest, ferja og akstur halda fyrirliggjandi brottfarar-/komureitum; gisting og bílaleiga halda sínum reitum óbreyttum.
+- Enginn nýr tími eða lengd forvalin. Auður lokatími heldur fyrri hegðun; vistaður staður án tímasettrar heimsóknar þarf engan tíma. Tímaskörun er aðeins metin samkvæmt fyrirliggjandi reglum um bókaðar færslur, nauðsynlegar tímaupplýsingar og tímabelti. Kostnaðarfærslur eru áfram útilokaðar frá tímabilsbirtingu.
+- Nýju sex flokkarnir nota sama form, hreinsa/afturkalla, vistun og enduropnun, dagatal, Í dag, Næstu dagar, bókunaryfirlit, kortaspjöld, PDF, veður þar sem það á við og lesafrit án nets. Engin afritun á formum eða ný skilyrðakeðja. Engin breyting á tímareikningi, viðvörunarreglum, samþykktum undantekningum, miðamerkingum, kortum, dagsetningaframsetningu, kostnaði eða gagnagrunnsskipan.
+- Kóðasamanburður: index.html er nákvæmlega eins og í 86 nema sýnilegt útgáfunúmer; activity-times.js breytir eingöngu flokkalistanum; sw.js breytir eingöngu skyndiminnisútgáfu svo offline fái uppfærðan sameiginlegan hjálparkóða. Aðrar vefskrár óbreyttar. Gögn eru ekki sjálfkrafa uppfærð. Útgáfa 86 og afhent ZIP staðfest óbreytt.
+- Prófanir: 385 kóðaprófanir standast. Núverandi prófanir uppfærðar fyrir samþykkta flokkun og útvíkkaðar til allra 10 flokka: sýnilegur reitur/tímabil og raunverulegt saveItem/openEditItem í hermdu samhengi, birting í offline-spjaldi og raunverulegt renderMapBookings. Fyrir-vistunarprófun nær til allra 10 flokka. Fyrri prófanir á ómerktum tímum, gömlum gögnum, ógildum tíma, skrá-/miðavistun, innflutningi, kostnaðarleiðum, kortum, dagsetningum og ótengdum flokkum standast áfram. Setningafræði og HTML-auðkenni óbreytt/yfirfarin.
+- Takmörk: Node með hermdu DOM/gagnagrunni, ekki ný raunvafra-/iPhone-/iPad- eða lifandi DB-prófun. Engum lifandi gögnum breytt. Allar 19 skrár fylgja nýrri afhendingu. Endursækja þarf ferðaafrit svo nývistaðir tímar fylgi því án nets.
+
+
+29-10-2026 · Útgáfa 88 — Afhending og skil í sömu bílaleigubókun
+- Samþykkt eftir kóðayfirferð: bæta Bílaleigu með afhendingu og skilum; dagatal og bæði Í dag spjöld haldi fyrra útliti og sýnilegum tímum/dagsetningum. Ekki breyta ótengdum hlutum. Akstur/transfer er ekki endurhannaður.
+- Fyrirliggjandi staður, local_date og local_time eru áfram afhending bíls. Nýr sérhluti Skila bíl hefur valfrjálsan skiladag, skilatíma, sjálfstæðan skilastað og valið Sami staður og við afhendingu. Enginn skilastaður eða tími forvalinn/ágiskaður. Sama staðar val fylgir nýjasta afhendingarstaðnum og varðveitir handvirkan annan stað ef skipt er til baka.
+- Metadata.rental_car geymir return_date, return_time, return_same_place og return_place. Fyrri óþekkt metadata varðveitast og óbreytt eldri bókun fær ekki sjálfkrafa skilafærslu. Hreinsun tekur aðeins þekkta skilareiti; engin ný tafla eða gagnagrunnsskipan. Sama trip_items auðkenni, sama kostnaðarleið og sömu miðatengingar. Engin tvöföldun vistuðra bókana eða ferðakostnaðar.
+- RentalCars í nýrri rental-cars.js skilar tveimur tímamótum á sömu bókun: outbound/Sækja bíl og rental_return/Skila bíl. Dagatal og dagsspjöld nota núverandi itemHtml/spotlight/today-next flokka og hnappleiðir. Afhending og skil sama dag birtast sem tvö athafnaspjöld sem bæði opna sömu bókun. Milli afhendingar og skila er ekki búin til samfelld afþreying.
+- Flokkayfirlit og kortabókunarspjald sýna afhendingu/skil með fullum dagsetningum, tímum og staðarheitum. Fyrirliggjandi date-nowrap nýtist. Kort sýnir einnig skráð skilahnit; fyrirliggjandi aðdráttar-/afmörkunarkóði er óbreyttur. Leiðsögn á skilaspjaldi notar skilastað, ekki afhendingarstað. Þekktur staður án hnita getur farið í heitaleit; óskráður staður er sýndur sem slíkur.
+- Fyrirliggjandi korta-/vistaðra staða val er endurnýtt með sérmarki rentalReturn. Val, hreinsun eða hætt við í þeirri leið breytir ekki afhendingarstaðnum. Kortamiðja fyrir skil notar skiladaginn. Tímabelti punkts er leyst með fyrirliggjandi staðsetningarþjónustu og vörn fyrir ferð, bókun og enn valinn punkt. Óþekkt tímabelti leiðir til yfirferðarmerkingar en ekki ágiskaðs tímaskörunaratburðar.
+- Viðvaranir meta afhendingu og skil sem tvo punkta í tíma; öll leigan telst ekki annríki sem rekst á afþreyingu. Gildandi sameiginleg skörunarregla og fyrir-vistunarstaðfesting endurnýtt. Afhending/skil þurfa rökrétta röð og skilatími krefst skiladags; skiladagur án klukku leyfður. Skiladagur tekur þátt í gildandi viðvörunum um liðna daga og dagsetningar utan ferðar. Vistunarhöfnun heldur formi óvistuðu; mistök stofna ekki aukakostnað.
+- Sótt lesafrit hefur sömu dagsetningaaðild og sýnir rétt athafnaspjald á afhendingar-/skiladegi. Allar bókanir sýnir áfram eina bókun með skilaupplýsingum. Stutt og ítarlegt PDF fá afhendingu/skil og báða staði; ekki tvo kostnaðarliði. Gagnasnið lesafrits og offline-store.js óbreytt. Ný hjálparskrá í HTML fyrir notkun og í uppfærðri þjónustuvinnsluskel. Endursækja þarf ferð til að ný gögn fylgi sóttu afriti.
+- Verndaður kóðasamanburður: saveExpenseForItem, innflutningssamsvörun/lesning, saveWalletDocument, fitMapView, renderCalendar, readDeparturePlans, todayJourneyModel/Html og ActivityTimes-leiðir óbreyttar. Nýjar greinar eru bundnar við rental_car; aðrir flokkar nota fyrri leið. Ný rental CSS-regla er afmörkuð; föst eldri HTML-auðkenni varðveitt og ný einstök. Útgáfa 87 og afhent ZIP staðfest óbreytt.
+- Prófanir: 385 fyrri kóðaprófanir og 34 nýjar bílaleiguflæðisprófanir standast (419 alls). Ný prófun keyrir raunverulegt saveItem/openEditItem með hermdum gagnagrunni/stubbun ótengdra hluta, nýja/eldri bókun, hreinsun, óþekkt metadata, villur, sama/annan skilastað, dagsetningar, rétta kortaslekk, báðar Í dag leiðir, samtímaskörun fyrir vistun, skort á tímabelti, offline/PDF og skilapunkt. Setningafræði JS, staðbundnar script-slóðir og auðkenni yfirfarin.
+- Takmörk: Node/VM með hermdu DOM/geymslu, ekki raunvafra-/iPhone-/iPad- eða innskráð DB-prófun. Ekki keyrð lifandi staðarleit/tímabeltisbeiðni við prófun. Engum lifandi gögnum breytt. Afhending hefur 20 skrár, þar með talin rental-cars.js. Vistun, spjaldabirting og snertinotkun á tæki þarf enn að staðfesta.
+
+
+29-10-2026 · Afmörkuð staðfesting á Bílaleigu 88
+- Notandi sagði bílaleiguprófunina hafa virkað og skjámynd sýndi vistaða afhendingu/skil með tímum í einu Hertz-spjaldi. Hann benti á að leiðsagnarvalið væri of falið og sýndi gangandi. Þetta er ekki sjálfstæð staðfesting á öllum korta-/offline-/PDF-leiðum 88.
+
+29-10-2026 · Útgáfa 89 — Sameiginlegt Gangandi / Í bíl val fyrir leiðsögn
+- Samþykkt umfang: val við staðarval og leiðsagnarhnappa, yfir alla 16 flokka og sambærilegar leiðir í öllu kerfinu. Aðeins Gangandi/Í bíl; ekki ný flokkun eigin bíls/leigubíls/leigubíls frá bílaleigu. Leigubílskostnaður notar áfram fyrirliggjandi Viðbótarkostnað. Engin sjálfvirk stofnun aksturs eða kostnaðar.
+- Ný travel-navigation.js er sameiginleg hreinn lestur, valmynd/birting og Maps URL-smíði fyrir aðalapp og lesafrit. Modes eru walking/driving. Metadata.navigation_modes geymir outbound, return, outbound_arrival, return_arrival og rental_return. Eldri gilt mode í departure_plans er forval; óþekkt framtíðargildi eru ekki endurskrifuð við óbreytt form. Skil hafa sjálfstætt val þótt Sami staður og við afhendingu sé merkt. Breytt brottfararval varðveitir fyrra forval komuleiðar þegar hún var ekki sérstaklega merkt.
+- Staðarvalsgluggi sýnir valið og heldur því tímabundnu þar til staður er staðfestur. Hætta við eða hreinsun staðar skuldbindur ekki óstaðfestan ferðamáta. Að skipta milli leitar/korts og vistaðra staða heldur tímabundnu valinu. Að staðfesta óbreytt forval skrifar ekki nýjar ferðamáta-merkingar sjálfkrafa.
+- Bókunarform sýnir val við almenna staðinn og ferðaleggi samgangna. Það er samstillt við fyrirliggjandi mode-reit brottfararáætlunar, svo ekki myndist tvær misvísandi stillingar. Afhending/skil bílaleigubíls og leið að gistingu eftir komu hafa sjálfstætt val. Skilaformið fær líka leiðsagnarhnapp á skilastað með valinu. Form-snapshot fylgist með nýjum reitum og venjuleg vistun/enduropnun nýtir sömu bókun.
+- Dagatal, bæði Í dag yfirlit, ferðadagsleið að stöð/höfn og frá henni að gistingu, hótelspjöld, leigubíls-/afþreyingar-/staðaspjöld, kortaupplýsingar og brottfararáætlun nota sama val. Kortapunktar bera með sér rétt leiðarhlutverk; sameiginlegur afhendingar-/skilapunktur heldur báðum hlutverkum. Fyrri nákvæmnisvörn stendur: almennur borgarpunktur er ekki látinn heita nákvæm stöð/bryggja. Leitar-/heimildatenglar án leiðarstaðar halda fyrri staðaskoðun; þekkt leið fær travelmode í Maps URL.
+- Val í vistuðu leiðsagnarspjaldi uppfærir eingöngu metadata sömu trip_items færslu, með id/trip_id og updated_at vörn (metadata-samanburði ef tímastimpill vantar). Gögn eldri ferðar eru ekki sprautuð í nýja við ferðaskipti. Tvísmellur veldur ekki samhliða endurskrifum. Vistunarvilla endurheimtir fyrra val; UI-villa eftir heppnaða vistun fullyrðir ekki að DB-vistun hafi mistekist. Fyrir áfangastaðapunkt án bókunar er valið aðeins notað í viðkomandi leiðartengli.
+- Skráður ferðatími, mætingarfrestur, öryggisbil og tímasetningar eru ekki áætluð upp á nýtt. Ef mode í virkri fyrirliggjandi brottfararáætlun breytist en ferðamínútur haldast óbreyttar þarf notandi að staðfesta yfirferð áður en vistað er. Höfnun heldur formi/gögnum óvistuðum. Valið er leiðsögn, ekki breyting á bókun samgangna eða tíma þeirra.
+- Lesafrit án nets les sama vistaða val og getur breytt opnuðum leiðarslóða án lifandi gagnagrunnsskrifa. Leiðsögn sjálf þarf net. Leið eftir komu notar vistaða stöð sem upphaf og valinn gististað sem áfangastað. PDF sýnir vistaðan ferðamáta, líka sjálfstætt skilaval; venjulegir tenglar eru áfram opnanlegir. Ný hjálparskrá hleðst fyrir notkun í báðum HTML-skjölum og er í nýrri skyndiminnisskel. Endursækja þarf ferð ef nýtt val á að fylgja lesafriti.
+- Vernduð föll og gögn borin saman við 88: saveExpenseForItem, saveWalletDocument, innflutningssamsvörun/lesning, readRentalCarFields/rentalCarTodayEntry, todayJourneyModel, bookingTimeWarnings, confirmNewBookingOverlaps, tripReviewFingerprint, fitMapView, renderCalendar og readActivityTimeFields óbreytt. activity-times.js, rental-cars.js, offline-store.js, stöðvaskrár og myndagögn óbreytt. Gildandi reglur um samþykktar viðvörunarundantekningar haldast. Engin ný tafla, RLS eða kostnaðarregla. Útgáfa 88 og afhent ZIP varðveitt óbreytt.
+- Prófanir: 419 fyrri kóðaprófanir, ein viðbótarprófun á raunverulegri bókunarvistun/enduropnun og 48 nýjar leiðsagnarprófanir standast (468 alls). Nýjar prófanir ná yfir alla 16 flokka, URL-encoding/escaping, öll hlutverk, form og staðarval/hætta við, samstillingu fyrri mode-reits, varðveislu mínútna/metadata, yfirferðarstaðfestingu, beina metadata-vistun með árekstrarvörn, villur/eftir-vistunar-UI-villu, ferðaskipti, tvísmell, hótel/generic/rental/ferðadagsleiðir, offline, PDF, asset-röð og skyndiminni. Eldri focused mocks halda fyrri prófunarumfangi; ný suite keyrir nýju föllin með DOM-/DB-hermun. JS syntax, föst HTML-auðkenni, ný kvik auðkenni og asset-slóðir yfirfarin.
+- Takmörk: Node/VM með hermdu DOM/geymslu/gagnagrunni; ekki raunvafra-/iPhone-/iPad- eða lifandi Maps/DB-prófun. Engin lifandi notandagögn breytt við vinnuna. Afhending 21 skrár, þar með talin travel-navigation.js. Tækjaprófun nýja valsins og opnunar Google Maps er eftir.
+
+
+29-10-2026 · Útgáfa 90 — Leið frá gistingu, gististaðasamhengi og eitt ferðamátaval
+- Fyrirfram afmarkað og samþykkt umfang: (1) leiðsögn í áður samþykktu umfangi allra flokka, með vali gistingu dagsins sem upphafsstað, (2) endurheimta fána og áfangastaðarheiti við gistingu í dagatali og báðum Í dag leiðum og sambærilegum gistiyfirlitum, (3) samkvæmt nýrri stýringu notanda hafa eitt sýnilegt Gangandi | Í bíl val við Leiðsögn að staðnum og fjarlægja endurtekna valið annars staðar. Engin breyting á kostnaði, bókunartímum, innflutningi eða miðakerfi heimiluð.
+- Greining: v89 slóðir gátu innihaldið destination en engan origin; Google Maps notar þá eigin staðsetningu tækisins. Að miðja staðarvalskort á hóteli var ekki val á upphafsstað leiðsagnar. Þetta var sérstaklega sýnt í Garda/Hertz dæminu. Kóðasamanburður sýndi að gistispjaldabirting hafði ekki sameiginlega staðar-/fánalínu. Sú samþykkta krafa var ekki varin í fyrri yfirferð.
+- Við Leiðsögn að staðnum er nú valið Leggja af stað frá: Núverandi staðsetning eða tiltæk gisting á viðkomandi degi/áfangastað. Brottfarar- og komuleiðir og skiladagur bílaleigu nota sína daga. Útritunardagur gististaðar er leyfður sem upphafsdagur. Engin gisting er valin sjálfkrafa í stað handvirks vals.
+- Metadata.navigation_origins geymir sjálfstæða current/hotel tilvísun eftir leiðarhlutverki; hotel vísar í sömu gistibókun með item_id. Val á gistingu notar nýjustu vistuðu hnit eða heimilisfang hennar í origin færibreytu Google Maps. Gisting utan dags/áfangastaðar, varabókun/aflýst gisting, horfin tilvísun eða vantað staðargildi stoppar leiðsagnarhnapp með skýringu í stað þess að falla hljóðlega á Ísland/eigin staðsetningu. Fyrri gilt upphaf úr departure_plans er varðveitt, líka flugvöllur/lestarstöð sem má ekki ruglast við hótel.
+- Hnappur í bókunarformi, staðartenglar samgangna, dagatals-/Í dag leiðsögn og uppfært lesafrit nota sömu origin lausn. Skýr Frá-lína fylgir leiðsagnartengli. Fyrirliggjandi nákvæm upphafshnit ferðadagsleiðar haldast nema notandi velji sérstaklega annað. Formval úr gistingu er samstillt við fyrirliggjandi origin reit brottfararáætlunar og vistast með sömu bókun; skráð ferðamínútutala breytist ekki sjálfkrafa. Breytt upphaf í virkri áætlun með óbreyttum mínútum fær yfirferðarstaðfestingu.
+- Ferðamáti er nú tveir hnappar í einum hópi, Gangandi | Í bíl, við Leiðsögn að staðnum. Undirliggjandi select er falið en heldur fyrri bindingum/snapshot-vistun. Endurteknir valreitir í staðarvalsglugga, leiðsagnarspjöldum og upprunalegum mode-reit áætlunar eru ekki lengur sýnilegir. Kort, dagatal og Í dag nota vistað val. Afhending og skil halda sjálfstæðu vali. Engin viðbót um tegund bíls eða leigubílskostnað.
+- Gisting fær sameiginlega lodging-destination línu með fána og heiti tengds áfangastaðar. Heimildin er stop_id tenging gistibókunar; ekki næsti áfangastaður eða ágiskun út frá ferðinni. Línan birtist á dagskrár-/dagatalsspjaldi, stóru/litlu Í dag spjaldi, Gisting í kvöld, útritun, innritun ferðadags, flokkayfirliti, kortabókunarspjaldi og sóttu lesafriti. Óþekkt tenging gefur ekki tilbúinn fána/borg. Aðrir flokkar fá ekki gististaðalínu.
+- Sameiginlega helper-skráin er nú travel-navigation-v90.js svo nýr index verði ekki keyrður með gömlum v89 helper úr virkri fyrri offline-skel. Offline HTML og ný skyndiminnisskel vísa í sama nýja heiti. Engin breyting á offline-store.js, gagnasniði eða sóttum einkaskjölum. Endursækja þarf ferð ef ný gögn eiga að fylgja án nets.
+- Nýjar reglur samþykktar 29-10-2026 og settar efst í báðar verkefnaheimildir: lesa gildandi ákvarðanir OG verkefnalista áður en breytingavinna hefst; afmarka fyrirfram flokka/hluta; aðeins breyta samþykktu umfangi og varðveita fyrri samþykktir utan þess; bera saman og prófa viðkomandi flæði og varðveita eldri útgáfu. Báðar heimildir voru lesnar í heild í þessari vinnulotu. Eldri texti í þeim er varðveittur; nýju reglurnar breyta ekki stöðu eldri verkefna sjálfkrafa.
+- Verndaður kóðasamanburður við 89: saveItem, saveExpenseForItem, saveWalletDocument, innflutningssamsvörun/lesning, readRentalCarFields/rentalCarTodayEntry, todayJourneyModel, bookingTimeWarnings, confirmNewBookingOverlaps, tripReviewFingerprint, fitMapView, renderCalendar og readActivityTimeFields óbreytt. activity-times.js, rental-cars.js, offline-store.js, stöðvaskrár og myndagögn óbreytt. Fyrri föst auðkenni varðveitt og ný kvik auðkenni yfirfarin. Útgáfa 89 og afhent ZIP varðveitt óbreytt.
+- Prófanir: 494 kóðaprófanir standast. Þar af 64 leiðsagnarprófanir með Garda hotel-origin slóð, mode-breytingu sem heldur upphafi, formslóð fyrir vistun, samgöngu-/staðatenglum, gildri flugvallar-/stöðvartilvísun, rangri/horfinni gistingu, sjálfstæðum skilum, source-vistun/enduropnun og einu sýnilegu hnappavali. Tíu sérstakar gististaðabirtingarprófanir keyra raunverulegt HTML fyrir dagatal, báðar Í dag leiðir, Gisting í kvöld, útritun, innritun, flokkayfirlit, kort og offline. Fyrri prófanir á tíma-/kostnaðar-/innflutnings-/veskisleiðum standast með nýju samþykktu UI-umfangi. Allt JS stenst syntax; HTML-auðkenni og staðbundnar asset-slóðir yfirfarin.
+- Takmörk: Node/VM með hermdu DOM/gagnagrunni; ekki ný raunvafra-/iPhone-/iPad-, lifandi Maps- eða innskráð DB-prófun. Engin lifandi notandagögn breytt við vinnuna. Afhending 21 skrár. Google Maps opnun úr Garda-hótelinu, ný hnappabirting og endurheimt gististaðalína þarf enn staðfestingu á tæki.
+
+```
+
