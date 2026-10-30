@@ -71,6 +71,8 @@ E08. Undantekningar eru staðbundnar við vafra/tæki í núverandi útfærslu; 
 E09. Ekki merkja öll óbókuð atriði sjálfkrafa gul. Opin ferð er eðlilegur áætlunarhluti. Gistingarviðvörun kvöldsins fylgir fyrirliggjandi skilyrðum; sama niðurstaða og merking í báðum Í dag-birtingum og á tengdum spjöldum.
 E10. Leiðrétting gagna, samþykki og afturköllun endurnýi allar tengdar birtingar. Þema má ekki yfirskrifa gula merkingu. Engar bókanir færast sjálfkrafa við viðvörun.
 
+E11. Árétting 30-10-2026: Eitt atriði í yfirferð merkir ekki að öll skref séu röng. Viðvörun um óbókaða gistingu kvöldsins merkir viðkomandi gistingu og gistingaryfirferð; hún litar ekki sjálfkrafa leiðsagnarskref, Næsta skref eða ytri Í dag-rammann. Gildir í BÁÐUM Í dag-birtingum. Aðrar raunverulegar viðvaranir og sameiginleg talning haldast.
+
 F. BÓKUNARGLUGGAR OG DAGSKRÁ [H2, H4–H6]
 F01. Varðveita alla 16 flokka: Flug; Gisting; Lestir; Bátar/ferjur; Akstur; Bílaleiga; Hjólaferðir; Gönguferðir; Dagsferðir; Áhugaverðir staðir; Veitingastaðir; Kaffihús; Barir/vínstaðir; Rooftop bar; Vistaðir staðir; Annað.
 F02. Samgöngur nota sameiginlega Frá/Til-tengingu, án tvítekins almenns áfangastaðavals þegar leiðin ræður tengingunni. Gisting og afþreying halda eigin áfangastaðavali.

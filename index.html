@@ -450,6 +450,15 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 
 /* 30-10-2026 · 93: match the existing shortcut's inner spacing in calendar Today. */
 #todayNext:not(:empty){padding:17px;min-width:0;margin-top:14px}
+/* 30-10-2026 · 94: keep booking names out of the narrow time/status column. */
+@media(max-width:600px){
+ .item.booking-agenda-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 10px}
+ .booking-agenda-card>.time{grid-column:1;grid-row:1;min-width:0;overflow-wrap:anywhere}
+ .booking-agenda-card>.tag{grid-column:2;grid-row:1;max-width:100%;white-space:normal}
+ .booking-agenda-card>.item-main{grid-column:1/-1;grid-row:2;width:100%;overflow-wrap:anywhere}
+ .booking-agenda-card>.booking-time-warnings{grid-column:1/-1}
+}
+
 
 
 </style>
@@ -1726,6 +1735,8 @@ function todayReviewWarnings(day){
  });
 }
 function todayHasReviewWarning(day){return todayReviewWarnings(day).length>0}
+// A lodging booking status does not make the whole day's plan invalid.
+function todayHasFrameWarning(day){return todayReviewWarnings(day).some(w=>w.kind!=='lodging-tonight')}
 function todayReviewWarningHtml(day){
  const count=todayReviewWarnings(day).length;
  return count?'<div class="today-review-line" role="status"><span>⚠️ '+count+' '+(count===1?'atriði þarf':'atriði þurfa')+' yfirferð í dag</span><button type="button" class="btn small" data-warning-day="'+esc(day)+'">Yfirfara</button></div>':'';
@@ -2146,6 +2157,7 @@ function todayJourneyTickets(j){
  return docs.length?docs.map(d=>'<button type="button" class="btn small" data-spotlight-document="'+esc(d.id)+'">🎫 '+esc(d.title||'Miði / skjal')+'</button>').join(''):'<p class="notice">Miði er ekki vistaður hér. Hann getur verið í appi söluaðila eða hjá ykkur.</p>';
 }
 function todayJourneyStep(icon,title,time,body,item=null,day=null,explicitWarning=false){const review=bookingReviewDecoration(item,day,explicitWarning);return '<li class="travel-day-step"><span class="travel-day-icon" aria-hidden="true">'+icon+'</span><div class="travel-day-copy'+review.className+'">'+review.marker+(time?'<div class="notice travel-day-time">'+esc(time)+'</div>':'')+'<strong>'+esc(title)+'</strong>'+body+'</div></li>'}
+function todayJourneyConnectionWarning(connection,day){return !!connection.warning||!!connection.hotel&&bookingReviewRows(connection.hotel.id,day).some(w=>w.kind!=='lodging-tonight')}
 function todayJourneyHero(model){
  const j=model.next;if(!j)return '';let title,clock='',action='',detail='';
  if(j.open){title='Ganga frá ferðinni';detail='Ferðin er enn opin. Brottfarartími er óákveðinn.';action=todayJourneyEdit(j,'Ganga frá ferð')}
@@ -2161,7 +2173,7 @@ function todayJourneyHero(model){
   action=todayJourneyLink(j.to,todayJourneyHotelPlace(j.destination),'➤ Leiðsögn að gistingu',j.plan.mode,j.item,j.leg+'_arrival');
  }
  const related=(!j.arrivalOnly&&(j.departureInstant===null||j.departureInstant>=j.now))?j.origin:j.destination;
- const review=bookingReviewDecoration(j.item,model.day,related.warning||related.hotel&&bookingReviewRows(related.hotel.id,model.day).length);
+ const review=bookingReviewDecoration(j.item,model.day,todayJourneyConnectionWarning(related,model.day));
  return '<section class="travel-day-next'+review.className+'">'+review.marker+'<div class="brand">NÆSTA SKREF</div><h3>'+esc(title)+'</h3>'+(clock?'<div class="spotlight-time">'+esc(clock)+'</div>':'')+'<p class="notice">'+esc(detail)+'</p><div class="departure-actions">'+action+todayJourneyEdit(j,j.open?'Skoða áætlun':'Skoða ferð')+'</div></section>';
 }
 function todayJourneyCheckoutStep(hotel){
@@ -2183,7 +2195,7 @@ function todayJourneyHtml(model,includeHero=true){
    const outLink=!j.origin.warning?todayJourneyLink(fromHotel,j.from,'Leiðsögn að brottfararstað',j.plan.mode,j.item,j.leg):'';
    departureBody+='<div class="departure-actions">'+(outLink||todayJourneyEdit(j,'Yfirfara staði'))+'</div>';
    departureBody+='<details><summary>Ráðlagður brottfarartími</summary>'+(j.timing?'<div class="notice">'+esc(j.plan.mode==='driving'?'Akstur':'Ganga')+' · '+esc(journeyDurationLabel(j.plan.travel_minutes))+' · öryggisbil '+esc(j.plan.buffer_minutes)+' mín. · mætingarfrestur '+esc(j.plan.arrival_minutes)+' mín.</div><div class="notice">Reiknað út frá skráðum tíma. Umferð og seinkanir uppfæra ekki áætlunina sjálfkrafa.</div>':'<p class="notice">Tími birtist þegar kveikt er á ráðlögðum brottfarartíma og nauðsynlegir tímar hafa verið skráðir í bókuninni.</p>')+'</details>';
-   steps.push(todayJourneyStep('🧭','Frá gistingu að brottfararstað',travelTime,departureBody,j.item,model.day,j.origin.warning||j.origin.hotel&&bookingReviewRows(j.origin.hotel.id,model.day).length));
+   steps.push(todayJourneyStep('🧭','Frá gistingu að brottfararstað',travelTime,departureBody,j.item,model.day,todayJourneyConnectionWarning(j.origin,model.day)));
    const route=spotlightJourneyRoute({item:j.item,leg:j.leg}),reference=ret?m.return_booking_reference:m.outbound_booking_reference||j.item.booking_reference,seat=ret?m.return_seat:m.outbound_seat,number=ret?m.return_service_number||m.return_flight_number:m.outbound_service_number||m.outbound_flight_number;
    const tripBody='<p class="notice">'+esc(route?.text||[j.from.label,j.to.label].filter(Boolean).join(' → '))+'</p><div class="departure-actions">'+todayJourneyTickets(j)+'</div><details><summary>Ferðin og bókunin</summary><div class="notice">'+esc(j.open?'Óbókað / opið':statusLabel(j.item.status))+'</div>'+(j.arrivalDate||j.arrivalTime?'<div class="notice">Koma: '+esc(todayJourneyClock(j.arrivalDate,j.arrivalTime,model.day,j.arrivalZone))+'</div>':'<div class="notice">Komudagur og/eða komutími óskráður.</div>')+(reference?'<div class="notice">Bókun '+esc(reference)+'</div>':'')+(number?'<div class="notice">Númer / leið: '+esc(number)+'</div>':'')+(seat?'<div class="notice">Sæti / vagn: '+esc(seat)+'</div>':'')+'<div class="departure-actions">'+todayJourneyEdit(j,j.open?'Ganga frá ferð':'Skoða bókun')+'</div></details>';
    steps.push(todayJourneyStep(transportIcon(j.item.category),j.item.title+(ret?' · heimleið':''),(j.estimated?'Áætlað: ':'')+todayJourneyClock(j.date,j.open?null:j.time,model.day,j.zone),tripBody,j.item,model.day));
@@ -2192,7 +2204,7 @@ function todayJourneyHtml(model,includeHero=true){
   if(j.destination.warning)arrivalBody+='<p class="notice">'+esc(j.destination.warning)+'</p>';
   if(!j.arrivalDate)arrivalBody+='<p class="notice">Skráðu komudag í bókuninni til að finna rétta gistingu.</p>';
   arrivalBody+='<div class="departure-actions">'+(todayJourneyLink(j.to,toHotel,'Leiðsögn að gistingu',j.plan.mode,j.item,j.leg+'_arrival')||todayJourneyEdit(j,'Yfirfara komu og gistingu'))+'</div>';
-  steps.push(todayJourneyStep('🧭','Frá komustað að gistingu',todayJourneyClock(j.arrivalDate,j.arrivalTime,model.day,j.arrivalZone),arrivalBody,j.item,model.day,j.destination.warning||j.destination.hotel&&bookingReviewRows(j.destination.hotel.id,model.day).length));
+  steps.push(todayJourneyStep('🧭','Frá komustað að gistingu',todayJourneyClock(j.arrivalDate,j.arrivalTime,model.day,j.arrivalZone),arrivalBody,j.item,model.day,todayJourneyConnectionWarning(j.destination,model.day)));
   if(toHotel){const h=j.destination.hotel,checkin=h&&lodgingStayTimes(h).checkin_from;steps.push(todayJourneyStep('🏨','Innritun á næsta gististað',checkin?'Innritun frá kl. '+checkin+' · staðartími':'Innritunartími óskráður','<p class="notice">'+esc(toHotel.label)+'</p>'+lodgingDestinationHtml(h)+'<details><summary>Innritun og staðfesting</summary>'+inferred(j.destination)+'<div class="departure-actions">'+(h?'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button>':todayJourneyEdit(j,'Skoða gistival'))+'</div></details>',h,model.day))}
   return '<section class="travel-day-journey"><h3>'+esc(j.arrivalOnly?'Koma í dag':model.journeys.length>1?(j.from.label||'Brottför')+' → '+(j.to.label||'Koma'):'Ferðadagurinn')+'</h3><ol class="travel-day-steps">'+steps.join('')+'</ol></section>';
  }).join('');
@@ -2208,7 +2220,7 @@ function renderTripSpotlight(){
  const checkoutHtml=remainingCheckouts.length?'<section class="spotlight-checkout"><div class="brand">ÚTRITUN Í DAG</div>'+remainingCheckouts.map(h=>'<div class="spotlight-small'+bookingReviewDecoration(h,day).className+'">'+bookingReviewDecoration(h,day).marker+'<div><strong>🛏 '+esc(h.title)+'</strong>'+lodgingDestinationHtml(h)+(lodgingStayTimes(h).checkout_before&&/^([01]\d|2[0-3]):[0-5]\d/.test(lodgingStayTimes(h).checkout_before)?'<div class="notice">Fyrir kl. '+esc(lodgingStayTimes(h).checkout_before.slice(0,5))+' · staðartími</div>':'')+'</div><button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div>').join('')+'</section>':'';
  const hotels=model.hotels.filter(h=>journey.journeys.length||h.id!==model.main?.item.id);
  const hotelHtml=hotels.length?'<section class="spotlight-hotel-compact"><div class="brand">GISTING Í KVÖLD</div>'+hotels.map(h=>'<div class="spotlight-hotel-row'+bookingReviewDecoration(h,day).className+'">'+bookingReviewDecoration(h,day).marker+'<strong>🛏 '+esc(h.title)+'</strong>'+lodgingDestinationHtml(h)+(lodgingStayTimes(h).checkin_from?'<div class="notice">Innritun frá kl. '+esc(lodgingStayTimes(h).checkin_from)+'</div>':'')+'<div class="spotlight-actions">'+spotlightHotelDirections(h)+'<button type="button" class="btn small" data-spotlight-item="'+esc(h.id)+'">Skoða gistingu</button></div></div>').join('')+'</section>':todayLodgingWarningHtml(day);
- host.innerHTML='<section class="card spotlight-current'+(todayHasReviewWarning(day)?' today-warning-frame':'')+'">'+reviewWarningMarker(todayHasReviewWarning(day))+'<div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div>'+todayClockHtml(day)+'</div>'+weather+'<h2>'+esc(place?.name||state.trip.name)+'</h2></div>'+todayReviewWarningHtml(day)+destinationPhotoSlot(place,'today')+(journey.journeys.length?todayJourneyHtml(journey)+checkoutHtml:checkoutHtml+main)+hotelHtml+(extraEntries.length?'<section class="spotlight-other"><div class="brand">ANNAÐ Í DAG</div>'+extraEntries.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'')+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
+ host.innerHTML='<section class="card spotlight-current'+(todayHasFrameWarning(day)?' today-warning-frame':'')+'">'+reviewWarningMarker(todayHasFrameWarning(day))+'<div class="spotlight-head spotlight-today-head'+(weather?' spotlight-with-weather':'')+'"><div><div class="brand">Í DAG · <span class="date-nowrap">'+esc(fmtDate(day))+'</span></div>'+todayClockHtml(day)+'</div>'+weather+'<h2>'+esc(place?.name||state.trip.name)+'</h2></div>'+todayReviewWarningHtml(day)+destinationPhotoSlot(place,'today')+(journey.journeys.length?todayJourneyHtml(journey)+checkoutHtml:checkoutHtml+main)+hotelHtml+(extraEntries.length?'<section class="spotlight-other"><div class="brand">ANNAÐ Í DAG</div>'+extraEntries.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'')+'</section>'+(model.later.length?'<section class="card spotlight-future"><div class="brand">NÆSTU DAGAR</div>'+model.later.map(e=>spotlightEntryHtml(e)).join('')+'</section>':'');
  host.classList.remove('hidden');host.classList.add('spotlight-redesigned');paintDestinationPhotos();bindTodayReviewActions(host);
  host.querySelectorAll('[data-spotlight-item]').forEach(b=>b.onclick=()=>openEditItem(b.dataset.spotlightItem));
  host.querySelectorAll('[data-spotlight-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.spotlightDocument));
@@ -2224,8 +2236,8 @@ function renderToday(){
  const reviewWarnings=tripReviewWarnings();
  const d=tripTodayDate(),within=tripInProgress(d),journey=within?todayJourneyModel(d):{journeys:[]},journeyIds=new Set(journey.journeys.map(j=>j.item.id)),items=agendaItems().filter(x=>itemOccursOn(x,d)&&!journeyIds.has(x.id));
  items.sort((a,b)=>{const time=i=>todayLegs(i).find(l=>l.date===d)?.time||'99:99';return String(time(a)).localeCompare(String(time(b)))});
- $('todayNext').classList.toggle('today-warning-frame',within&&todayHasReviewWarning(d));
- $('todayNext').innerHTML=within?reviewWarningMarker(todayHasReviewWarning(d))+'<div class="today-date">'+esc(fmtDay(d))+'</div>'+todayClockHtml(d)+todayReviewWarningHtml(d)+(journey.journeys.length?todayJourneyHtml(journey):nextTodayHtml(d))+todayLodgingWarningHtml(d):'';
+ $('todayNext').classList.toggle('today-warning-frame',within&&todayHasFrameWarning(d));
+ $('todayNext').innerHTML=within?reviewWarningMarker(todayHasFrameWarning(d))+'<div class="today-date">'+esc(fmtDay(d))+'</div>'+todayClockHtml(d)+todayReviewWarningHtml(d)+(journey.journeys.length?todayJourneyHtml(journey):nextTodayHtml(d))+todayLodgingWarningHtml(d):'';
  $('todayItems').innerHTML=within?weatherSlot(stopForDate(d),d)+(items.length?items.map(x=>itemHtml(x,d,reviewWarnings)).join(''):'<div class="empty">Engin atriði skráð í dag.</div>'):'<div class="empty">„Í dag“ verður virk þegar ferðin er í gangi. Þá birtast atriði dagsins og veðurspá.</div>';
  if(within&&!journey.journeys.length)renderOpenJourneys('todayOpenJourneys',d);else $('todayOpenJourneys').innerHTML='';
  bindTodayReviewActions($('todayNext'));

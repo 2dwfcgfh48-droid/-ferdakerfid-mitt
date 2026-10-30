@@ -74,3 +74,7 @@ Við áframhaldandi breytingu skal lesa báðar heimildir, tilgreina afmarkað v
 
 30-10-2026 · ÚTGÁFA 93 — AFMÖRKUÐ VIÐGERÐ Á SPÁSSÍUM Í DAG
 Staðfest útlitsfrávik í 92: #todayNext hafði 0px padding og innri spjöld lágu upp að ytri ramma. Ein CSS-regla notar sömu 17px innri spássíur og flýtispjaldið; aðeins index.html breytt af vefskrám. 20 Chromium-prófanir stóðust með prufugögnum, þar með talin mæling í 64 stillingasamsetningum. iPhone/Safari og nákvæm endurheimt alls fyrra útlits eru óstaðfest. V01/V02/V03 eru óbreytt; JavaScript-kóði og gögn óbreytt. Sjá PROFUN-93.md.
+
+
+30-10-2026 · ÚTGÁFA 94 — RÉTT TENGING GULRAR GISTINGARVIÐVÖRUNAR
+Notandi áréttar: eitt atriði þarfnast yfirferðar en of mörg spjöld eru gul. Í báðum Í dag-birtingum litar lodging-tonight ekki lengur leiðsagnarskref, Næsta skref eða ytri dagrammann. Gisting, innritunarspjald hennar og gistingaryfirferð halda merkingu. Talning, samþykki/aflétting og aðrar viðvaranir óbreytt. Í símabreidd <=600px fá booking-agenda-card spjöld tíma/stöðu ofan heitis, sem fær fulla breidd. Sama CSS gildir í dagatali og öðrum sambærilegum bókunarlistum; kort/PDF/lesafrit eru óbreytt. 22 Chromium-prófanir stóðust með prufugögnum. Raunverulegur iPhone/Safari óprófaður. Nákvæm endurheimt alls eldri útlits er ekki fullyrt. V01/V02/V03 eru áfram óleyst. Sjá PROFUN-94.md.
