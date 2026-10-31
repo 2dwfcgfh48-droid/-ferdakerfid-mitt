@@ -1,0 +1,4 @@
+Ferðakerfið mitt — útgáfa 104
+Frá 103: skipta aðeins út index.html.
+Frá-/Til-áfangastaðir í Lestum, Bátum og Akstri sýna alla skráða dvöl. Engin sjálfvirk breyting á bókunardögum.
+Sjá PROFUN-104.md fyrir prófun og takmörk.
