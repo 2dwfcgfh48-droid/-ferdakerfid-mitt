@@ -1,0 +1,4 @@
+Ferðakerfið mitt — útgáfa 103
+Frá 102 nægir að skipta út index.html.
+Dagsferð frá bækistöð birtist á sér línu í ferðaleið, á útleið og heimleið í öllum samgönguflokkum.
+Sjá PROFUN-103.md.

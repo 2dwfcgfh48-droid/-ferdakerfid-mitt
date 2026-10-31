@@ -473,6 +473,7 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 .travel-day .navigation-origin-info,.travel-day-next .navigation-origin-info{display:none}
 .spotlight-current .photo-action-wrap{margin:0;min-height:44px}
 
+.route-leg .route-day-trip{display:block;margin-top:4px;white-space:normal}
 </style>
 <style>#lodgingStayFields .lodging-stay-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#lodgingStayFields .field{min-width:0}#lodgingStayFields input{min-width:0;max-width:100%;width:100%}#lodgingStayNights{margin:4px 0 14px}.map-pin.route-endpoint .map-pin-disc{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--pin-color)}
 .map-view-buttons .btn{white-space:normal;overflow-wrap:anywhere;min-height:44px;max-width:100%}
@@ -1823,7 +1824,7 @@ function renderTimeline(){
   const x=e.data,c=CATEGORIES.find(c=>c[0]===x.category)||['other','➡️','Samgöngur'],route=transportRouteText(x,e.leg),home=e.leg==='return'?' · heim':'';
   const dateLabel=e.planned?esc(openJourneyDateLabel(x)):(e.date!=='9999-12-31'?fmtDate(e.date):'Dagsetning opin')+(e.displayTime?' · kl. '+esc(e.displayTime):'');
   const warning=bookingReviewRows(x.id,e.date==='9999-12-31'?null:e.date,reviewWarnings).length>0;
-  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" data-route-item="${x.id}">${reviewWarningMarker(warning)}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong><small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small>'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div>`;
+  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" data-route-item="${x.id}">${reviewWarningMarker(warning)}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong><small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small class="route-day-trip">'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div>`;
  }).join('');
  document.querySelectorAll('.stop[data-stop]').forEach(x=>x.onclick=()=>selectStop(x.dataset.stop));
  document.querySelectorAll('[data-route-item]').forEach(x=>x.onclick=()=>openEditItem(x.dataset.routeItem));
