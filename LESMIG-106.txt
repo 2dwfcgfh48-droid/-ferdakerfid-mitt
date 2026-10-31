@@ -1,0 +1,7 @@
+Ferðakerfið mitt — 106
+
+Grunnur: 103 með dagsferðum. Aðeins dvalarbirting 104 bætt við. Allar keyrsluskrár eru eins og 104.
+Frá 105 eða 103: skipta út index.html. Frá 104: engin breyting á keyrslukóða.
+ZIP inniheldur allar keyrsluskrár ef þarf. Ekki hlaða profanir-möppu eða skjölum upp til að keyra appið.
+Vistaðar bókanir eru ekki endurskrifaðar. Eldra misræmi sjálfvirks borgarheitis við Til-breytingu er enn ólokið.
+Prófað: 104 Chromium-vafrapróf og samanburður 21 flæðishópa á 103/106. Raunverulegur iPhone/Safari og lifandi vistun óprófuð.
