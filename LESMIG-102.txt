@@ -1,0 +1,9 @@
+Útgáfa 102 — 31-10-2026
+
+Frá útgáfu 101: skipta út index.html, offline.js og sw.js. Aðrar keyrsluskrár eru óbreyttar.
+
+Dagsferð í Flug/Lestir/Báta/Akstur: opna sömu bókun, haka við Dagsferð frá bækistöð, velja bækistöð og Vista. Fram og til baka velst við hakið. Skráðir dagar eru sami dagurinn; óskráðir dagar/tímar haldast opnir þar sem flokkur leyfir. Dagar/tímar eru ekki fylltir út við hakið.
+
+Dæmi: Trieste er bækistöð fyrir dagsferð til Feneyja og til baka. Ekki þarf að stofna Feneyjar sem dvalaráfangastað. Fyrirliggjandi Feneyja-áfangastaður eyðist ekki sjálfkrafa. Kostnaður og miðar haldast tengd sömu bókun.
+
+85 sjálfvirk vafrapróf með prufugögnum standast. Raunverulegur iPhone/Safari og lifandi vistun óprófuð. Sjá PROFUN-102.md.
