@@ -1,0 +1,7 @@
+Ferðakerfið mitt — útgáfa 105
+
+Frá 104 nægir að skipta út index.html.
+
+Venjulegt Frá-val fylgir næstu einu samliggjandi dvöl í Lestum, Bátum og Akstri. Sjálfvirkur borgartexti fylgir breytingu staðavals. Handvaldar stöðvar og skráðir dagar/tímar haldast. Dagsferð er sérstakt val. Engin sjálfvirk yfirskrift eldri vistaðra stöðva.
+
+134 vafrapróf með prufugögnum standast. Raunverulegur iPhone/Safari og lifandi gagnaskrif óprófuð. Sjá PROFUN-105.md.
