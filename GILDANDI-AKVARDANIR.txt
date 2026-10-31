@@ -230,4 +230,11 @@ F16. VARÐVEISLA INNSLÁTTAR VIÐ DAGATENGINGU — leiðrétt í 100, 30-10-2026
 
 
 LEIÐRÉTTING Á TÚLKUN DAGSETNINGA — 100, 30-10-2026
-Heimild: notandi sýndi brottför hverfa við val á Til dags og áréttaði: „Það er það sem ég var að biðja um og segja, þetta eru í raun sömu reitirnir“. Frá/brottför og Til/koma eru nú tvö sjálfstæð pör. Eldri reglutúlkun um mögulegt brottfarardagabil var misskilningur aðstoðarmanns. F14 og F16 leiðrétt; ekki merkja 98/99 sem staðfesta virkni notanda. Ný útfærsla 100 hefur sjálfvirka prófun, ekki enn staðfestingu notanda á iPhone.
+Heimild: notandi sýndi brottför hverfa við val á Til dags og áréttaði: „Það er það sem ég var að biðja um og segja, þetta eru í raun sömu reitirnir“. Frá/brottför og Til/koma eru nú tvö sjálfstæð pör. Eldri reglutúlkun um mögulegt brottfarardagabil var misskilningur aðstoðarmanns. F14 og F16 leiðrétt; ekki merkja 98/99 sem staðfesta virkni notanda. Við afhendingu hafði útfærsla 100 aðeins sjálfvirka prófun. Síðari staðfesting notanda á dagsetningatengingunni í öllum þremur flokkunum er skráð í Q07/U100-01.
+
+Q07. DAGSETNINGATENGING STAÐFEST AF NOTANDA — 30-10-2026, eftir afhendingu 100: Kristján staðfesti „Virkar í öllum ferða hlutunum“. Í samhengi nær þetta til samtengingar Frá dagur ↔ brottfarardagur og Til dagur ↔ komudagur í Akstri, Lestum og Bátum/ferjum samkvæmt F14/F16. Varðveita og endurprófa samkvæmt A14 þegar tengdum kóða er breytt. Sjá U100-01 í verkefnalista. Ekki túlka sem staðfestingu allrar virkni kerfisins eða allra undirtilvika sjálfvirkra prófa.
+
+
+VIÐBÓT 31-10-2026 — MIÐNÆTTI, AFHENDING 101
+B09. Skýring við B06–B08: 00:00 merkir upphaf skráðs dags í viðeigandi staðartíma. Dæmi: 01-11-2026 kl. 00:00 er miðnætti milli 31. október og 1. nóvember. Ekki færa dagsetningu sjálfkrafa. Í ferðaleið/tímalínu skal birta skráðan miðnættistíma á útleið og heimleið í Flugi, Lestum, Bátum/ferjum og Akstri. Innra röðunargildi þegar tíma vantar má ekki birtast sem skráður tími. Röðun og opnar áætlanir haldast. Þetta útfærir fyrirliggjandi B08 og samþykkta V01-viðgerð; breytir ekki dagsetningatengingu F14/F16 eða vistuðum gögnum.
+Prófunarstaða 101: 62 Chromium-vafrapróf með prufugögnum standast; nákvæm afmörkun í verkefnalista og PROFUN-101.md. Raunverulegur iPhone/Safari og lifandi gagnaskrif óprófuð. Eldri staðfestingar Q01–Q07 varðveittar; ekki skrá nýja notandastaðfestingu án heimildar.

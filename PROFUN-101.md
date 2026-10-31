@@ -1,0 +1,13 @@
+# Útgáfa 101 — prófun og afmörkun
+
+
+15. MIÐNÆTTISBIRTING Í FERÐALEIÐ — AFHENDING 101, 31-10-2026
+Samþykkt: notandi samþykkti V01-viðgerð með „Já, gerum þetta“ og áréttaði „Passa kóðann“. Fyrirliggjandi B08 krefst birtingar skráðs 00:00. B09 skýrir að tíminn tilheyri upphafi skráðs dags án dagsetningafærslu.
+Útfært: renderTimeline heldur sér röðunargildi og sýnilegum skráðum tíma. Útleið tekur skráðan metadata-tíma, annars local_time; heimleið notar fyrirliggjandi return_time/return_flight_time. Aðeins tilvist skráðs tíma ræður birtingu. 00:00 eða 00:00:00 birtist sem 00:00. Óskráður tími birtist ekki sem miðnætti. Gildir í Flugi, Lestum, Bátum/ferjum og Akstri. Dagsetningar, röðun og opin áætlunarbirting óbreytt. Engin gagnaflutningur eða skrif við birtingu.
+Sannprófun í þessari lotu: 62 Chromium 153.0.8010.0-vafraprófanir með prufugögnum standast: 53 próf úr 100 endurkeyrð og 9 ný próf á tímalínu. Ný próf ná yfir alla fjóra samgönguflokka, út-/heimleið, miðnætti með/án sekúndna, metadata/local_time og eldri heimflugstímareiti, óskráðan tíma, 00:01/12:30/23:59, rétta dagsetningu, röðun, útilokun quick_cost, opna áætlun, óbreytt prufugögn og opnun réttrar færslu. Símabreiddir 320/393/430/768px. Dagsetningatengingar í öllum þremur flokkunum, vistun/enduropnun með hermdum skrifum, bæði Í dag, viðvaranir og Kostnaður reiknings endurprófuð í fyrra safni. Engin skrif í notandagögn.
+Sama nýja miðnættispróf fellur á óbreyttri 100: báðar dagsetningar birtast án skráðs 00:00. Að auki afmarkað Node-próf með hermdum DOM: 240 prufuferðir / 480 leggir raðast eins í 100 og 101; spjaldakóði er eins þegar nýr miðnættistexti er tekinn frá. Gögn haldast óbreytt. JavaScript-málskipan stenst.
+Samanburður: einungis index.html breytist af keyrsluskrám; aðeins renderTimeline breytist innan þess. Allt utan fallsins er bætisjafnt við 100. CSS, vistun, reiknivélar, greiðslur, viðvörunarútreikningar, dagsetningatengingar og Í dag-kjarni óbreyttur kóði. Skjöl byggjast á nýjustu Sources-skjölum, þar á meðal U100-01 og Q07.
+Takmörk: raunverulegur iPhone/iPad/Safari, lifandi innskráning/vistun og ytri netþjónustur óprófuð í þessari lotu. Engin ný staðfesting notanda á 101. V02–V04 og önnur ólokin verk halda stöðu; eldri V01-lýsingar í afhendingarsögu eru ekki núgildandi framkvæmdastaða.
+Afhending: ZIP 101. Ef 100 er uppsett nægir að skipta út index.html. Útgáfa 100 varðveitt óbreytt.
+
+Keyrsla: `NODE_PATH=/path/to/node_modules CHROMIUM_PATH=/path/to/chromium node version101/profanir/browser-101.cjs` úr vinnumöppu með version101 og verify101. Nota Playwright og Chromium. Netþjónustur eru óvirkar/hermdar.

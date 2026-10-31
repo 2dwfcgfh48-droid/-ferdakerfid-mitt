@@ -1,16 +1,16 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi staða 30-10-2026 — útgáfa 100 og afmarkaðar staðfestingar notanda
+Gildandi staða 31-10-2026 — útgáfa 101 og afmarkaðar staðfestingar notanda
 
 Lesa þetta skjal og „Ferðakerfið mitt — gildandi ákvarðanir“ fyrir hverja breytingu. Regluskjalið geymir kröfur, þessi listi framkvæmda-/sannprófunarstöðu. Eldri sögulisti er varðveittur í yfirferðarskjalinu en er ekki nýr verkefnaforgangur.
 
 1. VIÐVARANIR UM SAMÞYKKTIR OG KÓÐA
 
-V01 — STAÐFEST FRÁVIK: miðnættistími hverfur úr ferðaleið/tímalínu.
+V01 — LAGFÆRT Í AFHENDINGU 101; RAUNNOTKUN ÓSTAÐFEST: miðnættistími í ferðaleið/tímalínu.
 Krafa: B06/B08 — varðveita og birta skráða tíma.
 Kóði: útgáfa 92, index.html, renderTimeline, línur 1775–1784. Birtingin útilokar e.time === '00:00', sem er einnig notað sem innra varagildi þegar tíma vantar.
 Endurgerð: raunverulegt renderTimeline keyrt með bókaðri prufulest, skráðum degi og local_time. 00:00 sást ekki; 00:01 og 12:30 sáust. Prófið er einangrað Node-keyrslupróf með hermdum DOM og óvirkum þjónustum, ekki iPhone-próf.
 Saga: sama skilyrði finnst í eldri útgáfuafritum. Ekki rétt að kalla þetta nýja bilun í 92 eða fullyrða að tímasetning hafi horfið úr gögnunum; frávikið er í birtingu.
-Staða: ólagað. Þessi lota breytir aðeins skjölum. Viðgerð þarf að greina gildan 00:00 frá óskráðum tíma, án þess að sýna tilbúinn miðnættistíma. Varðveita röðun, áætlaða daga, viðvaranir og heimleið.
+Staða 31-10-2026: lagfært í afhendingu 101 og prófað með prufugögnum; ekki staðfest af notanda á iPhone. Skráður 00:00 birtist; innra varagildi er ekki sýnt. Röðun, áætlaðir dagar, viðvaranir og heimleið varðveitt. Upprunaleg greining útgáfu 92 hér að ofan er saga; sjá kafla 15 fyrir nýja sannprófun.
 
 V02 — SAMÞYKKT STEFNA, ÚTFÆRSLA FANNST EKKI: CSV-útflutningur ferðar.
 Krafa: N09 — eldri samþykki 02-10-2026 um JSON/CSV/PDF-útflutning, endurheimt úr fyrra samtali.
@@ -52,7 +52,7 @@ Eftirfarandi verk eru til í útfærslu/sögu og á ekki að leggja fram aftur s
 Prófunarstaða 92 er samkvæmt varðveittu PROFUN-92.md: 19 vafraprófanir, 18 afmarkaðar varðveisluprófanir og 13 heil eldri söfn (192 prófanir) stóðust í fyrri lotu. Sjö eldri söfn stöðvuðust eins í grunninum og 92; þau teljast EKKI standast. Þessi skjalalota endurkeyrir ekki allt prófasafnið og gerir ekki þær tölur að nýjum niðurstöðum.
 
 4. RAUNVERULEGA ÓLOKIÐ / ÓSTAÐFEST
-☐ V01: laga miðnættisbiringu afmarkað þegar viðgerð er tekin fyrir.
+☑ V01: afmörkuð miðnættislagfæring í 101; 62 vafrapróf með prufugögnum standast. Raunverulegur iPhone/Safari er óprófaður.
 ☐ V02: varðveita CSV-stefnu á lista; útfærsla/eldri saga ekki fundin.
 ☐ Raunveruleg iPhone/iPad-/Safari-prófun útgáfu 92, lifandi innskráning/vistun og ný sótt ferð eftir uppfærslu eru ekki staðfest í aðgengilegu samtali.
 ☐ Full yfirlits-/regluprófun allra 16 flokka og allra sambærilegra birtinga er ekki lokið. Skrá nákvæmt umfang hverrar staðfestingar.
@@ -151,5 +151,24 @@ Samþykkt samkvæmt skýrri áréttingu notanda: Frá dagur og brottfarardagur e
 Útfært í sérstöku afriti 100, með 99 varðveitta: tvíátta dagapör í Akstri, Lestum og Bátum/ferjum. Einn dagur fyllir aðeins sitt par; klukkur og heimferð haldast sjálfstæð. Hreinsa/Afturkalla uppfæra aðeins samsvarandi par. Hjálpartexti og yfirlit áætlunarkafla greina Brottför og Komu. Komudagur einn má vistast í opinni ferð. Eldri misræmi samræmist í forminu með nákvæmum degi í forgangi; engin skrif við opnun eða Hætta við.
 Sannprófun í þessari lotu: 53 Chromium-vafraprófanir með prufugögnum standast (Chromium 153.0.8010.0). Þar af 36 varðveislupróf úr 99 fyrir bæði Í dag, viðvaranir, klukku, leiðsögn, myndareglu, kostnaðarfærslur, dagsetningar, PDF og lesafrit, og 17 próf á nýju dagaflæði, varðveislu og símabirtingu. Prófað í öllum þremur flokkunum: báðar innsláttaráttir, byrja í Til dags, 30.→31. október án hreinsunar brottfarar, endurteknir breytingaratburðir, hreinsun og afturköllun, titill einn, brottför ein, koma ein og sama dags ferð. Raunveruleg saveItem keyrð með hermdum gagnaskrifum og óvirkri kostnaðar-/skjalavistun: vistun/enduropnun, sömu auðkenni, heimleið, sérgögn og varðveisla fyrirliggjandi prufukostnaðar/miða. Ógild röð og dagur utan ferðar stöðva skrif án þess að eyða innslætti. Opnun/Hætta við breyta ekki vistaðri prufufærslu. JavaScript-málskipan staðfest. 320/393/430/768px prófað; Akstursform sjónskoðað við 393px.
 Samanburður við 99: aðeins index.html breytist af keyrsluskrám; engar stuðningsskrár, CSS-reglur eða gagnagrunnsskipan breytast. saveItem, kostnaðarútreikningar, viðvörunarútreikningar og Í dag-kjarninn eru óbreyttur kóði. Tengdar formsaðgerðir fyrir opnun, lestur og dagahreinsun breytast afmarkað.
-Óstaðfest: raunverulegur iPhone/Safari, lifandi innskráning/gagnaskrif, ytri netþjónustur og allir eldri gagnavalkostir. Engin ný staðfesting notanda á virkni 100. U96/U97 og V01–V04 haldast með fyrra afmörkuðu umfangi. Engin heildarábyrgð á villuleysi.
+Við afhendingu 100 voru raunverulegur iPhone/Safari, lifandi innskráning/gagnaskrif, ytri netþjónustur og allir eldri gagnavalkostir óstaðfest. Síðar staðfesti notandi dagsetningatenginguna í öllum þremur flokkunum; sjá U100-01. Önnur óstaðfest undirtilvik halda stöðu sinni. U96/U97 og V01–V04 haldast með fyrra afmörkuðu umfangi. Engin heildarábyrgð á villuleysi.
 Afhending: ZIP 100. Ef 99 er uppsett nægir að skipta út index.html.
+
+
+14. VARANLEG STAÐFESTINGARSKRÁ — ÚTGÁFA 100, 30-10-2026
+U100-01 — DAGSETNINGATENGING Í ÖLLUM ÞREMUR FERÐAFLÖKKUM STAÐFEST AF NOTANDA.
+Heimild: „Virkar í öllum ferða hlutunum“ eftir afhendingu 100.
+Staðfest umfang í samhengi: Frá dagur ↔ brottfarardagur og Til dagur ↔ komudagur virka í Akstri, Lestum og Bátum/ferjum. Til dags á ekki að eyða brottför; þetta eru tvö sjálfstæð dagapör samkvæmt F14/F16. Tæki ekki sérstaklega nefnt í þessari staðfestingu; fyrra prófunarsamhengi er iPhone.
+Varðveisla: A14 og Q07. Aðstoðarmaður endurprófar tenginguna í öllum þremur flokkunum þegar tengdum kóða er breytt; ekki biðja notanda um sömu óbreyttu prófun án sérstakrar ástæðu.
+Staðfestingin telur ekki sérstaklega upp vistun/enduropnun, hreinsun/Afturkalla, eldri misræmisgögn eða önnur undirtilvik; ekki merkja þau öll raunprófuð af notanda. U96/U97, V01–V04 og önnur ólokin verk varðveitast. Engin ný keyrslupróf framkvæmd og keyrslukóða ekki breytt við þessa skjalauppfærslu.
+
+
+
+15. MIÐNÆTTISBIRTING Í FERÐALEIÐ — AFHENDING 101, 31-10-2026
+Samþykkt: notandi samþykkti V01-viðgerð með „Já, gerum þetta“ og áréttaði „Passa kóðann“. Fyrirliggjandi B08 krefst birtingar skráðs 00:00. B09 skýrir að tíminn tilheyri upphafi skráðs dags án dagsetningafærslu.
+Útfært: renderTimeline heldur sér röðunargildi og sýnilegum skráðum tíma. Útleið tekur skráðan metadata-tíma, annars local_time; heimleið notar fyrirliggjandi return_time/return_flight_time. Aðeins tilvist skráðs tíma ræður birtingu. 00:00 eða 00:00:00 birtist sem 00:00. Óskráður tími birtist ekki sem miðnætti. Gildir í Flugi, Lestum, Bátum/ferjum og Akstri. Dagsetningar, röðun og opin áætlunarbirting óbreytt. Engin gagnaflutningur eða skrif við birtingu.
+Sannprófun í þessari lotu: 62 Chromium 153.0.8010.0-vafraprófanir með prufugögnum standast: 53 próf úr 100 endurkeyrð og 9 ný próf á tímalínu. Ný próf ná yfir alla fjóra samgönguflokka, út-/heimleið, miðnætti með/án sekúndna, metadata/local_time og eldri heimflugstímareiti, óskráðan tíma, 00:01/12:30/23:59, rétta dagsetningu, röðun, útilokun quick_cost, opna áætlun, óbreytt prufugögn og opnun réttrar færslu. Símabreiddir 320/393/430/768px. Dagsetningatengingar í öllum þremur flokkunum, vistun/enduropnun með hermdum skrifum, bæði Í dag, viðvaranir og Kostnaður reiknings endurprófuð í fyrra safni. Engin skrif í notandagögn.
+Sama nýja miðnættispróf fellur á óbreyttri 100: báðar dagsetningar birtast án skráðs 00:00. Að auki afmarkað Node-próf með hermdum DOM: 240 prufuferðir / 480 leggir raðast eins í 100 og 101; spjaldakóði er eins þegar nýr miðnættistexti er tekinn frá. Gögn haldast óbreytt. JavaScript-málskipan stenst.
+Samanburður: einungis index.html breytist af keyrsluskrám; aðeins renderTimeline breytist innan þess. Allt utan fallsins er bætisjafnt við 100. CSS, vistun, reiknivélar, greiðslur, viðvörunarútreikningar, dagsetningatengingar og Í dag-kjarni óbreyttur kóði. Skjöl byggjast á nýjustu Sources-skjölum, þar á meðal U100-01 og Q07.
+Takmörk: raunverulegur iPhone/iPad/Safari, lifandi innskráning/vistun og ytri netþjónustur óprófuð í þessari lotu. Engin ný staðfesting notanda á 101. V02–V04 og önnur ólokin verk halda stöðu; eldri V01-lýsingar í afhendingarsögu eru ekki núgildandi framkvæmdastaða.
+Afhending: ZIP 101. Ef 100 er uppsett nægir að skipta út index.html. Útgáfa 100 varðveitt óbreytt.

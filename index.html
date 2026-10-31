@@ -1812,16 +1812,16 @@ function renderTimeline(){
  state.stops.forEach((s,i)=>entries.push({kind:'stop',date:s.start_date||'9999-12-31',time:'23:59',order:1,index:i,data:s}));
  state.items.filter(x=>!x.metadata?.quick_cost&&isTransportCategory(x.category)).forEach((x,i)=>{
   const m=x.metadata||{},planned=isOpenTransport(x.category,x.status)&&!m.outbound_departure_date&&!x.local_date,context=planned?openJourneyContext(x):null;
-  const date=m.outbound_departure_date||x.local_date||context?.start||context?.from?.start_date||'9999-12-31',time=m.outbound_departure_time||x.local_time||(context?.from&&!context.start?'23:59':'00:00');
-  entries.push({kind:'transport',leg:'outbound',date,time:String(time).slice(0,5),order:planned?2:0,index:i,data:x,planned});
-  if((m.transport_trip_type||m.flight_trip_type)==='round_trip'&&(m.return_date||m.return_flight_date))entries.push({kind:'transport',leg:'return',date:m.return_date||m.return_flight_date,time:String(m.return_time||m.return_flight_time||'00:00').slice(0,5),order:0,index:i+.5,data:x});
+  const date=m.outbound_departure_date||x.local_date||context?.start||context?.from?.start_date||'9999-12-31',recordedTime=m.outbound_departure_time||x.local_time||'',time=recordedTime||(context?.from&&!context.start?'23:59':'00:00');
+  entries.push({kind:'transport',leg:'outbound',date,time:String(time).slice(0,5),displayTime:String(recordedTime).slice(0,5),order:planned?2:0,index:i,data:x,planned});
+  if((m.transport_trip_type||m.flight_trip_type)==='round_trip'&&(m.return_date||m.return_flight_date))entries.push({kind:'transport',leg:'return',date:m.return_date||m.return_flight_date,time:String(m.return_time||m.return_flight_time||'00:00').slice(0,5),displayTime:String(m.return_time||m.return_flight_time||'').slice(0,5),order:0,index:i+.5,data:x});
  });
  entries.sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time)||a.order-b.order||a.index-b.index);
  if(!entries.length){el.innerHTML='<div class="empty" style="min-width:100%">Enginn áfangastaður eða samgönguleggur kominn.</div>';return}
  el.innerHTML=entries.map((e,i)=>{
   if(e.kind==='stop'){const s=e.data;return `<div class="stop ${i===0?'active':''} ${warningStopIds.has(s.id)?'stop-has-warning':''}" data-stop="${s.id}">${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small></div>`}
   const x=e.data,c=CATEGORIES.find(c=>c[0]===x.category)||['other','➡️','Samgöngur'],route=transportRouteText(x,e.leg),home=e.leg==='return'?' · heim':'';
-  const dateLabel=e.planned?esc(openJourneyDateLabel(x)):(e.date!=='9999-12-31'?fmtDate(e.date):'Dagsetning opin')+(e.time&&e.time!=='00:00'?' · kl. '+esc(e.time):'');
+  const dateLabel=e.planned?esc(openJourneyDateLabel(x)):(e.date!=='9999-12-31'?fmtDate(e.date):'Dagsetning opin')+(e.displayTime?' · kl. '+esc(e.displayTime):'');
   const warning=bookingReviewRows(x.id,e.date==='9999-12-31'?null:e.date,reviewWarnings).length>0;
   return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" data-route-item="${x.id}">${reviewWarningMarker(warning)}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong><small class="route-path">${route?esc(route):c[2]}</small>${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div>`;
  }).join('');
