@@ -1,0 +1,6 @@
+Ferðakerfið mitt — 110
+Afmörkuð viðgerð á gistingu fyrir brottför. Reglur og verkefnalisti yfirfarin.
+Frá 109 þarf að skipta út index.html, travel-navigation-v90.js og sw.js.
+Lokaðu appinu og opnaðu aftur eftir uppfærslu.
+Ef Garda-hótelið var þegar vistað sem brottfararhótel við Trieste: veldu rétt Trieste-hótel í Leggja af stað frá og vistaðu. Stöðvar/dagar/tímar haldast.
+196 vafrapróf + 38 kóða-/hermiathuganir staðin með prufugögnum. iPhone/Safari og lifandi vistun óprófuð. Sjá PROFUN-110.md.
