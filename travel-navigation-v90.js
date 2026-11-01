@@ -14,6 +14,9 @@
  function eligibleHotels(item,role,items,usable=()=>true){const date=eventDate(item,role),stopId=eventStop(item,role);if(!date)return [];return items.filter(h=>h.category==='lodging'&&h.id!==item.id&&usable(h)&&h.status!=='cancelled'&&h.metadata?.lodging_plan?.role!=='cancelled'&&h.local_date&&h.end_local_date&&h.local_date<=date&&date<=h.end_local_date&&(!stopId||h.stop_id===stopId))}
  function hotelQuery(hotel){const p=hotel?.metadata?.lodging_place||hotel?.metadata?.place||{};const lat=hotel?.latitude??p.latitude,lng=hotel?.longitude??p.longitude;if(lat!=null&&lng!=null&&Number.isFinite(+lat)&&Number.isFinite(+lng)&&Math.abs(+lat)<=90&&Math.abs(+lng)<=180)return lat+','+lng;return p.address||hotel?.address||''}
  function origin(item,role,items=[],usable=()=>true){
+  // Arrival-to-hotel navigation starts at this leg's arrival endpoint.
+  // Keep legacy origin metadata intact, but never apply a hotel/current override here.
+  if(['flight','train','ferry','transfer'].includes(item?.category)&&['outbound_arrival','return_arrival'].includes(role))return {explicit:false,query:'',label:'',blocked:false};
   const spec=item?.metadata?.navigation_origins?.[role],leg=role==='return'?'return':'outbound',plan=['outbound','return'].includes(role)?item?.metadata?.departure_plans?.[leg]:null;
   if(spec?.type==='current')return {explicit:true,query:'',label:'Núverandi staðsetning',blocked:false};
   const legacyId=plan?.origin_place?.source_item_id,legacySource=legacyId&&items.find(i=>i.id===legacyId);const hotelId=spec?.type==='hotel'?spec.item_id:!spec&&legacyId&&(legacySource?.category==='lodging'||!legacySource&&!plan.origin_place.route_role)?legacyId:null;

@@ -1,0 +1,5 @@
+Ferðakerfið mitt — 109
+Grunnur 108 varðveittur. Afmörkuð viðgerð á leiðsögn eftir komu.
+Frá 108: skipta út index.html, travel-navigation-v90.js og sw.js. Allar nauðsynlegar skrár fylgja.
+Eftir uppfærslu: loka og opna appið aftur svo ný opinber lesafritsskel taki við. Engin sjálfvirk gagnabreyting eða ný niðurhleðsla einkaskjala.
+173 vafrapróf og 38 kóða-/hermiathuganir standast; raunverulegur iPhone/Safari og lifandi vistun óprófuð. Sjá PROFUN-109.md.
