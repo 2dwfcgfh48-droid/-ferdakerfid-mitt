@@ -34,7 +34,7 @@ function offlineTicketDocument(doc){const saved=(currentPack.wallet||[]).find(x=
 function offlineTicketDescription(doc){const value=offlineTicketDocument(doc);return value.document_type==='ticket'&&globalThis.TravelTickets?TravelTickets.description(value):''}
 function documentButtons(itemId,leg=null){
  const raw=currentPack.documents.filter(d=>d.item_id===itemId),item=currentPack.items.find(x=>x.id===itemId),docs=raw.map(offlineTicketDocument);
- const labelled=['flight','train','ferry','transfer'].includes(item?.category)&&globalThis.TravelTickets&&docs.some(d=>d.document_type==='ticket'&&TravelTickets.hasLabels(d));
+ const labelled=['flight','train','ferry','bus','transfer'].includes(item?.category)&&globalThis.TravelTickets&&docs.some(d=>d.document_type==='ticket'&&TravelTickets.hasLabels(d));
  const button=(d,primary=false)=>'<button type="button"'+(labelled?' class="ticket-labelled"':'')+' data-offline-open="'+escapeHTML(d.id)+'" '+(d.available?'':'disabled')+'>'+escapeHTML(primary?TravelTickets.buttonLabel(d):d.title)+(primary&&TravelTickets.buttonLabel(d)!==d.title?' · '+escapeHTML(d.title):'')+(d.available?'':' · ekki sótt')+'</button>';
  if(!labelled)return raw.map(d=>button(d)).join('');
  const groups=TravelTickets.groups(docs,leg);
@@ -44,7 +44,7 @@ function documentButtons(itemId,leg=null){
 
 function offlineNavigationHtml(item){
  if(!globalThis.TravelNavigation)return '';
- const transport=['flight','train','ferry','transfer'].includes(item.category),m=item.metadata||{};
+ const transport=['flight','train','ferry','bus','transfer'].includes(item.category),m=item.metadata||{};
  const events=transport?[['outbound_from','outbound'],['outbound_to','outbound_arrival'],['return_from','return'],['return_to','return_arrival']].filter(([key])=>m[key]).map(([key,leg])=>{const station=m.route_places?.[key]||{label:m[key]},hotel=key.endsWith('_to')?m.departure_plans?.[key.startsWith('return')?'return':'outbound']?.arrival_place:null;return {leg,place:hotel||station,origin:hotel?TravelNavigation.query(station):''}}):globalThis.RentalCars&&RentalCars.active(item)?(item.metadata?._rental_event?[{leg:item.metadata._rental_event,place:item.metadata.place}]:RentalCars.events(item)):[{leg:'outbound',place:item.metadata?.place||item.metadata?.lodging_place||item}];
  return events.map(e=>{const destination=TravelNavigation.query(e.place)||TravelNavigation.fromLink(item.google_maps_url);const chosen=TravelNavigation.origin(item,e.leg,currentPack.items||[],h=>!h.offline_lodging?.startsWith('Varabókun'));if(chosen.blocked)return '<p class="notice">Upphafsgisting þarf yfirferð.</p>';return destination?TravelNavigation.html({item,role:e.leg,destination,origin:chosen.explicit?chosen.query:e.origin||'',originLabel:chosen.explicit?chosen.label:'',title:(e.leg==='rental_return'?'Leiðsögn á skilastað':'Leiðsögn')+' · þarf net'}):''}).join('');
 }
