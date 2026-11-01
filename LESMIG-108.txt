@@ -1,0 +1,9 @@
+Ferðakerfið mitt — 108
+Frá 107: skipta aðeins út index.html.
+Frá/Til, dvalartímabil og sjálfvirkir dagar venjulegrar millistaðaferðar haldast.
+Enduropnun varðveitir fyrirliggjandi leiðarval, einnig aðeins Frá. Flýtileið og Nota daginn samræma rétt dagapar.
+Hringferð báta frá sömu bryggju notar upphafsstað og eigin daga/tíma, án nýs Til-dvalarstaðar.
+Fram og til baka og Dagsferð frá bækistöð haldast. Handvaldar stöðvar, tímar, miðar og kostnaður varðveitast.
+147 vafrapróf standast með prufugögnum/hermdri vistun. Allar 16 keyrsluskrár bornar saman; aðeins index.html breytt. Sjá YFIRFERD-108.md fyrir prófunarþekju og takmörk níu eldri hermiprófasafna.
+Raunverulegur iPhone/Safari og lifandi vistun eru óprófuð. Engin bakendabreyting eða sjálfvirk fjöldabreyting vistaðra bókana.
+Skjöl og profanir-mappa þarf ekki að hlaða upp til að keyra appið.
