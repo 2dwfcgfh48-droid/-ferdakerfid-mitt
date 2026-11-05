@@ -501,12 +501,12 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #itemModal.lodging-presentation .lodging-money-lines dt,#itemModal.lodging-presentation .lodging-money-lines dd{margin:0;min-width:0;overflow-wrap:anywhere}
 #itemModal.lodging-presentation .lodging-money-lines dd{text-align:right;font-weight:700}
 #itemModal.lodging-presentation .lodging-share-pending{margin:8px 0 0}
-#itemModal.lodging-presentation #itemDialogActions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:8px;padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
-#itemModal.lodging-presentation #itemDialogActions>.btn{width:100%;min-height:44px;padding:8px 10px;margin:0}
-#itemModal.lodging-presentation .dialog{scroll-padding-top:14px;scroll-padding-bottom:calc(var(--lodging-footer-height,5rem) + 1rem)}
-#itemModal.lodging-presentation :is(input,select,textarea,summary,button){scroll-margin-bottom:calc(var(--lodging-footer-height,5rem) + 1rem)}
-#itemModal.lodging-presentation #lodgingDeleteArea{margin:14px 0}
-#itemModal.lodging-presentation #bookingDraftApprovalHint{margin:12px 0!important}
+#itemModal.compact-booking-footer #itemDialogActions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:8px;padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+#itemModal.compact-booking-footer #itemDialogActions>.btn{width:100%;min-height:44px;padding:8px 10px;margin:0}
+#itemModal.compact-booking-footer .dialog{scroll-padding-top:14px;scroll-padding-bottom:calc(var(--booking-footer-height,5rem) + 1rem)}
+#itemModal.compact-booking-footer :is(input,select,textarea,summary,button){scroll-margin-bottom:calc(var(--booking-footer-height,5rem) + 1rem)}
+#itemModal.compact-booking-footer #lodgingDeleteArea{margin:14px 0}
+#itemModal.compact-booking-footer #bookingDraftApprovalHint{margin:12px 0!important}
 </style>
 <style>#lodgingStayFields .lodging-stay-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#lodgingStayFields .field{min-width:0}#lodgingStayFields input{min-width:0;max-width:100%;width:100%}#lodgingStayNights{margin:4px 0 14px}.map-pin.route-endpoint .map-pin-disc{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--pin-color)}
 .map-view-buttons .btn{white-space:normal;overflow-wrap:anywhere;min-height:44px;max-width:100%}
@@ -4202,20 +4202,45 @@ function lodgingMoneyLines(host,entries){
  for(const [label,value]of entries){const row=document.createElement('div'),term=document.createElement('dt'),amount=document.createElement('dd');term.textContent=label;amount.textContent=value;row.append(term,amount);list.append(row)}
  host.replaceChildren(list);
 }
-function paintLodgingPresentation(visible){
- const modal=$('itemModal'),dialog=modal.querySelector('.dialog'),bar=$('itemDialogActions'),area=$('lodgingDeleteArea'),remove=$('deleteItemBtn'),hint=$('bookingDraftApprovalHint'),hintHome=$('lodgingApprovalHintHome');
- modal.classList.toggle('lodging-presentation',visible);area.classList.toggle('hidden',!visible);
- if(visible){if(remove.parentElement!==area)area.append(remove);if(hint.parentElement!==hintHome)hintHome.append(hint)}
- else{if(remove.parentElement!==bar)bar.insertBefore(remove,bar.querySelector('[data-close="itemModal"]'));if(hint.parentElement!==bar)bar.prepend(hint);dialog.style.removeProperty('--lodging-footer-height');}
- if(!modal.lodgingFooterObserver&&globalThis.ResizeObserver){modal.lodgingFooterObserver=new ResizeObserver(()=>{if(!modal.classList.contains('lodging-presentation'))return;const height=bar.getBoundingClientRect().height;if(height>0)dialog.style.setProperty('--lodging-footer-height',height+'px')});modal.lodgingFooterObserver.observe(bar)}
- if(!modal.lodgingFocusGuard){
-  const reveal=()=>{const field=document.activeElement;if(!modal.classList.contains('show')||!modal.classList.contains('lodging-presentation')||!field?.matches('input,select,textarea')||!dialog.contains(field))return;const r=field.getBoundingClientRect(),b=bar.getBoundingClientRect(),d=dialog.getBoundingClientRect();if(r.bottom>b.top||r.top<d.top)field.scrollIntoView({block:'nearest',behavior:'auto'})};
-  modal.addEventListener('focusin',()=>requestAnimationFrame(reveal));globalThis.visualViewport?.addEventListener('resize',reveal);modal.lodgingFocusGuard=true;
+function paintCompactBookingFooter(lodging){
+ const compact=lodging||$('itemCategory').value==='train';
+ const modal=$('itemModal'),dialog=modal.querySelector('.dialog'),bar=$('itemDialogActions');
+ const area=$('lodgingDeleteArea'),remove=$('deleteItemBtn'),hint=$('bookingDraftApprovalHint'),hintHome=$('lodgingApprovalHintHome');
+ modal.classList.toggle('lodging-presentation',lodging);
+ modal.classList.toggle('compact-booking-footer',compact);
+ area.classList.toggle('hidden',!compact);
+ if(compact){
+  if(remove.parentElement!==area)area.append(remove);
+  if(hint.parentElement!==hintHome)hintHome.append(hint);
+ }else{
+  if(remove.parentElement!==bar)bar.insertBefore(remove,bar.querySelector('[data-close="itemModal"]'));
+  if(hint.parentElement!==bar)bar.prepend(hint);
+  dialog.style.removeProperty('--booking-footer-height');
+ }
+ if(!modal.bookingFooterObserver&&globalThis.ResizeObserver){
+  modal.bookingFooterObserver=new ResizeObserver(()=>{
+   if(!modal.classList.contains('compact-booking-footer'))return;
+   const height=bar.getBoundingClientRect().height;
+   if(height>0)dialog.style.setProperty('--booking-footer-height',height+'px');
+  });
+  modal.bookingFooterObserver.observe(bar);
+ }
+ if(!modal.bookingFooterFocusGuard){
+  const reveal=()=>{
+   const field=document.activeElement;
+   if(!modal.classList.contains('show')||!modal.classList.contains('compact-booking-footer')||!field?.matches('input,select,textarea')||!dialog.contains(field))return;
+   const rect=field.getBoundingClientRect(),footer=bar.getBoundingClientRect(),viewport=dialog.getBoundingClientRect();
+   if(rect.bottom>footer.top||rect.top<viewport.top)field.scrollIntoView({block:'nearest',behavior:'auto'});
+  };
+  modal.addEventListener('focusin',()=>requestAnimationFrame(reveal));
+  globalThis.visualViewport?.addEventListener('resize',reveal);
+  modal.bookingFooterFocusGuard=true;
  }
 }
 
+
 function paintLodgingCostForm(){
- const visible=$('itemCategory').value==='lodging';paintLodgingPresentation(visible);$('lodgingSplitFields').classList.toggle('hidden',!visible);if(!visible){$('bookingCostEffects').querySelector('p').innerHTML='<strong>Heildarverð</strong> telst með í ferðakostnaði. Fyrir fram og til baka skráirðu samanlagt verð aðeins einu sinni.';return;}
+ const visible=$('itemCategory').value==='lodging';paintCompactBookingFooter(visible);$('lodgingSplitFields').classList.toggle('hidden',!visible);if(!visible){$('bookingCostEffects').querySelector('p').innerHTML='<strong>Heildarverð</strong> telst með í ferðakostnaði. Fyrir fram og til baka skráirðu samanlagt verð aðeins einu sinni.';return;}
  $('bookingCostEffects').querySelector('p').textContent='Heildarverð gistibókunar varðveitist. Aðeins okkar hluti telst ferðakostnaður. Óákveðin skipting gerir okkar heild ófullgerða.';
  const mode=$('lodgingSplitMode').value,all=$('lodgingSplitAll').checked;for(const [id,show]of [['lodgingSplitPeopleFields',mode==='people'],['lodgingSplitGroupsField',mode==='groups'],['lodgingSplitManualField',mode==='manual'],['lodgingSplitRepayFields',all]])$(id).classList.toggle('hidden',!show);
  $('lodgingSplitPaymentHelp').textContent=mode==='undecided'?'Skipting óákveðin: greiðsluvalið miðast við heildarverð bókunar. Okkar ferðakostnaður er óreiknaður.':all?'Greitt af okkur sýnir allt sem við greiddum fyrir hópinn. Aðeins okkar hluti telst ferðakostnaður. ISK-reiturinn er heildargreiðslan fyrir alla.':'Greiðsluvalið miðast við okkar hlut. Greitt af okkur sýnir það sem við höfum greitt; ISK-reiturinn er sama greiðsla í krónum.';
