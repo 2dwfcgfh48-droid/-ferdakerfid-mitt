@@ -501,6 +501,26 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #itemModal.lodging-presentation .lodging-money-lines dt,#itemModal.lodging-presentation .lodging-money-lines dd{margin:0;min-width:0;overflow-wrap:anywhere}
 #itemModal.lodging-presentation .lodging-money-lines dd{text-align:right;font-weight:700}
 #itemModal.lodging-presentation .lodging-share-pending{margin:8px 0 0}
+/* Train endpoint actions use the same 8px spacing and 44px targets as the booking footer. */
+#itemModal.train-station-actions .booking-station-grid>.field{
+ display:flex;flex-flow:row wrap;align-items:stretch;gap:8px;
+}
+#itemModal.train-station-actions .booking-station-grid>.field>:not(.btn){flex:0 0 100%;min-width:0}
+#itemModal.train-station-actions :is(.booking-station-grid>.field,.transport-connection,[data-transport-origin]) .btn:not(.hidden){
+ display:inline-flex;align-items:center;justify-content:center;
+ box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;
+ margin:0;padding:8px 10px;font-size:max(12px,.875rem);
+ white-space:normal;overflow-wrap:anywhere;text-align:center;
+}
+#itemModal.train-station-actions .booking-station-grid>.field>.btn[id$="CityBtn"]{flex:1 1 100%}
+#itemModal.train-station-actions .booking-station-grid>.field>.btn:is([id$="PointBtn"],[id$="MapsOpen"]){
+ flex:1 0 auto;overflow-wrap:normal;
+}
+#itemModal.train-station-actions :is(.transport-connection,[data-transport-origin]) .departure-actions{
+ flex-flow:row wrap;align-items:stretch;gap:8px;
+}
+#itemModal.train-station-actions .transport-connection .departure-actions>a{flex:1 1 100%}
+#itemModal.train-station-actions [data-transport-origin]>a[id$="OriginRoute"]{margin-top:8px}
 #itemModal.compact-booking-footer #itemDialogActions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:8px;padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
 #itemModal.compact-booking-footer #itemDialogActions>.btn{width:100%;min-height:44px;padding:8px 10px;margin:0}
 #itemModal.compact-booking-footer .dialog{scroll-padding-top:14px;scroll-padding-bottom:calc(var(--booking-footer-height,5rem) + 1rem)}
@@ -2926,10 +2946,12 @@ function transportEndpointContext(prefix,role='Origin'){
 }
 function updateTransportEndpointLabels(){
  const cat=$('itemCategory').value,train=cat==='train',bus=cat==='bus',ferry=cat==='ferry';
+ $('itemModal').classList.toggle('train-station-actions',train);
  for(const [field,origin]of [['outboundFrom',true],['outboundTo',false],['returnFrom',true],['returnTo',false]]){
   const label=$(field).closest('.field').querySelector('label');if(label)label.textContent=train?(origin?'Brottfararstöð':'Komustöð'):bus?(origin?'Brottfararstaður rútu':'Komustaður rútu'):ferry?(origin?'Brottfararhöfn / bryggja':'Komuhöfn / bryggja'):(origin?'Frá':'Til');
   $(field).placeholder=train?'Borg eða lestarstöð':bus?'Borg, rútustöð eða stoppistöð':ferry?'Borg, höfn eða bryggja':'Staður / áfangastaður';
   const button=$(field+'PointBtn');if(button)button.textContent=train?'Velja lestarstöð':bus?'Velja rútustöð / stoppistöð':ferry?'Velja höfn / bryggju':'Líma / velja á korti';
+  const maps=$(field+'MapsOpen');if(maps)maps.textContent=train?'Google Maps\u00a0↗':'Opna í Google Maps ↗';
   const cityButton=$(field+'CityBtn');if(cityButton&&['train','ferry','bus','transfer'].includes(cat)){const context=transportEndpointContext(field.startsWith('return')?'routeReturn':'routeOut',origin?'Origin':'Destination');cityButton.classList.toggle('hidden',!!context?.stop)}
  }
 }
