@@ -5,7 +5,7 @@
  const label=mode=>normalize(mode)==='driving'?'Í bíl':'Gangandi';
  function mode(item,role='outbound'){const m=item?.metadata||{},leg=role.startsWith('return')?'return':'outbound';const saved=m.navigation_modes?.[role];return ['walking','driving'].includes(saved)?saved:normalize((role==='rental_return')?null:m.departure_plans?.[leg]?.mode)}
  function patch(metadata,role,value){if(!roles.includes(role)||!['walking','driving'].includes(value))throw Error('Ógildur ferðamáti.');const m={...(metadata||{}),navigation_modes:{...(metadata?.navigation_modes||{}),[role]:value}};if(['outbound','return'].includes(role)&&!['walking','driving'].includes(metadata?.navigation_modes?.[role+'_arrival']))m.navigation_modes[role+'_arrival']=mode({metadata},role+'_arrival');if(['outbound','return'].includes(role)&&m.departure_plans?.[role])m.departure_plans={...m.departure_plans,[role]:{...m.departure_plans[role],mode:value}};return m}
- function query(place,label=''){const lat=place?.latitude,lng=place?.longitude;if(lat!=null&&lng!=null&&Number.isFinite(Number(lat))&&Number.isFinite(Number(lng))&&Math.abs(+lat)<=90&&Math.abs(+lng)<=180)return lat+','+lng;return place?.address||place?.label||place?.name||label||''}
+ function query(place,label=''){const lat=place?.latitude,lng=place?.longitude;if(lat!=null&&lng!=null&&lat!==''&&lng!==''&&Number.isFinite(Number(lat))&&Number.isFinite(Number(lng))&&Math.abs(+lat)<=90&&Math.abs(+lng)<=180)return lat+','+lng;return place?.address||place?.label||place?.name||label||''}
  function url(destination,origin='',value='walking'){if(!destination)return '';const q=new URLSearchParams({api:'1',destination:String(destination),travelmode:normalize(value),dir_action:'navigate'});if(origin)q.set('origin',String(origin));return 'https://www.google.com/maps/dir/?'+q.toString()}
  function fromLink(raw){try{const u=new URL(raw);if(u.protocol!=='https:'||!/(^|\.)google\.[a-z.]+$/.test(u.hostname))return '';return u.searchParams.get('destination')||u.searchParams.get('query')||''}catch{return ''}}
 
@@ -18,12 +18,22 @@
   // Keep legacy origin metadata intact, but never apply a hotel/current override here.
   if(['flight','train','ferry','bus','transfer'].includes(item?.category)&&['outbound_arrival','return_arrival'].includes(role))return {explicit:false,query:'',label:'',blocked:false};
   const spec=item?.metadata?.navigation_origins?.[role],leg=role==='return'?'return':'outbound',plan=['outbound','return'].includes(role)?item?.metadata?.departure_plans?.[leg]:null;
+  if(spec?.type==='place'){
+   const place=spec.place,point=query(place);
+   return {explicit:true,query:point,label:place?.label||'Handvalið upphaf',blocked:!point};
+  }
+  if(item?.category==='lodging'&&spec?.type==='arrival'){
+   const source=items.find(candidate=>candidate.id===spec.item_id),field=spec.leg+'_to',arrivalRole=spec.leg+'_arrival';
+   const metadata=source?.metadata||{},place=metadata.route_places?.[field],point=place&&query(place);
+   const valid=source&&source.status!=='cancelled'&&metadata[spec.leg+'_arrival_date']===item.local_date&&eventStop(source,arrivalRole)===item.stop_id&&place?.latitude!=null&&place?.longitude!=null&&(!spec.query||spec.query===point);
+   return {explicit:true,query:valid?point:'',label:place?.label||place?.name||'Valinn komustaður',blocked:!valid};
+  }
   if(spec?.type==='current')return {explicit:true,query:'',label:'Núverandi staðsetning',blocked:false};
   const legacyId=plan?.origin_place?.source_item_id,legacySource=legacyId&&items.find(i=>i.id===legacyId);const hotelId=spec?.type==='hotel'?spec.item_id:!spec&&legacyId&&(legacySource?.category==='lodging'||!legacySource&&!plan.origin_place.route_role)?legacyId:null;
   if(hotelId){const hotel=eligibleHotels(item,role,items,usable).find(h=>h.id===hotelId),point=hotel&&hotelQuery(hotel);if(!hotel||!point)return {explicit:true,query:'',label:hotel?.title||'Valin gisting',blocked:true};return {explicit:true,query:point,label:hotel.title,blocked:false}}
   if(spec)return {explicit:true,query:'',label:'Upphafsstaður þarf yfirferð',blocked:true};
   if(plan?.origin)return {explicit:true,query:query(plan.origin_place,plan.origin),label:plan.origin,blocked:false};
-  return {explicit:false,query:'',label:'',blocked:false};
+  return {explicit:false,query:'',label:'Veldu upphaf leiðsagnar',blocked:true};
  }
  function lodgingLocation(item,stops=[]){if(item?.category!=='lodging')return '';const stop=stops.find(s=>s.id===item.stop_id);if(!stop?.name)return '';const code=String(stop.country_code||'').toUpperCase(),flag=/^[A-Z]{2}$/.test(code)?Array.from(code,c=>String.fromCodePoint(c.charCodeAt(0)+127397)).join(''):'';return [flag,stop.name].filter(Boolean).join(' ')}
 
