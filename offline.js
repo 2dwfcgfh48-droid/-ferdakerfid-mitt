@@ -1,4 +1,35 @@
 'use strict';
+// Keep destination presentation available when a deployment serves the previous helper.
+// This supplies read-only labels only; navigation, booking data and persistence stay untouched.
+(function ensureBookingDestinationDisplay(){
+ // Presentation only: resolve registered stop IDs, never infer a city/country from a label.
+ function stopLocation(stop){if(!stop?.name)return '';const code=String(stop.country_code||'').toUpperCase(),flag=/^[A-Z]{2}$/.test(code)?Array.from(code,c=>String.fromCodePoint(c.charCodeAt(0)+127397)).join(''):'';return [flag,stop.name].filter(Boolean).join(' ')}
+ function destinationId(item,role='outbound'){
+  const m=item?.metadata||{},transport=['flight','train','ferry','bus','transfer'].includes(item?.category);
+  if(!item)return null;
+  const ownStop=item.stop_id||(item.category==='lodging'?m.lodging_place?.source_stop_id:null)||m.place?.source_stop_id||null;
+  if(role==='rental_return'||m._rental_event==='rental_return')return m.rental_car?.return_same_place===true?ownStop:m.rental_car?.return_place?.source_stop_id||null;
+  if(!transport)return ownStop;
+  const field=['outbound_from','outbound_to','return_from','return_to'].includes(role)?role:role.startsWith('return')?'return_to':'outbound_to';
+  const key=['outbound_from','return_to'].includes(field)?'from_stop_id':'to_stop_id';
+  return m.route_places?.[field]?.source_stop_id||m.route_plan?.[key]||(field==='return_to'?m.day_trip?.base_stop_id:null)||(!m.route_plan&&!m.day_trip&&field==='outbound_to'?item.stop_id:null)||null;
+ }
+ function bookingLocation(item,stops=[],role='all'){
+  const m=item?.metadata||{},transport=['flight','train','ferry','bus','transfer'].includes(item?.category),type=m.transport_trip_type||m.flight_trip_type;
+  const location=r=>stopLocation(stops.find(s=>s.id===destinationId(item,r)));
+  if(role!=='all'||!transport||type!=='round_trip')return location(role==='all'?'outbound':role);
+  const out=location('outbound'),back=location('return');
+  if(out&&back&&destinationId(item,'outbound')===destinationId(item,'return'))return out;
+  return [out?'Útleið: '+out:'',back?'Heimleið: '+back:''].filter(Boolean).join(' · ');
+ }
+ function bookingName(item,stops=[],role='all'){return [bookingLocation(item,stops,role),item?.title].filter(Boolean).join(' · ')}
+ function lodgingLocation(item,stops=[]){return item?.category==='lodging'?bookingLocation(item,stops):''}
+
+ const display={stopLocation,destinationId,bookingLocation,bookingName};
+ globalThis.TravelNavigation??={};
+ for(const [name,fn]of Object.entries(display))if(typeof globalThis.TravelNavigation[name]!=='function')globalThis.TravelNavigation[name]=fn;
+})();
+
 const byId=id=>document.getElementById(id);
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
