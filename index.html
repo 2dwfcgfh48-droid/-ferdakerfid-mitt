@@ -536,6 +536,29 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 }
 #itemModal.train-station-actions .transport-connection .departure-actions>a{flex:1 1 100%}
 #itemModal.train-station-actions [data-transport-origin]>a[id$="OriginRoute"]{margin-top:8px}
+#itemModal.aligned-transport-actions .booking-station-grid>.field{
+ display:flex;flex-flow:row wrap;align-items:stretch;gap:8px;
+}
+#itemModal.aligned-transport-actions .booking-station-grid>.field>:not(.btn){flex:0 0 100%;min-width:0}
+#itemModal.aligned-transport-actions :is(.booking-station-grid>.field,.transport-connection,[data-transport-origin]) .btn:not(.hidden){
+ display:inline-flex;align-items:center;justify-content:center;
+ box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;
+ margin:0;padding:8px 10px;font-size:max(12px,.875rem);
+ white-space:normal;overflow-wrap:anywhere;text-align:center;
+}
+#itemModal.aligned-transport-actions .booking-station-grid>.field>.btn[id$="CityBtn"]{flex:1 1 100%}
+#itemModal.aligned-transport-actions .booking-station-grid>.field>.btn:is([id$="PointBtn"],[id$="MapsOpen"]){
+ flex:1 0 auto;overflow-wrap:normal;
+}
+#itemModal.aligned-transport-actions :is(.transport-connection,[data-transport-origin]) .departure-actions{
+ flex-flow:row wrap;align-items:stretch;gap:8px;
+}
+#itemModal.aligned-transport-actions .transport-connection .departure-actions>a{flex:1 1 100%}
+#itemModal.aligned-transport-actions [data-transport-origin]>a[id$="OriginRoute"]{margin-top:8px}
+#itemModal.aligned-transport-actions :is(#bookingLocationField,#rentalReturnPlaceFields)>.departure-actions{display:flex;flex-flow:row wrap;align-items:stretch;gap:8px}
+#itemModal.aligned-transport-actions :is(#bookingLocationField,#rentalReturnPlaceFields)>.departure-actions>.btn:not(.hidden){display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;margin:0;padding:8px 10px;font-size:max(12px,.875rem);white-space:normal;overflow-wrap:anywhere;text-align:center;flex:1 0 auto}
+#itemModal.aligned-transport-actions #itemGoogleMapsOpen{overflow-wrap:normal}
+#itemModal.aligned-transport-actions #transportCityHelp>.shared-help-copy{display:none}
 #itemModal.compact-booking-footer #itemDialogActions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:8px;padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
 #itemModal.compact-booking-footer #itemDialogActions>.btn{width:100%;min-height:44px;padding:8px 10px;margin:0}
 #itemModal.compact-booking-footer .dialog{scroll-padding-top:14px;scroll-padding-bottom:calc(var(--booking-footer-height,5rem) + 1rem)}
@@ -3050,6 +3073,35 @@ function transportEndpointContext(prefix,role='Origin'){
  const date=$(dateId).value||$(ret?'returnFlightDate':'outboundDepartureDate').value||null,stopPoint=stop&&mapCoordinate(stop.latitude,stop.longitude);
  return {date,stop,stopPoint,hotel:null,hotelPoint:null,route:true,origin,description:(origin?'Brottfararstaður':'Komustaður')+(stop?' · '+stop.name:'')+(date?' · '+fmtDate(date):'')+'. Veldu nákvæma stöð eða stað samkvæmt bókuninni.'};
 }
+// Presentation scoped to the five comparison categories. Train/lodging remain the references.
+function paintAlignedTransportPresentation(category){
+ const targets=['ferry','bus','transfer','flight','rental_car'];
+ const active=targets.includes(category),modal=$('itemModal');
+ modal.classList.toggle('aligned-transport-actions',active);
+ modal.querySelectorAll('.transport-standard-help').forEach(e=>e.remove());
+ const airportHelp=$('airportSearchHelp')?.querySelector('summary');
+ if(airportHelp)airportHelp.textContent=active&&category==='flight'?'Flugvöllur og flugvallarkóði':'Skýring';
+ $('rentalReturnMap').textContent=active&&category==='rental_car'?'Velja skilastað':'Líma / velja á korti';
+ $('rentalReturnClear').textContent=active&&category==='rental_car'?'Hreinsa':'Hreinsa stað';
+ if(!active)return;
+ const config={
+  ferry:{city:'Borgarpunktur og höfn / bryggja',point:'höfn / bryggju',title:'Hafnir, tímar og miðar',instructions:'Skráðu hafnir / bryggjur og tíma þegar þau liggja fyrir. Tengdu miðann undir „Miðar og bókun“.',example:'t.d. bókunarstaðfesting í tölvupósti eða appi'},
+  bus:{city:'Borgarpunktur og rútustöð',point:'rútustöð',title:'Stöðvar, tímar og miðar',instructions:'Skráðu stöðvar og tíma þegar þeir liggja fyrir. Tengdu miðann undir „Miðar og bókun“.',example:'t.d. bókunarstaðfesting í tölvupósti eða appi'},
+  transfer:{city:'Borgarpunktur og nákvæmur staður',point:'nákvæman stað',title:'Staðir, tímar og bókun',instructions:'Skráðu sóttstað, komustað og tíma þegar þau liggja fyrir. Tengdu staðfestinguna undir „Miðar og bókun“.',example:'t.d. staðfesting bílþjónustu'},
+  flight:{title:'Flugvellir, tímar og miðar',instructions:'Veldu flugvelli með flugvallarkóða. Tengdu miðann undir „Miðar og bókun“.'}
+ }[category];
+ const add=(host,text)=>{if(!host)return;const e=document.createElement('div');e.className='notice transport-standard-help';e.textContent=text;const shared=host.querySelector('.shared-help-copy');shared?host.insertBefore(e,shared):host.append(e)};
+ if(config){
+  if(config.city){$('transportCityHelp').querySelector('summary').textContent=config.city;add($('transportCityHelp'),'Borgarpunktur sýnir borgina á korti. Veldu '+config.point+' fyrir nákvæman punkt.')}
+  $('stationTicketHelpTitle').textContent=config.title;
+  add($('stationTicketHelpTitle').parentElement,config.instructions);
+  if(config.example)$('transportConfirmationNote').placeholder=config.example;
+ }
+ for(const field of ['outboundFrom','outboundTo','returnFrom','returnTo']){
+  const maps=$(field+'MapsOpen');if(maps)maps.textContent='Google Maps\u00a0↗';
+  if(category==='transfer')$(field+'PointBtn').textContent='Velja stað';
+ }
+}
 function updateTransportEndpointLabels(){
  const cat=$('itemCategory').value,train=cat==='train',bus=cat==='bus',ferry=cat==='ferry';
  $('itemModal').classList.toggle('train-station-actions',train);
@@ -3063,6 +3115,7 @@ function updateTransportEndpointLabels(){
   const maps=$(field+'MapsOpen');if(maps)maps.textContent=train?'Google Maps\u00a0↗':'Opna í Google Maps ↗';
   const cityButton=$(field+'CityBtn');if(cityButton&&['train','ferry','bus','transfer'].includes(cat)){const context=transportEndpointContext(field.startsWith('return')?'routeReturn':'routeOut',origin?'Origin':'Destination');cityButton.classList.toggle('hidden',!!context?.stop)}
  }
+ paintAlignedTransportPresentation(cat);
 }
 function departureMapContext(prefix,role='Origin'){const journey=role==='Origin'&&journeyDepartureHotelContext(prefix);if(journey)return journey;const endpoint=transportEndpointContext(prefix,role);if(endpoint)return endpoint;const date=departureMapDate(prefix),datedStop=date?stopForDate(date):null,selectedStop=prefix==='rentalReturn'?datedStop:state.stops.find(s=>s.id===$('itemStop').value);const hotels=(state.items||[]).filter(x=>x.category==='lodging'&&x.id!==state.editingItemId&&date&&x.local_date&&x.local_date<=date&&(x.end_local_date?date<x.end_local_date:date===x.local_date));const targetStop=selectedStop||datedStop;const candidates=targetStop?hotels.filter(x=>x.stop_id===targetStop.id):hotels;const activeCandidates=candidates.filter(x=>lodgingUsed(x)),hotel=activeCandidates.length===1?activeCandidates[0]:null,hotelStop=hotel&&state.stops.find(s=>s.id===hotel.stop_id),selectedCovers=selectedStop&&(!date||((!selectedStop.start_date||selectedStop.start_date<=date)&&(!selectedStop.end_date||selectedStop.end_date>=date))),stop=selectedStop||hotelStop||datedStop,hotelPoint=hotel&&lodgingMapPoint(hotel),stopPoint=stop&&mapCoordinate(stop.latitude,stop.longitude);const day=date?fmtDate(date):'Dagsetning ekki skráð';let description=day+' · ';if(hotelPoint)description+='Kort opnast við '+hotel.title+'. Hótelið er merkt með brúnu merki.';else if(hotel&&stopPoint)description+=hotel.title+' · nákvæm staðsetning ekki vistuð. Kort opnast yfir '+stop.name+'. Veldu gististað á korti í gistibókuninni til að sýna hann hér.';else if(activeCandidates.length>1)description+='Fleiri gistibókanir eru í notkun. Veldu upphafsstað úr vistuðum stöðum.';else if(stopPoint)description+='Kort opnast yfir '+stop.name+'. Enginn gististaður með nákvæmum punkti fannst fyrir daginn.';else description+='Nákvæm staðsetning fyrir daginn vantar. Skráðu áfangastað eða gististað á korti.';return {date,hotel,hotelPoint,stop,stopPoint,description}}
 function departureSavedPlaces(){const result=[];for(const item of state.items||[]){if(!isTransportCategory(item.category))continue;const m=item.metadata||{},type=CATEGORIES.find(c=>c[0]===item.category),fields=[['outbound_from','Útleið · brottfararstaður',m.outbound_departure_date||item.local_date],['outbound_to','Útleið · komustaður',m.outbound_arrival_date||m.outbound_departure_date||item.local_date]];if((m.transport_trip_type||m.flight_trip_type)==='round_trip')fields.push(['return_from','Heimleið · brottfararstaður',m.return_date||m.return_flight_date],['return_to','Heimleið · komustaður',m.return_arrival_date||m.return_date||m.return_flight_date]);for(const [key,role,date]of fields){const clock=({outbound_from:m.outbound_departure_time||item.local_time,outbound_to:m.outbound_arrival_time,return_from:m.return_time||m.return_flight_time,return_to:m.return_arrival_time})[key]||'';if(item.category==='ferry'&&m.transport_trip_type==='excursion'&&key==='outbound_to')continue;const place=resolveTransportMapPlace(m[key],item.category,m.route_places?.[key]);if(!place)continue;result.push({category:item.category,source_item_id:item.id,route_role:key,event_date:date||null,event_time:clock||null,label:place.name,latitude:place.point[1],longitude:place.point[0],query:place.name,station_id:m.route_places?.[key]?.station_id||null,timezone:m.route_places?.[key]?.timezone||null,country_code:place.country||null,precision:place.precision,context:(type?type[1]+' ':'')+role,description:(type?type[1]+' '+type[2]+' · ':'')+role+(date?' · '+fmtDate(date):'')+(clock?' · kl. '+clock.slice(0,5)+' (staðartími)':' · klukka ekki skráð')+' · '+place.precision+(item.category==='flight'?' — yfirfarðu flugstöð / inngang':'')})}};for(const item of state.items||[]){if(item.id===state.editingItemId||(item.category==='lodging'&&!lodgingUsed(item)))continue;const stop=state.stops.find(s=>s.id===item.stop_id),point=mapCoordinate(item.latitude,item.longitude)||lodgingMapPoint(item),context=[stop?.name,state.trip?.location_name].filter(Boolean)[0]||'';if(!item.title||isTransportCategory(item.category)&&!point&&!item.address)continue;const type=CATEGORIES.find(c=>c[0]===item.category);result.push({category:item.category,source_item_id:item.id,label:item.title,latitude:point?.[1]??null,longitude:point?.[0]??null,query:[item.address||item.title,context].filter(Boolean).join(', '),precision:point?'Nákvæmur vistaður kortapunktur':item.address?'Vistað heimilisfang':'Heiti staðar',context:type?type[1]+' '+type[2]:'',description:(type?type[1]+' '+type[2]+' · ':'')+(point?'Nákvæmur vistaður kortapunktur':item.address?'Vistað heimilisfang — yfirfarðu í Google Maps':'Heiti staðar — yfirfarðu í Google Maps')})}for(const stop of state.stops||[]){const point=mapCoordinate(stop.latitude,stop.longitude);result.push({source_stop_id:stop.id,label:stop.name,latitude:point?.[1]??null,longitude:point?.[0]??null,query:stop.name,precision:point?'Punktur áfangastaðar — ekki nákvæmur staður':'Áfangastaður — nafnaleit',context:'Áfangastaður',description:point?'Punktur áfangastaðar — getur verið miðja borgar':'Áfangastaður — nafnaleit'})}return result.map(place=>{
@@ -3292,14 +3345,14 @@ function paintTransferLayout(){
 
 function updateTransportJourneyLayout(reset=false){
  const details=$('transportJourneyDetails'),summary=$('transportJourneySummary');if(!details||!summary)return;
- const category=$('itemCategory').value,transport=isTransportCategory(category),simple=isOpenTransport(),key=JSON.stringify([category,['transfer','bus','train'].includes(category)?'':$('itemStatus').value,state.editingItemId||'new']);
+ const category=$('itemCategory').value,transport=isTransportCategory(category),simple=isOpenTransport(),key=JSON.stringify([category,['transfer','bus','train','ferry'].includes(category)?'':$('itemStatus').value,state.editingItemId||'new']);
  details.classList.toggle('hidden',!transport);
  const labels={flight:'Flugvellir, tímar og gisting',train:'Stöðvar, tímar og gisting',bus:'Stoppistöðvar, tímar og gisting',ferry:'Hafnir, tímar og gisting',transfer:'Staðir, tímar og gisting'};
  summary.textContent=(transport?transportIcon(category)+' ':'')+(labels[category]||'Leið, tímar og gisting');
  if(reset||details.dataset.layoutKey!==key){
   details.dataset.layoutKey=key;
-  details.open=['transfer','bus','train'].includes(category)?false:transport&&(!simple||!!state.editingItemId||!!$('outboundDepartureDate').value||!!$('outboundDepartureTime').value);
-  if(simple||['transfer','bus','train'].includes(category))$('openJourneyFields').open=true;
+  details.open=['transfer','bus','train','ferry'].includes(category)?false:transport&&(!simple||!!state.editingItemId||!!$('outboundDepartureDate').value||!!$('outboundDepartureTime').value);
+  if(simple||['transfer','bus','train','ferry'].includes(category))$('openJourneyFields').open=true;
  }
  const hint=$('transportJourneySummaryHint');
  if(hint){const date=$('outboundDepartureDate').value,time=$('outboundDepartureTime').value;hint.textContent=[date?'Brottför '+fmtDate(date):'',time?'kl. '+time:''].filter(Boolean).join(' · ');hint.classList.toggle('hidden',!hint.textContent)}
