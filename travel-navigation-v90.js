@@ -35,10 +35,53 @@
   if(plan?.origin)return {explicit:true,query:query(plan.origin_place,plan.origin),label:plan.origin,blocked:false};
   return {explicit:false,query:'',label:'Veldu upphaf leiðsagnar',blocked:true};
  }
- function lodgingLocation(item,stops=[]){if(item?.category!=='lodging')return '';const stop=stops.find(s=>s.id===item.stop_id);if(!stop?.name)return '';const code=String(stop.country_code||'').toUpperCase(),flag=/^[A-Z]{2}$/.test(code)?Array.from(code,c=>String.fromCodePoint(c.charCodeAt(0)+127397)).join(''):'';return [flag,stop.name].filter(Boolean).join(' ')}
+ // Presentation only. Explicit IDs win; legacy endpoints require exact recorded names/codes and a recorded date.
+ function stopLocation(stop){if(!stop?.name)return '';const code=String(stop.country_code||'').toUpperCase(),flag=/^[A-Z]{2}$/.test(code)?Array.from(code,c=>String.fromCodePoint(c.charCodeAt(0)+127397)).join(''):'';return [flag,stop.name].filter(Boolean).join(' ')}
+ function destinationId(item,role='outbound'){
+  const m=item?.metadata||{},transport=['flight','train','ferry','bus','transfer'].includes(item?.category);
+  if(!item)return null;
+  const ownStop=item.stop_id||(item.category==='lodging'?m.lodging_place?.source_stop_id:null)||m.place?.source_stop_id||null;
+  if(role==='rental_return'||m._rental_event==='rental_return')return m.rental_car?.return_same_place===true?ownStop:m.rental_car?.return_place?.source_stop_id||null;
+  if(item.category==='day_trip'&&['return','return_arrival','return_to'].includes(role))return m.day_trip?.base_stop_id||m.route_plan?.from_stop_id||null;
+  if(!transport)return ownStop;
+  const field=['outbound_from','outbound_to','return_from','return_to'].includes(role)?role:role.startsWith('return')?'return_to':'outbound_to';
+  const key=['outbound_from','return_to'].includes(field)?'from_stop_id':'to_stop_id';
+  return m.route_places?.[field]?.source_stop_id||m.route_plan?.[key]||(field==='return_to'?m.day_trip?.base_stop_id:null)||(!m.route_plan&&!m.day_trip&&field==='outbound_to'?item.stop_id:null)||null;
+ }
+ function destinationStop(item,stops,role,catalog={}){
+  const id=destinationId(item,role);if(id)return stops.find(s=>s.id===id)||null;
+  if(!['flight','train','ferry','bus','transfer'].includes(item?.category))return null;
+  const m=item.metadata||{},field=['outbound_from','outbound_to','return_from','return_to'].includes(role)?role:role.startsWith('return')?'return_to':'outbound_to',p=m.route_places?.[field];
+  const date=({outbound_from:m.outbound_departure_date||item.local_date,outbound_to:m.outbound_arrival_date,return_from:m.return_date||m.return_flight_date,return_to:m.return_arrival_date})[field];
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(date||''))return null;
+  const key=v=>String(v||'').normalize('NFC').trim().toLocaleLowerCase(),raw=String(m[field]||p?.label||p?.name||'').trim(),rawCode=raw.toUpperCase(),code=catalog.airports?.[rawCode]?rawCode:catalog.icao?.[rawCode],airport=code&&catalog.airports?.[code];
+  const candidates=stops.filter(s=>s.start_date&&s.end_date&&s.start_date<=date&&date<=s.end_date&&(!p?.country_code||s.country_code===p.country_code)&&
+   (item.category==='flight'&&airport?s.country_code===airport[3]&&Object.entries(catalog.aliases||{}).some(([name,codes])=>key(name)===key(s.name)&&codes.includes(code)):key(raw)===key(s.name)));
+  return candidates.length===1?candidates[0]:null;
+ }
+ function bookingLocation(item,stops=[],role='all',catalog=globalThis.BookingDestinationCatalog||{}){
+  catalog=catalog||{};const m=item?.metadata||{},transport=['flight','train','ferry','bus','transfer'].includes(item?.category),type=m.transport_trip_type||m.flight_trip_type,dayTrip=transport&&!!m.day_trip||item?.category==='day_trip';
+  const field=r=>['outbound_from','outbound_to','return_from','return_to'].includes(r)?r:r.startsWith('return')?'return_to':'outbound_to';
+  const location=r=>{
+   const stop=destinationStop(item,stops,r,catalog);if(stop)return stopLocation(stop);
+   if(destinationId(item,r))return '';
+   const raw=String(m[field(r)]||'').trim().toUpperCase(),code=catalog.airports?.[raw]?raw:catalog.icao?.[raw],airport=item?.category==='flight'&&code&&catalog.airports?.[code];
+   if(airport)return stopLocation({name:airport[2],country_code:airport[3]});
+   if(dayTrip){const p=m.route_places?.[field(r)]||(!transport&&field(r)==='outbound_to'?m.place:null);return p?.label||p?.name||m[field(r)]||''}
+   return '';
+  };
+  const summary=role==='all'||dayTrip&&!['outbound_from','outbound_to','return_from','return_to'].includes(role);
+  if(!summary||(!transport&&!dayTrip)||(!dayTrip&&type!=='round_trip'))return location(role==='all'?'outbound':role);
+  const out=location('outbound'),back=location('return');
+  if(dayTrip)return 'Útleið: '+(out||'Óskráður komustaður')+' · Heimleið: '+(back||'Óskráður komustaður');
+  if(out&&back&&destinationId(item,'outbound')&&destinationId(item,'outbound')===destinationId(item,'return'))return out;
+  return [out?'Útleið: '+out:'',back?'Heimleið: '+back:''].filter(Boolean).join(' · ');
+ }
+ function bookingName(item,stops=[],role='all',catalog=globalThis.BookingDestinationCatalog||{}){return [bookingLocation(item,stops,role,catalog),item?.title].filter(Boolean).join(' · ')}
+ function lodgingLocation(item,stops=[]){return item?.category==='lodging'?bookingLocation(item,stops):''}
 
  const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
  function html({item,role='outbound',destination,origin='',title='Leiðsögn',selected,classes='btn small',originLabel=''}){const value=selected||mode(item,role),href=url(destination,origin,value);if(!href)return '';return '<span class="navigation-actions">'+(originLabel?'<small class="navigation-origin-info">Frá: '+esc(originLabel)+'</small>':'')+'<a data-departure-link data-navigation-link data-navigation-title="'+esc(title)+'" class="'+esc(classes)+'" href="'+esc(href)+'" target="_blank" rel="noopener noreferrer">'+esc(title)+' · '+label(value)+' ↗</a></span>'}
 
- root.TravelNavigation={roles,normalize,label,mode,patch,query,url,fromLink,html,eventDate,eventStop,eligibleHotels,hotelQuery,origin,lodgingLocation};
+ root.TravelNavigation={roles,normalize,label,mode,patch,query,url,fromLink,html,eventDate,eventStop,eligibleHotels,hotelQuery,origin,lodgingLocation,stopLocation,destinationId,bookingLocation,bookingName,destinationStop,bookingDestinationVersion:132};
 })(globalThis);
