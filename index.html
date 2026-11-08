@@ -559,6 +559,9 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #itemModal.aligned-transport-actions :is(#bookingLocationField,#rentalReturnPlaceFields)>.departure-actions>.btn:not(.hidden){display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;margin:0;padding:8px 10px;font-size:max(12px,.875rem);white-space:normal;overflow-wrap:anywhere;text-align:center;flex:1 0 auto}
 #itemModal.aligned-transport-actions #itemGoogleMapsOpen{overflow-wrap:normal}
 #itemModal.aligned-transport-actions #transportCityHelp>.shared-help-copy{display:none}
+.rental-reference-copy{display:none}
+#itemModal.rental-reference .rental-reference-copy{display:block}
+#itemModal.rental-reference .rental-reference-help>.shared-help-copy{display:none}
 .flight-reference-copy{display:none}
 #itemModal.flight-reference .flight-reference-copy{display:block}
 #itemModal.flight-reference .flight-reference-help>.shared-help-copy{display:none}
@@ -3153,11 +3156,22 @@ function paintFlightReferencePresentation(category){
  $('stationTicketHelpTitle').textContent=flightReferenceText('Stöðvar, tímar og miðar');
  for(const field of ['outboundFrom','outboundTo','returnFrom','returnTo'])$(field+'MapsOpen').textContent='Google Maps\u00a0↗';
 }
+function rentalReferenceText(text){return String(text).replaceAll('stöðu lestar','stöðu aksturs')}
+function paintRentalReferencePresentation(category){
+ const modal=$('itemModal'),active=category==='rental_car';modal.classList.toggle('rental-reference',active);
+ if(!active){modal.querySelectorAll('.rental-reference-copy').forEach(e=>e.remove());modal.querySelectorAll('.rental-reference-help').forEach(e=>e.classList.remove('rental-reference-help'));return}
+ for(const source of modal.querySelectorAll('.train-help-copy')){
+  if(!source.textContent.startsWith('Skráðu ferðatíma sjálf/ur')&&!source.textContent.startsWith('Skráðu afbókunarfrestinn'))continue;
+  source.parentElement.classList.add('rental-reference-help');let copy=source.nextElementSibling;
+  if(!copy?.classList.contains('rental-reference-copy')){copy=source.cloneNode(true);copy.classList.remove('train-help-copy');copy.classList.add('rental-reference-copy');const walker=document.createTreeWalker(copy,NodeFilter.SHOW_TEXT);while(walker.nextNode())walker.currentNode.nodeValue=rentalReferenceText(walker.currentNode.nodeValue);source.after(copy)}
+ }
+}
 function paintAlignedTransportPresentation(category){
  paintFerryReferencePresentation(category);
  paintBusReferencePresentation(category);
  paintTransferReferencePresentation(category);
  paintFlightReferencePresentation(category);
+ paintRentalReferencePresentation(category);
  const targets=['ferry','bus','transfer','flight','rental_car'];
  const active=targets.includes(category),modal=$('itemModal');
  modal.classList.toggle('aligned-transport-actions',active);
@@ -3165,7 +3179,7 @@ function paintAlignedTransportPresentation(category){
  const airportHelp=$('airportSearchHelp')?.querySelector('summary');
  if(airportHelp)airportHelp.textContent=active&&category==='flight'?'Flugvöllur og flugvallarkóði':'Skýring';
  $('rentalReturnMap').textContent=active&&category==='rental_car'?'Velja skilastað':'Líma / velja á korti';
- $('rentalReturnClear').textContent=active&&category==='rental_car'?'Hreinsa':'Hreinsa stað';
+ $('rentalReturnClear').textContent='Hreinsa stað';
  if(!active||['ferry','bus','transfer','flight'].includes(category))return;
  const config={
   flight:{title:'Flugvellir, tímar og miðar',instructions:'Veldu flugvelli með flugvallarkóða. Tengdu miðann undir „Miðar og bókun“.'}

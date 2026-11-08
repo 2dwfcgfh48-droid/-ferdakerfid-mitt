@@ -1,9 +1,10 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 08-11-2026 — afhending 138. RUT-01–09 og AKS-01–07 afgreidd samkvæmt staðfestingu notanda. FLU-01–05 útfært og sjálfvirkt prófað, bíður iPhone/Safari. BIL-01–03, SAM-P01–P04, UI-RUT-01 og UI-BAT-01 ólokin. SAM-00 opið.
+Gildandi skráningarstaða 08-11-2026 — afhending 139. SAM-00: 21/24 afgreidd, 3/24 ólokin. RUT, AKS og FLU afgreidd samkvæmt notanda. BIL-01–03 útfærð og sjálfvirkt prófuð, bíða notandastaðfestingar. SAM-P01–P04, UI-RUT-01 og UI-BAT-01 ólokin.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
-Öll 24 frávikin eru undir SAM-00, ásamt fjórum aðgreindum yfirferðar-/staðfestingarliðum og ítarlegu úttektinni sjálfri. Notandi staðfestir í AKS-framkvæmdarbeiðni að RUT-01–09 hafi verið afgreidd; það samþykki er skráð án þess að álykta um ný ótilgreind tækipróf. Notandi staðfestir nú í FLU-beiðni að AKS-01–07 séu einnig afgreidd. FLU-01–05 eru útfærð og sjálfvirkt prófuð í 138; iPhone/Safari-staðfesting þeirra bíður. BIL-01–03, SAM-P01–P04 og almennu UI-atriðin halda ólokinni stöðu.
+Öll 24 frávikin eru undir SAM-00, ásamt fjórum aðgreindum yfirferðar-/staðfestingarliðum og ítarlegu úttektinni sjálfri. Notandi staðfestir í AKS-framkvæmdarbeiðni að RUT-01–09 hafi verið afgreidd; það samþykki er skráð án þess að álykta um ný ótilgreind tækipróf. Notandi staðfestir nú í FLU-beiðni að AKS-01–07 séu einnig afgreidd. FLU-01–05 eru afgreidd samkvæmt ítarlegri staðfestingu notanda 08-11-2026 (sjá U138-FLU neðst). BIL-01–03 eru útfærð og sjálfvirkt prófuð í 139, en bíða notandastaðfestingar. SAM-P01–P04 og almennu UI-atriðin halda ólokinni stöðu. 21/24 frávik afgreidd og 3/24 enn ólokin.
+Gildandi Flugregla, áréttuð 08-11-2026: „Flugvellir, tímar og gisting“ byrjar OPINN og varðveitir handvirka opnunar-/lokunarstöðu eftir Ferðaveski. Fyrri tillaga um lokaða upphafsstöðu Flugs er röng, fellur úr gildi og má ekki framkvæma. Þetta breytir ekki samþykktum upphafsreglum annarra flokka.
 Við hverja afhendingu: uppfæra sömu auðkenni hér með útfærslu/útgáfu, raunverulegum sjálfvirkum prófum og aðgreindri iPhone-staðfestingu. Ólokin verkefni haldast þar til afgreiðsla og heimild hafa verið skráð. Afgreidd verkefni og niðurstöður þeirra haldast einnig í sögunni.
 SAM-00 má ekki loka fyrr en öll skráð atriði hafa verið afgreidd. Ekki hefja samræmingarbreytingar fyrr en þessi fulla skrá hefur verið varðveitt með öruggum hætti og næsta afmarkaða verkefni tekið fyrir samkvæmt fyrirmælum notanda.
 GitHub-vistun fyrri lotu mistókst með 403. Þessi skrá er tilbúin til vistunar í stað núverandi VERKEFNALISTI.txt; ekki fullyrt að hún sé komin á GitHub eða að nýr commit sé til. Ekki hefur verið reynt aftur að skrifa á GitHub í þessari skjalalotu.
@@ -698,7 +699,7 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 137: Transfer bætt við sama returnToBooking undanþágulista og train/ferry/bus. Fleiri valkostir og fyrirliggjandi áætlun halda handvalinni stöðu við Ferðaveski. Upphafsstaða eftir nýja opnun er óbreytt og aðrir valfrjálsir kaflar halda fyrri endurstillingu.
 Afgreiðslustaða: útfærsla og sjálfvirk prófun framkvæmd; raunverulegur iPhone/Safari og lifandi vistun óstaðfest. Sjá AFHENDING 137 neðst fyrir nákvæmt prófunarumfang.
 
-FLU-01 | Flug | Dagsferðarskýring | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Óstaðfest; bíður iPhone/Safari
+FLU-01 | Flug | Dagsferðarskýring | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Afgreitt 08-11-2026; textar/útlit yfirfarin á iPhone-myndum samkvæmt notanda
 Frávik: Eldri dagsferðartexti þar sem hann birtist; ekki útvíkka vistunarundanþágu Lesta yfir á Flug.
 Kóðastaður í grunni 134: day-trip help. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
@@ -706,7 +707,7 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 138: Dagsferðarskýring er orðrétt sama blokk og í Lestum. Flug-dagsferð, bækistöð, út-/heimleið og flugvallakóðar prófuð eftir vistun/enduropnun.
 Staða: kóðabreyting og sjálfvirk prófun framkvæmd; lifandi vistun/flugþjónusta og raunverulegur iPhone/Safari óstaðfest. Nánar í AFHENDING 138 neðst í þessari skrá.
 
-FLU-02 | Flug | Flugvellir, tímar og miðar | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Óstaðfest; bíður iPhone/Safari
+FLU-02 | Flug | Flugvellir, tímar og miðar | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Afgreitt 08-11-2026; textar/útlit yfirfarin á iPhone-myndum samkvæmt notanda
 Frávik: Sérstakur innskotstexti og eldri heildarverðsmálsgrein; aðgreina nauðsynlega flugvallarkóðaskýringu frá sameiginlegum texta.
 Kóðastaður í grunni 134: paintAlignedTransportPresentation / stationTicketHelpTitle. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
@@ -714,7 +715,7 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 138: Flugvellir, tímar og miðar nota Lesta-blokk með aðeins flugvöllum í stað stöðva. Ein heildarverðsskýring í sömu blokk; eldri innskot/tvítekning ekki sýnileg. Fyrirliggjandi Flugvöllur og flugvallarkóði hjálp er varðveitt og ekkert nýtt stöðvaval eða vistunarskilyrði bætt við.
 Staða: kóðabreyting og sjálfvirk prófun framkvæmd; lifandi vistun/flugþjónusta og raunverulegur iPhone/Safari óstaðfest. Nánar í AFHENDING 138 neðst í þessari skrá.
 
-FLU-03 | Flug | Ráðlagður brottfarartími | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Óstaðfest; bíður iPhone/Safari
+FLU-03 | Flug | Ráðlagður brottfarartími | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Afgreitt 08-11-2026; textar/útlit yfirfarin á iPhone-myndum samkvæmt notanda
 Frávik: Eldri texti vísar í stöðu lesta/ferja.
 Kóðastaður í grunni 134: shared-help-copy í brottfararáætlun. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
@@ -722,7 +723,7 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 138: Ráðlagður brottfarartími notar sömu Lesta-skýringu með stöðu flugs í stað stöðu lestar. Ferðatími, mætingarreglur og útreikningar óbreyttir.
 Staða: kóðabreyting og sjálfvirk prófun framkvæmd; lifandi vistun/flugþjónusta og raunverulegur iPhone/Safari óstaðfest. Nánar í AFHENDING 138 neðst í þessari skrá.
 
-FLU-04 | Flug | Afbókunarskýring | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Óstaðfest; bíður iPhone/Safari
+FLU-04 | Flug | Afbókunarskýring | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Afgreitt 08-11-2026; textar/útlit yfirfarin á iPhone-myndum samkvæmt notanda
 Frávik: Eldri skýring án samsvarandi vistunarútskýringar Lesta.
 Kóðastaður í grunni 134: cancellation shared-help-copy. Greiningarstaðfesting: Kóðalesið; skilyrt birting; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
@@ -730,7 +731,7 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 138: Afbókunarskýring er orðrétt sama Lesta-blokk, þar með talin vistun breytts frests fyrir Vista og bæta í dagatal. Engin breyting á afbókun eða vistunarföllum.
 Staða: kóðabreyting og sjálfvirk prófun framkvæmd; lifandi vistun/flugþjónusta og raunverulegur iPhone/Safari óstaðfest. Nánar í AFHENDING 138 neðst í þessari skrá.
 
-FLU-05 | Flug | Aðalkafli eftir ferðaveski | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Óstaðfest; bíður iPhone/Safari
+FLU-05 | Flug | Aðalkafli eftir ferðaveski | Útfært í 138 | 20 viðmiðs-/flugpróf, 13 flæðispróf, 82 fellistöðu-/vistunarpróf og 33 leiðsagnarpróf staðin | Afgreitt 08-11-2026; notandi staðfestir opna upphafsstöðu og handval eftir Ferðaveski
 Frávik: Opinn Flugvellir, tímar og gisting fellur saman við endurkomu. Varðveita eigin upphafsreglu Flugs.
 Kóðastaður í grunni 134: returnToBooking. Greiningarstaðfesting: Endurgert í Chromium; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
@@ -738,23 +739,29 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 138: Flight bætt við fyrirliggjandi train/ferry/bus/transfer varðveislu aðalkafla í returnToBooking. Notandaval opins/lokaðs aðalkafla helst eftir Ferðaveski. Sérstök upphafsstaða Flugs og lokun annarra valfrjálsra kafla eru óbreytt.
 Staða: kóðabreyting og sjálfvirk prófun framkvæmd; lifandi vistun/flugþjónusta og raunverulegur iPhone/Safari óstaðfest. Nánar í AFHENDING 138 neðst í þessari skrá.
 
-BIL-01 | Bílaleiga | Ráðlagður brottfarartími | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+BIL-01 | Bílaleiga | Ráðlagður brottfarartími | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Óstaðfest; bíður notanda á iPhone
 Frávik: Eldri texti vísar í stöðu lesta/ferja.
 Kóðastaður í grunni 134: shared-help-copy í brottfararáætlun. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 139: Ráðlagður brottfarartími birtir sömu Lesta-blokk, með stöðu aksturs í stað stöðu lestar. Enginn nýr sameiginlegur texti saminn; ferðamínútur, mætingarreglur og útreikningar óbreyttir.
+Afgreiðsla: útfærsla og raunveruleg sjálfvirk prófun framkvæmd; ekki merkt lokað eða notandastaðfest. Nánar í AFHENDING 139 neðst.
 
-BIL-02 | Bílaleiga | Afbókunarskýring | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+BIL-02 | Bílaleiga | Afbókunarskýring | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Óstaðfest; bíður notanda á iPhone
 Frávik: Eldri skýring án samsvarandi vistunarútskýringar Lesta.
 Kóðastaður í grunni 134: cancellation shared-help-copy. Greiningarstaðfesting: Kóðalesið; skilyrt birting; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 139: Afbókunarskýring er orðrétt sama Lesta-blokk, þar með talin skýring um vistun breytts frests fyrir Vista og bæta í dagatal. Afbókunargögn, leiðandi dagsetningar og vistunarföll óbreytt.
+Afgreiðsla: útfærsla og raunveruleg sjálfvirk prófun framkvæmd; ekki merkt lokað eða notandastaðfest. Nánar í AFHENDING 139 neðst.
 
-BIL-03 | Bílaleiga | Hreinsun skilastaðar | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+BIL-03 | Bílaleiga | Hreinsun skilastaðar | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Óstaðfest; bíður notanda á iPhone
 Frávik: Hreinsa í stað Hreinsa stað við sambærilegan nákvæman punkt; ekki breyta skila-/afhendingarflæði.
 Kóðastaður í grunni 134: paintAlignedTransportPresentation / rentalReturnClear. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 139: Hreinsunarhnappur við skilastað heitir Hreinsa stað, orðrétt eins og samsvarandi Lesta-aðgerð. Fyrri hreinsunarhandler óbreyttur. Prófað að hreinsun skilastaðar yfirskrifar hvorki afhendingarstað, dagsetningar, ferðamáta né vistaða færslu ef hætt er við.
+Afgreiðsla: útfærsla og raunveruleg sjálfvirk prófun framkvæmd; ekki merkt lokað eða notandastaðfest. Nánar í AFHENDING 139 neðst.
 
 ÓLOKIN YFIRFERÐ OG RAUNSTAÐFESTING — ekki sjálfkrafa kóðagallar
 
@@ -1610,3 +1617,189 @@ PASS All category navigation panels fit 393px
 PASS All category navigation panels fit 430px
 PASS No uncaught browser errors
 {"total":33,"failures":[]}
+
+
+U138-FLU — NOTANDASTAÐFESTING OG LEIÐRÉTTING Á TILLÖGU, 08-11-2026
+Notandi óskar sérstaklega eftir að FLU-01–05 séu skráð afgreidd samkvæmt staðfestingum 08-11-2026. FLU-01–04: textar og útlit yfirfarin á iPhone-myndum samkvæmt lýsingu notanda; sjálfvirk próf 138 varðveitt óbreytt. FLU-05: notandi staðfestir að Flugvellir, tímar og gisting byrjar opinn og varðveitir handvirka opnunar- EÐA lokunarstöðu eftir endurkomu úr Ferðaveski.
+Fyrri tillaga um að Flugkaflinn byrji lokaður var röng og skal EKKI framkvæmd. Núverandi kóði hefur rétta opna upphafsstöðu; engin breyting á þeirri upphafsreglu gerð í 139. Þessi skýra nýrri ákvörðun gengur framar andstæðri tillögu en breytir ekki sérreglum Lesta, Rúta, Báta eða Aksturs.
+Staðfestingin er afmörkuð við framangreinda texta/birtingu og fellistöðu. Hún er ekki sjálfkrafa staðfesting á lifandi flugþjónustu, öllum gögnum eða ótilgreindum tækja-/vistunarferlum. Eldri prófunartakmarkanir haldast.
+SAM-00 staða eftir þessa afgreiðslu: 21/24 afgreidd; BIL-01–03 eru þrjú ólokin frávik þar til viðeigandi yfirferð og notandastaðfesting liggja fyrir. SAM-P01–P04 og almenn verkefni eru aðgreind frá þessari 24 frávika talningu og halda fyrri stöðu.
+
+AFHENDING 139 — BIL-01–03, 08-11-2026
+Heimild: skýr framkvæmdarbeiðni notanda um þrjú atriði Bílaleigu, samhliða framangreindri afgreiðslu Flugs. Ekkert annað útlit eða sérflæði tekið fyrir.
+Staða BIL-01–03: ÚTFÆRT OG SJÁLFVIRKT PRÓFAÐ; bíður notandastaðfestingar eftir því sem við á. SAM-00 OPIÐ, 21/24 afgreidd og 3/24 ólokin. UI-RUT-01 og UI-BAT-01 áfram ólokin til síðari lagfæringar.
+Breyttar afhendingarskrár frá 138: index.html og fullur VERKEFNALISTI.txt. Engar aðrar appskrár, bakendi eða notandagögn breytt. Engin GitHub-upphleðsla eða nýr commit framkvæmdur. Nýjasta aðalverkefnaskrá 138 notuð sem grunnur; eldri Sources-verkefnalisti ekki látinn yfirskrifa nýrri verkefnasögu.
+Útfærsla: tvær raunverulega sambærilegar Lesta-skýringablokkir birtar í Bílaleigu, ráðlagður brottfarartími og afbókun. Aðeins stöðu lestar skipt í stöðu aksturs. Hreinsa stað við skilastað samsvarar heiti Lesta; sami handler hreinsar sama gildi og áður. Ekkert lestarsértækt dagaflæði, stöðvaval eða leiðarlíkan afritað í Bílaleigu. Afhending/skil eru áfram tveir atburðir sömu bókunar með einum kostnaði.
+
+RAUNVERULEGAR PRÓFANIR 139
+20/20 ný Bílaleigu-/viðmiðspróf í Chromium: tvær skýringablokkir bornar sem HTML við raunverulegar Lesta-blokkir með einu orðaskipti; Hreinsa stað borið orðrétt við Lesta-hnapp. Eldri málsgreinar faldar og engin tvöföldun við endurteikningu. Ný Bílaleiga vistuð og opnuð með sama auðkenni, afhendingar-/skilastað, skildegi/-tíma og sjálfstæðri leiðsögn/ferðamáta. Hreinsun skilastaðar prófuð með raunverulegum hnappi: afhendingarstaður, dagar/tímar og ferðamátar óbreyttir; skilaleiðsögn lokast þar til staður hefur verið valinn; vistuð hreinsun helst við enduropnun. Sama staðar val notar áfram afhendingarstað sem skilastað og heldur tveimur atburðum einnar bókunar. Afbókunarfrestur/-tími varðveitt við vistun/enduropnun. Hætta við eftir hreinsun breytir ekki vistaðri færslu. 15.000 ISK reikningur, greiðslustaða og tengdur miði varðveitt án tvítalningar eftir hreinsun/vistun. Aðrir flokkar fá ekki Bílaleigu-textaafrit. 320/393/430 px með 20 px grunnletri án mælds yfirflæðis á yfirförnum reitum/hnöppum; 393 px mynd skoðuð.
+13/13 fyrirliggjandi Bílaleiguflæðispróf endurkeyrð: hnappastílar, sameiginleg leiðsagnarhjálp/röðun, sjálfstæð staðaskoðun/leiðsögn, raunverulegt upphaf, Gangandi/Í bíl, Maps-slóð í prufuflipa, ný/vistuð/bókuð/ófullgerð færsla, sama auðkenni, breyting/Hætta við, handvalinn skilastaður og sjálfstætt upphaf/ferðamáti við skil.
+33/33 sameiginleg leiðsagnar-/varðveislupróf endurkeyrð með hermdum skrifum: meðal annars afhending/skil með sjálfstæðum punktum og leiðsögn, engin yfirskrift hótelpunkta og varðveisla vistaðs upphafs.
+82/82 fellistöðu-/vistunarpróf úr 138 endurkeyrð á 139: varðveisla Flugkafla eftir Ferðaveski, opin upphafsstaða Flugs, nýjar/vistaðar opnar/vistaðar bókaðar færslur og varðveisla Aksturs/Rúta/Lesta/Báta. Flight-regla um nauðsynlega leiðarenda óbreytt. Tækilega prófað bæði opið og lokað handval aðalkafla.
+Verndaðar birtingar samanborið við 138: Lestir, Gisting, Rútur, Bátar/ferjur, Akstur, Flug og Vistaðir staðir hafa jöfn sýnileg DOM-tré, reitagildi, reiknaða stíla og PNG-myndir í yfirförnum 393 px birtingum. Ekki fullyrðing um prófun allra gagna eða tækja.
+Kóðamörk: eitt fyrirliggjandi framsetningarfall, paintAlignedTransportPresentation, breytist; tveimur Bílaleigu-textahjálpurum bætt við. 865 eldri aðalföll óbreytt. Form-HTML óbreytt; ný CSS afmörkuð við Bílaleigu-skýringar. returnToBooking, upphafsreglur, flug-/samgönguflæði, RentalCars-gagnalíkan, hreinsunarhandler, staðir/dagar, leiðsagnarútreikningar og vistunar-/kostnaðarföll bætajöfn 138. Allar aðrar appskrár óbreyttar.
+
+TAKMÖRK OG AFHENDING
+Vistun, gengi og ytri þjónustur hermdar; engin raungagnaskrif. Google Maps-slóð og prufuflipi prófuð en ekki raunveruleg leiðarteikning í Maps-appi. Raunverulegur iPhone/Safari, Dynamic Type og lifandi vistun Bílaleigu eru óstaðfest. Sjálfvirk próf eru ekki notandastaðfesting á BIL-01–03; SAM-00 ekki lokað.
+Frá 138: skipta út index.html og varðveita þennan fulla VERKEFNALISTI.txt með kóðanum; endurhlaða appi eftir upphleðslu. Afturköllun: index.html úr varðveittri 138, halda nýrri verkefnalista og skrá afturköllun undir sömu BIL-auðkennum.
+Ólokið: BIL-01–03 bíða viðeigandi notandastaðfestingar; SAM-P01–P04, UI-RUT-01, UI-BAT-01 og öll eldri ólokin verkefni halda gildi. Engin skráning um að tvö almennu útlitsatriðin hafi verið lagfærð.
+
+PRÓFAÚTTAK 139 — BÍLALEIGA OG LESTAVIÐMIÐ
+PASS Rental help block 0 matches Train with only car-travel noun
+PASS Rental help block 1 matches Train with only car-travel noun
+PASS Return-place Clear label exactly matches Train Clear-place action
+PASS Only two applicable blocks copied; original paragraphs hidden; redraw does not duplicate
+PASS New rental saves pickup/return and independent guidance; reopen same ID
+PASS Clear return place changes neither pickup, dates nor modes; saved clear remains after reopening
+PASS Same pickup place continues to provide the return destination without duplicate booking
+PASS Cancellation deadline data survive new reference wording and save/reopen
+PASS Cancel return-place clearing leaves saved booking untouched
+PASS Rental return clearing preserves invoice amount/payment, ticket and one-booking/two-events structure
+PASS Rental copies removed on switching to train
+PASS Rental copies removed on switching to ferry
+PASS Rental copies removed on switching to bus
+PASS Rental copies removed on switching to transfer
+PASS Rental copies removed on switching to flight
+PASS Rental copies removed on switching to lodging
+PASS Rental controls fit 320px with larger font
+PASS Rental controls fit 393px with larger font
+PASS Rental controls fit 430px with larger font
+PASS No browser errors
+{"total":20,"failures":[]}
+
+BÍLALEIGUFLÆÐI
+PASS rental_car uses Train point-button size/spacing at all applicable endpoints
+PASS rental_car keeps the common navigation controls and exact explanation
+PASS rental_car point Maps and directions use independent correct endpoints
+PASS rental_car navigation button opens the exact Maps URL in a browser tab
+PASS rental_car saves, closes, reopens and edits same record without duplication
+PASS rental_car Cancel and unconfirmed point selection leave saved data unchanged
+PASS rental_car booked record retains confirmation, times and endpoints after reopening
+PASS rental_car minimal unfinished booking keeps baseline save requirements
+PASS Rental pickup and return keep separate points, origin and mode
+PASS rental_car point buttons fit 320px and larger text
+PASS rental_car point buttons fit 393px and larger text
+PASS rental_car point buttons fit 430px and larger text
+PASS rental_car no uncaught browser errors
+{"total":13,"failures":[]}
+
+LEIÐSÖGN OG VISTUN
+PASS flight independent point, origin, mode, save and reopen
+PASS lodging independent point, origin, mode, save and reopen
+PASS train independent point, origin, mode, save and reopen
+PASS ferry independent point, origin, mode, save and reopen
+PASS bus independent point, origin, mode, save and reopen
+PASS transfer independent point, origin, mode, save and reopen
+PASS rental_car independent point, origin, mode, save and reopen
+PASS bike_tour independent point, origin, mode, save and reopen
+PASS walking_tour independent point, origin, mode, save and reopen
+PASS attraction independent point, origin, mode, save and reopen
+PASS day_trip independent point, origin, mode, save and reopen
+PASS restaurant independent point, origin, mode, save and reopen
+PASS cafe independent point, origin, mode, save and reopen
+PASS bar independent point, origin, mode, save and reopen
+PASS rooftop_bar independent point, origin, mode, save and reopen
+PASS saved_place independent point, origin, mode, save and reopen
+PASS other independent point, origin, mode, save and reopen
+PASS flight departure hotel and arrival hotel on both legs
+PASS train departure hotel and arrival hotel on both legs
+PASS ferry departure hotel and arrival hotel on both legs
+PASS bus departure hotel and arrival hotel on both legs
+PASS transfer departure hotel and arrival hotel on both legs
+PASS Rental return has independent manual origin and saved travel mode
+PASS Clearing rental-return origin keeps pickup origin and destination independent
+PASS Hotel suggestion stays pending until confirmed; Cancel preserves booking point
+PASS Pasted hotel point changes only after confirmation; short link preserves it
+PASS Saved inaccurate hotel coordinates are never replaced from its title or transport
+PASS A legacy invalid URL cannot block saving an existing exact point
+PASS Editing a Maps link requires review, then commits the reviewed point
+PASS All category navigation panels fit 320px
+PASS All category navigation panels fit 393px
+PASS All category navigation panels fit 430px
+PASS No uncaught browser errors
+{"total":33,"failures":[]}
+
+VARÐVEISLA FLUGS OG SAMGANGNA
+PASS flight new defaults remain planned open and details closed
+PASS flight new wallet return preserves true/true
+PASS flight new wallet return preserves false/true
+PASS flight new wallet return preserves true/false
+PASS flight new wallet return preserves false/false
+PASS flight saved-open defaults remain planned open and details closed
+PASS flight saved-open wallet return preserves true/true
+PASS flight saved-open wallet return preserves false/true
+PASS flight saved-open wallet return preserves true/false
+PASS flight saved-open wallet return preserves false/false
+PASS flight saved-booked defaults remain planned open and details closed
+PASS flight saved-booked wallet return preserves true/true
+PASS flight saved-booked wallet return preserves false/true
+PASS flight saved-booked wallet return preserves true/false
+PASS flight saved-booked wallet return preserves false/false
+PASS transfer new defaults remain planned open and details closed
+PASS transfer new wallet return preserves true/true
+PASS transfer new wallet return preserves false/true
+PASS transfer new wallet return preserves true/false
+PASS transfer new wallet return preserves false/false
+PASS transfer saved-open defaults remain planned open and details closed
+PASS transfer saved-open wallet return preserves true/true
+PASS transfer saved-open wallet return preserves false/true
+PASS transfer saved-open wallet return preserves true/false
+PASS transfer saved-open wallet return preserves false/false
+PASS transfer saved-booked defaults remain planned open and details closed
+PASS transfer saved-booked wallet return preserves true/true
+PASS transfer saved-booked wallet return preserves false/true
+PASS transfer saved-booked wallet return preserves true/false
+PASS transfer saved-booked wallet return preserves false/false
+PASS bus new defaults remain planned open and details closed
+PASS bus new wallet return preserves true/true
+PASS bus new wallet return preserves false/true
+PASS bus new wallet return preserves true/false
+PASS bus new wallet return preserves false/false
+PASS bus saved-open defaults remain planned open and details closed
+PASS bus saved-open wallet return preserves true/true
+PASS bus saved-open wallet return preserves false/true
+PASS bus saved-open wallet return preserves true/false
+PASS bus saved-open wallet return preserves false/false
+PASS bus saved-booked defaults remain planned open and details closed
+PASS bus saved-booked wallet return preserves true/true
+PASS bus saved-booked wallet return preserves false/true
+PASS bus saved-booked wallet return preserves true/false
+PASS bus saved-booked wallet return preserves false/false
+PASS train new defaults remain planned open and details closed
+PASS train new wallet return preserves true/true
+PASS train new wallet return preserves false/true
+PASS train new wallet return preserves true/false
+PASS train new wallet return preserves false/false
+PASS train saved-open defaults remain planned open and details closed
+PASS train saved-open wallet return preserves true/true
+PASS train saved-open wallet return preserves false/true
+PASS train saved-open wallet return preserves true/false
+PASS train saved-open wallet return preserves false/false
+PASS train saved-booked defaults remain planned open and details closed
+PASS train saved-booked wallet return preserves true/true
+PASS train saved-booked wallet return preserves false/true
+PASS train saved-booked wallet return preserves true/false
+PASS train saved-booked wallet return preserves false/false
+PASS ferry new defaults remain planned open and details closed
+PASS ferry new wallet return preserves true/true
+PASS ferry new wallet return preserves false/true
+PASS ferry new wallet return preserves true/false
+PASS ferry new wallet return preserves false/false
+PASS ferry saved-open defaults remain planned open and details closed
+PASS ferry saved-open wallet return preserves true/true
+PASS ferry saved-open wallet return preserves false/true
+PASS ferry saved-open wallet return preserves true/false
+PASS ferry saved-open wallet return preserves false/false
+PASS ferry saved-booked defaults remain planned open and details closed
+PASS ferry saved-booked wallet return preserves true/true
+PASS ferry saved-booked wallet return preserves false/true
+PASS ferry saved-booked wallet return preserves true/false
+PASS ferry saved-booked wallet return preserves false/false
+PASS Flight wallet round trip and save/reopen at 320px
+PASS Flight wallet round trip and save/reopen at 393px
+PASS Flight wallet round trip and save/reopen at 430px
+PASS Title-only Flight still rejects missing airport endpoints after wallet return
+PASS Cancelled edit after wallet return does not write changed data
+PASS Other categories retain previous wallet-disclosure behavior
+PASS No uncaught browser errors
+{"total":82,"failures":[]}
