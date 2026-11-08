@@ -1,9 +1,9 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 08-11-2026 — aðalverkefnaskrá, afhending 135. SAM-00 opin: RUT-09 útfært og sjálfvirkt prófað, bíður iPhone/Safari. Önnur 23 frávik óhafin; fjórir staðfestingarliðir óloknir.
+Gildandi skráningarstaða 08-11-2026 — afhending 136. RUT-01–08 útfærð og sjálfvirkt prófuð, bíða iPhone/Safari. RUT-09 afmarkað notandastaðfest. SAM-00 opin; 15 annarra flokka frávik og fjórir staðfestingarliðir standa.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
-Öll 24 frávikin eru undir SAM-00, ásamt fjórum aðgreindum yfirferðar-/staðfestingarliðum og ítarlegu úttektinni sjálfri. RUT-09 er útfært í afhendingu 135 og sjálfvirkt prófað; aðrir 23 viðgerðarliðir eru óhafnir. iPhone/Safari-staðfesting bíður.
+Öll 24 frávikin eru undir SAM-00, ásamt fjórum aðgreindum yfirferðar-/staðfestingarliðum og ítarlegu úttektinni sjálfri. RUT-01–08 eru útfærð í 136 og sjálfvirkt prófuð; iPhone/Safari-staðfesting bíður. RUT-09 úr 135 er áfram afmarkað notandastaðfest. AKS-01–07, FLU-01–05 og BIL-01–03 eru óhafin; SAM-P01–P04 halda ólokinni stöðu.
 Við hverja afhendingu: uppfæra sömu auðkenni hér með útfærslu/útgáfu, raunverulegum sjálfvirkum prófum og aðgreindri iPhone-staðfestingu. Ólokin verkefni haldast þar til afgreiðsla og heimild hafa verið skráð. Afgreidd verkefni og niðurstöður þeirra haldast einnig í sögunni.
 SAM-00 má ekki loka fyrr en öll skráð atriði hafa verið afgreidd. Ekki hefja samræmingarbreytingar fyrr en þessi fulla skrá hefur verið varðveitt með öruggum hætti og næsta afmarkaða verkefni tekið fyrir samkvæmt fyrirmælum notanda.
 GitHub-vistun fyrri lotu mistókst með 403. Þessi skrá er tilbúin til vistunar í stað núverandi VERKEFNALISTI.txt; ekki fullyrt að hún sé komin á GitHub eða að nýr commit sé til. Ekki hefur verið reynt aftur að skrifa á GitHub í þessari skjalalotu.
@@ -555,7 +555,7 @@ Upprunalegur ítarlegur úttektartexti er varðveittur neðar í þessari skrá,
 GILDANDI VERKLAG OG LOKUNARSKILYRÐI
 • Þessi heildarúttekt kemur í stað eldri ÓFRAMKVÆMDRA einstaklingsbeiðna um samræmingu; hún fellir ekki úr gildi þegar samþykkta/útfærða virkni eða aðrar eldri óloknar kröfur.
 • Lestir og Gisting eru óbreytt viðmið. Ekki afrita allt formið, semja nýjan sameiginlegan texta eða breyta gögnum, dagsetningatengingum, kostnaði, veðri eða sérvirkni.
-• Eitt afmarkað verkefni/flokkur í einu eftir næstu framkvæmdarfyrirmælum. Nýrri afmörkuð framkvæmdarbeiðni heimilar eingöngu RUT-09 í 135. RUT-01–08 og aðrir flokkar standa utan viðgerðarinnar.
+• Eitt afmarkað verkefni/flokkur í einu eftir næstu framkvæmdarfyrirmælum. RUT-09 var heimilað og afgreitt í 135. Nýrri framkvæmdarbeiðni heimilar RUT-01–08 í 136; allir aðrir flokkar standa utan viðgerðarinnar og viðmið Lesta/Gistingar/Báta halda sér.
 • Uppfæra ÞESSAR sömu línur við hverja afhendingu: útfærsla/útgáfa/commit, raunveruleg sjálfvirk próf og niðurstaða, iPhone/Safari-staðfesting með tæki/dagsetningu/umfangi, ólokið og næsta skref.
 • Óloknum verkefnum má hvorki eyða né sleppa í næstu afhendingu. Afgreidd verkefni haldast með niðurstöðu og heimild. Á-ekki-við eða hætt-við krefst skýrrar röksemdar og viðeigandi ákvörðunar, ekki þögullar lokunar.
 • Greina greiningarpróf sem ENDURGERA frávik frá viðgerðarprófi sem STAÐFESTIR leiðréttingu. Grunnpróf sem stendur staðfestir ekki að öll frávik séu afgreidd.
@@ -568,55 +568,71 @@ VARÐVEITTAR GRUNNNIÐURSTÖÐUR ÚTTEKTAR 08-11-2026 — EKKI NÝ APPPRÓF Í �
 ÓLOKIN FRÁVIK — hvert atriði hefur sjálfstætt auðkenni
 Dálkar: Auðkenni | Flokkur | Atriði | Útfærsla | Sjálfvirk viðgerðarprófun | iPhone-staðfesting
 
-RUT-01 | Rútur | Tilkynning um opna ferð | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-01 | Rútur | Tilkynning um opna ferð | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Eldri Heiti nægir… í stað viðeigandi tilkynningar Lesta.
 Kóðastaður í grunni 134: updateOpenTransportNotice. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Tilkynning opinnar ferðar og bókaðrar ferðar samsvarar Lestum með rútumiðaorði. Heiti eitt nægir áfram fyrir opna rútu.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-02 | Rútur | Dagar og nánari dagatenging | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-02 | Rútur | Dagar og nánari dagatenging | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Löng samfelld dagaskýring í stað stutts sýnilegs texta og nánari Skýringar Lesta; varðveita F14/F16.
 Kóðastaður í grunni 134: train-help-copy/shared-help-copy. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Stutti dagatextinn og innfelld nánari Skýring eru afrit Lesta; aðeins textabirting, engin breyting á F14/F16 eða handskráðum dögum.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-03 | Rútur | Dagsferðarskýring | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-03 | Rútur | Dagsferðarskýring | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Eldri Heimsókn yfir daginn… í stað núverandi Lesta-texta.
 Kóðastaður í grunni 134: day-trip help. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Dagsferðarskýring notar sama Lesta-texta orðrétt. Bækistöð, útleið/heimleið og sérval Rúta haldast.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-04 | Rútur | Auka leiðarsamantekt | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-04 | Rútur | Auka leiðarsamantekt | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Auka samantekt Vistast með þessari færslu… sem Lestir og ferjur sýna ekki.
 Kóðastaður í grunni 134: updateOpenJourneyFields / openJourneyHint. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: openJourneyHint er tómt í Rútum eins og í Lestum; auka Vistast með þessari færslu samantekt birtist ekki. Engin leiðargögn fjarlægð.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-05 | Rútur | Stöðvar, tímar og miðar | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-05 | Rútur | Stöðvar, tímar og miðar | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Innskot og eldri heildarverðsskýring í tveimur textum í stað sambærilegs samþykkts Lesta-texta.
 Kóðastaður í grunni 134: paintAlignedTransportPresentation / stationTicketHelpTitle. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Skýring Stöðvar, tímar og miðar notar eina samþykkta Lesta-blokk með heildarverðsskýringu; eldri málsgrein og sérsamið innskot sjást ekki samhliða. Borgarpunktskýring og miðadæmi aðlöguð með rútuhugtökum.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-06 | Rútur | Ráðlagður brottfarartími | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-06 | Rútur | Ráðlagður brottfarartími | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Eldri texti vísar í stöðu lesta/ferja. Nota viðeigandi Lesta-viðmið með rútusértæku orði.
 Kóðastaður í grunni 134: shared-help-copy í brottfararáætlun. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Bein Lesta-skýring um handskráðan ferðatíma og mætingarfrest; stöðu lestar skipt í stöðu rútu. Engin breyting á brottfararútreikningi.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-07 | Rútur | Afbókunarskýring | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-07 | Rútur | Afbókunarskýring | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Eldri skýring vantar samsvarandi texta Lesta um að breyttur frestur vistist fyrst við Vista og bæta í dagatal.
 Kóðastaður í grunni 134: cancellation shared-help-copy. Greiningarstaðfesting: Kóðalesið; skilyrt birting; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Afbókunarskýring orðrétt eins og í Lestum, þar á meðal vistun fyrir Vista og bæta í dagatal. Afbókunar- og dagatalsvirkni óbreytt.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-08 | Rútur | Heiti í stöðvalista | Óhafið | Óprófað eftir viðgerð | Óstaðfest
+RUT-08 | Rútur | Heiti í stöðvalista | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Óstaðfest; bíður iPhone/Safari
 Frávik: Almenn fyrirsögn beggja átta, Sýna fleiri og Finn ekki staðinn… samræmast ekki samsvarandi listaaðgerðum Lesta með rútusértækum orðum.
 Kóðastaður í grunni 134: openTransportStopPicker / transport-stops.js. Greiningarstaðfesting: Kóðalesið; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
+Framkvæmd 08-11-2026, 136: Inngangur, brottfarar-/komufyrirsagnir, Nýlega valdar / vistaðar stöðvar, Stöðvar við, Sýna fleiri stöðvar og Finn ekki stöðina — leita / líma inn nota samsvarandi Lesta-heiti. Síun, Uppfæra stöðvalista, OSM/ODbL, þekjufyrirvari og valniðurstaða haldast.
+Staða: kóðabreyting og skráð sjálfvirk prófun framkvæmd; ekki fullstaðfest af notanda á iPhone. Prófunarumhverfi og takmörk í AFHENDING 136 neðst í þessari sömu skrá.
 
-RUT-09 | Rútur | Fellistaða eftir ferðaveski | Útfært í 135 | 52/52 sérpróf og 33/33 varðveislupróf staðin | Óstaðfest; bíður raunverulegs iPhone/Safari
+RUT-09 | Rútur | Fellistaða eftir ferðaveski | Útfært í 135 | 52/52 sérpróf og 33/33 varðveislupróf staðin | Notandastaðfest á iPhone 08-11-2026: ferðaveskisendurkoma og Hætta við/enduropnun
 Frávik: Opinn nánari aðalkafli fellur saman við endurkomu úr ferðaveski; Lestir varðveita handval.
 Kóðastaður í grunni 134: returnToBooking. Greiningarstaðfesting: Endurgert í Chromium; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
@@ -624,7 +640,7 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 
 Ný staða 08-11-2026, afhending 135: Rútum (bus) bætt við fyrirliggjandi train/ferry undanþágu í returnToBooking. openJourneyFields og transportJourneyDetails halda handvalinni stöðu við ferðaveskisendurkomu. Allir aðrir fellikaflar halda fyrri endurstillingu. Aðeins þetta eina appfall breytt, með viðbót eins flokks í lista.
 Sannprófun: 52/52 sérpróf í Chromium 153 með hermdum gagnaskrifum, ásamt 33/33 leiðsagnar-/varðveisluprófum. Þrjár síma-breiddir 320/393/430 px; 393 px skjámynd skoðuð. Nýjar og vistaðar opnar/bókaðar færslur, allar fjórar opnunarstöður aðalkafla, raunverulegir Tengja miða / skjal og Til baka í bókun hnappar, vistun/enduropnun/sama auðkenni, miði, ISK-kostnaður, dagsetningar/stöðvar og Hætta við prófuð. Lestir/ferjur óbreyttar í samanburði við 134. Lifandi gagnaskrif og raunverulegur iPhone/Safari óstaðfest.
-Afgreiðsla: kóðaviðgerð og sjálfvirk prófun lokið; EKKI merkt fullstaðfest eða lokað þar sem iPhone/Safari-staðfesting bíður. GitHub-commit: enginn. Afturköllun appviðgerðar: index.html úr varðveittri 134; halda nýrri verkefnalista og skrá afturköllun undir sama RUT-09.
+Afgreiðsla: RUT-09 afgreitt að afmörkuðu umfangi eftir notandastaðfestingu 08-11-2026: kafli helst opinn eftir Ferðaveski en byrjar lokaður eftir Hætta við og enduropnun bókunar. Þetta er rétt samkvæmt samþykktri upphafsreglu. Ekki almenn staðfesting á vistun, öllum bókunum eða annarri virkni. GitHub-commit: enginn. Afturköllun appviðgerðar: index.html úr varðveittri 134; halda nýrri verkefnalista og skrá afturköllun undir sama RUT-09.
 
 AKS-01 | Akstur/Bílþjónusta | Tilkynning um opna ferð | Óhafið | Óprófað eftir viðgerð | Óstaðfest
 Frávik: Eldri almenn tilkynning í stað viðeigandi Lesta-texta.
@@ -989,6 +1005,178 @@ PASS No uncaught browser errors
 {"total":52,"failures":[]}
 
 PRÓFAÚTTAK 135 — LEIÐSÖGN OG VARÐVEISLA
+PASS flight independent point, origin, mode, save and reopen
+PASS lodging independent point, origin, mode, save and reopen
+PASS train independent point, origin, mode, save and reopen
+PASS ferry independent point, origin, mode, save and reopen
+PASS bus independent point, origin, mode, save and reopen
+PASS transfer independent point, origin, mode, save and reopen
+PASS rental_car independent point, origin, mode, save and reopen
+PASS bike_tour independent point, origin, mode, save and reopen
+PASS walking_tour independent point, origin, mode, save and reopen
+PASS attraction independent point, origin, mode, save and reopen
+PASS day_trip independent point, origin, mode, save and reopen
+PASS restaurant independent point, origin, mode, save and reopen
+PASS cafe independent point, origin, mode, save and reopen
+PASS bar independent point, origin, mode, save and reopen
+PASS rooftop_bar independent point, origin, mode, save and reopen
+PASS saved_place independent point, origin, mode, save and reopen
+PASS other independent point, origin, mode, save and reopen
+PASS flight departure hotel and arrival hotel on both legs
+PASS train departure hotel and arrival hotel on both legs
+PASS ferry departure hotel and arrival hotel on both legs
+PASS bus departure hotel and arrival hotel on both legs
+PASS transfer departure hotel and arrival hotel on both legs
+PASS Rental return has independent manual origin and saved travel mode
+PASS Clearing rental-return origin keeps pickup origin and destination independent
+PASS Hotel suggestion stays pending until confirmed; Cancel preserves booking point
+PASS Pasted hotel point changes only after confirmation; short link preserves it
+PASS Saved inaccurate hotel coordinates are never replaced from its title or transport
+PASS A legacy invalid URL cannot block saving an existing exact point
+PASS Editing a Maps link requires review, then commits the reviewed point
+PASS All category navigation panels fit 320px
+PASS All category navigation panels fit 393px
+PASS All category navigation panels fit 430px
+PASS No uncaught browser errors
+{"total":33,"failures":[]}
+
+
+U135-RUT09 — NOTANDASTAÐFESTING 08-11-2026
+Notandi lýsti: „Þegar ég fór í Miðar og bókun - Tengja miða / skjal og til baka þá haldast Stoppistöðvar, tímar og gisting opið. En þegar ég fer út úr bókun (hætta við) og til baka þá helst Stoppistöðvar, tímar og gisting lokað“. Samhengið er iPhone-notkun með meðfylgjandi myndum; Safari-/iOS-útgáfa ekki sérstaklega staðfest.
+Niðurstaða: rétt varðveisla innan opins forms og rétt upphafsstaða við nýja opnun. RUT-09 afgreitt í þessu afmarkaða flæði. Engin breyting á appkóða eða ný sjálfvirk próf vegna þessarar staðfestingar. Lifandi vistun/enduropnun eftir Vista var ekki staðfest með þessari lýsingu og SAM-P03 heldur fyrri stöðu.
+Ólokið í SAM-00: RUT-01–08, AKS-01–07, FLU-01–05, BIL-01–03 og SAM-P01–P04. Eldri ólokin verkefni haldast. SAM-00 er áfram opið. Fyrri dagsett afhendingarstaða ofar er saga; þessi staðfesting er nýjasta staða RUT-09.
+Verkefnaskrá er áfram vistuð sem sama VERKEFNALISTI.txt hér í verkefninu; ekki staðfest uppfærsla á GitHub.
+
+
+AFHENDING 136 — RUT-01–08, 08-11-2026
+Heimild: skýr framkvæmdarbeiðni notanda um öll átta eftirstandandi samræmisfrávik Rúta. RUT-09 er þegar notandastaðfest og skal varðveitt. Lestir eru bindandi orðrétt viðmið, aðeins flokksorð aðlöguð. Allir aðrir flokkar utan umfangs.
+Staða: RUT-01–08 ÚTFÆRT OG SJÁLFVIRKT PRÓFAÐ; raunverulegur iPhone/Safari óstaðfest. RUT-09 AFMARKAÐ NOTANDASTAÐFEST OG ENDURPRÓFAÐ. SAM-00 OPIÐ.
+Breyttar afhendingarskrár frá 135: index.html, transport-stops.js og þessi fulli VERKEFNALISTI.txt. Engin breyting á gagnagrunni, bókunargögnum, reiknireglum, kostnaði, leiðsagnarhjálparskrá, sw.js eða offline.js.
+Útfærsla: paintBusReferencePresentation birtir núverandi sjö Lesta-skýringablokkir með aðeins rútusértækum orðaskiptum og heldur innfelldum opnunarstöðum við endurteikningu. Óvirkar eldri skýringar eru faldar í Rútum; ekkert yfirfært á aðra flokka. Open/booked-tilkynning fylgir Lestum; auka leiðarsamantekt felld úr birtingu. Listagluggi heldur sama staðavali og þjónusturökfræði, en sambærileg heiti fylgja Lestum. Eldri þekjufyrirvari er varðveittur sem sérgrein til að skemma ekki orðréttan Lesta-inngang.
+Staða varðveislu áður en vinnan hófst: aðalverkefnaskrá með SAM-00 og öllum frávikum hafði verið vistuð sem sama VERKEFNALISTI.txt hér í verkefninu, ásamt notandastaðfestingu RUT-09. Engin staðfesting á að GitHub-afrit hafi verið uppfært; engin ný GitHub-skrif eða commit í þessari lotu.
+
+RAUNVERULEGAR PRÓFANIR 136
+• 31/31 ný Chromium-próf: sjö HTML-blokkir bornar við raunverulegar Lesta-blokkir; eingöngu rútuhugtök breytt. Tilkynningar, dagatenginga-/dagsferðar-/miða-/brottfarar-/afbókunarskýringar, hjálparheiti og dæmi prófuð. Eldri sýnilegar tvítekningar faldar. Endurteikning heldur opnu nánari dagaskýringu án tvöfaldra afrita.
+• Stöðvalisti: réttur inngangur/heiti, allar fjórar brottfarar-/komufyrirsagnir út-/heimleiðar, síun og handvirk varaleið; staðaval skilar sama punkti og réttum áfangastaðarauðkennum. Þjónustusvör hermd. Þekjufyrirvari, endursóknarhnappur og heimildir til staðar.
+• Ný og vistuð Ein leið prófuð; nákvæmir punktar og sama auðkenni eftir enduropnun. F14/F16 dagapör breytt með raunverulegum input/change-atburðum, sjálfstæð brottför og koma, vistuð og opnuð aftur.
+• 13/13 fyrirliggjandi Rútupróf endurkeyrð: hnappar og stílar, sameiginleg leiðsagnarhjálp, rétt search/dir og upphaf/endi, Maps-hlekkur í nýjum prufuflipa, vista/loka/enduropna/breyta sömu færslu, Hætta við án vistaðra breytinga, bókaðar upplýsingar, ófullgerð opin rúta, Fram og til baka og Dagsferð með bækistöð/báðum leggjum.
+• 52/52 RUT-09-próf endurkeyrð á 136: nýjar/vistaðar opnar/bókaðar Rútur, Lestir og Bátar, allar fjórar aðalkaflasamsetningar við ferðaveski, óbreytt formgildi og engin skrif við endurkomu; titill einn, vistun/enduropnun, sama auðkenni, miði, ISK-kostnaður og Hætta við. Fyrri iPhone-notandastaðfesting RUT-09 stendur óbreytt með afmörkuðu umfangi.
+• 33/33 sameiginleg leiðsagnar-/varðveislupróf endurkeyrð: m.a. gild brottfarargisting og gisting eftir komu, báðir leggir, handvalinn punktur/GPS, ferðamáti og vistun/enduropnun; sjálfstæði staðsetningar og upphafs.
+• 320/393/430 px með 20 px grunnletri: yfirfarnir textar og allir fjórir stöðvahnappahópar án mælds lárétts yfirflæðis. 393 px skjámynd skoðuð. Þetta er Chromium, ekki raunverulegur iPhone eða Dynamic Type.
+• Verndaðar birtingar bornar við 135: sýnileg DOM-tré, reitagildi, reiknaðir stílar og PNG-myndir Lesta, Gistingar, Báta/ferja, Aksturs, Flugs, Bílaleigu og Vistaðra staða eru jöfn í prófuðum 393 px birtingum. Ferjuhluti sameiginlegs stöðvalista hefur jafnt HTML og sama valinn staðarhlut. Þetta er ekki ný fullprófun allra gagna eða tækja.
+• Kóðamörk: aðeins fjögur fyrirliggjandi framsetningarföll breytt og tveimur Rútu-hjálparföllum bætt við í index; 856 eldri aðalföll óbreytt. returnToBooking er bætajafnt 135. Aðeins Rútu-afmörkuðu CSS bætt við; annað form-HTML óbreytt. transport-stops.js breytir eingöngu show-framsetningu; query/parse/load/cache/recent/remember og önnur sannreynd þjónustuföll óbreytt. Fylgiskráarspurningarstrengur uppfærður svo nýir Rútu-listatextar hlaðist.
+
+TAKMÖRK OG ÓLOKIÐ
+Vistun/gengi/leitarþjónustur hermdar; engin raungagnaskrif. Google Maps-slóð og opnun prufuflipa prófuð, beiðni stöðvuð fyrir raunverulega leiðarteikningu. Raunverulegur iPhone/Safari, lifandi vistun og lifandi Overpass-/Maps-þjónusta óstaðfest. RUT-01–08 eru ekki merkt fullstaðfest af notanda.
+Ólokið: raunstaðfesting RUT-01–08; AKS-01–07, FLU-01–05, BIL-01–03 og SAM-P01–P04. Öll önnur eldri ólokin verkefni/ákvarðanir halda fyrri stöðu. RUT-09 er áfram afgreitt í áður staðfestu iPhone-flæði, ekki aftur opnað vegna nýrrar textavinnu.
+Afhending frá 135: skipta út index.html og transport-stops.js og varðveita þennan fulla VERKEFNALISTI.txt. Endurhlaða appi eftir upphleðslu. Afturköllun: nota báðar appskrár úr varðveittri 135 og skrá afturköllun undir viðkomandi RUT-auðkenni; ekki yfirskrifa nýrri verkefnasögu með eldri skrá.
+
+NÁKVÆMT PRÓFAÚTTAK 136 — VIÐMIÐ OG TEXTAR
+PASS RUT copy 1 is exactly Train HTML with class nouns adapted
+PASS RUT copy 2 is exactly Train HTML with class nouns adapted
+PASS RUT copy 3 is exactly Train HTML with class nouns adapted
+PASS RUT copy 4 is exactly Train HTML with class nouns adapted
+PASS RUT copy 5 is exactly Train HTML with class nouns adapted
+PASS RUT copy 6 is exactly Train HTML with class nouns adapted
+PASS RUT copy 7 is exactly Train HTML with class nouns adapted
+PASS RUT-01/04 notices and route summary match Train
+PASS RUT-02/05 shared help headings, placeholder and no bespoke insertion
+PASS Old paragraphs hidden and all seven Bus copies shown when applicable
+PASS Booked notice uses only the Bus ticket noun
+PASS Nested date help preserves its chosen state on redraw
+PASS All four Maps buttons retain compact reference text and nonbreaking arrow
+PASS RUT-08 catalogue uses actual Train intro/headings/actions; keeps Bus extras and payload
+PASS RUT-08 routeOut Origin heading matches Train
+PASS RUT-08 routeOut Destination heading matches Train
+PASS RUT-08 routeReturn Origin heading matches Train
+PASS RUT-08 routeReturn Destination heading matches Train
+PASS Ferry catalogue markup and chosen place are unchanged from 135
+PASS train has no Bus copy after category switch
+PASS ferry has no Bus copy after category switch
+PASS lodging has no Bus copy after category switch
+PASS transfer has no Bus copy after category switch
+PASS flight has no Bus copy after category switch
+PASS rental_car has no Bus copy after category switch
+PASS One-way Bus saves and reopens as the same one-way record with exact endpoints
+PASS F14/F16 Bus planned/departure and arrival/end date pairs stay independent and persist
+PASS Bus text and all endpoint buttons fit 320px with larger font
+PASS Bus text and all endpoint buttons fit 393px with larger font
+PASS Bus text and all endpoint buttons fit 430px with larger font
+PASS No browser errors
+{"total":31,"failures":[]}
+
+RÚTUFÆRSLUR OG FERÐATEGUNDIR
+PASS bus uses Train point-button size/spacing at all applicable endpoints
+PASS bus keeps the common navigation controls and exact explanation
+PASS bus point Maps and directions use independent correct endpoints
+PASS bus navigation button opens the exact Maps URL in a browser tab
+PASS bus saves, closes, reopens and edits same record without duplication
+PASS bus Cancel and unconfirmed point selection leave saved data unchanged
+PASS bus booked record retains confirmation, times and endpoints after reopening
+PASS bus minimal unfinished booking keeps baseline save requirements
+PASS bus day trip retains base and both legs after save/reopen
+PASS bus point buttons fit 320px and larger text
+PASS bus point buttons fit 393px and larger text
+PASS bus point buttons fit 430px and larger text
+PASS bus no uncaught browser errors
+{"total":13,"failures":[]}
+
+VARÐVEISLA RUT-09
+PASS bus new defaults remain planned open and details closed
+PASS bus new wallet return preserves true/true
+PASS bus new wallet return preserves false/true
+PASS bus new wallet return preserves true/false
+PASS bus new wallet return preserves false/false
+PASS bus saved-open defaults remain planned open and details closed
+PASS bus saved-open wallet return preserves true/true
+PASS bus saved-open wallet return preserves false/true
+PASS bus saved-open wallet return preserves true/false
+PASS bus saved-open wallet return preserves false/false
+PASS bus saved-booked defaults remain planned open and details closed
+PASS bus saved-booked wallet return preserves true/true
+PASS bus saved-booked wallet return preserves false/true
+PASS bus saved-booked wallet return preserves true/false
+PASS bus saved-booked wallet return preserves false/false
+PASS train new defaults remain planned open and details closed
+PASS train new wallet return preserves true/true
+PASS train new wallet return preserves false/true
+PASS train new wallet return preserves true/false
+PASS train new wallet return preserves false/false
+PASS train saved-open defaults remain planned open and details closed
+PASS train saved-open wallet return preserves true/true
+PASS train saved-open wallet return preserves false/true
+PASS train saved-open wallet return preserves true/false
+PASS train saved-open wallet return preserves false/false
+PASS train saved-booked defaults remain planned open and details closed
+PASS train saved-booked wallet return preserves true/true
+PASS train saved-booked wallet return preserves false/true
+PASS train saved-booked wallet return preserves true/false
+PASS train saved-booked wallet return preserves false/false
+PASS ferry new defaults remain planned open and details closed
+PASS ferry new wallet return preserves true/true
+PASS ferry new wallet return preserves false/true
+PASS ferry new wallet return preserves true/false
+PASS ferry new wallet return preserves false/false
+PASS ferry saved-open defaults remain planned open and details closed
+PASS ferry saved-open wallet return preserves true/true
+PASS ferry saved-open wallet return preserves false/true
+PASS ferry saved-open wallet return preserves true/false
+PASS ferry saved-open wallet return preserves false/false
+PASS ferry saved-booked defaults remain planned open and details closed
+PASS ferry saved-booked wallet return preserves true/true
+PASS ferry saved-booked wallet return preserves false/true
+PASS ferry saved-booked wallet return preserves true/false
+PASS ferry saved-booked wallet return preserves false/false
+PASS Bus wallet round trip and save/reopen at 320px
+PASS Bus wallet round trip and save/reopen at 393px
+PASS Bus wallet round trip and save/reopen at 430px
+PASS Title-only open Bus still saves and reopens after wallet return
+PASS Cancelled edit after wallet return does not write changed data
+PASS Other categories retain previous wallet-disclosure behavior
+PASS No uncaught browser errors
+{"total":52,"failures":[]}
+
+LEIÐSÖGN OG VISTUN
 PASS flight independent point, origin, mode, save and reopen
 PASS lodging independent point, origin, mode, save and reopen
 PASS train independent point, origin, mode, save and reopen
