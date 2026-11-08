@@ -559,6 +559,9 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #itemModal.aligned-transport-actions :is(#bookingLocationField,#rentalReturnPlaceFields)>.departure-actions>.btn:not(.hidden){display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;margin:0;padding:8px 10px;font-size:max(12px,.875rem);white-space:normal;overflow-wrap:anywhere;text-align:center;flex:1 0 auto}
 #itemModal.aligned-transport-actions #itemGoogleMapsOpen{overflow-wrap:normal}
 #itemModal.aligned-transport-actions #transportCityHelp>.shared-help-copy{display:none}
+.rental-price-copy{display:none}
+#itemModal.rental-reference .rental-price-copy{display:block}
+#itemModal.rental-reference .rental-price-source{display:none}
 .rental-reference-copy{display:none}
 #itemModal.rental-reference .rental-reference-copy{display:block}
 #itemModal.rental-reference .rental-reference-help>.shared-help-copy{display:none}
@@ -3156,15 +3159,19 @@ function paintFlightReferencePresentation(category){
  $('stationTicketHelpTitle').textContent=flightReferenceText('Stöðvar, tímar og miðar');
  for(const field of ['outboundFrom','outboundTo','returnFrom','returnTo'])$(field+'MapsOpen').textContent='Google Maps\u00a0↗';
 }
-function rentalReferenceText(text){return String(text).replaceAll('stöðu lestar','stöðu aksturs')}
+function rentalReferenceText(text){return String(text).startsWith('Skráðu ferðatíma sjálf/ur')?'Skráðu áætlaðan ferðatíma að afhendingarstað, t.d. samkvæmt Google Maps, og miðaðu við umsaminn afhendingartíma bílsins. Appið sækir ekki umferðarupplýsingar sjálfkrafa.':String(text).replaceAll('stöðu lestar','stöðu aksturs')}
 function paintRentalReferencePresentation(category){
  const modal=$('itemModal'),active=category==='rental_car';modal.classList.toggle('rental-reference',active);
- if(!active){modal.querySelectorAll('.rental-reference-copy').forEach(e=>e.remove());modal.querySelectorAll('.rental-reference-help').forEach(e=>e.classList.remove('rental-reference-help'));return}
+ if(!active){modal.querySelectorAll('.rental-reference-copy,.rental-price-copy').forEach(e=>e.remove());modal.querySelectorAll('.rental-reference-help').forEach(e=>e.classList.remove('rental-reference-help'));modal.querySelectorAll('.rental-price-source').forEach(e=>e.classList.remove('rental-price-source'));return}
  for(const source of modal.querySelectorAll('.train-help-copy')){
   if(!source.textContent.startsWith('Skráðu ferðatíma sjálf/ur')&&!source.textContent.startsWith('Skráðu afbókunarfrestinn'))continue;
   source.parentElement.classList.add('rental-reference-help');let copy=source.nextElementSibling;
   if(!copy?.classList.contains('rental-reference-copy')){copy=source.cloneNode(true);copy.classList.remove('train-help-copy');copy.classList.add('rental-reference-copy');const walker=document.createTreeWalker(copy,NodeFilter.SHOW_TEXT);while(walker.nextNode())walker.currentNode.nodeValue=rentalReferenceText(walker.currentNode.nodeValue);source.after(copy)}
  }
+ const price=$('bookingCostEffects').querySelector('p.notice');
+ price.classList.add('rental-price-source');
+ if(!price.nextElementSibling?.classList.contains('rental-price-copy')){const copy=document.createElement('p');copy.className='notice rental-price-copy';copy.textContent='Heildarverð bílaleigunnar telst með í ferðakostnaði einu sinni, óháð afhendingar- og skilastað.';price.after(copy)}
+
 }
 function paintAlignedTransportPresentation(category){
  paintFerryReferencePresentation(category);
