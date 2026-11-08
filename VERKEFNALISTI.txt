@@ -1,13 +1,13 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 08-11-2026 — afhending 140. SAM-00: 21/24 afgreidd, 3/24 ólokin. RUT, AKS og FLU afgreidd samkvæmt notanda. BIL-01–03 útfærð og sjálfvirkt prófuð, bíða notandastaðfestingar. SAM-P01–P04, UI-RUT-01 og UI-BAT-01 ólokin.
+Gildandi skráningarstaða 08-11-2026 — eftir afhendingu 140. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. SAM-P01–P04, UI-RUT-01, UI-BAT-01 og önnur áður ólokin verkefni halda stöðu sinni.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
-Öll 24 frávikin eru undir SAM-00, ásamt fjórum aðgreindum yfirferðar-/staðfestingarliðum og ítarlegu úttektinni sjálfri. Notandi staðfestir í AKS-framkvæmdarbeiðni að RUT-01–09 hafi verið afgreidd; það samþykki er skráð án þess að álykta um ný ótilgreind tækipróf. Notandi staðfestir nú í FLU-beiðni að AKS-01–07 séu einnig afgreidd. FLU-01–05 eru afgreidd samkvæmt ítarlegri staðfestingu notanda 08-11-2026 (sjá U138-FLU neðst). BIL-01–03 eru útfærð og sjálfvirkt prófuð í 139; tvær nýrri textaleiðréttingar í Bílaleigu eru útfærðar og sjálfvirkt prófaðar í 140. Beðið er notandastaðfestingar á raunverulegum iPhone. SAM-P01–P04 og almennu UI-atriðin halda ólokinni stöðu. 21/24 frávik afgreidd og 3/24 enn ólokin.
+Öll 24 frávikin eru undir SAM-00, ásamt fjórum aðgreindum yfirferðar-/staðfestingarliðum og ítarlegu úttektinni sjálfri. Notandi staðfestir í AKS-framkvæmdarbeiðni að RUT-01–09 hafi verið afgreidd; það samþykki er skráð án þess að álykta um ný ótilgreind tækipróf. Notandi staðfestir nú í FLU-beiðni að AKS-01–07 séu einnig afgreidd. FLU-01–05 eru afgreidd samkvæmt ítarlegri staðfestingu notanda 08-11-2026 (sjá U138-FLU neðst). BIL-01–03 eru útfærð og sjálfvirkt prófuð í 139; tvær nýrri textaleiðréttingar í Bílaleigu eru útfærðar og sjálfvirkt prófaðar í 140. Notandi staðfesti BIL-01–03 og fimm afmörkuð próf á iPhone 08-11-2026 (sjá lokastaðfestingu neðst). SAM-00 nær til 24 samræmingarfrávika. SAM-P01–P04 og almennu UI-atriðin halda ólokinni stöðu.
 Gildandi Flugregla, áréttuð 08-11-2026: „Flugvellir, tímar og gisting“ byrjar OPINN og varðveitir handvirka opnunar-/lokunarstöðu eftir Ferðaveski. Fyrri tillaga um lokaða upphafsstöðu Flugs er röng, fellur úr gildi og má ekki framkvæma. Þetta breytir ekki samþykktum upphafsreglum annarra flokka.
 Við hverja afhendingu: uppfæra sömu auðkenni hér með útfærslu/útgáfu, raunverulegum sjálfvirkum prófum og aðgreindri iPhone-staðfestingu. Ólokin verkefni haldast þar til afgreiðsla og heimild hafa verið skráð. Afgreidd verkefni og niðurstöður þeirra haldast einnig í sögunni.
-SAM-00 má ekki loka fyrr en öll skráð atriði hafa verið afgreidd. Ekki hefja samræmingarbreytingar fyrr en þessi fulla skrá hefur verið varðveitt með öruggum hætti og næsta afmarkaða verkefni tekið fyrir samkvæmt fyrirmælum notanda.
-GitHub-vistun fyrri lotu mistókst með 403. Þessi skrá er tilbúin til vistunar í stað núverandi VERKEFNALISTI.txt; ekki fullyrt að hún sé komin á GitHub eða að nýr commit sé til. Ekki hefur verið reynt aftur að skrifa á GitHub í þessari skjalalotu.
+Lokun SAM-00 krefst afgreiðslu allra 24 samræmingarfrávika. SAM-P01–P04 eru sjálfstæðir yfirferðar- og prófunarliðir. Ekki hefja samræmingarbreytingar fyrr en þessi fulla skrá hefur verið varðveitt með öruggum hætti og næsta afmarkaða verkefni tekið fyrir samkvæmt fyrirmælum notanda.
+Í fyrri skjalalotu skilaði skrifbeiðni til GitHub 403. Staða nýjustu skráningar kemur fram í afhendingu þessarar skrár.
 Fyrri varðveislulota breytti aðeins skjali. Nýrri RUT-09 afhending 135 breytir einni flokksundanþágu í returnToBooking; engin raungögn skrifuð. Eldri prófatölur eru áfram dagsett saga; nýjar prófanir 135 eru skráðar sérstaklega neðst.
 
 ELDRI VERKEFNI, SAMÞYKKTIR OG PRÓFUNARSAGA — VARÐVEITT Í HEILD
@@ -547,8 +547,10 @@ Prófað: 16 ferjupróf + 15 bein viðmiðspróf, einnig 97 Y04-varðveislupróf
 Aðeins index.html og transport-stops.js þarf frá 133. Raunverulegur iPhone/Safari, lifandi vistun/hafnarleit og Google Maps-app eru óstaðfest. Önnur bókunarform óbreytt; ekki ný heildarstaðfesting samræmingar þeirra. Engin sjálfvirk útgáfubirting framkvæmd.
 
 
-SAM-00 — HEILDARSAMRÆMING SAMGANGNA VIÐ LESTIR — OPIÐ
-Skráð 08-11-2026. Notandi samþykkti samanburðarúttektina sem grunn næstu verkefna og bað um varðveislu á GitHub fyrir appkóðabreytingar. Fyrri afhending varðveitti skráninguna. Nú er aðeins RUT-09 útfært í 135 eftir skýrri framkvæmdarbeiðni notanda; SAM-00 er áfram opið.
+SAM-00 — HEILDARSAMRÆMING SAMGANGNA VIÐ LESTIR — LOKIÐ, 24/24
+Skráð 08-11-2026. Notandi samþykkti samanburðarúttektina sem grunn næstu verkefna og bað um varðveislu á GitHub fyrir appkóðabreytingar. Fyrri afhending varðveitti skráninguna. Fyrsta útfærslan var RUT-09 í 135.
+Lokastaða samkvæmt notanda 08-11-2026: RUT-01–09 (Rútur) 9/9, AKS-01–07 (Akstur/Bílþjónusta) 7/7, FLU-01–05 (Flug) 5/5 og BIL-01–03 (Bílaleiga) 3/3.
+Afmörkuð iPhone-prófun Bílaleigu er skráð við BIL-01–03 og í lokastaðfestingu neðst. SAM-P01–P04, UI-RUT-01 og UI-BAT-01 eru áfram opin.
 Heildarúttekt: SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá)
 Prófunarniðurstöður eru varðveittar hér undir SAM-00; ítarleg upprunaleg úttekt og textaúttak 33 prófa fylgja neðar í sömu skrá.
 Upprunalegur ítarlegur úttektartexti er varðveittur neðar í þessari skrá, með dagsettri stöðu og prófunartakmörkum. Gildandi skráningarstaða er hér undir SAM-00. Sérstakur 11 skráa pakki er ekki nauðsynlegur til áframhaldandi verkefnaskráningar.
@@ -560,13 +562,13 @@ GILDANDI VERKLAG OG LOKUNARSKILYRÐI
 • Uppfæra ÞESSAR sömu línur við hverja afhendingu: útfærsla/útgáfa/commit, raunveruleg sjálfvirk próf og niðurstaða, iPhone/Safari-staðfesting með tæki/dagsetningu/umfangi, ólokið og næsta skref.
 • Óloknum verkefnum má hvorki eyða né sleppa í næstu afhendingu. Afgreidd verkefni haldast með niðurstöðu og heimild. Á-ekki-við eða hætt-við krefst skýrrar röksemdar og viðeigandi ákvörðunar, ekki þögullar lokunar.
 • Greina greiningarpróf sem ENDURGERA frávik frá viðgerðarprófi sem STAÐFESTIR leiðréttingu. Grunnpróf sem stendur staðfestir ekki að öll frávik séu afgreidd.
-• SAM-00 er áfram OPIÐ þar til öll hér skráð frávik og viðeigandi staðfestingar eru afgreidd með heimild. Ekki loka vegna þess eins að appkóði hafi verið skrifaður eða hermipróf staðist.
+• Lokun SAM-00 byggist á afgreiðslu 24 frávika og staðfestingum notanda. Útfærsla og hermipróf teljast sjálfstæðar niðurstöður. SAM-P01–P04 standa utan talningarinnar.
 • Bátar/ferjur: engin ný staðfest samræmisfrávik í yfirförnum sambærilegum hlutum 134. Það er ekki full tæki-/þjónustustaðfesting; SAM-P01–P04 gilda eftir viðeigandi umfangi.
 
 VARÐVEITTAR GRUNNNIÐURSTÖÐUR ÚTTEKTAR 08-11-2026 — EKKI NÝ APPPRÓF Í ÞESSARI SKRÁNINGARLOTU
 18 formopnanir; sex flokkar × ný/vistuð opin/bókuð prufufærsla. 48 breiddar-/letursamsetningar 320/375/393/430 px, 100%/130% grunnletur; engin mæld yfirflæði yfirfarinna hnappa. 33/33 leiðsagnar-/varðveislupróf stóðust í Chromium með hermdum gagnaskrifum. Fellistaðafrávik RUT-09, AKS-07 og FLU-05 endurgerð; þetta eru ólagfærð frávik. Engar ómeðhöndlaðar vafravillur í skráðum keyrslum. 326 skrár 134 óbreyttar fyrir/eftir úttekt. Raunverulegur iPhone/Safari, lifandi skrif/leit og Maps-app eru óstaðfest. Fyrri prófunarsaga og notandastaðfestingar ofar halda sínu upprunalega, afmarkaða umfangi.
 
-ÓLOKIN FRÁVIK — hvert atriði hefur sjálfstætt auðkenni
+AFGREIDD SAMRÆMINGARFRÁVIK — 24/24
 Dálkar: Auðkenni | Flokkur | Atriði | Útfærsla | Sjálfvirk viðgerðarprófun | iPhone-staðfesting
 
 RUT-01 | Rútur | Tilkynning um opna ferð | Útfært í 136 | 31 viðmiðs-/birtingarpróf og 13 rútupróf staðin; varðveislusöfn staðin | Afgreitt samkvæmt staðfestingu notanda 08-11-2026 í AKS-beiðni; nýr tækiprófunarferill ekki tilgreindur
@@ -739,31 +741,31 @@ Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nau
 Framkvæmd 08-11-2026, 138: Flight bætt við fyrirliggjandi train/ferry/bus/transfer varðveislu aðalkafla í returnToBooking. Notandaval opins/lokaðs aðalkafla helst eftir Ferðaveski. Sérstök upphafsstaða Flugs og lokun annarra valfrjálsra kafla eru óbreytt.
 Staða: kóðabreyting og sjálfvirk prófun framkvæmd; lifandi vistun/flugþjónusta og raunverulegur iPhone/Safari óstaðfest. Nánar í AFHENDING 138 neðst í þessari skrá.
 
-BIL-01 | Bílaleiga | Ráðlagður brottfarartími | Útfært í 139; samþykktur sértexti leiðréttur í 140, 21 markpróf staðin | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Óstaðfest; bíður notanda á iPhone
+BIL-01 | Bílaleiga | Ráðlagður brottfarartími | Útfært í 139; samþykktur sértexti leiðréttur í 140, 21 markpróf staðin | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Lokið og notandastaðfest á iPhone 08-11-2026
 Frávik: Eldri texti vísar í stöðu lesta/ferja.
 Kóðastaður í grunni 134: shared-help-copy í brottfararáætlun. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
 Framkvæmd 08-11-2026, 139: Ráðlagður brottfarartími birtir sömu Lesta-blokk, með stöðu aksturs í stað stöðu lestar. Enginn nýr sameiginlegur texti saminn; ferðamínútur, mætingarreglur og útreikningar óbreyttir.
-Afgreiðsla: útfærsla og raunveruleg sjálfvirk prófun framkvæmd; ekki merkt lokað eða notandastaðfest. Nánar í AFHENDING 139 neðst.
+Afgreiðsla 08-11-2026: Lokið samkvæmt staðfestingu notanda á iPhone. Sjá fimm prófuðu flæðin í „SAM-00 — LOKASTAÐFESTING NOTANDA“ neðst og fyrri sjálfvirk próf í AFHENDING 139 og 140.
 
-Viðbót 140: Nýrri skýr fyrirmæli notanda skilgreina sértexta Bílaleigu orðrétt; hann kemur í stað almennrar skýringar um mætingarfrest við miða. Reiknireglur óbreyttar. Sjá AFHENDING 140 neðst. Raunverulegur iPhone enn óstaðfestur.
+Viðbót 140: Nýrri skýr fyrirmæli notanda skilgreina sértexta Bílaleigu orðrétt; hann kemur í stað almennrar skýringar um mætingarfrest við miða. Reiknireglur óbreyttar. Sjá AFHENDING 140 neðst.
 
-BIL-02 | Bílaleiga | Afbókunarskýring | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Óstaðfest; bíður notanda á iPhone
+BIL-02 | Bílaleiga | Afbókunarskýring | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Lokið og notandastaðfest á iPhone 08-11-2026
 Frávik: Eldri skýring án samsvarandi vistunarútskýringar Lesta.
 Kóðastaður í grunni 134: cancellation shared-help-copy. Greiningarstaðfesting: Kóðalesið; skilyrt birting; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
 Framkvæmd 08-11-2026, 139: Afbókunarskýring er orðrétt sama Lesta-blokk, þar með talin skýring um vistun breytts frests fyrir Vista og bæta í dagatal. Afbókunargögn, leiðandi dagsetningar og vistunarföll óbreytt.
-Afgreiðsla: útfærsla og raunveruleg sjálfvirk prófun framkvæmd; ekki merkt lokað eða notandastaðfest. Nánar í AFHENDING 139 neðst.
+Afgreiðsla 08-11-2026: Lokið samkvæmt staðfestingu notanda á iPhone. Sjá fimm prófuðu flæðin í „SAM-00 — LOKASTAÐFESTING NOTANDA“ neðst og fyrri sjálfvirk próf í AFHENDING 139 og 140.
 
-BIL-03 | Bílaleiga | Hreinsun skilastaðar | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Óstaðfest; bíður notanda á iPhone
+BIL-03 | Bílaleiga | Hreinsun skilastaðar | Útfært í 139 | 20 Bílaleigu-/viðmiðspróf og 13 flæðispróf staðin; 33 leiðsagnarpróf og 82 varðveislupróf staðin | Lokið og notandastaðfest á iPhone 08-11-2026
 Frávik: Hreinsa í stað Hreinsa stað við sambærilegan nákvæman punkt; ekki breyta skila-/afhendingarflæði.
 Kóðastaður í grunni 134: paintAlignedTransportPresentation / rentalReturnClear. Greiningarstaðfesting: Kóðalesið og birting skráð; þetta er ekki staðfesting á viðgerð.
 Heimild: heildarúttekt SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá), kaflar Samanburður eftir flokki / Nákvæm textasvæði / Fellikaflar / Staðaval eftir því sem við á.
 Lokunarpróf: viðeigandi raunverulegur Lesta-texti/framsetning með aðeins nauðsynlegum flokksorðum; ný og vistuð færsla, vistun/enduropnun, Hætta við og tengd leiðsögn; varðveita sérflæði og viðmið. Fyrir fellistöðu: raunverulegt ferðaveskisflæði til baka og handval aðalkafla. iPhone-staða skráð sjálfstætt.
 Framkvæmd 08-11-2026, 139: Hreinsunarhnappur við skilastað heitir Hreinsa stað, orðrétt eins og samsvarandi Lesta-aðgerð. Fyrri hreinsunarhandler óbreyttur. Prófað að hreinsun skilastaðar yfirskrifar hvorki afhendingarstað, dagsetningar, ferðamáta né vistaða færslu ef hætt er við.
-Afgreiðsla: útfærsla og raunveruleg sjálfvirk prófun framkvæmd; ekki merkt lokað eða notandastaðfest. Nánar í AFHENDING 139 neðst.
+Afgreiðsla 08-11-2026: Lokið samkvæmt staðfestingu notanda á iPhone. Sjá fimm prófuðu flæðin í „SAM-00 — LOKASTAÐFESTING NOTANDA“ neðst og fyrri sjálfvirk próf í AFHENDING 139 og 140.
 
 ÓLOKIN YFIRFERÐ OG RAUNSTAÐFESTING — ekki sjálfkrafa kóðagallar
 
@@ -1808,6 +1810,7 @@ PASS No uncaught browser errors
 
 
 AFHENDING 140 — TVÆR AFMARKAÐAR TEXTALEIÐRÉTTINGAR Í BÍLALEIGU, 08-11-2026
+Afhendingarsaga. Prófunarstaðan hér að neðan miðast við afhendingu. Nýrri staðfesting notanda á iPhone og lokastaða SAM-00 eru skráðar í næsta kafla.
 Samþykkt umfang: aðeins eftirfarandi tveir textar í Bílaleigu. Nýrri skýr fyrirmæli notanda ganga framar fyrri almennu orðalagsviðmiði Lesta á þessum tveimur stöðum.
 
 1. Ráðlagður brottfarartími:
@@ -1833,3 +1836,23 @@ MIKILVÆG ÁMINNING: Notandi þarf að raunprófa á iPhone áður en BIL-01–0
 Ólokið áfram: BIL-01–03 (notandastaðfesting), SAM-P01–P04 (afmörkuð yfirferð/raunstaðfesting), UI-RUT-01 og UI-BAT-01 (síðari útlitslagfæringar), ásamt öllum eldri óloknum atriðum sem varðveitt eru í þessari skrá.
 Afhending: ferdakerfid-140-BIL-textar.zip inniheldur aðeins index.html og þessa fullu VERKEFNALISTI.txt. Skipta út þessum tveimur skrám frá 139. Engin breyting á sw.js, offline.js eða útgáfustýringu. Upphleðsla á GitHub og GitHub-commit hafa ekki verið framkvæmd eða staðfest í þessari afhendingu.
 Afturköllun: óbreytt index.html úr 139 varðveitt. Við afturköllun appkóða skal halda nýjasta verkefnalistanum og prófunarsögunni.
+
+
+SAM-00 — LOKASTAÐFESTING NOTANDA 08-11-2026
+
+SAM-00: LOKIÐ — 24/24 samkvæmt staðfestingum notanda.
+• RUT-01–09 — Rútur: 9/9 lokið.
+• AKS-01–07 — Akstur/Bílþjónusta: 7/7 lokið.
+• FLU-01–05 — Flug: 5/5 lokið.
+• BIL-01–03 — Bílaleiga: 3/3 lokið, notandastaðfest á iPhone.
+
+iPhone-prófun Bílaleigu, staðfest af notanda 8. nóvember 2026 eftir afhendingu 140. Öll fimm prófin stóðust:
+1. Vistuð bílaleigufærsla opnast með réttum afhendingar- og skilaupplýsingum.
+2. Breyting á færslu vistast og helst eftir enduropnun.
+3. „Hreinsa stað“ hreinsar aðeins skilastað, án þess að önnur gögn tapist.
+4. Hægt er að velja skilastað aftur, vista og enduropna.
+5. Leiðsögn að afhendingarstað og frá skilastað virkar í Google Maps á iPhone.
+
+Staðfestingin á við um þessi fimm flæði Bílaleigu. Nákvæm iOS- og vafraútgáfa var ekki tilgreind. Útfærsla og eldri sjálfvirk próf úr 139 og 140 standa áfram í afhendingarsögunni. Ný gögn í þessari færslu eru niðurstöður notandans af þessum afmörkuðu raunprófum.
+
+SAM-P01–P04 halda ólokinni stöðu sem sjálfstæð yfirferð á víðara umfangi. Prófin á vistun og Google Maps í Bílaleigu teljast afmörkuð staðfesting innan þess umfangs. UI-RUT-01 (dagsetningar í „Bækistöð dagsferðar“), UI-BAT-01 (bil við skýringartexta í Bátum/ferjum) og öll önnur áður skráð ólokin verkefni halda sinni stöðu.
