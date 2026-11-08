@@ -559,6 +559,9 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #itemModal.aligned-transport-actions :is(#bookingLocationField,#rentalReturnPlaceFields)>.departure-actions>.btn:not(.hidden){display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;margin:0;padding:8px 10px;font-size:max(12px,.875rem);white-space:normal;overflow-wrap:anywhere;text-align:center;flex:1 0 auto}
 #itemModal.aligned-transport-actions #itemGoogleMapsOpen{overflow-wrap:normal}
 #itemModal.aligned-transport-actions #transportCityHelp>.shared-help-copy{display:none}
+.flight-reference-copy{display:none}
+#itemModal.flight-reference .flight-reference-copy{display:block}
+#itemModal.flight-reference .flight-reference-help>.shared-help-copy{display:none}
 .transfer-reference-copy{display:none}
 #itemModal.transfer-reference .transfer-reference-copy{display:block}
 #itemModal.transfer-reference .transfer-reference-help>.shared-help-copy{display:none}
@@ -1040,7 +1043,7 @@ function initItemWallet(itemId=null){state.itemWallet={tripId:state.trip?.id,ite
 function paintItemWallet(){const q=state.itemWallet;if(!q)return;const docs=state.walletDocs.filter(d=>q.selected.has(d.id));$('itemWalletDocuments').innerHTML=docs.length?docs.map(d=>'<div class="lodging-card"><strong>'+esc(d.title)+'</strong>'+walletTicketMetadataLine(d)+'<button type="button" class="btn small" data-item-document="'+esc(d.id)+'">Opna</button></div>').join(''):'<div class="notice">Enginn miði eða skjal tengt enn.</div>';$('itemWalletDocuments').querySelectorAll('[data-item-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.itemDocument))}
 function renderBookingWallet(){const q=state.itemWallet;$('bookingWalletList').innerHTML=state.walletDocs.length?state.walletDocs.map(d=>{const other=d.item_id&&d.item_id!==q.itemId;return '<label class="wallet-choice"><input type="checkbox" data-booking-document="'+esc(d.id)+'" '+(q.selected.has(d.id)?'checked ':'')+(other?'disabled ':'')+'><span>'+esc(d.title)+walletTicketMetadataLine(d)+'<small>'+(other?'Tengt annarri bókun: '+esc(bookingDisplayName(state.items.find(i=>i.id===d.item_id))):'Veldu til að tengja við þessa bókun')+'</small></span></label>'}).join(''):'<div class="empty">Ferðaveskið er tómt. Bættu við nýju skjali.</div>';$('bookingWalletList').querySelectorAll('[data-booking-document]').forEach(b=>b.onchange=()=>{b.checked?q.selected.add(b.dataset.bookingDocument):q.selected.delete(b.dataset.bookingDocument)})}
 function openBookingWallet(){if(!state.itemWallet||state.itemWallet.tripId!==state.trip?.id)initItemWallet(state.editingItemId);state.itemWallet.scrollTop=$('itemModal').scrollTop;state.itemWallet.dialogScrollTop=$('itemModal').querySelector('.dialog').scrollTop;$('itemModal').classList.remove('show');renderBookingWallet();openModal('bookingWalletModal')}
-function returnToBooking(){state.walletReturnToBooking=false;$('bookingWalletModal').classList.remove('show');$('walletDocumentModal').classList.remove('show');$('itemModal').classList.add('show');paintItemWallet();resetOptionalDisclosures($('itemModal'),['train','ferry','bus','transfer'].includes($('itemCategory').value)?['openJourneyFields','transportJourneyDetails']:[]);resetModalScroll($('itemModal'))}
+function returnToBooking(){state.walletReturnToBooking=false;$('bookingWalletModal').classList.remove('show');$('walletDocumentModal').classList.remove('show');$('itemModal').classList.add('show');paintItemWallet();resetOptionalDisclosures($('itemModal'),['train','ferry','bus','transfer','flight'].includes($('itemCategory').value)?['openJourneyFields','transportJourneyDetails']:[]);resetModalScroll($('itemModal'))}
 function addBookingWalletDocument(){state.walletReturnToBooking=true;$('bookingWalletModal').classList.remove('show');openNewWalletDocument();setTripDateInput('walletDocDate',currentItemDate()||tripDefaultDate());$('walletDocType').value=$('itemCategory').value==='lodging'?'hotel':'ticket';$('walletDocItem').value='';$('walletDocItem').disabled=true;syncWalletTicketFields()}
 function finishBookingWalletDocument(data){state.itemWallet.selected.add(data.id);state.walletReturnToBooking=false;$('walletDocItem').disabled=false;$('walletDocumentModal').classList.remove('show');renderBookingWallet();openModal('bookingWalletModal');paintItemWallet();renderCategoryCounts();toast('Skjal vistað í ferðaveski. Tenging vistast með bókuninni.')}
 async function linkItemWallet(itemId){
@@ -3138,10 +3141,23 @@ function paintTransferReferencePresentation(category){
  $('transportConfirmationNote').placeholder=transferReferenceText('t.d. lestarmiði í DB Navigator');
  for(const field of ['outboundFrom','outboundTo','returnFrom','returnTo']){$(field+'PointBtn').textContent='Velja stað';$(field+'MapsOpen').textContent='Google Maps\u00a0↗'}
 }
+function flightReferenceText(text){return String(text).replaceAll('Skráðu stöðvar og tíma','Skráðu flugvelli og tíma').replaceAll('Stöðvar, tímar og miðar','Flugvellir, tímar og miðar').replaceAll('stöðu lestar','stöðu flugs')}
+function paintFlightReferencePresentation(category){
+ const modal=$('itemModal'),active=category==='flight';modal.classList.toggle('flight-reference',active);
+ if(!active){modal.querySelectorAll('.flight-reference-copy').forEach(e=>e.remove());modal.querySelectorAll('.flight-reference-help').forEach(e=>e.classList.remove('flight-reference-help'));return}
+ for(const source of modal.querySelectorAll('.train-help-copy')){
+  if(source.closest('#openJourneyFields')||source.closest('#transportCityHelp'))continue;
+  source.parentElement.classList.add('flight-reference-help');let copy=source.nextElementSibling;
+  if(!copy?.classList.contains('flight-reference-copy')){copy=source.cloneNode(true);copy.classList.remove('train-help-copy');copy.classList.add('flight-reference-copy');const walker=document.createTreeWalker(copy,NodeFilter.SHOW_TEXT);while(walker.nextNode())walker.currentNode.nodeValue=flightReferenceText(walker.currentNode.nodeValue);source.after(copy)}
+ }
+ $('stationTicketHelpTitle').textContent=flightReferenceText('Stöðvar, tímar og miðar');
+ for(const field of ['outboundFrom','outboundTo','returnFrom','returnTo'])$(field+'MapsOpen').textContent='Google Maps\u00a0↗';
+}
 function paintAlignedTransportPresentation(category){
  paintFerryReferencePresentation(category);
  paintBusReferencePresentation(category);
  paintTransferReferencePresentation(category);
+ paintFlightReferencePresentation(category);
  const targets=['ferry','bus','transfer','flight','rental_car'];
  const active=targets.includes(category),modal=$('itemModal');
  modal.classList.toggle('aligned-transport-actions',active);
@@ -3150,7 +3166,7 @@ function paintAlignedTransportPresentation(category){
  if(airportHelp)airportHelp.textContent=active&&category==='flight'?'Flugvöllur og flugvallarkóði':'Skýring';
  $('rentalReturnMap').textContent=active&&category==='rental_car'?'Velja skilastað':'Líma / velja á korti';
  $('rentalReturnClear').textContent=active&&category==='rental_car'?'Hreinsa':'Hreinsa stað';
- if(!active||['ferry','bus','transfer'].includes(category))return;
+ if(!active||['ferry','bus','transfer','flight'].includes(category))return;
  const config={
   flight:{title:'Flugvellir, tímar og miðar',instructions:'Veldu flugvelli með flugvallarkóða. Tengdu miðann undir „Miðar og bókun“.'}
  }[category];
