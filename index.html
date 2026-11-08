@@ -559,6 +559,9 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #itemModal.aligned-transport-actions :is(#bookingLocationField,#rentalReturnPlaceFields)>.departure-actions>.btn:not(.hidden){display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;margin:0;padding:8px 10px;font-size:max(12px,.875rem);white-space:normal;overflow-wrap:anywhere;text-align:center;flex:1 0 auto}
 #itemModal.aligned-transport-actions #itemGoogleMapsOpen{overflow-wrap:normal}
 #itemModal.aligned-transport-actions #transportCityHelp>.shared-help-copy{display:none}
+.ferry-reference-copy{display:none}
+#itemModal.ferry-reference .ferry-reference-copy{display:block}
+#itemModal.ferry-reference .ferry-reference-help>.shared-help-copy{display:none}
 #itemModal.compact-booking-footer #itemDialogActions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:8px;padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
 #itemModal.compact-booking-footer #itemDialogActions>.btn{width:100%;min-height:44px;padding:8px 10px;margin:0}
 #itemModal.compact-booking-footer .dialog{scroll-padding-top:14px;scroll-padding-bottom:calc(var(--booking-footer-height,5rem) + 1rem)}
@@ -820,7 +823,7 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 <div id="destinationPhotoModal" class="modal"></div>
 <div id="headerPhotoSettingsModal" class="modal"></div>
 <script src="./railway-stations.js?v=129"></script>
-<script src="./transport-stops.js?v=129"></script>
+<script src="./transport-stops.js?v=134"></script>
 <script src="./cost-sharing.js?v=118"></script>
 <script src="./wallet-tickets.js"></script>
 <script src="./activity-times.js"></script>
@@ -1031,7 +1034,7 @@ function initItemWallet(itemId=null){state.itemWallet={tripId:state.trip?.id,ite
 function paintItemWallet(){const q=state.itemWallet;if(!q)return;const docs=state.walletDocs.filter(d=>q.selected.has(d.id));$('itemWalletDocuments').innerHTML=docs.length?docs.map(d=>'<div class="lodging-card"><strong>'+esc(d.title)+'</strong>'+walletTicketMetadataLine(d)+'<button type="button" class="btn small" data-item-document="'+esc(d.id)+'">Opna</button></div>').join(''):'<div class="notice">Enginn miði eða skjal tengt enn.</div>';$('itemWalletDocuments').querySelectorAll('[data-item-document]').forEach(b=>b.onclick=()=>openWalletDocument(b.dataset.itemDocument))}
 function renderBookingWallet(){const q=state.itemWallet;$('bookingWalletList').innerHTML=state.walletDocs.length?state.walletDocs.map(d=>{const other=d.item_id&&d.item_id!==q.itemId;return '<label class="wallet-choice"><input type="checkbox" data-booking-document="'+esc(d.id)+'" '+(q.selected.has(d.id)?'checked ':'')+(other?'disabled ':'')+'><span>'+esc(d.title)+walletTicketMetadataLine(d)+'<small>'+(other?'Tengt annarri bókun: '+esc(bookingDisplayName(state.items.find(i=>i.id===d.item_id))):'Veldu til að tengja við þessa bókun')+'</small></span></label>'}).join(''):'<div class="empty">Ferðaveskið er tómt. Bættu við nýju skjali.</div>';$('bookingWalletList').querySelectorAll('[data-booking-document]').forEach(b=>b.onchange=()=>{b.checked?q.selected.add(b.dataset.bookingDocument):q.selected.delete(b.dataset.bookingDocument)})}
 function openBookingWallet(){if(!state.itemWallet||state.itemWallet.tripId!==state.trip?.id)initItemWallet(state.editingItemId);state.itemWallet.scrollTop=$('itemModal').scrollTop;state.itemWallet.dialogScrollTop=$('itemModal').querySelector('.dialog').scrollTop;$('itemModal').classList.remove('show');renderBookingWallet();openModal('bookingWalletModal')}
-function returnToBooking(){state.walletReturnToBooking=false;$('bookingWalletModal').classList.remove('show');$('walletDocumentModal').classList.remove('show');$('itemModal').classList.add('show');paintItemWallet();resetOptionalDisclosures($('itemModal'),$('itemCategory').value==='train'?['openJourneyFields','transportJourneyDetails']:[]);resetModalScroll($('itemModal'))}
+function returnToBooking(){state.walletReturnToBooking=false;$('bookingWalletModal').classList.remove('show');$('walletDocumentModal').classList.remove('show');$('itemModal').classList.add('show');paintItemWallet();resetOptionalDisclosures($('itemModal'),['train','ferry'].includes($('itemCategory').value)?['openJourneyFields','transportJourneyDetails']:[]);resetModalScroll($('itemModal'))}
 function addBookingWalletDocument(){state.walletReturnToBooking=true;$('bookingWalletModal').classList.remove('show');openNewWalletDocument();setTripDateInput('walletDocDate',currentItemDate()||tripDefaultDate());$('walletDocType').value=$('itemCategory').value==='lodging'?'hotel':'ticket';$('walletDocItem').value='';$('walletDocItem').disabled=true;syncWalletTicketFields()}
 function finishBookingWalletDocument(data){state.itemWallet.selected.add(data.id);state.walletReturnToBooking=false;$('walletDocItem').disabled=false;$('walletDocumentModal').classList.remove('show');renderBookingWallet();openModal('bookingWalletModal');paintItemWallet();renderCategoryCounts();toast('Skjal vistað í ferðaveski. Tenging vistast með bókuninni.')}
 async function linkItemWallet(itemId){
@@ -2257,7 +2260,7 @@ function updateOpenJourneyFields(){
  const p=openJourneyFormValue(),from=state.stops.find(s=>s.id===p.from_stop_id),to=state.stops.find(s=>s.id===p.to_stop_id);
  $('openJourneyFromStay').textContent=from?'Dvöl: '+bookingStopDateLabel(from):'';$('openJourneyToStay').textContent=to?'Dvöl: '+bookingStopDateLabel(to):'';
  const context=[[from?.name,to?.name].filter(Boolean).join(' → '),p.start_date?'Brottför '+fmtDate(p.start_date):'',p.end_date?'Koma '+fmtDate(p.end_date):''].filter(Boolean).join(' · ');
- $('openJourneyHint').textContent=$('itemCategory').value==='train'?'':context?context+' · Vistast með þessari færslu.':'Má vera alveg opið. Fylltu aðeins út það sem þú hefur ákveðið.';updateTransportJourneyLayout();paintTransferLayout();
+ $('openJourneyHint').textContent=['train','ferry'].includes($('itemCategory').value)?'':context?context+' · Vistast með þessari færslu.':'Má vera alveg opið. Fylltu aðeins út það sem þú hefur ákveðið.';updateTransportJourneyLayout();paintTransferLayout();
 }
 function readOpenJourneyPlan(current){
  if(!['train','ferry','bus','transfer'].includes($('itemCategory').value))return null;
@@ -3074,7 +3077,31 @@ function transportEndpointContext(prefix,role='Origin'){
  return {date,stop,stopPoint,hotel:null,hotelPoint:null,route:true,origin,description:(origin?'Brottfararstaður':'Komustaður')+(stop?' · '+stop.name:'')+(date?' · '+fmtDate(date):'')+'. Veldu nákvæma stöð eða stað samkvæmt bókuninni.'};
 }
 // Presentation scoped to the five comparison categories. Train/lodging remain the references.
+function ferryReferenceText(text){return String(text).replaceAll('lestarstöðvar','hafnir').replaceAll('lestarstöð','höfn').replaceAll('lestarmiðanum','ferjumiðanum').replaceAll('lestarmiði','ferjumiði').replaceAll('stöðu lestar','stöðu ferju').replaceAll('stöðvum','höfnum').replaceAll('Stöðvar','Hafnir').replaceAll('stöðvar','hafnir').replaceAll('Brottfararstöð','Brottfararhöfn').replaceAll('Komustöð','Komuhöfn').replaceAll('DB Navigator','appi')}
+function paintFerryReferencePresentation(category){
+ const modal=$('itemModal'),active=category==='ferry';modal.classList.toggle('ferry-reference',active);
+ if(!active){modal.querySelectorAll('.ferry-reference-copy').forEach(e=>e.remove());modal.querySelectorAll('.ferry-reference-help').forEach(e=>e.classList.remove('ferry-reference-help'));return}
+ for(const source of modal.querySelectorAll('.train-help-copy')){
+  source.parentElement.classList.add('ferry-reference-help');
+  let copy=source.nextElementSibling;
+  if(!copy?.classList.contains('ferry-reference-copy')){
+   copy=source.cloneNode(true);copy.classList.remove('train-help-copy');copy.classList.add('ferry-reference-copy');
+   const walker=document.createTreeWalker(copy,NodeFilter.SHOW_TEXT);while(walker.nextNode())walker.currentNode.nodeValue=ferryReferenceText(walker.currentNode.nodeValue);
+   source.after(copy);
+  }
+ }
+ $('transportCityHelp').querySelector('summary').textContent=ferryReferenceText('Borgarpunktur og lestarstöð');
+ $('stationTicketHelpTitle').textContent=ferryReferenceText('Stöðvar, tímar og miðar');
+ $('transportConfirmationNote').placeholder=ferryReferenceText('t.d. lestarmiði í DB Navigator');
+ for(const [field,origin]of [['outboundFrom',true],['outboundTo',false],['returnFrom',true],['returnTo',false]]){
+  $(field).closest('.field').querySelector('label').textContent=ferryReferenceText(origin?'Brottfararstöð':'Komustöð');
+  $(field).placeholder=ferryReferenceText('Borg eða lestarstöð');
+  $(field+'PointBtn').textContent=ferryReferenceText('Velja lestarstöð');
+  $(field+'MapsOpen').textContent='Google Maps\u00a0↗';
+ }
+}
 function paintAlignedTransportPresentation(category){
+ paintFerryReferencePresentation(category);
  const targets=['ferry','bus','transfer','flight','rental_car'];
  const active=targets.includes(category),modal=$('itemModal');
  modal.classList.toggle('aligned-transport-actions',active);
@@ -3083,9 +3110,8 @@ function paintAlignedTransportPresentation(category){
  if(airportHelp)airportHelp.textContent=active&&category==='flight'?'Flugvöllur og flugvallarkóði':'Skýring';
  $('rentalReturnMap').textContent=active&&category==='rental_car'?'Velja skilastað':'Líma / velja á korti';
  $('rentalReturnClear').textContent=active&&category==='rental_car'?'Hreinsa':'Hreinsa stað';
- if(!active)return;
+ if(!active||category==='ferry')return;
  const config={
-  ferry:{city:'Borgarpunktur og höfn / bryggja',point:'höfn / bryggju',title:'Hafnir, tímar og miðar',instructions:'Skráðu hafnir / bryggjur og tíma þegar þau liggja fyrir. Tengdu miðann undir „Miðar og bókun“.',example:'t.d. bókunarstaðfesting í tölvupósti eða appi'},
   bus:{city:'Borgarpunktur og rútustöð',point:'rútustöð',title:'Stöðvar, tímar og miðar',instructions:'Skráðu stöðvar og tíma þegar þeir liggja fyrir. Tengdu miðann undir „Miðar og bókun“.',example:'t.d. bókunarstaðfesting í tölvupósti eða appi'},
   transfer:{city:'Borgarpunktur og nákvæmur staður',point:'nákvæman stað',title:'Staðir, tímar og bókun',instructions:'Skráðu sóttstað, komustað og tíma þegar þau liggja fyrir. Tengdu staðfestinguna undir „Miðar og bókun“.',example:'t.d. staðfesting bílþjónustu'},
   flight:{title:'Flugvellir, tímar og miðar',instructions:'Veldu flugvelli með flugvallarkóða. Tengdu miðann undir „Miðar og bókun“.'}
@@ -3189,7 +3215,7 @@ function openTransportStopPicker(prefix,role){
  const kind=$('itemCategory').value;if(!window.TransportStops||!['bus','ferry'].includes(kind))return openDeparturePlace(prefix,role,false,{manual:true});
  clearDeparturePlaceMap();const modal=$('departurePlaceModal'),context=transportEndpointContext(prefix,role)||{origin:role==='Origin',stop:null};
  const target={prefix,role,stationList:true};departurePlaceTarget=target;
- modal.classList.remove('station-confirming');$('departurePlaceTitle').textContent=kind==='bus'?'🚌 Velja rútustöð / stoppistöð':'⛴️ Velja höfn / bryggju';$('departureStationsBack').classList.add('hidden');$('departureMapFields').classList.add('hidden');$('departureSavedPlaces').classList.remove('hidden');openModal('departurePlaceModal');resetModalScroll(modal);
+ modal.classList.remove('station-confirming');$('departurePlaceTitle').textContent=kind==='bus'?'🚌 Velja rútustöð / stoppistöð':(role==='Origin'?'Velja brottfararhöfn':'Velja komuhöfn');$('departureStationsBack').classList.add('hidden');$('departureMapFields').classList.add('hidden');$('departureSavedPlaces').classList.remove('hidden');openModal('departurePlaceModal');resetModalScroll(modal);
  paintPlacePickerActions(prefix,role,false);
  const tripId=state.trip?.id,userId=state.user?.id,stopId=context.stop?.id,area=TransportStops.areaKey(kind,context);
  TransportStops.show({host:$('departureSavedPlaces'),kind,context,userId,saved:departureSavedPlaces().filter(p=>p.category===kind&&savedPlaceKind(p)==='exact').sort(savedPlaceComparator(context,kind)),isCurrent:()=>departurePlaceTarget===target&&modal.classList.contains('show')&&state.trip?.id===tripId&&state.user?.id===userId&&$('itemCategory').value===kind&&(()=>{const current=transportEndpointContext(prefix,role)||{};return current.stop?.id===stopId&&TransportStops.areaKey(kind,current)===area})(),
@@ -3218,6 +3244,7 @@ function updateOpenTransportNotice(){
  const visible=['train','ferry','bus','transfer'].includes(category);box.classList.toggle('hidden',!visible);if(!visible)return;
  box.textContent=category==='train'
   ?(isOpenTransport()?'Heiti eitt nægir til að vista opna ferð. Þú getur bætt við dögum, stöðvum, tímum og miðum síðar.':'Skráðu upplýsingar af lestarmiðanum.')
+  :category==='ferry'?ferryReferenceText(isOpenTransport()?'Heiti eitt nægir til að vista opna ferð. Þú getur bætt við dögum, stöðvum, tímum og miðum síðar.':'Skráðu upplýsingar af lestarmiðanum.')
   :(isOpenTransport()?'Heiti nægir til að vista. Öðrum upplýsingum má bæta við síðar.':'Fylltu út þær upplýsingar sem liggja fyrir samkvæmt bókuninni.');
 }
 
