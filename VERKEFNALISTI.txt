@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 08-11-2026 — eftir afhendingu 140. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. SAM-P01–P04, UI-RUT-01, UI-BAT-01 og önnur áður ólokin verkefni halda stöðu sinni.
+Gildandi skráningarstaða 09-11-2026 — eftir afhendingu 140. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. SAM-P01–P04, UI-BAT-01 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
@@ -550,7 +550,7 @@ Aðeins index.html og transport-stops.js þarf frá 133. Raunverulegur iPhone/Sa
 SAM-00 — HEILDARSAMRÆMING SAMGANGNA VIÐ LESTIR — LOKIÐ, 24/24
 Skráð 08-11-2026. Notandi samþykkti samanburðarúttektina sem grunn næstu verkefna og bað um varðveislu á GitHub fyrir appkóðabreytingar. Fyrri afhending varðveitti skráninguna. Fyrsta útfærslan var RUT-09 í 135.
 Lokastaða samkvæmt notanda 08-11-2026: RUT-01–09 (Rútur) 9/9, AKS-01–07 (Akstur/Bílþjónusta) 7/7, FLU-01–05 (Flug) 5/5 og BIL-01–03 (Bílaleiga) 3/3.
-Afmörkuð iPhone-prófun Bílaleigu er skráð við BIL-01–03 og í lokastaðfestingu neðst. SAM-P01–P04, UI-RUT-01 og UI-BAT-01 eru áfram opin.
+Afmörkuð iPhone-prófun Bílaleigu er skráð við BIL-01–03 og í lokastaðfestingu neðst. SAM-P01–P04 og UI-BAT-01 eru áfram opin.
 Heildarúttekt: SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá)
 Prófunarniðurstöður eru varðveittar hér undir SAM-00; ítarleg upprunaleg úttekt og textaúttak 33 prófa fylgja neðar í sömu skrá.
 Upprunalegur ítarlegur úttektartexti er varðveittur neðar í þessari skrá, með dagsettri stöðu og prófunartakmörkum. Gildandi skráningarstaða er hér undir SAM-00. Sérstakur 11 skráa pakki er ekki nauðsynlegur til áframhaldandi verkefnaskráningar.
@@ -1251,13 +1251,6 @@ PASS No uncaught browser errors
 ALMENN VERKEFNI — NÝJAR NOTANDAÁBENDINGAR 08-11-2026
 Aðeins skráning. Ekki framkvæma viðgerðir núna. Þessi atriði eru sjálfstæð viðbót við almenna verkefnalistann; þau loka hvorki öðrum verkefnum né breyta stöðu SAM-00.
 
-UI-RUT-01 — 🚌 Rútur: Dagsetning skerðist
-Staða: ÓLOKIÐ — LAGA SÍÐAR. Útfærsla: ÓHAFIN. Sjálfvirk viðgerðarprófun: ÓGERÐ. iPhone-staðfesting viðgerðar: ÓSTAÐFEST.
-Tilkynning notanda: Í fellivalinu „Bækistöð dagsferðar“ skerðast dagsetningar hægra megin á iPhone.
-Samþykkt umfang til síðari framkvæmdar: lagfæra birtingu langra áfangastaða og dagsetninga án breytinga á vali, gögnum eða virkni. Varðveita núverandi dagsferðarflæði og valda bækistöð.
-Greiningarstaða: notandatilkynnt birtingarfrávik; engin ný kóðagreining eða endurgerð framkvæmd í þessari skráningarlotu.
-Lokunarskilyrði: lagfæring framkvæmd og raunverulega prófuð; skrá prófaðar iPhone-breiddir/leturstærðir, löng heiti og heilar dagsetningar, ásamt varðveislu vals og vistaðra gagna. Aðgreina vafrapróf frá staðfestingu á iPhone. Halda óloknu þar til lagfæring og prófun liggja fyrir.
-
 UI-BAT-01 — ⛴️ Bátar/ferjur: Texti of nálægt hnappi
 Staða: ÓLOKIÐ — LAGA SÍÐAR. Útfærsla: ÓHAFIN. Sjálfvirk viðgerðarprófun: ÓGERÐ. iPhone-staðfesting viðgerðar: ÓSTAÐFEST.
 Tilkynning notanda: Skýringartextinn „Veldu brottfararstað til að finna rétt hótel“ liggur of nálægt hnappnum „Velja annað upphaf á korti“ og getur skarast við hann á iPhone.
@@ -1855,4 +1848,19 @@ iPhone-prófun Bílaleigu, staðfest af notanda 8. nóvember 2026 eftir afhendin
 
 Staðfestingin á við um þessi fimm flæði Bílaleigu. Nákvæm iOS- og vafraútgáfa var ekki tilgreind. Útfærsla og eldri sjálfvirk próf úr 139 og 140 standa áfram í afhendingarsögunni. Ný gögn í þessari færslu eru niðurstöður notandans af þessum afmörkuðu raunprófum.
 
-SAM-P01–P04 halda ólokinni stöðu sem sjálfstæð yfirferð á víðara umfangi. Prófin á vistun og Google Maps í Bílaleigu teljast afmörkuð staðfesting innan þess umfangs. UI-RUT-01 (dagsetningar í „Bækistöð dagsferðar“), UI-BAT-01 (bil við skýringartexta í Bátum/ferjum) og öll önnur áður skráð ólokin verkefni halda sinni stöðu.
+SAM-P01–P04 halda ólokinni stöðu sem sjálfstæð yfirferð á víðara umfangi. Prófin á vistun og Google Maps í Bílaleigu teljast afmörkuð staðfesting innan þess umfangs. Ólokin verkefni héldu stöðu sinni við lok SAM-00 þann 8. nóvember. Sjá nýrri ákvörðun um UI-RUT-01 hér að neðan.
+
+VERKEFNASAGA 09-11-2026 — UI-RUT-01
+
+UI-RUT-01 — Rútur: Dagsetning skerðist í „Bækistöð dagsferðar“
+Staða: LOKAÐ — FELLT NIÐUR, EKKI LAGFÆRT.
+Ákvörðun notanda 9. nóvember 2026. Núverandi hegðun hnappa og fellilista er samþykkt þar sem löng heiti geta styst vegna takmarkaðs pláss. Þetta getur átt við í öllum sambærilegum flokkum Ferðakerfisins.
+Ákvörðunin leysir fyrri lagfæringaráætlun UI-RUT-01 af hólmi. Aðeins verkefnaskráning.
+
+Fyrri skráning frá 08-11-2026, varðveitt sem saga:
+UI-RUT-01 — 🚌 Rútur: Dagsetning skerðist
+Staða: ÓLOKIÐ — LAGA SÍÐAR. Útfærsla: ÓHAFIN. Sjálfvirk viðgerðarprófun: ÓGERÐ. iPhone-staðfesting viðgerðar: ÓSTAÐFEST.
+Tilkynning notanda: Í fellivalinu „Bækistöð dagsferðar“ skerðast dagsetningar hægra megin á iPhone.
+Samþykkt umfang til síðari framkvæmdar: lagfæra birtingu langra áfangastaða og dagsetninga án breytinga á vali, gögnum eða virkni. Varðveita núverandi dagsferðarflæði og valda bækistöð.
+Greiningarstaða: notandatilkynnt birtingarfrávik; engin ný kóðagreining eða endurgerð framkvæmd í þessari skráningarlotu.
+Lokunarskilyrði: lagfæring framkvæmd og raunverulega prófuð; skrá prófaðar iPhone-breiddir/leturstærðir, löng heiti og heilar dagsetningar, ásamt varðveislu vals og vistaðra gagna. Aðgreina vafrapróf frá staðfestingu á iPhone. Halda óloknu þar til lagfæring og prófun liggja fyrir.
