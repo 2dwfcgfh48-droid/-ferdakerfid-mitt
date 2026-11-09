@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 09-11-2026 — eftir afhendingu 140. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. SAM-P01–P04, UI-BAT-01 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda.
+Gildandi skráningarstaða 09-11-2026 — afhending 141. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. UI-BAT-01 er útfært og bíður staðfestingar á iPhone. SAM-P01–P04 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
@@ -550,7 +550,7 @@ Aðeins index.html og transport-stops.js þarf frá 133. Raunverulegur iPhone/Sa
 SAM-00 — HEILDARSAMRÆMING SAMGANGNA VIÐ LESTIR — LOKIÐ, 24/24
 Skráð 08-11-2026. Notandi samþykkti samanburðarúttektina sem grunn næstu verkefna og bað um varðveislu á GitHub fyrir appkóðabreytingar. Fyrri afhending varðveitti skráninguna. Fyrsta útfærslan var RUT-09 í 135.
 Lokastaða samkvæmt notanda 08-11-2026: RUT-01–09 (Rútur) 9/9, AKS-01–07 (Akstur/Bílþjónusta) 7/7, FLU-01–05 (Flug) 5/5 og BIL-01–03 (Bílaleiga) 3/3.
-Afmörkuð iPhone-prófun Bílaleigu er skráð við BIL-01–03 og í lokastaðfestingu neðst. SAM-P01–P04 og UI-BAT-01 eru áfram opin.
+Afmörkuð iPhone-prófun Bílaleigu er skráð við BIL-01–03 og í lokastaðfestingu neðst. SAM-P01–P04 eru áfram opin. UI-BAT-01 er sjálfstætt verkefni og bíður staðfestingar á iPhone.
 Heildarúttekt: SAM-00 — ÍTARLEG ÚTTEKT (í þessari sömu skrá)
 Prófunarniðurstöður eru varðveittar hér undir SAM-00; ítarleg upprunaleg úttekt og textaúttak 33 prófa fylgja neðar í sömu skrá.
 Upprunalegur ítarlegur úttektartexti er varðveittur neðar í þessari skrá, með dagsettri stöðu og prófunartakmörkum. Gildandi skráningarstaða er hér undir SAM-00. Sérstakur 11 skráa pakki er ekki nauðsynlegur til áframhaldandi verkefnaskráningar.
@@ -1251,12 +1251,13 @@ PASS No uncaught browser errors
 ALMENN VERKEFNI — NÝJAR NOTANDAÁBENDINGAR 08-11-2026
 Aðeins skráning. Ekki framkvæma viðgerðir núna. Þessi atriði eru sjálfstæð viðbót við almenna verkefnalistann; þau loka hvorki öðrum verkefnum né breyta stöðu SAM-00.
 
-UI-BAT-01 — ⛴️ Bátar/ferjur: Texti of nálægt hnappi
-Staða: ÓLOKIÐ — LAGA SÍÐAR. Útfærsla: ÓHAFIN. Sjálfvirk viðgerðarprófun: ÓGERÐ. iPhone-staðfesting viðgerðar: ÓSTAÐFEST.
-Tilkynning notanda: Skýringartextinn „Veldu brottfararstað til að finna rétt hótel“ liggur of nálægt hnappnum „Velja annað upphaf á korti“ og getur skarast við hann á iPhone.
-Samþykkt umfang til síðari framkvæmdar: lagfæra bil og textaflæði án þess að breyta samþykktu útliti leiðsagnar eða virkni hennar. Varðveita staðaval, valið upphaf og leiðsagnaraðgerðir.
-Greiningarstaða: notandatilkynnt bil-/textaflæðisfrávik; engin ný kóðagreining eða endurgerð framkvæmd í þessari skráningarlotu.
-Lokunarskilyrði: lagfæring framkvæmd og raunverulega prófuð; athuga texta/hnapp án skörunar á viðeigandi iPhone-breiddum og leturstærðum ásamt óbreyttri leiðsagnarvirkni. Aðgreina vafrapróf frá staðfestingu á iPhone. Halda óloknu þar til lagfæring og prófun liggja fyrir.
+UI-BAT-01 — ⛴️ Bátar/ferjur: Óþörf skýring við brottför
+Staða 09-11-2026: ÚTFÆRT Í 141 OG SJÁLFVIRKT PRÓFAÐ. Bíður staðfestingar notanda á iPhone.
+Samþykkt 09-11-2026: fela „Veldu brottfararstað til að finna rétt hótel.“ í Bátum/ferjum þegar brottfararstað vantar. Nýja ákvörðunin leysir fyrri tillögu um bil og textaflæði af hólmi.
+Útfærsla: paintTransportHotelConnections sér um sýnileika á út- og heimleið. updateDeparturePlanForm útbýr áfram textann og journeyDepartureHotelContext velur áfram samhengi út frá brottfararstað og ferðadegi.
+Sjálfvirk prófun: 51/51 í Chromium með prufugögnum. Sýnileiki við 320, 393 og 430 px, gistival fyrir brottför og eftir komu, aðrar stöðuskýringar og Google Maps-tenglar prófuð. Samanburður á formum og gildum í öllum 16 hinum bókunarflokkunum var eins í 140 og 141.
+Lokun: staðfesting notanda á iPhone. Sjá afhendingu 141 neðst.
+
 
 SKJALASKRÁNING 08-11-2026 — UI-RUT-01 OG UI-BAT-01
 Báðum verkefnum bætt við sem óloknum verkum til síðari framkvæmdar. Allur eldri verkefnalisti, ákvarðanir og prófunarsaga varðveitt orðrétt á undan þessari viðbót. Enginn appkóði breyttur og engin ný apppróf framkvæmd. Ekki ný GitHub-vistun eða commit.
@@ -1864,3 +1865,27 @@ Tilkynning notanda: Í fellivalinu „Bækistöð dagsferðar“ skerðast dagse
 Samþykkt umfang til síðari framkvæmdar: lagfæra birtingu langra áfangastaða og dagsetninga án breytinga á vali, gögnum eða virkni. Varðveita núverandi dagsferðarflæði og valda bækistöð.
 Greiningarstaða: notandatilkynnt birtingarfrávik; engin ný kóðagreining eða endurgerð framkvæmd í þessari skráningarlotu.
 Lokunarskilyrði: lagfæring framkvæmd og raunverulega prófuð; skrá prófaðar iPhone-breiddir/leturstærðir, löng heiti og heilar dagsetningar, ásamt varðveislu vals og vistaðra gagna. Aðgreina vafrapróf frá staðfestingu á iPhone. Halda óloknu þar til lagfæring og prófun liggja fyrir.
+
+AFHENDING 141 — UI-BAT-01, 09-11-2026
+
+Ákvörðun notanda: Skýringin „Veldu brottfararstað til að finna rétt hótel.“ fellur úr birtingu í bókunarformi Báta/ferja þegar brottfararstað vantar. Gildir bæði um útleið og heimleið. Önnur stöðuskilaboð og hnappar halda fyrra hlutverki.
+
+Breyttur appkóði: index.html, sýnileiki eins hjálpartexta í paintTransportHotelConnections. Staðarval, gistitenging, ferðadagur, kort og leiðsagnarútreikningar eru í sömu föllum og áður.
+
+Prófanir 09-11-2026:
+• 51/51 athugun stóðst í Chromium 153.0.8010.0 með prufugögnum og hermdri vistun, bæði í grunni 140 og í 141 með viðeigandi væntingu um sýnileika.
+• Við 320, 393 og 430 px hvarf skýringin á út- og heimleið. Skjámynd við 393 px var skoðuð.
+• Skilaboð um óskráðan ferðadag, enga virka gistingu, eina viðeigandi gistingu og fleiri en einn valkost stóðust próf. Gistitenging miðaðist við brottfararstað og ferðadag, þar með talinn útritunardagur.
+• „Nota gististað“ var prófað fyrir brottför og eftir komu. Google Maps-tenglarnir höfðu rétta upphafs- og endapunkta í prófunum. Vistun og enduropnun með prufugögnum stóðst.
+• Form og gildi voru eins í samanburði á hinum 16 bókunarflokkunum.
+• Staðfesting á raunverulegum iPhone og opnun Google Maps-appsins bíða. UI-BAT-01 er útfært og sjálfvirkt prófað. SAM-00 er lokið, 24/24.
+
+Afhending: index.html og VERKEFNALISTI.txt. Setja þessar tvær skrár í stað þeirra úr 140.
+
+Fyrri skráning UI-BAT-01 frá 08-11-2026, varðveitt sem saga:
+UI-BAT-01 — ⛴️ Bátar/ferjur: Texti of nálægt hnappi
+Staða: ÓLOKIÐ — LAGA SÍÐAR. Útfærsla: ÓHAFIN. Sjálfvirk viðgerðarprófun: ÓGERÐ. iPhone-staðfesting viðgerðar: ÓSTAÐFEST.
+Tilkynning notanda: Skýringartextinn „Veldu brottfararstað til að finna rétt hótel“ liggur of nálægt hnappnum „Velja annað upphaf á korti“ og getur skarast við hann á iPhone.
+Samþykkt umfang til síðari framkvæmdar: lagfæra bil og textaflæði án þess að breyta samþykktu útliti leiðsagnar eða virkni hennar. Varðveita staðaval, valið upphaf og leiðsagnaraðgerðir.
+Greiningarstaða: notandatilkynnt bil-/textaflæðisfrávik; engin ný kóðagreining eða endurgerð framkvæmd í þessari skráningarlotu.
+Lokunarskilyrði: lagfæring framkvæmd og raunverulega prófuð; athuga texta/hnapp án skörunar á viðeigandi iPhone-breiddum og leturstærðum ásamt óbreyttri leiðsagnarvirkni. Aðgreina vafrapróf frá staðfestingu á iPhone. Halda óloknu þar til lagfæring og prófun liggja fyrir.
