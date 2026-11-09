@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 09-11-2026 — afhending 141. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. UI-BAT-01 er útfært og bíður staðfestingar á iPhone. SAM-P01–P04 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda.
+Gildandi skráningarstaða 09-11-2026 — afhending 142. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. UI-BAT-01 er útfært og bíður staðfestingar á iPhone. SAM-P01–P04 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. HUG-01 er útfært og vafraprófað. Staðfesting á iPhone og iPad bíður.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
@@ -1889,3 +1889,23 @@ Tilkynning notanda: Skýringartextinn „Veldu brottfararstað til að finna ré
 Samþykkt umfang til síðari framkvæmdar: lagfæra bil og textaflæði án þess að breyta samþykktu útliti leiðsagnar eða virkni hennar. Varðveita staðaval, valið upphaf og leiðsagnaraðgerðir.
 Greiningarstaða: notandatilkynnt bil-/textaflæðisfrávik; engin ný kóðagreining eða endurgerð framkvæmd í þessari skráningarlotu.
 Lokunarskilyrði: lagfæring framkvæmd og raunverulega prófuð; athuga texta/hnapp án skörunar á viðeigandi iPhone-breiddum og leturstærðum ásamt óbreyttri leiðsagnarvirkni. Aðgreina vafrapróf frá staðfestingu á iPhone. Halda óloknu þar til lagfæring og prófun liggja fyrir.
+
+AFHENDING 142 — HUG-01: BYRJA FERÐALEIÐ OG DAGATAL Á DEGINUM Í DAG
+
+Samþykkt 09-11-2026. Staða: ÚTFÆRT Í 142 OG VAFRAPRÓFAÐ. Staðfesting á raunverulegum iPhone og iPad bíður.
+
+Við opnun ferðar í gangi er dagurinn í dag valinn og fremst í sýnilega hluta dagsetningastikunnar. Ferðastikan byrjar á fyrsta ferðalið dagsins. Ef enginn liður byrjar í dag kemur dvalaráfanginn sem nær yfir daginn fyrst, annars næsti dagsetti liður. Eldri dagar og ferðaliðir eru áfram til vinstri. Í löngum ferðum þar sem dagurinn í dag er utan fyrri 120 daga birtingar birtist hann ásamt eldri dögum og allt að 119 dögum fram í tímann.
+
+Upphafleg staðsetning er stillt við opnun ferðar. Dagaval, áfangastaðaval og handvirk skrunstaða varðveitast við flipaskipti og endurteikningu. Óhafnar og farnar ferðir opnast í Ferðaleið með fyrsta daginn valinn.
+
+Prófanir 09-11-2026:
+• 16/16 athuganir í Chromium 153 með prufugögnum, þar á meðal ferð í gangi, óhafin ferð, farin og lokið merkt ferð, nákvæmur ferðadagur, dvalaráfangi og næsti liður.
+• 393 × 852 og 852 × 393 px fyrir síma og 820 × 1180 og 1180 × 820 px fyrir spjaldtölvu. Skjámyndir yfirfarnar. Síðasti dagur og síðasti áfangi ná vinstri brún á breiðum skjá.
+• Handvirkt skrun aftur og fram, dagaval, áfangastaðaval, enduropnun ferðar og skipti milli Ferðaleiðar, Dagatals og Í dag prófuð.
+• Samanburður við 141 sýndi sömu ferðagögn, bókanir, kortalista og fellikafla í prófunargögnum. Kortavélin og gagnagrunnur voru hermd. Engin skrif voru gerð í prófun á opnun ferðar.
+• 51/51 fyrri athugun á bókunarformum, gistitengingum og leiðsögn stóðst við endurprófun á 142. Form 16 flokka voru eins í samanburði við 141.
+• Raunprófun á iPhone í lóðréttri og láréttri stöðu og á iPad bíður.
+
+HUG-02 bíður áfram. SAM-00 er lokið, 24/24. Fyrri staða UI-BAT-01 og önnur verkefni halda gildi.
+
+Afhending: index.html og VERKEFNALISTI.txt í ferdakerfid-142-HUG-01.zip. Skipta út þessum tveimur skrám úr 141.
