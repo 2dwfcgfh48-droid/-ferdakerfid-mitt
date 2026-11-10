@@ -681,6 +681,36 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 
 
 #manageStopsList .place-option.stop-has-warning,.stop.stop-has-warning{border:2px solid #d6ad55;border-radius:12px;box-sizing:border-box}#manageStopsList .place-option.stop-has-warning{margin:6px 0;padding:12px}.stop-warning-label{color:var(--text);display:block;margin-top:5px}#bookingReviewWarnings{margin-bottom:14px}#bookingReviewWarnings.hidden{display:none}
+
+/* HUG-02: retain the existing strip and distinguish the selection from today's plan. */
+.timeline-card{--timeline-selected:#ffb36b;--timeline-pin:#219661}
+.theme-light .timeline-card,.theme-sand .timeline-card{
+ --timeline-selected:#98450c;--timeline-pin:#178554;
+}
+#timeline:has(.timeline-today-pin){padding-top:31px}
+#timeline>.stop.active:not(.stop-has-warning){border-top-color:#36505c}
+#timeline>.stop.active::before{background:#77909c}
+#timeline>.active::before{box-shadow:0 0 0 2px var(--timeline-selected)}
+#timeline>.active>strong{color:var(--timeline-selected)}
+#timeline>[role="button"]{cursor:pointer}
+#timeline>[role="button"]:focus-visible{outline:2px solid var(--timeline-selected);outline-offset:-2px}
+.timeline-pin{
+ position:relative;display:inline-block;width:.85em;height:.85em;border-radius:50% 50% 50% 0;
+ background:var(--timeline-pin);transform:rotate(-45deg);flex:none;
+}
+.timeline-pin::after{content:"";position:absolute;inset:29%;background:white;border-radius:50%}
+#timeline .timeline-today-pin{
+ position:absolute;z-index:1;top:-26px;left:1px;width:16px;height:16px;border:1px solid white;
+}
+.timeline-key{margin:3px 0 6px;color:var(--mut);font-size:.8rem}
+.timeline-key summary{cursor:pointer;width:max-content;max-width:100%;padding:7px 2px}
+.timeline-key ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px 14px;margin:0 0 8px;padding:3px 2px}
+.timeline-key li{display:inline-flex;align-items:center;gap:7px;max-width:100%}
+.timeline-key-dot{width:.75em;height:.75em;border-radius:50%;display:inline-block;flex:none;background:#77909c}
+.timeline-key-dot.transport{background:var(--gold)}
+.timeline-key-dot.selected{box-shadow:0 0 0 2px var(--timeline-selected)}
+.timeline-key-line{width:1.4em;flex:none;border-top:2px solid #77909c}
+.timeline-key-line.transport{border-top-style:dashed}
 </style></head>
 <body class="anim-on">
 <div class="app">
@@ -742,7 +772,20 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
     <div class="top"><h3 style="margin:0">FERÐALEIÐ & DAGATAL</h3><button class="btn small" id="manageStopsBtn">Áfangastaðir ferðar</button></div>
     <div class="view-tabs"><button class="tab active" data-view="route">Ferðaleið</button><button class="tab" data-view="calendar">Dagatal</button><button class="tab" data-view="today">Í dag</button></div>
     <div id="dayStrip" class="days" aria-label="Veldu dag ferðar"></div>
-    <div id="routeView"><div id="timeline" class="timeline"></div></div>
+    <div id="routeView">
+      <div id="timeline" class="timeline"></div>
+      <details class="timeline-key" id="timelineKey">
+        <summary>ⓘ Skýring á ferðastiku</summary>
+        <ul>
+          <li><span class="timeline-key-dot" aria-hidden="true"></span>Áfangastaður</li>
+          <li><span class="timeline-key-dot transport" aria-hidden="true"></span>Samgönguliður</li>
+          <li><span class="timeline-key-line" aria-hidden="true"></span>Heil lína · Áfangastaðahluti</li>
+          <li><span class="timeline-key-line transport" aria-hidden="true"></span>Strikalína · Samgönguhluti</li>
+          <li><span class="timeline-key-dot selected" aria-hidden="true"></span>Valinn áfangi</li>
+          <li><span class="timeline-pin" aria-hidden="true"></span>Í dag samkvæmt ferðaáætlun</li>
+        </ul>
+      </details>
+    </div>
     <div id="timelineDateWarnings" class="timeline-warnings hidden" role="status" aria-live="polite"></div>
     <div id="calendarView" class="hidden"><div id="dayItems" class="day-items"></div><div id="dayOpenJourneys"></div><div class="unscheduled"><h3>ÓSKIPULAGT / OPIÐ</h3><div id="unscheduledItems" class="day-items"></div></div></div>
     <div id="todayView" class="hidden"><div id="todayNext" aria-label="Næst á dagskrá"></div><div id="todayItems" class="day-items"></div><div id="todayOpenJourneys"></div></div>
@@ -1581,6 +1624,7 @@ async function openTrip(id){const t=state.trips.find(x=>x.id===id);if(!t)return;
  showScreen('tripScreen');
  // Lay out the route strip once at opening, even when Í dag is the initial tab.
  $('routeView').classList.remove('hidden');
+ state.timelineSelectionNeedsScroll=false;
  for(const strip of [$('dayStrip'),$('timeline')]){
   strip.classList.remove('trip-strip-positioned');
   strip.style.removeProperty('--trip-strip-tail');
@@ -1718,7 +1762,7 @@ function planningOfflineSummary(){const report=planningChecklist();return {issue
 function renderTrip(opening=false){if(isPastTrip()&&!state.tripLoadError){state.pastTripCosts??=new Map();state.pastTripCosts.set(state.trip.id,state.expenses);state.pastTripItems??=new Map();state.pastTripItems.set(state.trip.id,state.items)}renderPlanningChecklist();renderLodgingSummary();renderArchiveMapChoice();refreshFlightMonitoring();renderCancellationReminders();renderMapBookings();updateMarkers();renderTimeline(opening);renderCalendar();
  if(opening&&tripInProgress(state.selectedDate)){
   const strip=$('dayStrip');
-  positionTripStripAtOpening(strip,strip.querySelector('.day.active'));
+  alignTripStripToCard(strip,strip.querySelector('.day.active'));
  }
  renderToday();renderCategoryCounts();renderCostSummary();renderDestination();refreshStopSelect();renderOfflineStatus()}
 function transportIcon(cat){return ({flight:'✈️',train:'🚆',bus:'🚌',ferry:'⛴️',transfer:'🚕'})[cat]||'➡️'}
@@ -2002,9 +2046,15 @@ function renderTimelineDateWarnings(){
 }
 
 
-function positionTripStripAtOpening(strip,target){
+function alignTripStripToCard(strip,target){
  const first=strip.firstElementChild,last=strip.lastElementChild;
- if(!target||target===first||!last)return;
+ if(!target||!last)return;
+ if(target===first){
+  strip.classList.remove('trip-strip-positioned');
+  strip.style.removeProperty('--trip-strip-tail');
+  strip.scrollLeft=0;
+  return;
+ }
  const targetLeft=target.getBoundingClientRect().left;
  const offset=targetLeft-first.getBoundingClientRect().left;
  const endPadding=parseFloat(getComputedStyle(strip).paddingRight)||0;
@@ -2015,46 +2065,171 @@ function positionTripStripAtOpening(strip,target){
  strip.scrollLeft=offset;
 }
 
+function timelineEntries(){
+ const entries=[];
+ state.stops.forEach((stop,index)=>entries.push({kind:'stop',date:stop.start_date||'9999-12-31',time:'23:59',order:1,index,data:stop,key:'stop:'+stop.id}));
+ state.items.filter(item=>!item.metadata?.quick_cost&&isTransportCategory(item.category)).forEach((item,index)=>{
+  const m=item.metadata||{},dayTrip=transportDayTrip(item);
+  const returnDate=(m.transport_trip_type||m.flight_trip_type)==='round_trip'&&(m.return_date||m.return_flight_date);
+  const planned=isOpenTransport(item.category,item.status)&&!m.outbound_departure_date&&!item.local_date;
+  const context=planned?openJourneyContext(item):null;
+  const date=m.outbound_departure_date||item.local_date||context?.start||(!dayTrip?context?.from?.start_date:null)||'9999-12-31';
+  const sortDate=date==='9999-12-31'&&dayTrip&&returnDate?returnDate:date;
+  const displayTime=String(m.outbound_departure_time||item.local_time||'').slice(0,5);
+  const time=displayTime||(context?.from&&!context.start?'23:59':'00:00');
+  const order=planned?2:0;
+  entries.push({kind:'transport',leg:'outbound',date,sortDate,time,displayTime,order,index,data:item,planned,key:'outbound:'+item.id});
+  if(returnDate){
+   const displayTime=String(m.return_time||m.return_flight_time||'').slice(0,5);
+   const sameDayTrip=dayTrip&&sortDate===returnDate;
+   const returnTime=displayTime||'00:00';
+   const sortTime=sameDayTrip&&returnTime<time?time:returnTime;
+   entries.push({kind:'transport',leg:'return',date:returnDate,time:sortTime,displayTime,order:sameDayTrip?order:0,index:index+.5,data:item,key:'return:'+item.id});
+  }
+ });
+ entries.sort((a,b)=>(a.sortDate||a.date).localeCompare(b.sortDate||b.date)||a.time.localeCompare(b.time)||a.order-b.order||a.index-b.index);
+
+ const result=[],shownStops=new Set();
+ for(const entry of entries){
+  if(entry.kind==='stop'){
+   if(!shownStops.has(entry.key)){result.push(entry);shownStops.add(entry.key)}
+   continue;
+  }
+  const dayTrip=transportDayTrip(entry.data);
+  if(!dayTrip){result.push(entry);continue}
+  const base=state.stops.find(stop=>stop.id===dayTrip.base_stop_id);
+  const baseName=base?[flag(base.country_code),base.name].filter(Boolean).join(' '):'';
+  const place=entry.data.metadata?.route_places?.outbound_to;
+  const storedVisit=bookingDestinationText(entry.data,'outbound_to').trim();
+  const visitName=String(place?.city||storedVisit).trim();
+  const visitFlag=place?.country_code?flag(place.country_code):'';
+  const visit=visitName&&visitFlag&&!visitName.startsWith(visitFlag)?visitFlag+' '+visitName:visitName;
+  if(entry.leg==='outbound'){
+   const baseCard=base&&entries.find(candidate=>candidate.kind==='stop'&&candidate.data===base);
+   const previous=result.at(-1);
+   const followsBase=base&&(previous===baseCard||previous?.stopId===base.id);
+   if(base&&!followsBase){
+    if(baseCard.date===entry.date&&!shownStops.has(baseCard.key)){
+     result.push(baseCard);shownStops.add(baseCard.key);
+    }else{
+     result.push({kind:'visit',name:baseName,date:entry.date,stopId:base.id,key:'base:'+entry.data.id});
+    }
+   }
+   result.push(entry);
+   if(visit)result.push({kind:'visit',name:visit,visitType:'destination',date:entry.date,key:'visit:'+entry.data.id});
+  }else{
+   result.push(entry);
+   const explicitReturnId=entry.data.metadata?.route_places?.return_to?.source_stop_id;
+   if(base&&(!explicitReturnId||explicitReturnId===base.id)){
+    result.push({kind:'visit',name:baseName,date:entry.date,stopId:base.id,key:'back:'+entry.data.id});
+   }
+  }
+ }
+ return result;
+}
+
+function timelineCardForDate(day,includeNext=true,preferVisit=true){
+ if(!day)return null;
+ const cards=[...$('timeline').querySelectorAll('[data-timeline-date]')];
+ if(preferVisit){
+  const visit=cards.find(card=>card.dataset.timelineDate===day&&card.dataset.timelineVisit==='destination');
+  if(visit)return visit;
+ }
+ const dated=cards.filter(card=>!card.hasAttribute('data-timeline-visit'));
+ const sameDay=dated.find(card=>card.dataset.timelineDate===day);
+ if(sameDay)return sameDay;
+ const stop=stopForDate(day);
+ if(stop&&(stop.start_date||stop.end_date)){
+  const stay=dated.find(card=>card.dataset.stop===stop.id);
+  if(stay)return stay;
+ }
+ return includeNext?dated.find(card=>card.dataset.timelineDate>day&&card.dataset.timelineDate!=='9999-12-31')||null:null;
+}
+
+function markTimelineSelection(card){
+ for(const node of $('timeline').querySelectorAll('[data-timeline-key]')){
+  node.classList.toggle('active',node===card);
+  if(node===card)node.setAttribute('aria-current','true');
+  else node.removeAttribute('aria-current');
+ }
+}
+
+function scrollToTimelineSelection(){
+ const timeline=$('timeline');
+ if($('routeView').classList.contains('hidden')){
+  state.timelineSelectionNeedsScroll=true;
+ }else{
+  alignTripStripToCard(timeline,timeline.querySelector('.active'));
+  state.timelineSelectionNeedsScroll=false;
+ }
+}
+
+function revealTripStripCard(strip,card){
+ if(!card)return;
+ const bounds=strip.getBoundingClientRect(),rect=card.getBoundingClientRect();
+ if(rect.left<bounds.left||rect.right>bounds.right)alignTripStripToCard(strip,card);
+}
+
 function renderTimeline(opening=false){
  renderTimelineDateWarnings();
  const reviewWarnings=tripReviewWarnings(),warningStopIds=new Set(reviewWarnings.flatMap(w=>w.stopIds));
- const el=$('timeline'),entries=[];
+ const el=$('timeline'),entries=timelineEntries();
  const scrollLeft=el.scrollLeft;
- const activeStop=opening?null:el.querySelector('.stop.active')?.dataset.stop;
- state.stops.forEach((s,i)=>entries.push({kind:'stop',date:s.start_date||'9999-12-31',time:'23:59',order:1,index:i,data:s}));
- state.items.filter(x=>!x.metadata?.quick_cost&&isTransportCategory(x.category)).forEach((x,i)=>{
-  const m=x.metadata||{},planned=isOpenTransport(x.category,x.status)&&!m.outbound_departure_date&&!x.local_date,context=planned?openJourneyContext(x):null;
-  const date=m.outbound_departure_date||x.local_date||context?.start||(!transportDayTrip(x)?context?.from?.start_date:null)||'9999-12-31',recordedTime=m.outbound_departure_time||x.local_time||'',time=recordedTime||(context?.from&&!context.start?'23:59':'00:00');
-  entries.push({kind:'transport',leg:'outbound',date,time:String(time).slice(0,5),displayTime:String(recordedTime).slice(0,5),order:planned?2:0,index:i,data:x,planned});
-  if((m.transport_trip_type||m.flight_trip_type)==='round_trip'&&(m.return_date||m.return_flight_date))entries.push({kind:'transport',leg:'return',date:m.return_date||m.return_flight_date,time:String(m.return_time||m.return_flight_time||'00:00').slice(0,5),displayTime:String(m.return_time||m.return_flight_time||'').slice(0,5),order:0,index:i+.5,data:x});
- });
- entries.sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time)||a.order-b.order||a.index-b.index);
+ const activeKey=opening?null:el.querySelector('.active')?.dataset.timelineKey;
  if(!entries.length){el.innerHTML='<div class="empty" style="min-width:100%">Enginn áfangastaður eða samgönguleggur kominn.</div>';return}
- el.innerHTML=entries.map((e,i)=>{
-  if(e.kind==='stop'){const s=e.data;return `<div class="stop ${i===0?'active':''} ${warningStopIds.has(s.id)?'stop-has-warning':''}" data-stop="${s.id}">${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small></div>`}
+ el.innerHTML=entries.map(e=>{
+  const attrs=`data-timeline-key="${esc(e.key)}" data-timeline-date="${esc(e.date)}"`;
+  if(e.kind==='visit'){
+   const label=e.visitType==='destination'?'Dagsheimsókn':e.key.startsWith('back:')?'Til baka á bækistöð · engin ný dvöl':'Bækistöð dagsferðar';
+   const date=e.date==='9999-12-31'?'Dagsetning opin':fmtDate(e.date);
+   return `<div class="stop timeline-visit" ${attrs} data-timeline-visit="${e.visitType||'base'}" role="button" tabindex="0"><small>${date}</small><strong>${esc(e.name)}</strong><small>${label}</small></div>`;
+  }
+  if(e.kind==='stop'){const s=e.data;return `<div class="stop ${warningStopIds.has(s.id)?'stop-has-warning':''}" ${attrs} data-stop="${esc(s.id)}" role="button" tabindex="0">${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small></div>`}
   const x=e.data,c=CATEGORIES.find(c=>c[0]===x.category)||['other','➡️','Samgöngur'],route=transportRouteText(x,e.leg),home=e.leg==='return'?' · heim':'';
   const dateLabel=e.planned?esc(openJourneyDateLabel(x)):(e.date!=='9999-12-31'?fmtDate(e.date):'Dagsetning opin')+(e.displayTime?' · kl. '+esc(e.displayTime):'');
   const warning=bookingReviewRows(x.id,e.date==='9999-12-31'?null:e.date,reviewWarnings).length>0;
-  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" data-route-item="${x.id}">${reviewWarningMarker(warning)}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong>${lodgingDestinationHtml(x,e.leg)}<small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small class="route-day-trip">'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div>`;
+  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" ${attrs} data-route-item="${esc(x.id)}" data-route-leg="${e.leg}" role="button" tabindex="0">${reviewWarningMarker(warning)}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong>${lodgingDestinationHtml(x,e.leg)}<small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small class="route-day-trip">'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div>`;
  }).join('');
- document.querySelectorAll('.stop[data-stop]').forEach(x=>x.onclick=()=>selectStop(x.dataset.stop));
- document.querySelectorAll('[data-route-item]').forEach(x=>x.onclick=()=>openEditItem(x.dataset.routeItem));
- if(activeStop&&state.stops.some(stop=>stop.id===activeStop)){
-  el.querySelectorAll('.stop[data-stop]').forEach(node=>node.classList.toggle('active',node.dataset.stop===activeStop));
+ for(const card of el.querySelectorAll('[role="button"]')){
+  card.onclick=()=>{
+   if(card.dataset.stop)selectStop(card.dataset.stop);
+   else if(card.dataset.routeItem)openEditItem(card.dataset.routeItem);
+   else if([...$('dayStrip').children].some(day=>day.dataset.date===card.dataset.timelineDate)){
+    selectCalendarDay(card.dataset.timelineDate,card.dataset.timelineKey);
+   }else markTimelineSelection(card);
+  };
+  card.onkeydown=event=>{
+   if(event.key==='Enter'||event.key===' '){event.preventDefault();card.click()}
+  };
  }
+ const today=tripTodayDate();
+ const todayCard=tripInProgress(today)?timelineCardForDate(today,false):null;
+ if(todayCard){
+  todayCard.insertAdjacentHTML('beforeend','<span class="timeline-pin timeline-today-pin" role="img" aria-label="Í dag samkvæmt ferðaáætlun" title="Í dag samkvæmt ferðaáætlun"></span>');
+ }
+ const active=[...el.children].find(card=>activeKey&&card.dataset.timelineKey===activeKey)||timelineCardForDate(state.selectedDate);
+ markTimelineSelection(active);
  if(!opening){el.scrollLeft=scrollLeft;return}
- const day=state.selectedDate;
- if(!tripInProgress(day))return;
- let index=entries.findIndex(entry=>entry.date===day);
- if(index<0){
-  const stop=stopForDate(day);
-  if(stop&&(stop.start_date||stop.end_date))index=entries.findIndex(entry=>entry.kind==='stop'&&entry.data===stop);
- }
- if(index<0)index=entries.findIndex(entry=>entry.date>day&&entry.date!=='9999-12-31');
- positionTripStripAtOpening(el,el.children[index]);
+ if(tripInProgress(state.selectedDate))alignTripStripToCard(el,timelineCardForDate(state.selectedDate,true,false));
 }
 
-function selectStop(id,preserveDate=false){document.querySelectorAll('.stop').forEach(x=>x.classList.toggle('active',x.dataset.stop===id));const s=state.stops.find(x=>x.id===id);if(!s)return;if(s.start_date&&!preserveDate){state.selectedDate=s.start_date;renderCalendar()}renderDestination(s);state.mapView='stop';state.mapSelectedStopId=id;state.mapCategory='all';renderMapBookings();updateMarkers();state.map?.resize();fitMapView()}
+function selectStop(id,preserveDate=false){
+ const stop=state.stops.find(s=>s.id===id);
+ if(!stop)return;
+ if(!preserveDate){
+  const strip=$('timeline'),marker=[...strip.children].find(node=>node.dataset.stop===id);
+  markTimelineSelection(marker);
+  if(stop.start_date){
+   state.selectedDate=stop.start_date;
+   renderCalendar();
+   revealTripStripCard($('dayStrip'),$('dayStrip').querySelector('.day.active'));
+  }
+  if($('routeView').classList.contains('hidden'))state.timelineSelectionNeedsScroll=true;
+  else revealTripStripCard(strip,marker);
+ }
+ renderDestination(stop);state.mapView='stop';state.mapSelectedStopId=id;state.mapCategory='all';
+ renderMapBookings();updateMarkers();state.map?.resize();fitMapView();
+}
 const travelWeatherCache=new Map(),travelWeatherPending=new Map();
 function weatherEnabled(){try{return localStorage.getItem('travel-weather:'+state.user?.id)!=='off'}catch{return true}}
 function weatherPoint(s){if(!s||s.latitude==null||s.longitude==null)return null;const lat=Number(s.latitude),lon=Number(s.longitude);return Number.isFinite(lat)&&Number.isFinite(lon)&&Math.abs(lat)<=90&&Math.abs(lon)<=180?{lat,lon,key:lat.toFixed(4)+','+lon.toFixed(4)}:null}
@@ -2101,7 +2276,25 @@ function itemHtml(x,viewDate=null,reviewWarnings=null){if(rentalCarActive(x)&&!x
 function itemOccursOn(item,date){if(rentalCarActive(item))return !!date&&RentalCars.events(item).some(e=>e.date===date);if(item.metadata?.quick_cost){const e=item.agenda_expense_id?state.expenses.find(e=>e.id===item.agenda_expense_id):agendaPrimaryExpense(item);return !!date&&item.local_date===date&&(item.agenda_expense_id?true:expenseAgendaVisible(e,item))}if(!date||(item.category==='lodging'&&!lodgingUsed(item)))return false;const m=item.metadata||{};if(item.category==='lodging'&&item.local_date&&item.end_local_date)return date>=item.local_date&&date<=item.end_local_date;return item.local_date===date||(m.return_date||m.return_flight_date)===date}
 function bookingCardHasOwnAction(event){return !!(event.defaultPrevented||event.target?.closest?.('.travel-weather,details,summary,a,button,input,select,textarea,label,[data-departure-link]'))}
 function renderDayItems(){const reviewWarnings=tripReviewWarnings();const dated=agendaItems().filter(x=>itemOccursOn(x,state.selectedDate)),s=stopForDate(state.selectedDate);const head=state.selectedDate?`<div class="mut" style="margin:4px 0 8px">${fmtDay(state.selectedDate)}${s?` · <strong style="color:var(--accent)">${flag(s.country_code)} ${esc(s.name)}</strong>`:''}</div>`:'';$('dayItems').innerHTML=head+weatherSlot(s,state.selectedDate)+(dated.length?dated.map(x=>itemHtml(x,state.selectedDate,reviewWarnings)).join(''):'<div class="empty">Ekkert annað skráð þennan dag.</div>');refreshTravelWeather();renderOpenJourneys('dayOpenJourneys',state.selectedDate);const open=agendaItems().filter(x=>!x.local_date&&!openJourneyRelevant(x,state.selectedDate));$('unscheduledItems').innerHTML=open.length?open.map(x=>itemHtml(x,null,reviewWarnings)).join(''):'<div class="mut">Engin óskipulögð atriði.</div>';document.querySelectorAll('[data-item-id]').forEach(el=>el.onclick=event=>{if(bookingCardHasOwnAction(event))return;openEditItem(el.dataset.itemId)});bindTripWarningActions()}
-function selectCalendarDay(date){const strip=$('dayStrip');if(!strip||!state.trip)return;const top=strip.getBoundingClientRect().top;state.selectedDate=date;renderCalendar();highlightStopForDate(date);const restore=()=>{if(state.selectedDate!==date||!strip.isConnected)return;const delta=strip.getBoundingClientRect().top-top;if(Math.abs(delta)>.5)window.scrollBy({top:delta,left:0,behavior:'instant'})};restore();requestAnimationFrame(restore)}
+function selectCalendarDay(date,timelineKey=null){
+ const strip=$('dayStrip');
+ if(!strip||!state.trip)return;
+ const top=strip.getBoundingClientRect().top;
+ state.selectedDate=date;
+ renderCalendar();
+ revealTripStripCard(strip,strip.querySelector('.day.active'));
+ highlightStopForDate(date);
+ const marker=timelineKey?[...$('timeline').children].find(node=>node.dataset.timelineKey===timelineKey):timelineCardForDate(date);
+ markTimelineSelection(marker);
+ scrollToTimelineSelection();
+ const restore=()=>{
+  if(state.selectedDate!==date||!strip.isConnected)return;
+  const delta=strip.getBoundingClientRect().top-top;
+  if(Math.abs(delta)>.5)window.scrollBy({top:delta,left:0,behavior:'instant'});
+ };
+ restore();
+ requestAnimationFrame(restore);
+}
 function highlightStopForDate(d){const s=stopForDate(d);if(s)selectStop(s.id,true);else renderDestination(null,d)}
 
 // Planning context never changes the booked route, dates, price or payment.
@@ -2669,7 +2862,10 @@ function switchView(v){
  routeView.classList.toggle('hidden',v!=='route');
  $('calendarView').classList.toggle('hidden',v!=='calendar');
  $('todayView').classList.toggle('hidden',v!=='today');
- if(!routeWasVisible&&v==='route')timeline.scrollLeft=state.timelineScrollLeft??0;
+ if(!routeWasVisible&&v==='route'){
+  timeline.scrollLeft=state.timelineScrollLeft??0;
+  if(state.timelineSelectionNeedsScroll)scrollToTimelineSelection();
+ }
  if(v==='calendar')renderCalendar();
  if(v==='today')renderToday();
 }
@@ -4872,7 +5068,32 @@ if(item.metadata?.quick_cost&&existing&&quickCostNotes(existing)?.kind!=='additi
 const kind=quickCostNotes(existing)?.kind||(!existing&&expenseForItem(item.id)?'additional':'primary'),notes='travel-cost-v1:'+JSON.stringify({kind,category,note:$('quickCostNote').value.trim(),meal,advance,show_in_agenda:$('quickCostAgenda').checked});const result=await saveExpenseForItem(item.id,title,{existingExpenseId:existing?.id||null,expectedExpenseNotes:q.loadedExpenseNotes??null,date,notes,itemAmount:String(amount),itemCurrency:meal.currency,itemPaymentChoice:payment,itemPaidAmount:String(paid),itemExpenseStatus:$('quickCostBookingStatus').value,itemActualPaidIsk:$('quickCostActualIsk').value,itemDueDate:$('quickCostDueDate').value});if(result.error)throw result.error;q.createdItemId=null;q.expenseId=result.data.id;q.loadedExpenseNotes=result.data.notes??null;q.savedItemId=item.id;q.saved=true;try{localStorage.setItem('travel-cost-last-category:'+state.user?.id,category);localStorage.removeItem(quickCostDraftKey())}catch{}restoreQuickCostBookingFields();renderTrip();renderCostModal();if(state.pastTripCosts)state.pastTripCosts.delete(tripId);$('quickCostReceiptName').textContent=title;$('quickCostReceiptAmount').textContent=fmtMoney(amount,meal.currency);$('quickCostReceiptDetail').textContent=(CATEGORIES.find(c=>c[0]===category)?.slice(1).join(' ')||'')+' · '+(payment==='full'?'Greitt':payment==='partial'?'Greitt að hluta':'Ógreitt')+' · '+fmtDate(date)+' · '+state.trip.name+' · reikningur fyrir hópinn '+fmtMoney(meal.total_cents/100,meal.currency)+(meal.split==='equal'?' · okkar hluti '+meal.our_people+' af '+meal.people:meal.split==='manual'?' · okkar hluti handvirkur':' · reikningurinn allur er okkar');paintQuickCostReceiptAdvance();$('quickCostReceiptWarning').textContent=result.warning||'';$('quickCostEditor').classList.add('hidden');$('quickCostReceipt').classList.remove('hidden');$('quickCostReceipt').scrollIntoView({block:'start'});toast('Okkar kostnaður vistaður: '+fmtMoney(amount,meal.currency),6500)
 }catch(e){setQuickCostError((q.createdItemId?'Færslan varð til en kostnaðurinn vistaðist ekki. Reyndu aftur hér. ':'')+(e?.message||'Ekki tókst að vista.'),e.fieldId||null)}finally{q.saving=false;q.disabledControls?.forEach(([el,disabled])=>el.disabled=disabled);$('saveQuickCostBtn').disabled=false}}
 function initQuickCost(){initLodgingCostForm();$('quickCostAgendaInfo').onclick=()=>setQuickCostAgendaHelp($('quickCostAgendaInfo').getAttribute('aria-expanded')!=='true');$('quickCostAgendaHelpClose').onclick=()=>{setQuickCostAgendaHelp(false);$('quickCostAgendaInfo').focus()};const mealChanged=()=>{if($('quickCostPayment').value==='full')$('quickCostActualIsk').value='';updateQuickCostMeal()};$('homeQuickCostBtn').onclick=()=>openQuickCost(null,null,true);$('tripQuickCostBtn').onclick=()=>openQuickCost();$('costQuickCostBtn').onclick=()=>openQuickCost();$('quickCostTrip').onchange=changeQuickCostTrip;$('quickCostItem').onchange=changeQuickCostItem;$('quickCostName').oninput=()=>{if($('quickCostName').value.trim())setQuickCostError('')};for(const id of ['quickCostAmount','quickCostCustomTip','quickCostPeople','quickCostOurPeople','quickCostManual'])$(id).oninput=mealChanged;for(const id of ['quickCostPeople','quickCostOurPeople']){const input=$(id),selectCount=()=>{input.select();requestAnimationFrame(()=>{if(document.activeElement===input)input.select()})};input.onfocus=selectCount;input.onclick=selectCount}$('quickCostSplit').onchange=mealChanged;$('quickCostPayer').onchange=()=>{if($('quickCostPayer').value==='all')$('quickCostPayment').value='full';updateQuickCostPayment()};$('quickCostMarkRepaid').onclick=()=>markQuickCostRepaid(true);$('quickCostUndoRepaid').onclick=()=>markQuickCostRepaid(false);$('quickCostBookingStatus').onchange=updateQuickCostAdvance;document.querySelectorAll('#quickCostTipChoices [data-tip]').forEach(b=>b.onclick=()=>{if(b.dataset.tip==='custom'){try{$('quickCostCustomTip').value=quickCostMeal().tip_cents/100}catch{}}$('quickCostTipMode').value=b.dataset.tip;mealChanged()});$('quickCostDate').onchange=quickCostContext;$('quickCostCategory').onchange=quickCostContext;$('quickCostPayment').onchange=updateQuickCostPayment;$('quickCostCurrency').onchange=()=>{updateQuickCostPayment();$('quickCostActualIsk').value='';updateQuickCostMeal()};$('quickCostCalculator').ontoggle=()=>{if($('quickCostCalculator').open){$('quickCostCalculation').value=$('quickCostAmount').value;calculateQuickCost()}};$('quickCostCalculation').oninput=calculateQuickCost;$('quickCostClearCalculation').onclick=()=>{$('quickCostCalculation').value='';$('quickCostCalculationResult').textContent=''};$('quickCostUseCalculation').onclick=()=>{const result=calculateQuickCost();if(result!=null){$('quickCostAmount').value=String(result).replace('.',',');$('quickCostCalculator').open=false;mealChanged()}};$('quickCostKeys').querySelectorAll('[data-calc-key]').forEach(b=>b.onclick=()=>{const input=$('quickCostCalculation');input.value=b.dataset.calcKey==='back'?input.value.slice(0,-1):input.value+b.dataset.calcKey;calculateQuickCost()});$('saveQuickCostBtn').onclick=saveQuickCost;$('quickCostContinue').onclick=()=>$('quickCostLeave').classList.add('hidden');$('quickCostKeepDraft').onclick=keepQuickCostDraft;$('quickCostDiscard').onclick=()=>{try{localStorage.removeItem(quickCostDraftKey())}catch{}closeModal('quickCostModal',true)};$('quickCostResumeBtn').onclick=resumeQuickCostDraft;$('quickCostStartFresh').onclick=startFreshQuickCost;$('quickCostEditSaved').onclick=()=>{const q=state.quickCost;q.saved=false;$('quickCostItem').innerHTML+=$('quickCostItem').querySelector(`option[value="${q.savedItemId}"]`)?'':`<option value="${esc(q.savedItemId)}">${esc($('quickCostReceiptName').textContent)}</option>`;$('quickCostItem').value=q.savedItemId;fillQuickCostEntry();$('quickCostReceipt').classList.add('hidden');$('quickCostEditor').classList.remove('hidden');quickCostBaseline()};$('quickCostAnother').onclick=()=>openQuickCost(state.quickCost.savedItemId)}
-function makeDraggable(el){let down=false,startX=0,startScroll=0;el.addEventListener('pointerdown',e=>{down=true;startX=e.clientX;startScroll=el.scrollLeft;el.setPointerCapture(e.pointerId);el.classList.add('dragging')});el.addEventListener('pointermove',e=>{if(down)el.scrollLeft=startScroll-(e.clientX-startX)});const end=()=>{down=false;el.classList.remove('dragging')};el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end)}
+function makeDraggable(el){
+ let pointer=null,startX=0,startScroll=0,dragging=false;
+ el.addEventListener('pointerdown',event=>{
+  if(!event.isPrimary||event.pointerType==='touch'||event.button!==0)return;
+  pointer=event.pointerId;startX=event.clientX;startScroll=el.scrollLeft;
+ });
+ el.addEventListener('pointermove',event=>{
+  if(pointer!==event.pointerId)return;
+  const distance=event.clientX-startX;
+  if(!dragging){
+   if(Math.abs(distance)<5)return;
+   el.setPointerCapture(pointer);
+   dragging=true;
+   el.classList.add('dragging');
+  }
+  el.scrollLeft=startScroll-distance;
+ });
+ const end=event=>{
+  if(pointer!==event.pointerId)return;
+  pointer=null;dragging=false;el.classList.remove('dragging');
+ };
+ el.addEventListener('pointerup',end);
+ el.addEventListener('pointercancel',end);
+ el.addEventListener('lostpointercapture',end);
+ el.addEventListener('pointerleave',event=>{if(!dragging)end(event)});
+}
 installDateDisplays();
 /* BACKUP_FEATURE_START */
 /* Ferðakerfið Mitt: portable backup v1. Inlined into index.html by build-backup.cjs.
