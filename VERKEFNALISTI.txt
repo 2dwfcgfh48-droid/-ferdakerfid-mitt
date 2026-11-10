@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 10-11-2026 — afhending 143. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. UI-BAT-01 er útfært og bíður staðfestingar á iPhone. SAM-P01–P04 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. HUG-01 er útfært og vafraprófað. Staðfesting á iPhone og iPad bíður. HUG-02 er útfært og vafraprófað. Staðfesting notanda á útliti og virkni bíður.
+Gildandi skráningarstaða 10-11-2026 — afhending 144. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. UI-BAT-01 er útfært og bíður staðfestingar á iPhone. SAM-P01–P04 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. HUG-01 er útfært og vafraprófað. Staðfesting á iPhone og iPad bíður. Eftirfylgni HUG-02 er útfærð og vafraprófuð í 144. Staðfesting notanda á útliti og virkni bíður.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
@@ -1929,3 +1929,22 @@ Prófun 10-11-2026:
 • Raunprófun á iPhone í lóðréttri og láréttri stöðu bíður. Verkefnið er ekki merkt lokið.
 
 Aðeins index.html og þessi verkefnalisti breyttust frá 142. SAM-00 er lokið, 24/24. Afhending: ferdakerfid-143-HUG-02.zip. Skipta út index.html og VERKEFNALISTI.txt úr 142.
+
+AFHENDING 144 — HUG-02: TVÍTEKNAR VIÐKOMUR, ENDUROPNUN FERÐALEIÐAR OG SMELLIR
+
+Samþykkt 10-11-2026. Staða: ÚTFÆRT Í 144 OG VAFRAPRÓFAÐ. Staðfesting notanda á raunverulegum iPhone bíður.
+
+• Tengdur vistaður áfangastaður birtist í sæti dagsheimsóknarinnar á ferðastikunni. Auðkenni hafa forgang. Þar sem auðkenni vantar þarf einstaka samsvörun nafns og upphafsdags dvalar, með landi ef það er skráð. Ólíkar dvalir haldast aðskildar. Heimkoma á bækistöð er sjónræn viðkoma.
+• Við enduropnun Ferðaleiðar í ferð í gangi velja og sýna báðar stikur daginn í dag. Venjuleg endurteikning og skrunun í opinni Ferðaleið halda handvirkri stöðu.
+• Punktur samstillir dag, valmerkingu og kort. Textinn opnar fyrirliggjandi ritil áfangastaðar eða bókunar. Sýnd viðkoma án vistaðs áfangastaðar opnar dagsferðarbókunina. Texti við heimkomu opnar bækistöðina.
+• Lárétt uppsetning, bókunartextar, punktar og línur, grænn pinni, felliskýring og gul viðvörun halda fyrra útliti. Breytingin snýr að framsetningu og aðgerðum, án skrifa í vistuð ferðagögn.
+
+Prófun 10-11-2026:
+• 19/19 athuganir á ferðastiku og 16/16 HUG-01 athuganir stóðust í Chromium 153 með prufugögnum.
+• Tvítekning endurgerð í 143 með vistuðum Feneyjum og Riva del Garda. Í 144 birtist hver tengd viðkoma einu sinni á réttum stað. Sérstök síðari dvöl með sama nafni, tvíræðar færslur og önnur heimferðarstöð prófaðar.
+• Prófað að opna Ferðaleið aftur úr Dagatali og Í dag, handvirkt skrun, venjulega endurteikningu og óhafnar/farnar ferðir.
+• Raunverulegir breytingargluggar í vafra opnuðust fyrir samgöngutexta, vistaðan áfangastað, sýnda heimsókn og heimkomu. Snerti- og lyklaborðsvirkni prófuð. Smellur á punkt opnaði engan glugga.
+• Ljóst og dökkt þema skoðuð á hermdum símastærðum 393 × 852 og 852 × 393 px. „Yfirfara“, samþykki og afturköllun undantekningar prófuð. Samanburður við 143 staðfesti sömu fyrirliggjandi texta, dagsetningaröð, viðvörunarútlit, kortalista og ferðagögn í fjórum prufuferðum. Kortavél og gagnagrunnur voru hermd.
+• Raunprófun á iPhone í báðum skjástefnum bíður. HUG-02 er ekki merkt lokið.
+
+Aðeins index.html og þessi verkefnalisti breyttust frá 143. SAM-00 er lokið, 24/24. Afhending: ferdakerfid-144-HUG-02.zip. Skipta út index.html og VERKEFNALISTI.txt úr 143.

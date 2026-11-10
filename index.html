@@ -691,9 +691,15 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 #timeline>.stop.active:not(.stop-has-warning){border-top-color:#36505c}
 #timeline>.stop.active::before{background:#77909c}
 #timeline>.active::before{box-shadow:0 0 0 2px var(--timeline-selected)}
-#timeline>.active>strong{color:var(--timeline-selected)}
-#timeline>[role="button"]{cursor:pointer}
-#timeline>[role="button"]:focus-visible{outline:2px solid var(--timeline-selected);outline-offset:-2px}
+#timeline>.active>.timeline-edit-action>strong{color:var(--timeline-selected)}
+.timeline-point-action{
+ position:absolute;z-index:2;inset-inline-start:0;top:-14px;width:36px;height:27px;
+ padding:0;border:0;background:transparent;cursor:pointer;appearance:none;
+}
+.timeline-edit-action{cursor:pointer}
+#timeline :is(.timeline-point-action,.timeline-edit-action):focus-visible{
+ outline:2px solid var(--timeline-selected);outline-offset:-2px;
+}
 .timeline-pin{
  position:relative;display:inline-block;width:.85em;height:.85em;border-radius:50% 50% 50% 0;
  background:var(--timeline-pin);transform:rotate(-45deg);flex:none;
@@ -2065,6 +2071,23 @@ function alignTripStripToCard(strip,target){
  strip.scrollLeft=offset;
 }
 
+function linkedDayTripVisitStop(item,day,baseId){
+ const m=item.metadata||{},outbound=m.route_places?.outbound_to,returnOrigin=m.route_places?.return_from;
+ const nameKey=value=>{
+  const key=placeAliasKey(value);
+  return PLACE_SEARCH_ALIASES.get(key)||key;
+ };
+ const names=new Set([outbound?.city,outbound?.name,outbound?.label,m.outbound_to].map(nameKey).filter(Boolean));
+ const sameReturnPlace=[returnOrigin?.city,returnOrigin?.name,returnOrigin?.label,m.return_from].some(value=>names.has(nameKey(value)));
+ const id=outbound?.source_stop_id||m.route_plan?.to_stop_id||(sameReturnPlace?returnOrigin?.source_stop_id:null);
+ if(id)return id===baseId?null:state.stops.find(stop=>stop.id===id)||null;
+ if(!planningDateValid(day))return null;
+ // A name match must also be unambiguous and describe a visit on this date.
+ const matches=state.stops.filter(stop=>stop.id!==baseId&&stop.start_date===day&&
+  (!outbound?.country_code||stop.country_code===outbound.country_code)&&names.has(nameKey(stop.name)));
+ return matches.length===1?matches[0]:null;
+}
+
 function timelineEntries(){
  const entries=[];
  state.stops.forEach((stop,index)=>entries.push({kind:'stop',date:stop.start_date||'9999-12-31',time:'23:59',order:1,index,data:stop,key:'stop:'+stop.id}));
@@ -2078,7 +2101,8 @@ function timelineEntries(){
   const displayTime=String(m.outbound_departure_time||item.local_time||'').slice(0,5);
   const time=displayTime||(context?.from&&!context.start?'23:59':'00:00');
   const order=planned?2:0;
-  entries.push({kind:'transport',leg:'outbound',date,sortDate,time,displayTime,order,index,data:item,planned,key:'outbound:'+item.id});
+  const visitStop=dayTrip?linkedDayTripVisitStop(item,sortDate,dayTrip.base_stop_id):null;
+  entries.push({kind:'transport',leg:'outbound',date,sortDate,time,displayTime,order,index,data:item,planned,visitStop,key:'outbound:'+item.id});
   if(returnDate){
    const displayTime=String(m.return_time||m.return_flight_time||'').slice(0,5);
    const sameDayTrip=dayTrip&&sortDate===returnDate;
@@ -2090,9 +2114,10 @@ function timelineEntries(){
  entries.sort((a,b)=>(a.sortDate||a.date).localeCompare(b.sortDate||b.date)||a.time.localeCompare(b.time)||a.order-b.order||a.index-b.index);
 
  const result=[],shownStops=new Set();
+ const usedAsVisit=new Set(entries.map(entry=>entry.visitStop?.id).filter(Boolean));
  for(const entry of entries){
   if(entry.kind==='stop'){
-   if(!shownStops.has(entry.key)){result.push(entry);shownStops.add(entry.key)}
+   if(!usedAsVisit.has(entry.data.id)&&!shownStops.has(entry.key)){result.push(entry);shownStops.add(entry.key)}
    continue;
   }
   const dayTrip=transportDayTrip(entry.data);
@@ -2109,14 +2134,18 @@ function timelineEntries(){
    const previous=result.at(-1);
    const followsBase=base&&(previous===baseCard||previous?.stopId===base.id);
    if(base&&!followsBase){
-    if(baseCard.date===entry.date&&!shownStops.has(baseCard.key)){
+    if(baseCard.date===entry.date&&!usedAsVisit.has(base.id)&&!shownStops.has(baseCard.key)){
      result.push(baseCard);shownStops.add(baseCard.key);
     }else{
      result.push({kind:'visit',name:baseName,date:entry.date,stopId:base.id,key:'base:'+entry.data.id});
     }
    }
    result.push(entry);
-   if(visit)result.push({kind:'visit',name:visit,visitType:'destination',date:entry.date,key:'visit:'+entry.data.id});
+   if(entry.visitStop){
+    result.push({kind:'stop',data:entry.visitStop,visitType:'destination',date:entry.date==='9999-12-31'?entry.visitStop.start_date||entry.date:entry.date,key:'visit:'+entry.data.id});
+   }else if(visit){
+    result.push({kind:'visit',name:visit,visitType:'destination',date:entry.date,itemId:entry.data.id,key:'visit:'+entry.data.id});
+   }
   }else{
    result.push(entry);
    const explicitReturnId=entry.data.metadata?.route_places?.return_to?.source_stop_id;
@@ -2140,7 +2169,7 @@ function timelineCardForDate(day,includeNext=true,preferVisit=true){
  if(sameDay)return sameDay;
  const stop=stopForDate(day);
  if(stop&&(stop.start_date||stop.end_date)){
-  const stay=dated.find(card=>card.dataset.stop===stop.id);
+  const stay=cards.find(card=>card.dataset.stop===stop.id);
   if(stay)return stay;
  }
  return includeNext?dated.find(card=>card.dataset.timelineDate>day&&card.dataset.timelineDate!=='9999-12-31')||null:null;
@@ -2149,8 +2178,14 @@ function timelineCardForDate(day,includeNext=true,preferVisit=true){
 function markTimelineSelection(card){
  for(const node of $('timeline').querySelectorAll('[data-timeline-key]')){
   node.classList.toggle('active',node===card);
-  if(node===card)node.setAttribute('aria-current','true');
-  else node.removeAttribute('aria-current');
+  const point=node.querySelector('.timeline-point-action');
+  if(node===card){
+   node.setAttribute('aria-current','true');
+   point?.setAttribute('aria-current','true');
+  }else{
+   node.removeAttribute('aria-current');
+   point?.removeAttribute('aria-current');
+  }
  }
 }
 
@@ -2178,28 +2213,44 @@ function renderTimeline(opening=false){
  const activeKey=opening?null:el.querySelector('.active')?.dataset.timelineKey;
  if(!entries.length){el.innerHTML='<div class="empty" style="min-width:100%">Enginn áfangastaður eða samgönguleggur kominn.</div>';return}
  el.innerHTML=entries.map(e=>{
-  const attrs=`data-timeline-key="${esc(e.key)}" data-timeline-date="${esc(e.date)}"`;
+  const attrs=`data-timeline-key="${esc(e.key)}" data-timeline-date="${esc(e.date)}"${e.visitType?` data-timeline-visit="${e.visitType}"`:''}`;
+  const name=e.kind==='transport'?e.data.title+(e.leg==='return'?' · heim':''):e.kind==='stop'?e.data.name:e.name;
+  const pointLabel=e.date==='9999-12-31'?'Velja áfanga':'Velja dag';
+  const point=`<button type="button" class="timeline-point-action" aria-label="${pointLabel} · ${esc(name)}"></button>`;
+  const edit='<div class="timeline-edit-action" role="button" tabindex="0" title="Breyta">';
   if(e.kind==='visit'){
    const label=e.visitType==='destination'?'Dagsheimsókn':e.key.startsWith('back:')?'Til baka á bækistöð · engin ný dvöl':'Bækistöð dagsferðar';
    const date=e.date==='9999-12-31'?'Dagsetning opin':fmtDate(e.date);
-   return `<div class="stop timeline-visit" ${attrs} data-timeline-visit="${e.visitType||'base'}" role="button" tabindex="0"><small>${date}</small><strong>${esc(e.name)}</strong><small>${label}</small></div>`;
+   const target=e.stopId?`data-visit-stop="${esc(e.stopId)}"`:`data-visit-item="${esc(e.itemId)}"`;
+   return `<div class="stop timeline-visit" ${attrs} ${target}${e.visitType?'':' data-timeline-visit="base"'}>${point}${edit}<small>${date}</small><strong>${esc(e.name)}</strong><small>${label}</small></div></div>`;
   }
-  if(e.kind==='stop'){const s=e.data;return `<div class="stop ${warningStopIds.has(s.id)?'stop-has-warning':''}" ${attrs} data-stop="${esc(s.id)}" role="button" tabindex="0">${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small></div>`}
+  if(e.kind==='stop'){const s=e.data;return `<div class="stop ${warningStopIds.has(s.id)?'stop-has-warning':''}" ${attrs} data-stop="${esc(s.id)}">${point}${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}${edit}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small></div></div>`}
   const x=e.data,c=CATEGORIES.find(c=>c[0]===x.category)||['other','➡️','Samgöngur'],route=transportRouteText(x,e.leg),home=e.leg==='return'?' · heim':'';
   const dateLabel=e.planned?esc(openJourneyDateLabel(x)):(e.date!=='9999-12-31'?fmtDate(e.date):'Dagsetning opin')+(e.displayTime?' · kl. '+esc(e.displayTime):'');
   const warning=bookingReviewRows(x.id,e.date==='9999-12-31'?null:e.date,reviewWarnings).length>0;
-  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" ${attrs} data-route-item="${esc(x.id)}" data-route-leg="${e.leg}" role="button" tabindex="0">${reviewWarningMarker(warning)}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong>${lodgingDestinationHtml(x,e.leg)}<small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small class="route-day-trip">'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div>`;
+  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" ${attrs} data-route-item="${esc(x.id)}" data-route-leg="${e.leg}">${point}${reviewWarningMarker(warning)}${edit}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong>${lodgingDestinationHtml(x,e.leg)}<small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small class="route-day-trip">'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div></div>`;
  }).join('');
- for(const card of el.querySelectorAll('[role="button"]')){
-  card.onclick=()=>{
-   if(card.dataset.stop)selectStop(card.dataset.stop);
-   else if(card.dataset.routeItem)openEditItem(card.dataset.routeItem);
-   else if([...$('dayStrip').children].some(day=>day.dataset.date===card.dataset.timelineDate)){
-    selectCalendarDay(card.dataset.timelineDate,card.dataset.timelineKey);
-   }else markTimelineSelection(card);
+ for(const card of el.querySelectorAll('[data-timeline-key]')){
+  const {timelineDate,timelineKey}=card.dataset;
+  const stop=card.dataset.stop||card.dataset.visitStop;
+  const routeItem=card.dataset.routeItem||card.dataset.visitItem;
+  const select=()=>{
+   if([...$('dayStrip').children].some(day=>day.dataset.date===timelineDate)){
+    selectCalendarDay(timelineDate,timelineKey,stop);
+   }else{
+    markTimelineSelection(card);
+    if(stop)selectStop(stop,true);
+   }
   };
-  card.onkeydown=event=>{
-   if(event.key==='Enter'||event.key===' '){event.preventDefault();card.click()}
+  card.querySelector('.timeline-point-action').onclick=select;
+  const edit=card.querySelector('.timeline-edit-action');
+  edit.onclick=()=>{
+   select();
+   if(stop)openEditStop(stop);
+   else if(routeItem)openEditItem(routeItem);
+  };
+  edit.onkeydown=event=>{
+   if(event.key==='Enter'||event.key===' '){event.preventDefault();edit.click()}
   };
  }
  const today=tripTodayDate();
@@ -2276,14 +2327,15 @@ function itemHtml(x,viewDate=null,reviewWarnings=null){if(rentalCarActive(x)&&!x
 function itemOccursOn(item,date){if(rentalCarActive(item))return !!date&&RentalCars.events(item).some(e=>e.date===date);if(item.metadata?.quick_cost){const e=item.agenda_expense_id?state.expenses.find(e=>e.id===item.agenda_expense_id):agendaPrimaryExpense(item);return !!date&&item.local_date===date&&(item.agenda_expense_id?true:expenseAgendaVisible(e,item))}if(!date||(item.category==='lodging'&&!lodgingUsed(item)))return false;const m=item.metadata||{};if(item.category==='lodging'&&item.local_date&&item.end_local_date)return date>=item.local_date&&date<=item.end_local_date;return item.local_date===date||(m.return_date||m.return_flight_date)===date}
 function bookingCardHasOwnAction(event){return !!(event.defaultPrevented||event.target?.closest?.('.travel-weather,details,summary,a,button,input,select,textarea,label,[data-departure-link]'))}
 function renderDayItems(){const reviewWarnings=tripReviewWarnings();const dated=agendaItems().filter(x=>itemOccursOn(x,state.selectedDate)),s=stopForDate(state.selectedDate);const head=state.selectedDate?`<div class="mut" style="margin:4px 0 8px">${fmtDay(state.selectedDate)}${s?` · <strong style="color:var(--accent)">${flag(s.country_code)} ${esc(s.name)}</strong>`:''}</div>`:'';$('dayItems').innerHTML=head+weatherSlot(s,state.selectedDate)+(dated.length?dated.map(x=>itemHtml(x,state.selectedDate,reviewWarnings)).join(''):'<div class="empty">Ekkert annað skráð þennan dag.</div>');refreshTravelWeather();renderOpenJourneys('dayOpenJourneys',state.selectedDate);const open=agendaItems().filter(x=>!x.local_date&&!openJourneyRelevant(x,state.selectedDate));$('unscheduledItems').innerHTML=open.length?open.map(x=>itemHtml(x,null,reviewWarnings)).join(''):'<div class="mut">Engin óskipulögð atriði.</div>';document.querySelectorAll('[data-item-id]').forEach(el=>el.onclick=event=>{if(bookingCardHasOwnAction(event))return;openEditItem(el.dataset.itemId)});bindTripWarningActions()}
-function selectCalendarDay(date,timelineKey=null){
+function selectCalendarDay(date,timelineKey=null,stopId=null){
  const strip=$('dayStrip');
  if(!strip||!state.trip)return;
  const top=strip.getBoundingClientRect().top;
  state.selectedDate=date;
  renderCalendar();
  revealTripStripCard(strip,strip.querySelector('.day.active'));
- highlightStopForDate(date);
+ if(stopId)selectStop(stopId,true);
+ else highlightStopForDate(date);
  const marker=timelineKey?[...$('timeline').children].find(node=>node.dataset.timelineKey===timelineKey):timelineCardForDate(date);
  markTimelineSelection(marker);
  scrollToTimelineSelection();
@@ -2863,8 +2915,21 @@ function switchView(v){
  $('calendarView').classList.toggle('hidden',v!=='calendar');
  $('todayView').classList.toggle('hidden',v!=='today');
  if(!routeWasVisible&&v==='route'){
-  timeline.scrollLeft=state.timelineScrollLeft??0;
-  if(state.timelineSelectionNeedsScroll)scrollToTimelineSelection();
+  const today=state.trip?tripTodayDate():null;
+  if(today&&tripInProgress(today)){
+   const changedDay=state.selectedDate!==today;
+   state.selectedDate=today;
+   renderCalendar();
+   if(changedDay)highlightStopForDate(today);
+   const days=$('dayStrip');
+   alignTripStripToCard(days,days.querySelector('.day.active'));
+   markTimelineSelection(timelineCardForDate(today));
+   alignTripStripToCard(timeline,timelineCardForDate(today,true,false));
+   state.timelineSelectionNeedsScroll=false;
+  }else{
+   timeline.scrollLeft=state.timelineScrollLeft??0;
+   if(state.timelineSelectionNeedsScroll)scrollToTimelineSelection();
+  }
  }
  if(v==='calendar')renderCalendar();
  if(v==='today')renderToday();
