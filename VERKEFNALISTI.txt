@@ -1948,3 +1948,20 @@ Prófun 10-11-2026:
 • Raunprófun á iPhone í báðum skjástefnum bíður. HUG-02 er ekki merkt lokið.
 
 Aðeins index.html og þessi verkefnalisti breyttust frá 143. SAM-00 er lokið, 24/24. Afhending: ferdakerfid-144-HUG-02.zip. Skipta út index.html og VERKEFNALISTI.txt úr 143.
+
+AFHENDING 145 — HUG-02: RÖÐUN, SAMRÆMDIR TEXTAR OG SKRUN
+
+Samþykkt 10-11-2026. Staða: ÚTFÆRT Í 145 OG VAFRAPRÓFAÐ. Staðfesting í Safari á raunverulegum iPhone bíður.
+
+• Ferðastikan raðar dvalaráfangastað eftir tengdri skráðri komu og viðeigandi samgönguleggjum sama dags, t.d. lest og akstri að hóteli. Skráður brottfarardagur setur neðri mörk þegar komudagur er óskráður. Dvöl sem hefst fyrir tengdan ferðalegg fær viðvörun í fyrirliggjandi „Yfirfara“. Aðeins birtingarröðin færist. Dagsetningar og tímar í bókun og dvöl haldast vistuð eins og áður.
+• Garda-prufan notar dvöl frá 01-11-2026 og „Til Garda“ með brottför 02-11-2026 kl. 00:00. Lestin og tengdur akstur birtast fyrir dvölina. „Yfirfara“ sýnir skráðu dagana og miðnætti. Í dagsferðinni Garda ↔ Riva del Garda birtist sama Garda-dvöl einu sinni og heimkoman sem sjónræn viðkoma.
+• Kerfisbúnar merkingar á ferðastikunni eru „Dagsferð · Útleið“, „Dagsferð · Heimleið“, „Dagsheimsókn“ og „Til baka á bækistöð“. Bækistöð og skráð Frá → Til-leið haldast sýnileg. Upprunaleg bókunarheiti, dagsetningar, tímar og aðrir skráðir textar haldast.
+• „Í dag“ innan FERÐALEIÐAR & DAGATALS velur og sýnir núverandi dag í ferð í gangi og felur ferðastikuna. Þegar Ferðaleið er opnuð aftur samstillast báðar raðir samkvæmt HUG-01. Flipaskipti og dagaval halda lóðréttri stöðu dagsetningaröðar þegar hún er í sýn. Efri „Í dag“-flýtihnappurinn opnar áfram dagsyfirlitið og færir þangað fókus.
+
+Prófun 10-11-2026:
+• 24/24 athuganir á ferðastiku og 16/16 HUG-01 athuganir stóðust í Chromium 153.0.8010.0 með prufugögnum. Prag → Trieste með samgönguleggjum á sama áfangastað, Trieste ↔ Feneyjar, Trieste → Garda og Garda ↔ Riva del Garda prófuð. Síðari heimferð á fyrri dvalarstað kveikti ekki ranga viðvörun um upphaf fyrri dvalar.
+• Garda-röðun, auka bækistöð, fyrra dagaval undir „Í dag“ og lóðrétt stökk við hermda hæðarbreytingu veðurspjaldsins endurgerð í 144. Lóðrétt staða, dagaval, flipaskipti og efri „Í dag“-flýtihnappurinn prófuð í 145 við 393 × 852 og 852 × 393 px. Handvirk lárétt skrunun, venjuleg endurteikning og opnun óhafinna og farinna ferða endurprófuð.
+• Ljóst og dökkt þema, punktar, línur, grænn pinni, lokuð skýring, gul viðvörun, „Yfirfara“, samþykki og afturköllun undantekningar prófuð. Samanburður við 144 í fjórum prufuferðum staðfesti sömu bókunar- og ferðagögn, dagsetningaröð, kortalista og útlit fyrirliggjandi viðvörunar. Breyttar kerfismerkingar voru bornar sérstaklega saman. Kortavél og gagnagrunnur voru hermd. Engin skrif í ferðagögn.
+• Raunprófun í Safari á iPhone í báðum skjástefnum og með vistuðum gögnum bíður. HUG-02 er ekki merkt lokið.
+
+Aðeins index.html og þessi verkefnalisti breyttust frá 144. SAM-00 er lokið, 24/24. Afhending: ferdakerfid-145-HUG-02.zip. Skipta út index.html og VERKEFNALISTI.txt úr 144.

@@ -1799,6 +1799,13 @@ function timelineDateWarnings(stops=state.stops,items=state.items,trip=state.tri
   const later=stops.filter(stop=>(stop.start_date&&stop.start_date>home)||(stop.end_date&&stop.end_date>home));
   if(later.length)warnings.push({key:'return-before-stop:'+item.id,kind:'return-before-stop',itemId:item.id,stopIds:later.map(x=>x.id),message:'Skráð heimleið með „'+item.title+'“ er '+fmtDate(home)+', en áfangastaðir eru skráðir eftir þann dag: '+later.map(x=>'„'+x.name+'“ ('+[x.start_date,x.end_date].filter(Boolean).map(fmtDate).join(' – ')+')').join(', ')+'. Yfirfarðu heimflugið og dagsetningar áfangastaða.'});
  }
+ for(const {stop,arrival} of timelineStayConnections(stops,items).values()){
+  if(!arrival||arrival.date<=stop.start_date)continue;
+  const when=fmtDate(arrival.date)+(arrival.clock?' kl. '+arrival.clock:'');
+  warnings.push({key:'stop-before-arrival:'+stop.id+':'+arrival.item.id+':'+arrival.leg,kind:'stop-before-arrival',stopId:stop.id,itemId:arrival.item.id,
+   dates:[stop.start_date,arrival.departureDate,arrival.date],
+   message:'Dvöl í „'+stop.name+'“ er skráð frá '+fmtDate(stop.start_date)+'. '+(arrival.hasArrival?'Koma':'Brottför')+' í „'+arrival.item.title+'“ er skráð '+when+'. Yfirfarðu dvalardaginn og samgöngubókunina.'});
+ }
  return warnings;
 }
 function sortedTripStops(stops=state.stops){return [...stops].sort((a,b)=>(a.start_date||'9999-12-31').localeCompare(b.start_date||'9999-12-31')||(a.end_date||'9999-12-31').localeCompare(b.end_date||'9999-12-31')||(Number(a.order_index)||0)-(Number(b.order_index)||0)||String(a.id).localeCompare(String(b.id)))}
@@ -2088,9 +2095,59 @@ function linkedDayTripVisitStop(item,day,baseId){
  return matches.length===1?matches[0]:null;
 }
 
+// Recorded endpoint links determine display order. A departure day is a lower bound if arrival is open.
+function timelineStayConnections(stops,items){
+ const byStop=new Map(),firstDeparture=new Map();
+ const compare=(a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time);
+ for(const item of items){
+  if(!isTransportCategory(item.category)||item.status==='cancelled'||item.metadata?.quick_cost||transportDayTrip(item))continue;
+  const m=item.metadata||{};
+  if(m.transport_trip_type==='excursion')continue;
+  for(const {leg,date:departureDate,time:departureTime} of todayLegs(item)){
+   if(!planningDateValid(departureDate))continue;
+   const destination=role=>TravelNavigation.destinationStop(item,stops,leg+'_'+role,globalThis.BookingDestinationCatalog);
+   const stop=destination('to'),from=destination('from');
+   const start=String(departureTime||'').slice(0,5)||'00:00';
+   if(from&&from.id!==stop?.id&&departureDate>=from.start_date){
+    const previous=firstDeparture.get(from.id),departure={date:departureDate,time:start};
+    if(!previous||compare(departure,previous)<0)firstDeparture.set(from.id,departure);
+   }
+   if(!stop)continue;
+   const arrivalDate=m[leg+'_arrival_date'],hasArrival=planningDateValid(arrivalDate);
+   const date=hasArrival?arrivalDate:departureDate;
+   if(date<departureDate)continue;
+   const clock=String(hasArrival?m[leg+'_arrival_time']||'':departureTime||'').slice(0,5);
+   const time=date===departureDate&&(!clock||clock<start)?start:clock||'00:00';
+   const local=from?.id===stop.id||(!from&&item.category==='transfer');
+   if(!byStop.has(stop.id))byStop.set(stop.id,[]);
+   byStop.get(stop.id).push({item,leg,departureDate,start,date,time,clock,hasArrival,local});
+  }
+ }
+ const stays=new Map();
+ for(const stop of stops){
+  if(!planningDateValid(stop.start_date))continue;
+  const legs=(byStop.get(stop.id)||[]).sort(compare);
+  const incoming=legs.filter(leg=>!leg.local);
+  const departure=firstDeparture.get(stop.id);
+  const arrival=incoming.find(leg=>leg.date===stop.start_date)
+   ||(!incoming.some(leg=>leg.date<stop.start_date)?incoming.find(leg=>leg.date>stop.start_date&&(!departure||compare(leg,departure)<=0)):null);
+  if(!arrival){
+   if(departure?.date===stop.start_date)stays.set(stop.id,{stop,before:departure});
+   continue;
+  }
+  const transfer=legs.filter(leg=>leg.local&&leg.date===arrival.date&&leg.departureDate===arrival.date&&leg.start>=arrival.time).at(-1);
+  stays.set(stop.id,{stop,arrival,after:transfer||arrival});
+ }
+ return stays;
+}
+
 function timelineEntries(){
  const entries=[];
- state.stops.forEach((stop,index)=>entries.push({kind:'stop',date:stop.start_date||'9999-12-31',time:'23:59',order:1,index,data:stop,key:'stop:'+stop.id}));
+ const stays=timelineStayConnections(state.stops,state.items);
+ state.stops.forEach((stop,index)=>{
+  const {after,before}=stays.get(stop.id)||{};
+  entries.push({kind:'stop',date:stop.start_date||'9999-12-31',sortDate:after?.date,time:after?.time||before?.time||'23:59',order:before?-1:1,index,data:stop,key:'stop:'+stop.id});
+ });
  state.items.filter(item=>!item.metadata?.quick_cost&&isTransportCategory(item.category)).forEach((item,index)=>{
   const m=item.metadata||{},dayTrip=transportDayTrip(item);
   const returnDate=(m.transport_trip_type||m.flight_trip_type)==='round_trip'&&(m.return_date||m.return_flight_date);
@@ -2113,7 +2170,7 @@ function timelineEntries(){
  });
  entries.sort((a,b)=>(a.sortDate||a.date).localeCompare(b.sortDate||b.date)||a.time.localeCompare(b.time)||a.order-b.order||a.index-b.index);
 
- const result=[],shownStops=new Set();
+ const result=[],shownStops=new Set(),stopCards=new Map(entries.filter(entry=>entry.kind==='stop').map(entry=>[entry.data.id,entry]));
  const usedAsVisit=new Set(entries.map(entry=>entry.visitStop?.id).filter(Boolean));
  for(const entry of entries){
   if(entry.kind==='stop'){
@@ -2130,13 +2187,14 @@ function timelineEntries(){
   const visitFlag=place?.country_code?flag(place.country_code):'';
   const visit=visitName&&visitFlag&&!visitName.startsWith(visitFlag)?visitFlag+' '+visitName:visitName;
   if(entry.leg==='outbound'){
-   const baseCard=base&&entries.find(candidate=>candidate.kind==='stop'&&candidate.data===base);
+   const baseCard=base&&stopCards.get(base.id);
    const previous=result.at(-1);
    const followsBase=base&&(previous===baseCard||previous?.stopId===base.id);
-   if(base&&!followsBase){
-    if(baseCard.date===entry.date&&!usedAsVisit.has(base.id)&&!shownStops.has(baseCard.key)){
+   const coversDay=base&&base.start_date&&base.end_date&&base.start_date<=entry.date&&entry.date<=base.end_date;
+   if(base&&!followsBase&&!(coversDay&&shownStops.has(baseCard.key))){
+    if(baseCard.date===entry.date&&!usedAsVisit.has(base.id)&&!shownStops.has(baseCard.key)&&!stays.get(base.id)?.after){
      result.push(baseCard);shownStops.add(baseCard.key);
-    }else{
+    }else if(!coversDay||usedAsVisit.has(base.id)){
      result.push({kind:'visit',name:baseName,date:entry.date,stopId:base.id,key:'base:'+entry.data.id});
     }
    }
@@ -2214,7 +2272,9 @@ function renderTimeline(opening=false){
  if(!entries.length){el.innerHTML='<div class="empty" style="min-width:100%">Enginn áfangastaður eða samgönguleggur kominn.</div>';return}
  el.innerHTML=entries.map(e=>{
   const attrs=`data-timeline-key="${esc(e.key)}" data-timeline-date="${esc(e.date)}"${e.visitType?` data-timeline-visit="${e.visitType}"`:''}`;
-  const name=e.kind==='transport'?e.data.title+(e.leg==='return'?' · heim':''):e.kind==='stop'?e.data.name:e.name;
+  const dayTrip=e.kind==='transport'&&transportDayTrip(e.data);
+  const home=e.leg==='return'&&!dayTrip?' · heim':'';
+  const name=e.kind==='transport'?e.data.title+home:e.kind==='stop'?e.data.name:e.name;
   const pointLabel=e.date==='9999-12-31'?'Velja áfanga':'Velja dag';
   const point=`<button type="button" class="timeline-point-action" aria-label="${pointLabel} · ${esc(name)}"></button>`;
   const edit='<div class="timeline-edit-action" role="button" tabindex="0" title="Breyta">';
@@ -2224,11 +2284,13 @@ function renderTimeline(opening=false){
    const target=e.stopId?`data-visit-stop="${esc(e.stopId)}"`:`data-visit-item="${esc(e.itemId)}"`;
    return `<div class="stop timeline-visit" ${attrs} ${target}${e.visitType?'':' data-timeline-visit="base"'}>${point}${edit}<small>${date}</small><strong>${esc(e.name)}</strong><small>${label}</small></div></div>`;
   }
-  if(e.kind==='stop'){const s=e.data;return `<div class="stop ${warningStopIds.has(s.id)?'stop-has-warning':''}" ${attrs} data-stop="${esc(s.id)}">${point}${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}${edit}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small></div></div>`}
-  const x=e.data,c=CATEGORIES.find(c=>c[0]===x.category)||['other','➡️','Samgöngur'],route=transportRouteText(x,e.leg),home=e.leg==='return'?' · heim':'';
+  if(e.kind==='stop'){const s=e.data;return `<div class="stop ${warningStopIds.has(s.id)?'stop-has-warning':''}" ${attrs} data-stop="${esc(s.id)}">${point}${warningStopIds.has(s.id)?'<span class="review-warning-marker" role="img" aria-label="Þarf yfirferð">⚠️</span>':''}${edit}<small>${s.start_date?fmtDate(s.start_date):'Opið'}${s.end_date?' → '+fmtDate(s.end_date):''}</small><strong>${flag(s.country_code)} ${esc(s.name)}</strong><small>${currencyFor(s.country_code)} · ${statusLabel(s.status)}</small>${e.visitType==='destination'?'<small>Dagsheimsókn</small>':''}</div></div>`}
+  const x=e.data,c=CATEGORIES.find(c=>c[0]===x.category)||['other','➡️','Samgöngur'],route=transportRouteText(x,e.leg);
+  const base=dayTrip&&state.stops.find(stop=>stop.id===dayTrip.base_stop_id);
+  const tripLabel=dayTrip?'Dagsferð · '+(e.leg==='return'?'Heimleið':'Útleið')+' · '+(base?'Bækistöð: '+base.name:'bækistöð þarf yfirferð'):'';
   const dateLabel=e.planned?esc(openJourneyDateLabel(x)):(e.date!=='9999-12-31'?fmtDate(e.date):'Dagsetning opin')+(e.displayTime?' · kl. '+esc(e.displayTime):'');
   const warning=bookingReviewRows(x.id,e.date==='9999-12-31'?null:e.date,reviewWarnings).length>0;
-  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" ${attrs} data-route-item="${esc(x.id)}" data-route-leg="${e.leg}">${point}${reviewWarningMarker(warning)}${edit}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong>${lodgingDestinationHtml(x,e.leg)}<small class="route-path">${route?esc(route):c[2]}</small>${transportDayTrip(x)?'<small class="route-day-trip">'+esc(transportDayTripLabel(x))+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div></div>`;
+  return `<div class="route-leg ${e.planned?'planned':''}${warning?' review-warning-card':''}" ${attrs} data-route-item="${esc(x.id)}" data-route-leg="${e.leg}">${point}${reviewWarningMarker(warning)}${edit}<small>${dateLabel}</small><strong>${transportIcon(x.category)} ${esc(x.title)}${home}</strong>${lodgingDestinationHtml(x,e.leg)}<small class="route-path">${route?esc(route):c[2]}</small>${tripLabel?'<small class="route-day-trip">'+esc(tripLabel)+'</small>':''}${e.planned?'<small>'+esc(statusLabel(x.status))+' · klukka opin · Ganga frá ferð</small>':''}</div></div>`;
  }).join('');
  for(const card of el.querySelectorAll('[data-timeline-key]')){
   const {timelineDate,timelineKey}=card.dataset;
@@ -2327,25 +2389,37 @@ function itemHtml(x,viewDate=null,reviewWarnings=null){if(rentalCarActive(x)&&!x
 function itemOccursOn(item,date){if(rentalCarActive(item))return !!date&&RentalCars.events(item).some(e=>e.date===date);if(item.metadata?.quick_cost){const e=item.agenda_expense_id?state.expenses.find(e=>e.id===item.agenda_expense_id):agendaPrimaryExpense(item);return !!date&&item.local_date===date&&(item.agenda_expense_id?true:expenseAgendaVisible(e,item))}if(!date||(item.category==='lodging'&&!lodgingUsed(item)))return false;const m=item.metadata||{};if(item.category==='lodging'&&item.local_date&&item.end_local_date)return date>=item.local_date&&date<=item.end_local_date;return item.local_date===date||(m.return_date||m.return_flight_date)===date}
 function bookingCardHasOwnAction(event){return !!(event.defaultPrevented||event.target?.closest?.('.travel-weather,details,summary,a,button,input,select,textarea,label,[data-departure-link]'))}
 function renderDayItems(){const reviewWarnings=tripReviewWarnings();const dated=agendaItems().filter(x=>itemOccursOn(x,state.selectedDate)),s=stopForDate(state.selectedDate);const head=state.selectedDate?`<div class="mut" style="margin:4px 0 8px">${fmtDay(state.selectedDate)}${s?` · <strong style="color:var(--accent)">${flag(s.country_code)} ${esc(s.name)}</strong>`:''}</div>`:'';$('dayItems').innerHTML=head+weatherSlot(s,state.selectedDate)+(dated.length?dated.map(x=>itemHtml(x,state.selectedDate,reviewWarnings)).join(''):'<div class="empty">Ekkert annað skráð þennan dag.</div>');refreshTravelWeather();renderOpenJourneys('dayOpenJourneys',state.selectedDate);const open=agendaItems().filter(x=>!x.local_date&&!openJourneyRelevant(x,state.selectedDate));$('unscheduledItems').innerHTML=open.length?open.map(x=>itemHtml(x,null,reviewWarnings)).join(''):'<div class="mut">Engin óskipulögð atriði.</div>';document.querySelectorAll('[data-item-id]').forEach(el=>el.onclick=event=>{if(bookingCardHasOwnAction(event))return;openEditItem(el.dataset.itemId)});bindTripWarningActions()}
-function selectCalendarDay(date,timelineKey=null,stopId=null){
+function keepTripDayStripPosition(update){
  const strip=$('dayStrip');
- if(!strip||!state.trip)return;
- const top=strip.getBoundingClientRect().top;
- state.selectedDate=date;
- renderCalendar();
- revealTripStripCard(strip,strip.querySelector('.day.active'));
- if(stopId)selectStop(stopId,true);
- else highlightStopForDate(date);
- const marker=timelineKey?[...$('timeline').children].find(node=>node.dataset.timelineKey===timelineKey):timelineCardForDate(date);
- markTimelineSelection(marker);
- scrollToTimelineSelection();
+ const revision=state.tripControlsRevision=(state.tripControlsRevision||0)+1;
+ const {top,bottom}=strip.getBoundingClientRect();
+ const visible=window.scrollY>0&&top<window.innerHeight&&bottom>=0;
+ update();
+ if(!visible)return;
  const restore=()=>{
-  if(state.selectedDate!==date||!strip.isConnected)return;
   const delta=strip.getBoundingClientRect().top-top;
   if(Math.abs(delta)>.5)window.scrollBy({top:delta,left:0,behavior:'instant'});
  };
  restore();
- requestAnimationFrame(restore);
+ const scrollY=window.scrollY;
+ const tripVersion=state.tripLoadVersion;
+ requestAnimationFrame(()=>{
+  if(revision===state.tripControlsRevision&&tripVersion===state.tripLoadVersion&&window.scrollY===scrollY)restore();
+ });
+}
+function selectCalendarDay(date,timelineKey=null,stopId=null){
+ if(!state.trip)return;
+ keepTripDayStripPosition(()=>{
+  const strip=$('dayStrip');
+  state.selectedDate=date;
+  renderCalendar();
+  revealTripStripCard(strip,strip.querySelector('.day.active'));
+  if(stopId)selectStop(stopId,true);
+  else highlightStopForDate(date);
+  const marker=timelineKey?[...$('timeline').children].find(node=>node.dataset.timelineKey===timelineKey):timelineCardForDate(date);
+  markTimelineSelection(marker);
+  scrollToTimelineSelection();
+ });
 }
 function highlightStopForDate(d){const s=stopForDate(d);if(s)selectStop(s.id,true);else renderDestination(null,d)}
 
@@ -2907,32 +2981,37 @@ function renderToday(){
  bindTripWarningActions();refreshTravelWeather();
 }
 function switchView(v){
- const routeView=$('routeView'),timeline=$('timeline');
- const routeWasVisible=!routeView.classList.contains('hidden');
- if(routeWasVisible&&v!=='route')state.timelineScrollLeft=timeline.scrollLeft;
- document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===v));
- routeView.classList.toggle('hidden',v!=='route');
- $('calendarView').classList.toggle('hidden',v!=='calendar');
- $('todayView').classList.toggle('hidden',v!=='today');
- if(!routeWasVisible&&v==='route'){
-  const today=state.trip?tripTodayDate():null;
+ keepTripDayStripPosition(()=>{
+  const routeView=$('routeView'),timeline=$('timeline');
+  const routeWasVisible=!routeView.classList.contains('hidden');
+  const reopeningRoute=!routeWasVisible&&v==='route';
+  if(routeWasVisible&&v!=='route')state.timelineScrollLeft=timeline.scrollLeft;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===v));
+  routeView.classList.toggle('hidden',v!=='route');
+  $('calendarView').classList.toggle('hidden',v!=='calendar');
+  $('todayView').classList.toggle('hidden',v!=='today');
+  const today=state.trip&&(reopeningRoute||v==='today')?tripTodayDate():null;
   if(today&&tripInProgress(today)){
    const changedDay=state.selectedDate!==today;
    state.selectedDate=today;
-   renderCalendar();
-   if(changedDay)highlightStopForDate(today);
    const days=$('dayStrip');
+   if(changedDay){
+    renderCalendar();
+    highlightStopForDate(today);
+   }
    alignTripStripToCard(days,days.querySelector('.day.active'));
    markTimelineSelection(timelineCardForDate(today));
-   alignTripStripToCard(timeline,timelineCardForDate(today,true,false));
-   state.timelineSelectionNeedsScroll=false;
-  }else{
+   if(reopeningRoute){
+    alignTripStripToCard(timeline,timelineCardForDate(today,true,false));
+    state.timelineSelectionNeedsScroll=false;
+   }
+  }else if(reopeningRoute){
    timeline.scrollLeft=state.timelineScrollLeft??0;
    if(state.timelineSelectionNeedsScroll)scrollToTimelineSelection();
   }
- }
- if(v==='calendar')renderCalendar();
- if(v==='today')renderToday();
+  if(v==='calendar')renderCalendar();
+  if(v==='today')renderToday();
+ });
 }
 function renderCategoryCounts(){CATEGORIES.forEach(([v])=>{const n=agendaItems().filter(x=>x.category===v).length;const el=$('cat-'+v);if(el)el.textContent=`${n} atriði`});const walletBookings=walletBookingItems().length,walletDocs=state.walletDocs.length,openNotes=state.notes.filter(n=>!n.is_done).length;const we=$('cat-wallet'),ne=$('cat-notes');if(we)we.textContent=walletBookingCountLabel(walletBookings)+' · '+walletDocumentCountLabel(walletDocs);if(ne)ne.textContent=`${openNotes} ${openNotes===1?'opið':'opin'}`}
 function groupedOriginalCosts(){const groups={};budgetExpenses().forEach(e=>{const c=e.currency_original||'ISK';groups[c]=(groups[c]||0)+(Number(e.amount_original)||0)});return groups}
