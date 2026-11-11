@@ -3172,18 +3172,23 @@ function forgetLodgingStayDate(id){
  if(!$(id).value)$(id).dataset.manualBlank='true';
 }
 function fillLodgingStayDates(fillEmpty=false){
- if($('itemCategory').value!=='lodging'||state.bookingImport)return;
- const saved=state.items.find(item=>item.id===state.editingItemId);
- if(['booked','done'].includes($('itemStatus').value)||['booked','done'].includes(saved?.status)||lodgingCancelled(saved))return;
+ if($('itemCategory').value!=='lodging'||state.bookingImport||state.editingItemId)return;
  const stop=state.stops.find(item=>item.id===$('itemStop').value);
- if(!stop||!planningDateValid(stop.start_date)||!planningDateValid(stop.end_date)||stop.end_date<=stop.start_date)return;
+ if(!stop)return;
+ if(planningDateValid(stop.start_date)&&planningDateValid(stop.end_date)&&stop.end_date<=stop.start_date){
+  if(fillEmpty)toast('Dvalardagar áfangastaðar þurfa yfirferð. Útritun þarf að vera eftir innritun.');
+  return;
+ }
  const links=state.lodgingDateLinks??={};
  const dates=LODGING_STAY_DATE_FIELDS.map(([id,key])=>{
-  const input=$(id),linked=links[id]?.value===input.value;
-  const auto=linked||(fillEmpty&&!saved&&!input.value&&!input.dataset.manualBlank);
+  const input=$(id);
+  const auto=fillEmpty&&!input.value&&!input.dataset.manualBlank&&planningDateValid(stop[key]);
   return {input,value:auto?stop[key]:input.value,auto};
  });
- if(dates.every(date=>date.value)&&dates[0].value>=dates[1].value)return;
+ if(dates.every(date=>date.value)&&dates[0].value>=dates[1].value){
+  if(dates.some(date=>date.auto))toast('Gistidagar og dvalardagar áfangastaðar stangast á. Yfirfarðu innritun og útritun.');
+  return;
+ }
  for(const {input,value,auto} of dates){
   if(!auto)continue;
   input.value=value;

@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 10-11-2026 — afhending 144. SAM-00: LOKIÐ — 24/24. RUT 9/9, AKS 7/7, FLU 5/5 og BIL 3/3 lokið samkvæmt notanda. BIL-01–03 notandastaðfest á iPhone. UI-BAT-01 er útfært og bíður staðfestingar á iPhone. SAM-P01–P04 og önnur áður ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. HUG-01 er útfært og vafraprófað. Staðfesting á iPhone og iPad bíður. Eftirfylgni HUG-02 er útfærð og vafraprófuð í 144. Staðfesting notanda á útliti og virkni bíður.
+Gildandi skráningarstaða 11-11-2026 — afhending 146. SAM-00: LOKIÐ — 24/24. Fyrri notandastaðfestingar og afhendingarsaga varðveittar. SAM-P01–P04 og önnur ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. UI-BAT-01, HUG-01 og HUG-02 halda aðgreindri útfærslu-, vafraprófunar- og tækjastaðfestingarstöðu samkvæmt færslum neðar. HUG-02 er síðast útfært og vafraprófað í 145 og bíður staðfestingar á iPhone. Gistingardagsetningar eru lagfærðar og vafraprófaðar í 146. Raunprófun þeirra í Safari á iPhone bíður.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
@@ -1965,3 +1965,32 @@ Prófun 10-11-2026:
 • Raunprófun í Safari á iPhone í báðum skjástefnum og með vistuðum gögnum bíður. HUG-02 er ekki merkt lokið.
 
 Aðeins index.html og þessi verkefnalisti breyttust frá 144. SAM-00 er lokið, 24/24. Afhending: ferdakerfid-145-HUG-02.zip. Skipta út index.html og VERKEFNALISTI.txt úr 144.
+
+AFHENDING 146 — GISTING: SJÁLFVIRK ÚTFYLLING DAGSETNINGA
+
+Samþykkt 11-11-2026. Staða: ÚTFÆRT Í 146 OG VAFRAPRÓFAÐ. Raunprófun í Safari á iPhone bíður. Lagfæringin er ekki merkt fullstaðfest.
+
+Ný gildandi ákvörðun um Gistingu
+• Í nýrri gistingu mega auðir innritunar- og útritunarreitir fyllast úr skráðum dvalardögum valins áfangastaðar, í stöðunum Óbókað/opið, Hugmynd/kannski, Bókað og Lokið. Óskráður dagur helst óskráður. Handskráðir dagar og vísvitandi hreinsaðir reitir hafa forgang. Dagsetningaárekstur er sýndur til yfirferðar.
+• Við opnun áður vistaðrar gistingar, breytingu bókunarstöðu eða áfangastaðar haldast dagsetningar færslunnar. Þetta gildir líka um eldri opna gistingu með metadata.lodging_stay_date_links. Ný fyrirmæli ganga framar eldri reglu um sjálfvirka uppfærslu þessara tengdu daga við enduropnun. Eldri samþykki og prófunarniðurstöður halda sögulegu gildi í skráningunni.
+• „Nota daga áfangastaðar“ er áfram skýrt handvirkt val. Fyrirliggjandi afturköllun þess vals og handvirkar dagsetningabreytingar halda virkni sinni.
+
+Orsök og afmörkuð viðgerð
+• Nýjasta index.html og VERKEFNALISTI.txt á GitHub voru borin saman við afhendingu 145. Git-blob SHA voru nákvæmlega eins og staðbundið afrit 145. Fyrri útgáfa er varðveitt í release-145 og fyrri ZIP.
+• Í fillLodgingStayDates() stöðvaði skilyrði fyrir Bókað/Lokið sjálfvirka útfyllingu einnig í nýjum færslum. Fallið krafðist beggja dvalardaganna og sleppti því þekktum degi þegar hinn vantaði. Eldri sjálfvirk dagatenging gat jafnframt breytt dagsetningu vistaðrar opinnar gistingar við opnun.
+• Aðeins fillLodgingStayDates() í index.html var breytt. Það verndar nú allar áður vistaðar færslur, fyllir aðeins tóma reiti nýrrar færslu úr gildum skráðum dögum og sýnir fyrirliggjandi tilkynningasvæði við ómögulegt dagapar. Engin breyting var gerð á vistunarkóða, kostnaðarútreikningum, staðsetningum, leiðsögn eða framsetningu.
+
+Raunverulegar prófanir 11-11-2026
+• Orsakirnar þrjár voru endurgerðar í 145 með prufugögnum. Í 146 stóðust 23/23 prófunartilvik í Chromium 153.0.8010.0, með raunverulegu bókunarformi og atburðum þess. Gagnagrunnur og gengissókn voru hermd og engin skrif fóru í lifandi ferðagögn.
+• Prófað var að stofna, vista, opna aftur og breyta gistingu í öllum fjórum bókunarstöðum. Prófað var bæði beint nýtt gistiatriði og almenna leiðin Nýtt atriði → Gisting. Stöðubreytingar fyrir og eftir staðaval, handskráðir dagar fyrir staðaval, breyttur áfangastaður, aðeins annar dagurinn útfylltur og vísvitandi hreinsaður reitur prófuð.
+• Áður vistuð gisting var prófuð í öllum fjórum stöðum, með eldri sjálfvirkum dagatengingum og með auðum reit. Enduropnun eftir breytta dvalardaga, breytt bókunarstaða og breyttur áfangastaður breyttu ekki bókunardögum. Handvirk breyting vistaðist í sömu færslu og hélst eftir enduropnun. Hætta við hélt vistuðum gögnum.
+• „Nota daga áfangastaðar“ og afturköllun beggja daganna prófuð í nýrri og vistaðri gistingu. Óskráður upphafsdagur, óskráður lokadagur, báðir dagar óskráðir, ógildur dagur, núll nætur, öfugir dvalardagar og árekstur við handskráðan gistidag prófuð. Viðeigandi tilkynning eða fyrirliggjandi vistunarvörn kom fram.
+• Fyrirliggjandi viðvörun um gistingu utan dvalardaga, skarandi gististaði, kostnaðarskiptingu á hópa, greiðslu fyrir alla og móttekna endurgreiðslu var endurprófuð við vistun og enduropnun. Heildarverð, okkar hluti, greiðsla og endurgreiðsla héldust. Bókunarnúmer, athugasemdir, innritunar-/útritunartímar og nákvæmur gistipunktur héldust.
+• Leiðsagnarval frá skráðri komustöð og Google Maps-slóð með sjálfstæðu upphafi og endapunkti prófuð við vistun/enduropnun. Raunveruleg tenging gistiskjals í hermda gagnagrunninn prófuð. Opnun ytra Google Maps-appsins og skjals í raunverulegum iPhone var ekki prófuð.
+• Bókunarformið og dagsetningareitir skoðuð við 393 × 852 og 852 × 393 px. Engin lárétt yfirbreidd í glugganum. Þetta voru Chromium-próf með hermdri farsímabreidd, ekki Safari eða raunverulegur iPhone.
+
+Afhending og næsta staðfesting
+• ZIP ferdakerfid-146-Gisting-dagsetningar.zip inniheldur aðeins index.html og þennan fulla VERKEFNALISTI.txt. Frá 145 skal skipta út þessum tveimur skrám og enduropna appið.
+• Bíður afmarkaðrar staðfestingar á raunverulegum iPhone að ný gisting fylli dvalardaga líka eftir val á Bókað/Lokið og að áður vistuð gisting haldi dögum við enduropnun og stöðubreytingu.
+• SAM-00 helst lokið, 24/24. SAM-P01–P04, HUG-01, HUG-02, UI-BAT-01 og önnur áður ólokin atriði halda skráðri stöðu sinni. UI-RUT-01 er áfram lokað, fellt niður að ósk notanda. Eldri verkefni og afhendingarsaga varðveitt.
+• GitHub var lesið til samanburðar. Afhending 146 er tilbúin til upphleðslu. Engin fullyrðing er gerð um vistun 146 á GitHub.
