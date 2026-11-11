@@ -1,5 +1,5 @@
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
-Gildandi skráningarstaða 11-11-2026 — afhending 146. SAM-00: LOKIÐ — 24/24. Fyrri notandastaðfestingar og afhendingarsaga varðveittar. SAM-P01–P04 og önnur ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. UI-BAT-01, HUG-01 og HUG-02 halda aðgreindri útfærslu-, vafraprófunar- og tækjastaðfestingarstöðu samkvæmt færslum neðar. HUG-02 er síðast útfært og vafraprófað í 145 og bíður staðfestingar á iPhone. Gistingardagsetningar eru lagfærðar og vafraprófaðar í 146. Raunprófun þeirra í Safari á iPhone bíður.
+Gildandi skráningarstaða 11-11-2026 — afhending 147. Y05 er útfært og vafraprófað; raunprófun í Safari á iPhone bíður. SAM-00: LOKIÐ — 24/24. Fyrri notandastaðfestingar og afhendingarsaga varðveittar. SAM-P01–P04 og önnur ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. UI-BAT-01, HUG-01 og HUG-02 halda aðgreindri útfærslu-, vafraprófunar- og tækjastaðfestingarstöðu samkvæmt færslum neðar. HUG-02 er síðast útfært og vafraprófað í 145 og bíður staðfestingar á iPhone. Gistingardagsetningar eru lagfærðar og vafraprófaðar í 146. Raunprófun þeirra í Safari á iPhone bíður.
 
 GILDANDI SKRÁNINGARFYRIRKOMULAG — SAMÞYKKT 08-11-2026
 VERKEFNALISTI.txt er ein aðalverkefnaskrá við hverja afhendingu, í stað þess að krefjast 11 skráa samgöngupakka. Eldri verkefni, ákvarðanir, prófunarniðurstöður og afmarkaðar notandastaðfestingar eru varðveittar hér. Gildandi ákvarðanaskjal heldur áfram gildi; þessi skrá fellir enga eldri samþykkt úr gildi.
@@ -304,7 +304,7 @@ Næsta skref: nota heildaryfirferðina til að endurheimta yfirsýn og afmarka v
 Y05 — FÁNI OG ÁFANGASTAÐUR VEÐURS Í FERÐ Í GANGI.
 Heimild: beiðni Kristjáns 01-11-2026 og IMG_0430: „Fyrir ofan staðartími í ferð í gangi má vera í jafn litlum stöfum fáni og áfangastaðurinn sem veðrið nær til“.
 Á spjaldinu „Ferð í gangi“ á forsíðu birtist fáni og heiti þess áfangastaðar sem veðrið nær til, beint fyrir ofan „Staðartími núna“, í sömu litlu leturstærð og staðartíminn. Miða við áfangastað veðurgagnanna, ekki almennt heiti eða fána ferðarinnar; nota skráða tengingu, ekki giska út frá heiti. Varðveita aðra birtingu og virkni spjaldsins.
-Staða: samþykkt verkefni á lista; ekki útfært eða prófað. Aðeins verkefnalistinn uppfærður.
+Staða 147: útfært og 18/18 afmörkuð vafrapróf staðist. Bíður staðfestingar á raunverulegum iPhone/Safari. Fyrri staða var eingöngu samþykkt verkefnaskráning. Sjá afhendingu 147 neðst.
 
 
 27. FRÁ-STAÐUR VIÐ ENDUROPNUN — AFHENDING 112, 01-11-2026
@@ -1994,3 +1994,30 @@ Afhending og næsta staðfesting
 • Bíður afmarkaðrar staðfestingar á raunverulegum iPhone að ný gisting fylli dvalardaga líka eftir val á Bókað/Lokið og að áður vistuð gisting haldi dögum við enduropnun og stöðubreytingu.
 • SAM-00 helst lokið, 24/24. SAM-P01–P04, HUG-01, HUG-02, UI-BAT-01 og önnur áður ólokin atriði halda skráðri stöðu sinni. UI-RUT-01 er áfram lokað, fellt niður að ósk notanda. Eldri verkefni og afhendingarsaga varðveitt.
 • GitHub var lesið til samanburðar. Afhending 146 er tilbúin til upphleðslu. Engin fullyrðing er gerð um vistun 146 á GitHub.
+
+AFHENDING 147 — Y05: FÁNI OG ÁFANGASTAÐUR FORSÍÐUVEÐURS
+
+Samþykkt 11-11-2026. Staða: ÚTFÆRT Í 147 OG VAFRAPRÓFAÐ. Staðfesting á raunverulegum iPhone/Safari bíður. Ekki merkt fullstaðfest.
+
+Grunnur og afmörkun
+• Nýjasta index.html og VERKEFNALISTI.txt voru sótt úr GitHub til samanburðar. SHA index.html var 4d73256e2e5844edeafcd4c7c7da7876cf583121 og SHA verkefnalistans 93182d30be044198c807d106d59c5850532fd1da. Innihald beggja samsvaraði afhendingu 146. Fyrri útgáfa varðveitt í release-146 og fyrri ZIP. GitHub var aðeins lesið.
+• Viðgerð Gistingar úr 146 og fyrri samþykktir halda skráðri stöðu sinni. SAM-00 helst lokið, 24/24. Önnur ólokin verkefni og fyrri prófanir halda stöðu og afhendingarsögu.
+
+Framkvæmd
+• Á forsíðuspjaldinu Ferð í gangi birtist fáni og skráð heiti þess dvalaráfangastaðar sem veðurspjaldið notar, í 12 px letri beint fyrir ofan Staðartími núna. Löng heiti mega flæða yfir fleiri línur. Stóra heiti og fáni ferðarinnar halda fyrra hlutverki.
+• Landkóði er sóttur með fyrirliggjandi áfangastaðafyrirspurn. Merkingin notar veðursamhengi spjaldsins og fyrirliggjandi stopLocation-birtingu. Vanti landkóða birtist þekkt heiti án fána. Vanti þekktan veðuráfangastað eða heiti birtist engin ágiskuð merking.
+• Í ferð í gangi fær staðarklukkan tímabelti sama veðuráfangastaðar þegar það liggur fyrir eða tekst að leysa með fyrirliggjandi tímabeltaleit. Komi gilt tímabelti síðar úr veðurgögnum nýtist það í klukkunni. Staðardagur veðurspjaldsins miðast þá við sama tímabelti. Þetta er staðbundin breyting á forsíðuspjaldinu. Framtíðarferðir halda fyrri klukkureglu.
+• Breytt var renderNext(), paintNextTripWeather() og stíl nýju litlu merkilínunnar í index.html. Veðurútreikningar, veðurgrafík og val á veðuráfangastað halda fyrirliggjandi föllum. Enginn vistunarkóði breyttist.
+
+Raunverulegar prófanir 11-11-2026
+• 18/18 prófunartilvik stóðust í Chromium 153.0.8010.0 með prufugögnum. Gagnagrunnsfyrirspurnir, veðurgögn og svör tímabeltaþjónustu voru hermd. Engin skrif í ferðagögn eða GitHub.
+• Ferð í gangi með Hamborg einni og með Hamborg/New York prófuð á mismunandi dögum. Samanburður við 146 endurgerði ósamræmi þar sem veðrið miðaðist við New York en klukkan við almennt tímabelti ferðar. Í 147 fylgja merking og klukka veðuráfangastaðnum. Prófað var að endurteikna forsíðuspjaldið eftir breytingu dags/áfangastaðar og að uppfæra klukkuna um mínútu.
+• Dagskipti prófuð við 02:00 UTC þegar staðardagur í New York var enn fyrri dagur. Dagsetning klukku og veðursamhengis samsvaraði. Vantar landkóða, staðarheiti, hnit, skráðan áfangastað, tímabelti eða gilt tímabelti prófað. Engin fána-/heitaágiskun úr ferðatitli. Þekkt heiti helst þótt landkóða vanti.
+• Framtíðarferð innan spátímabils og framtíðarferð með sögulegu hitaviðmiði bornar saman við 146. Veðurtexti, klukka/tímabelti, tölur forsíðuspjalds, grafíktegund og val á fyrirliggjandi spá-/sögulegri þjónustu samsvöruðu fyrri útgáfu. Sögulegt viðmið var áfram merkt sögulegt.
+• Ótiltæk spá, slökkt veður og síðbúið tímabelti úr veðurgögnum prófuð. Próf með hægara eldra renderNext-kalli staðfesti að það yfirskrifaði ekki nýrra ferðaspjald, merkingu eða klukku.
+• Ljóst og dökkt þema skoðuð við 393 × 852 og 852 × 393 px með löngu áfangastaðarheiti. Leturstærð merkilínu samsvaraði staðarklukku og merkingin var fyrir ofan hana. Engin lárétt yfirbreidd í spjaldinu. Engar ómeðhöndlaðar vafravillur komu fram.
+• Þetta eru vafrapróf með hermdum þjónustum og farsímabreidd. Lifandi veður-/tímabeltaþjónusta og raunverulegur Safari á iPhone voru ekki prófuð. Y05 bíður þeirrar tækjastaðfestingar sem við á.
+
+Afhending
+• Fullbúið index.html og fullur VERKEFNALISTI.txt í ferdakerfid-147-Y05.zip. Frá 146 nægir að skipta út þessum tveimur skrám og enduropna appið. Fullbúið index.html er einnig afhent eitt sér.
+• Notandi hleður skránum sjálfur inn á GitHub. Engin skriftilraun var gerð á GitHub.
