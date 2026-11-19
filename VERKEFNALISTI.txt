@@ -2021,3 +2021,53 @@ Raunverulegar prófanir 11-11-2026
 Afhending
 • Fullbúið index.html og fullur VERKEFNALISTI.txt í ferdakerfid-147-Y05.zip. Frá 146 nægir að skipta út þessum tveimur skrám og enduropna appið. Fullbúið index.html er einnig afhent eitt sér.
 • Notandi hleður skránum sjálfur inn á GitHub. Engin skriftilraun var gerð á GitHub.
+
+
+
+HUG-03/04 — UPPGÖTVA NÁGRENNIÐ — FRAMKVÆMD HAFIN 19-11-2026
+Staða: ÁÆTLUN SAMÞYKKT AF NOTANDA; FYRSTI ÁFANGI Í VINNSLU. EKKI LOKIÐ.
+Samþykki: Notandi samþykkti áfangaskipta áætlun 19-11-2026 og fól aðstoðarmanni að halda áfram.
+Grunnur: GitHub main c43dd299e38b25eebe4f7d7108de9bed5f44850e, afhending 147. Endurstaðfest 19-11-2026. Ekkert skrifað á GitHub. Þetta er full uppfærð skrá til varðveislu, ekki staðfest upphleðsla.
+Heimildir: Sources, heildarpakki úr Ferðakerfið Mitt/HUG-03-04 og HUG-03-04-Yfirferd-og-framkvaemdaaaetlun-2026-11-19.md.
+Eldra pakkaafrit verkefnalista (116) var ekki notað til að yfirskrifa nýjasta lista (147).
+
+Framkvæmdarstaða eftir áfanga:
+1. Grunnur, aðgangur, leyfi, kostnaður og varðveisluviðmið: Í VINNSLU. Grunnur varðveittur og 58 varðveisluvafrapróf stóðust. Gagnaveituaðgangur/kvóti og framleiðslurekstrarskilyrði að hluta óstaðfest.
+2. Inngangur undir korti, sex flokkar, samhengi og sérstakt leitarlag: ÓLOKIÐ.
+3. Sameiginleg staðaleit, Matur og drykkur, Hagnýtt: ÓLOKIÐ.
+4. Áhugaverðir staðir og fjórir samþykktir fróðleikskaflar: ÓLOKIÐ.
+5. Vefmyndavélar: ÓLOKIÐ í framleiðslu; fyrirliggjandi prófunartenging varðveitt.
+6. Viðburðir og markaðir: ÓLOKIÐ; raunveruleg API-þekja/aðgangur þarf staðfestingu.
+7. Afþreying og útivist: ÓLOKIÐ; lengd, samfelldni og GPX-próf eftir.
+8. Sameiginlegar ferjuáætlanir og viðbót Bátar/ferjur: ÓLOKIÐ í framleiðslu; ACTV-rannsókn er ekki framleiðslutenging.
+9. Samþætting, iPhone/Safari og afhending: ÓLOKIÐ.
+
+Aðgangsniðurstaða 19-11-2026:
+- Fyrirliggjandi destination-photos (Supabase/Unsplash) og place-search (Nominatim) fundust í kóða. Ekki breytt.
+- Windy-stilling fannst áður í vefmyndavélaprófunarverkefni. Virkur lykill, kvóti og framleiðsluvörn eru ekki staðfest með því einu.
+- Geoapify V6-frumskrá sótt úr Library og lesin. Hún lýsir tímabundnum lykilreit og segir beinlínis að enginn lykill sé vistaður í HTML, Library eða þjóninum við afhendingu. Endurnýta má hugmynd/kóða eftir yfirferð; ekki fullyrða að aðgengilegur þjónslykill sé kominn.
+- Geoapify/OTM-lykill fannst ekki í þeim framleiðslukóða eða stillingum sem skoðaðar voru. Það sannar ekki að notandi eigi ekki lykil.
+- Nýjasta practical.js-prófunarskrá var sótt til skoðunar. Ekkert nýtt lifandi gagnapróf framkvæmt; fyrri niðurstöður halda takmörkunum sínum.
+- Ókeypis verðleiðir staðfestar í opinberum skjölum; raunveruleg áskrift/kvóti notandareikninga og leyfileg skyndiminnisnotkun eru ekki að fullu staðfest. Engar áskriftir, greiðslur eða nýjar þjónustur virkjaðar.
+
+NÝ VARÐVEISLUPRÓF 19-11-2026 — AFHENDING 147, ENGIN KÓÐABREYTING
+Chromium 153.0.8010.0, sjálfvirk vafrapróf með hermdum þjónustum/prufugögnum:
+- 16/16: opnun ferðar, ferð í gangi/óhafin/farin, HUG-01 dagaval og skrun, enduropnun, engin óvænt gagnaskrif.
+- 24/24: HUG-02 röðun Prag/Trieste/Garda og dagsferðir, samstilling, aðskilin punkta-/textaaðgerð, snerting/lyklaborð, þemu, skrun og varðveisla.
+- 18/18: Y05 staður/fáni, veður og staðartími, framtíðar-/sögulegt viðmið, vantar gögn, 393×852 og 852×393 birting.
+Samtals 58/58. Þetta eru varðveisluviðmið fyrir komandi breytingar; ekki próf á nýrri Uppgötva-virkni, lifandi gagnaveitum eða raunverulegum iPhone/Safari.
+Fyrsta keyrslutilraun veðurprófs hófst ekki vegna óleysts playwright-einingarstígs. Réttur fyrirliggjandi keyrslustígur var síðan notaður og prófið stóðst. Enginn appkóði var lagfærður vegna þess.
+Fyrri 46/46 einangruð fylgipróf tilheyra úttektinni fyrr sama dag; þau eru ekki lögð við 58 sem ný samþætt vafrapróf.
+
+ÓLOKIN AÐGANGS-/GAGNAATRIÐI SEM HALDAST Í HUG-03/04
+- Aðgengilegur Geoapify/OTM-aðgangur, notandareikningskvóti og örugg þjónsgeymsla eftir þörf.
+- Staðfest leyfi, heimildamerking og skyndiminnisreglur hverrar virkjaðrar veitu.
+- Afmörkuð, mæld Overture-vinnsla og sannprófuð staðapörun í raunúrtaki.
+- Lifandi viðburðaþekja og aðskilin bilunar-/tómlistameðhöndlun.
+- Leiðalengdir, samfelldni, rétt hnitasnið, ferðamátar og GPX.
+- Windy-vörn, myndtenglalíftími og rétt merking myndtegundar.
+- Ferjuauðkenni, gildistími, almanaksundantekningar, miðnætti og tímabelti.
+- Viðmót, allir sex flokkar, ferjuviðbót og samþætt iPhone/Safari-prófun.
+Eigin flokkun/samstilling og fótboltasérvirkni halda aðgreindri síðari stöðu samkvæmt samþykktum; ekki merkja þau lokið hér.
+
+VARÐVEISLA: Allt fyrra innihald aðalverkefnalista er varðveitt orðrétt ofan þessarar færslu. SAM-00 er áfram LOKIÐ 24/24; SAM-P01–P04 og önnur eldri ólokin verkefni eru ekki felld niður. UI-RUT-01 heldur stöðu lokað/fellt niður. Eldri Y05/HUG-01/HUG-02 og iPhone-takmarkanir halda skráðu umfangi. Engin ný notandastaðfesting á eldri virkni ályktuð.
