@@ -55,3 +55,7 @@
 .nearby-context select,.nearby-mode select{background:var(--input-bg,var(--panel));color:var(--text);border:1px solid var(--line);border-radius:.8rem;padding:.6rem;min-height:44px;font:inherit;min-width:0}
 
 .nearby-attribution a{color:var(--accent)}
+
+.nearby-category-radius{max-width:24rem;margin:.5rem 0 .75rem}
+.nearby-category-radius>.nearby-radius{display:flex;flex-direction:column;gap:.25rem}
+.nearby-more{min-height:44px;margin:.75rem 0;max-width:100%;white-space:normal}
