@@ -357,3 +357,18 @@ Notandi samþykkti HUG-03-04-Yfirferd-og-framkvaemdaaaetlun-2026-11-19.md og fó
 Gildir: einn inngangur undir korti, sex samþykktir flokkar og samþykkt ferjuviðbót; 0 kr. rekstur, varðveisla fyrirliggjandi gagna og flæða, engin sjálfvirk vistun leitarniðurstaðna. Nýrri tungumálaákvörðun: íslensk Wikipedia/yfirfarinn íslenskur texti fyrst; MyMemory ekki sjálfgefið.
 Framkvæma í afmörkuðum áföngum; skrá framkvæmd, hermipróf, vafrapróf og iPhone-staðfestingu aðgreint. Tilraunagagnaveita eða prófunarþjónusta er ekki sjálfkrafa samþykkt framleiðslutenging. Engin heildarlokun án prófa.
 Þessi viðbót fellir ekki fyrri samþykktir úr gildi. Nákvæm framkvæmda-/prófunarstaða er í VERKEFNALISTI.txt.
+
+
+
+HUG-03/04 — AÐGANGSSTAÐFESTING 19-11-2026
+Geoapify Free (€0/mánuði, 3.000 credits/dag) staðfest á mynd notanda. API-lykill til samkvæmt notanda; „komið“ eftir leiðbeiningar um Secrets er afmörkuð notandastaðfesting vistunar. Ekki álykta að lifandi staðaleit hafi verið prófuð. Ekkert lykilgildi í opinbera kóða eða afhendingu.
+Vinnuafrit 148 er hlutainnleiðing til yfirferðar. Framleiðsludreifing nýrrar þjónustu var stöðvuð af sjálfvirkri samþykkisyfirferð og hefur ekki átt sér stað. Uppfærð krafa/útfærsla/prófun/dreifing/iPhone-staðfesting halda aðgreindri stöðu. Eldri samþykktir haldast allar.
+
+
+HUG-03/04 — SÉRSTÖK DREIFINGARHEIMILD 19-11-2026
+Notandi samþykkti sérstaklega dreifingu nýju nearby-places þjónustunnar með „Já samþykkt“. Fyrri aðgerðahindrun vegna sjálfvirkrar samþykkisyfirferðar var leyst með því. Framkvæmd og raunpróf eru skráð aðgreind í VERKEFNALISTI.txt. Þetta er ekki staðfesting á að öll Uppgötva-virkni sé lokið eða raunprófuð á iPhone.
+
+
+HUG-03/04 — AFMÖRKUÐ RAUNSTAÐFESTING OG ÁFANGI 20-11-2026
+Notandamynd staðfestir HTTP 200, nýtt Geoapify-svar og 19 Matur/drykkur-niðurstöður við Napólí í 5 km leit í Safari á iPhone. Þetta er tengipróf, ekki samþykki á öllum nýjum flokkum eða app-útliti. Innleiðing heldur áfram samkvæmt samþykktri áætlun og engin ný heildarsamþykkt er ályktuð.
+App-prófunarpakki 148 nær til inngangs, sameiginlegrar umgjarðar og fyrstu staðaleitar. Óloknir flokkar og undirflokkar halda stöðu. Nýr kóði breytir ekki eldri bókunar-, kostnaðar- eða dagsetningareglum. Framvinda og prófunartakmarkanir eru í VERKEFNALISTI.txt.

@@ -1,3 +1,6 @@
+NÝJASTA STAÐA — 20-11-2026 — AFHENDING 148 TIL AFMARKAÐRAR APP-PRÓFUNAR
+HUG-03/04 er Í VINNSLU. Geoapify Matur/drykkur við Napólí hefur skilað 19 niðurstöðum, HTTP 200, staðfest á iPhone-mynd notanda. Allir sex flokkar/ferjuviðbót eru ekki fullgerð. Nýtt app-svæði bíður iPhone-prófunar. Sjá nýjustu skráningu neðst; eldri stöðulýsingar og hindranir eru varðveitt saga.
+
 Ferðakerfið mitt — verkefnalisti og viðvörunarskrá
 Gildandi skráningarstaða 11-11-2026 — afhending 147. Y05 er útfært og vafraprófað; raunprófun í Safari á iPhone bíður. SAM-00: LOKIÐ — 24/24. Fyrri notandastaðfestingar og afhendingarsaga varðveittar. SAM-P01–P04 og önnur ólokin verkefni halda stöðu sinni. UI-RUT-01 er lokað að ósk notanda. UI-BAT-01, HUG-01 og HUG-02 halda aðgreindri útfærslu-, vafraprófunar- og tækjastaðfestingarstöðu samkvæmt færslum neðar. HUG-02 er síðast útfært og vafraprófað í 145 og bíður staðfestingar á iPhone. Gistingardagsetningar eru lagfærðar og vafraprófaðar í 146. Raunprófun þeirra í Safari á iPhone bíður.
 
@@ -2071,3 +2074,89 @@ Fyrri 46/46 einangruð fylgipróf tilheyra úttektinni fyrr sama dag; þau eru e
 Eigin flokkun/samstilling og fótboltasérvirkni halda aðgreindri síðari stöðu samkvæmt samþykktum; ekki merkja þau lokið hér.
 
 VARÐVEISLA: Allt fyrra innihald aðalverkefnalista er varðveitt orðrétt ofan þessarar færslu. SAM-00 er áfram LOKIÐ 24/24; SAM-P01–P04 og önnur eldri ólokin verkefni eru ekki felld niður. UI-RUT-01 heldur stöðu lokað/fellt niður. Eldri Y05/HUG-01/HUG-02 og iPhone-takmarkanir halda skráðu umfangi. Engin ný notandastaðfesting á eldri virkni ályktuð.
+
+
+
+HUG-03/04 — ÁFANGAVINNA 148 — 19-11-2026 — EKKI SETT Í LOFTIÐ
+Nýjasti GitHub-grunnur fyrir þessa vinnu: index.html blob 649377374d50322e4e3a8c11e10bdacdf92d0727; verkefnalisti blob 6eef69e97a0b43b896e3fc33e3e53488c00ce059; reglur blob 28ef1ceef90269d750fee03ef15b869fea34c825. Upphleðsla fyrri skráningarskráa hefur því verið staðfest með lestri nýjustu GitHub-skráa. Eldri innihald varðveitt orðrétt.
+Notandi sýndi Geoapify Current plan Free, 3.000 credits/dag og €0/mánuði. Notandi staðfesti að API-lykill sé til og sagði „komið“ eftir leiðbeiningar um GEOAPIFY_API_KEY í Supabase Edge Functions Secrets. Gildi lykils var ekki lesið eða birt. Vistun er notandastaðfest; rétt lykilgildi/heimildir og lifandi API-leit eru enn óstaðfest.
+Notandi sýndi rétt Supabase-verkefni og Free plan usage. Engin greidd þjónusta hefur verið virkjuð af aðstoðarmanni.
+
+ÚTFÆRT Í VINNUAFRITI 148:
+- Inngangshnappur undir .map-stage og fyrir ofan fyrri Áfangastaður/Um kortið/bókunarlista. Sex samþykktar flísar, 2 dálkar, afmarkað JavaScript/CSS.
+- Áfangastaðaval með skráðum hnitum, 1–20 km fjarlægð, skýrt GPS-val/heimild, Gangandi/Í bíl, leiðsögn með valinni leitarmiðju sem upphafi og nákvæmum niðurstöðupunkti sem enda.
+- Tímabundnir leitarmarkerar eru í sér safni, ekki state.markers eða bókunargögnum. Skoðun, lokun, innskráningarskipti og ferðaskipti eiga engin bókunargagnaskrif.
+- Sérstök nearby-places Edge Function útfærð: JWT-innskráning, lesaðgangur að valinni ferð með núverandi RLS, takmarkað inntak/svar, tímamörk, tímabundið skyndiminni og sameiginleg beiðni við samhliða eins leitir. Engin þjónustulykilgildi fara í URL/svör eða client-kóða.
+- Fyrsta Geoapify-staðaleit skilgreind fyrir Áhugaverða staði, Matur/drykkur og hluta Hagnýtt. Aðeins sterkt source place_id sameinað; ekki heiti/fjarlægð ein og sér. Ekki sjálfvirk staðavistun.
+- Viðburðir, útivist og vefmyndavélar sýna skýra stöðu um að gögn séu ekki enn tengd í þessari áfangaútgáfu. Þau eru EKKI fullgerð. Hagnýtt vantar enn nokkra samþykkta undirflokka og þá á ekki að telja afgreidda.
+- Nýtt svæði hreinsar úreltar niðurstöður við lokun/samhengisbreytingu. Leitarbilun er aðgreind frá tómlista. Heimildir Geoapify/OSM birtast.
+- Engar breytingar á eldri hjálpareiningum: activity-times, offline, sw, wallet-tickets, transport-stops, destination-photos, travel-navigation, cost-sharing, rental-cars og railway-stations eru byte-for-byte óbreytt miðað við sóttan grunn.
+
+PRÓF 19-11-2026 EFTIR ÞESSA ÚTFÆRSLU:
+23/23 þjónustupróf með hermdu fetch (innskráning/RLS/villur/kvóti/cache/hnit/flokkun/URL/lyklaleynd).
+21/21 Chromium-viðmótspróf (fjórar skjástærðir, 2 dálkar, sækja ekki án vals, valdir punktar/leiðsagnartenglar, stórt letur, GPS-höfnunarherming, úrelt svör, hreinsun, bókunargögn varðveitt). MapLibre-merkjasafn er hermt; raunveruleg flísakortabirting er ekki staðfest með þessum prófum.
+16/16 opnunar-/HUG-01 varðveislupróf, 24/24 HUG-02 varðveislupróf og 18/18 Y05-veður/klukku varðveislupróf á breyttu index.html.
+Samtals 102/102 afmörkuð próf stóðust. Þetta jafngildir ekki fullri kerfis- eða iPhone/Safari-prófun.
+Sjónræn yfirferð stórs leturs fann þrengsli í nýjum samhengi-reitum. Þeir voru lagfærðir og prófið endurkeyrt. Fyrstu keyrslutilraunir innihéldu prófaskriftarsetningavillu, Playwright isDisabled-misræmi við option og Chromium ETXTBSY vegna samhliða ræsinga. Prófunaruppsetning var leiðrétt; þetta voru ekki staðfestar eldri appvillur.
+
+DREIFINGARSTAÐA / HINDRUN:
+Tilraun til að setja nýju nearby-places Edge Function í Supabase var höfnuð af sjálfvirkri samþykkisyfirferð. Ástæða yfirferðarinnar: samþykki fyrir tiltekinni framleiðsludreifingu ekki nægilega skýrt samkvæmt mati hennar. Samþykkt framkvæmdaráætlun notanda er áfram gild; höfnunin er tæknileg aðgerðahindrun, ekki afturköllun hennar.
+Engin ný Edge Function hefur verið virkjuð og ekkert app hlaðið upp á GitHub. Pakki 148 er TIL YFIRFERÐAR, ekki fullgerð framleiðsluafhending. Sérstakt samþykki er óskað fyrir að setja eingöngu nýju nearby-places þjónustuna í loftið; eldri functions/töflur/bókanir haldast óbreytt.
+
+ÓLOKIÐ:
+- Virkja nearby-places eftir leyfða dreifingu, staðfesta þjónslykil/Geoapify-aðgang með auðkenndri raunleit og réttu CORS/JWT/RLS á þjóninum.
+- Tímabundnar notkunartakmarkanir í minni hvers keyrsluumhverfis eru EKKI dreifður varanlegur heildardagskvóti. Þær resetjast við nýjan worker. Ókeypis Geoapify-reikningskvóti er ytri mörk; mæla þarf sameiginlega notkun með eldri prófunum.
+- Allir samþykktir undirflokkar Hagnýtt, matarflokkafjölval og frekari staðagæði.
+- Wikimedia/OTM-auðgun, fjórir fróðleikskaflar, viðburðir, útivist, myndavélar, ferjuáætlanir, dagaval þar sem það á við, samþykkt vistunarflæði úr niðurstöðum, fallback-gagnaveitur og próf utan Evrópu.
+- Raunveruleg kortabirting, GPS-heimild, iPhone/Safari, lifandi API-próf og tengd vistun/endurræsing.
+HUG-03/04 og allir óafgreiddir áfangar halda opinni stöðu. SAM-00 helst lokið 24/24; SAM-P01–P04 og öll önnur fyrri verkefni haldast. Ekkert ólokið atriði er fjarlægt.
+
+
+HUG-03/04 — NÝJASTA DREIFINGARSTAÐA 19-11-2026
+Notandi svaraði „Já samþykkt“ við skýrri beiðni um að setja eingöngu nýju nearby-places Edge Function í loftið. Fyrri sjálfvirk höfnun er varðveitt saga, ekki núverandi hindrun.
+Dreifing framkvæmd í omvfsaokykpclzecfqlw. nearby-places: ACTIVE, version 1, verify_jwt=true. Function id 94e9059c-0a1c-4378-9c89-07438d46b367; code checksum 7da92a3405bb27ff98b56d84fcdcdf5dc7aff619320973c2022f118c6b27e8c6.
+Eldri fimm functions bera sömu útgáfur og kóðatékksummur fyrir og eftir dreifingu. Ekkert skrifað í bókunargögn eða töflur og ekkert sett á GitHub af aðstoðarmanni.
+
+LIFANDI ÞJÓNUSTUPRÓF 19-11-2026:
+1. POST án Authorization: HTTP 401 frá JWT-gátt.
+2. POST með ógildu JWT: HTTP 401 frá JWT-gátt.
+3. OPTIONS frá https://2dwfcgfh48-droid.github.io: HTTP 200, Access-Control-Allow-Origin samsvarar appuppruna.
+3/3 stóðust. Þau prófa aðgengi/preflight og höfnun óinnskráðra, ekki Geoapify-lykil eða leyfi innskráðs notanda til ferðar.
+23 hermd þjónustupróf endurkeyrð og stóðust áður en dreift var. Eldri 102 prófa niðurstaða heldur sínu dagsetta umfangi; ekki telja endurkeyrslu sem 23 ný sjálfstæð próf.
+
+TENGIPRÓFUNARSÍÐA:
+uppgotva-tengiprof.html útfærð til tímabundinnar upphleðslu í sömu GitHub Pages-möppu. Hún notar núverandi innskráningu og RLS til að lesa ferðalista og áfangastaði, sækir aðeins staði þegar notandi ýtir á hnapp og birtir skýra niðurstöðu/HTTP-villu. Engin bókunar-, áfangastaða- eða kostnaðarskrif. Enginn nýr reikningur, engin lykilgildi send í spjall eða sett í HTML. Opinber Supabase publishable key er sá sami og í núverandi appi.
+6/6 JSDOM-próf með hermdri innskráningu/gagnalestri/API stóðust: árangur, engin innskráning, engin ferð, hnit/áfangastað vantar, HTTP 503 og ótraustur texti. Þetta eru ekki ný vafra- eða iPhone-próf.
+Raunveruleg Geoapify-leit með innskráningu notanda bíður. Engin slík staðfesting hefur verið gefin af aðstoðarmanni. Útfyllt þjónsleyndarmál er enn aðeins notandastaðfest þar til raunleit stenst.
+
+NÆSTA SKREF:
+Notandi hleður upp uppgotva-tengiprof.html við hlið index.html og opnar í sama Safari-vafra og appið. Velja ferð/áfangastað og keyra eina 5 km leit. Skrá raunverulega niðurstöðu áður en appuppfærslan er afhent til upphleðslu. Fyrra review-vinnuafrit 148 er ekki enn gefið út sem staðfest appuppfærsla.
+Allir aðrir óloknir HUG-03/04 áfangar og eldri verkefni halda stöðu. SAM-00 helst lokið 24/24.
+
+
+HUG-03/04 — APP-PRÓFUNARAFHENDING 148 — 20-11-2026
+Notandastaðfest lifandi tengipróf: iPhone/Safari-mynd sýnir ferð „Ítalía 2027“, áfangastað Napólí, Matur og drykkur, 5 km, HTTP 200 og 19 niðurstöður. Skilaboð: „Ný niðurstaða frá Geoapify.“ Þetta staðfestir eina raunverulega auðkennda leit í þessu samhengi og virkan aðgang að Geoapify fyrir hana. Það er ekki staðfesting á öllum flokkum, heimsþekju, staðagæðum, Google Maps eða nýju app-viðmóti.
+Myndin sýnir líka „Engin gögn voru vistuð í ferðinni.“ Síðan hefur eingöngu les- og leitarvirkni í kóða; engin sérstök eftirprófun gagnagrunns hefur verið gerð út frá myndinni.
+
+GitHub var endurlesið 20-11-2026: index.html blob enn 649377374d50322e4e3a8c11e10bdacdf92d0727 (147). VERKEFNALISTI blob 6eef69e97a0b43b896e3fc33e3e53488c00ce059 og GILDANDI-AKVARDANIR blob 28ef1ceef90269d750fee03ef15b869fea34c825. Prófunarsíðan er komin inn, blob 24bdf14fcb2f96c2005b39613dd29a4da6b12257. Ekkert skrifað á GitHub af aðstoðarmanni. Full staðbundin saga frá yfirferð og dreifingu 19-11 fylgir þessari aðalskrá, auk nýju færslunnar hér.
+
+Afmörkuð útfærsla:
+- Einn hnappur „🧭 Uppgötva nágrennið“ beint undir kortinu og á undan Áfangastaður/Um kortið/bókunarlista.
+- Sex samþykktar flísar, tveir dálkar. Fyrsta tenging: Áhugaverðir staðir, Matur og drykkur og hluti Hagnýtt. Viðburðir, Afþreying/útivist og Vefmyndavélar sýna skýrt að tenging sé ólokin í þessari áfangaútgáfu. Engin þeirra merkt fullgerð.
+- Niðurstöður á núverandi korti í sér merkjasafni, „Sýna á korti“, Gangandi/Í bíl, réttur explicit upphafs- og endapunktur í Google Maps-tengli. GPS aðeins með vali; raunveruleg GPS-heimild bíður tækjaprófunar.
+- 20-11: handvalin leitarmiðja vernduð við venjulega endurteikningu. Ferðamátaskipti uppfæra fyrirliggjandi leiðsagnartengla án nýrrar API-leitar. Nýtt sértækt CSS notar gildandi input-/þemaliti og læsilega heimildaliti.
+- Engin vistun úr niðurstöðum í ferð enn. Það samþykkta flæði er ólokið, ekki kallað afgreitt.
+
+Prófun 20-11-2026:
+22/22 viðmótspróf í Chromium 153.0.8010.0 með hermdum API-svörum stóðust eftir lokabreytingar. Nýtt próf staðfestir sérstaklega handvalda leitarmiðju við endurteikningu; ferðamátapróf staðfestir að engin ný leit sé send.
+7/7 viðbótarpróf með raunverulegu MapLibre GL 6.11.2 og WebGL-korti stóðust: eldri áfangastaðamerki, aðskilin leitamerki, endurteikning eldri merkja, rétt hnit við „Sýna á korti“, lóðrétt/dökkt og lárétt/ljóst viðmót og hreinsun leitamerkja við lokun. Kortastíll og niðurstöður voru prufugögn, ekki lifandi OSM-kortaflísar eða lifandi Geoapify-svar. MapLibre-kóði var sóttur í sömu útgáfu og núverandi app notar.
+Sjónræn yfirferð var framkvæmd á þessum tveimur þemabirtingum. Fyrsta ljósa þemaprófið hélt óvart dökkum sérlitum úr fyrri prófunarstillingum; prófunarstilling var leiðrétt og ljósa þemað prófað aftur. Engin breyting á almennum þemakóða.
+15 eldri hjálparskrár voru bornar saman byte-for-byte og eru óbreyttar. Fyrri 58 varðveisluvafrapróf og 23 hermd þjónustupróf halda sínu skráða umfangi frá 19-11; ekki fullyrða að þau hafi öll verið endurkeyrð 20-11. Nýju breytingarnar 20-11 eru í afmörkuðu nearby JavaScript/CSS, ekki eldri bókunar-, kostnaðar- eða dagsetningakóða.
+
+Afhending:
+Uppfærsluskrár á GitHub: index.html, nearby-discovery.js, nearby-discovery.css, VERKEFNALISTI.txt og GILDANDI-AKVARDANIR.txt. Nýja Supabase-þjónustan er þegar virk; ekki þarf að dreifa henni aftur vegna þessa pakka. Prófunarsíðan má haldast til varðveislu/prófunar.
+Afturköllun apps: fyrri index.html úr GitHub blob 649377374d50322e4e3a8c11e10bdacdf92d0727 eða afhendingu 147. Gamla appið vísar ekki í nýju nearby-skrárnar; þær mega liggja ónotaðar. Engin gagnamigrering er framkvæmd og ekki eyða ferðagögnum við afturköllun. Nýja Edge Function er sjálfstæð og ónotuð af gamla appinu.
+
+Bíður staðfestingar á iPhone í nýja appinu:
+Opna/loka Uppgötva, leita á völdum áfangastað, sjá/sýna leitarpunkt á korti, velja Gangandi/Í bíl og staðfesta rétt upphaf/endi í Google Maps, loka og staðfesta að eldri merki haldist. Þessi próf eru vegna nýs svæðis og kortamerkjasafns; ekki krafist endurprófunar allra óbreyttra bókunarflokka.
+Ólokið: aðrir flokkar, allir samþykktir hagnýtir undirflokkar, matarflokkun/fjölval, fjórir fróðleikskaflar, Wikimedia/OTM, dagaval, sjálfvirkar yfirfarnar varaveitur, samþykkt vistunarflæði, ferjuáætlanir, meira staðagæðamat, tímabelta-/gildistímapróf eftir þörf, raunverulegur GPS og próf utan Evrópu. Heildar HUG-03/04 er áfram ÓLOKIÐ. SAM-00 helst lokið 24/24 og öll önnur áður ólokin verkefni haldast.

@@ -1,0 +1,26 @@
+/* Scoped to the discovery panel; existing controls and map markers are untouched. */
+.nearby-discovery{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);min-width:0}
+.nearby-discovery[hidden]{display:none}
+.nearby-discovery h3{margin:0 0 .75rem}
+.nearby-context{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:.75rem;margin:.75rem 0}
+.nearby-context label{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.nearby-context select{width:100%;min-width:0}
+.nearby-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.nearby-grid .nearby-category{display:flex;flex-direction:column;gap:.35rem;justify-content:center;align-items:center;white-space:normal;overflow-wrap:anywhere;min-width:0;min-height:6rem;padding:.75rem .45rem;text-align:center;font:inherit}
+.nearby-grid .nearby-category[aria-pressed=true]{outline:2px solid var(--accent);outline-offset:1px}
+.nearby-emoji{font-size:1.7rem}
+.nearby-results{display:grid;gap:.75rem}
+.nearby-result{border:1px solid var(--line);border-radius:1rem;padding:.85rem;min-width:0;overflow-wrap:anywhere}
+.nearby-result p{margin:.45rem 0}
+.nearby-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.nearby-actions .btn{white-space:normal;max-width:100%;text-align:center}
+.nearby-attribution{display:flex;flex-wrap:wrap;gap:.5rem}
+.nearby-attribution[hidden]{display:none}
+.nearby-pin{background:var(--panel);color:var(--text);border:2px solid var(--accent);border-radius:50%;width:36px;height:36px;display:grid;place-items:center;cursor:pointer}
+#nearbyOpenBtn{margin-top:1rem;max-width:100%;white-space:normal}
+.nearby-context label{overflow-wrap:anywhere}
+.nearby-context select{font:inherit}
+@media(max-width:480px){.nearby-context{grid-template-columns:minmax(0,1fr)}}
+.nearby-context select{background:var(--input-bg,var(--panel));color:var(--text);border:1px solid var(--line);border-radius:.8rem;padding:.6rem;min-height:44px}
+
+.nearby-attribution a{color:var(--accent)}
