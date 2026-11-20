@@ -1,3 +1,7 @@
+GILDANDI STAÐA — 20-11-2026 — AFHENDING 153 TIL UPPHLEÐSLU
+Afmörkuð sleðaviðgerð HUG-RADIUS-02 útfærð og sjálfvirkt prófuð; iPhone-snertiprófun bíður. Sami sleði heldur nú fókus/stöðu við leitaruppfærslu og er aðeins fluttur þegar sýn breytist. Útlit, CSS, bakendi og ferðagögn óbreytt. Ný birting talningar/framhalds í 152 er afmarkað notandastaðfest. HUG-03/04 áfram í vinnslu; myndir, fróðleikur og aðrar óloknar gagnatengingar halda stöðu. UI-LAR-01 ólokið. SAM-00 lokið 24/24; SAM-P01–P04 halda stöðu. Nákvæm nýjustu skráning er neðst; eldri fyrirsagnir eru varðveitt saga.
+
+FYRRI VERKEFNALISTI OG AFHENDINGARSAGA — VARÐVEITT Í HEILD:
 GILDANDI STAÐA — 20-11-2026 — AFHENDING 152 TIL UPPHLEÐSLU
 HUG-03/04 er í vinnslu. Fjöldi sóttra staða og Sýna fleiri eru saman fyrir ofan niðurstöðulistann; aðgerðin helst líka neðst. Heildarfjöldi er merktur óþekktur og ekki giskaður. Útfært og sjálfvirkt prófað; ný birting bíður iPhone-staðfestingar. Radíus og síðuskipting 151 varðveitt, bakendi v3 óbreyttur. Myndir, fróðleikur, aðrar óloknar gagnatengingar og UI-LAR-01 haldast opin. SAM-00 lokið 24/24; SAM-P01–P04 halda stöðu. Nýjasta nákvæma skráning er neðst. Eldri stöðufyrirsagnir hér á eftir eru varðveitt saga.
 
@@ -2619,3 +2623,56 @@ AFHENDING/AFTURKÖLLUN:
 Afhenda 152-pakka með fimm rótarskrám: index.html, nearby-discovery.js, nearby-discovery.css, VERKEFNALISTI.txt og GILDANDI-AKVARDANIR.txt. Notandi hleður sjálfur í GitHub-aðalmöppu við hlið núverandi index.html, í stað samnefndra skráa. Ekkert skrifað á GitHub af aðstoðarmanni. Þjónusta v3 óbreytt; ekkert Supabase-skref þarf.
 Afmarkað iPhone-próf: opna Allt eða Veitingastaði með framhaldi, sjá talningu og Sýna fleiri fyrir ofan fyrsta staðinn, sækja næsta skammt þar og staðfesta hækkun í raunfjölda án tvítekninga; prófa neðri aðgerð ef listi er lesinn til enda. Báðir hnappar eiga að sýna sömu vinnslu-/villustöðu. Ekki krefjast endurprófunar allra óbreyttra bókunarforma.
 Afturköllun: endurheimta þrjár appkeyrsluskrár úr 151 sem samstætt sett, halda nýjustu verkefnasögu. Fyrri 151-pakki varðveittur og sannreyndur. Engin gagnamigrering, bókanir eða vafragögn skulu ekki hreinsuð vegna breytingarinnar.
+
+
+HUG-03/04 — 152 BIRTING STAÐFEST, SLEÐI OG NÆSTA SKREF — 20-11-2026
+Heimild: Kristján: „Þetta er flott. Km sleðinn inní flokkum er ekki eins næmur fyrir snertingu eins og sá fyrir utan, hvað er svo næst“.
+HUG-UX-FJOLDI-01: afmörkuð notandastaðfesting á nýju birtingunni í 152 skráð. Ekki túlka almennt „flott“ sem að öll v3-gagnasvör, allar síðuraðir, GPS eða allt appið hafi verið prófað. Fyrri 85 próf halda sínu umfangi. Heildarfjöldi er áfram óþekktur í núverandi tengingu.
+
+HUG-RADIUS-02 — ÓLÍK SNERTISVÖRUN INNAN FLOKKS
+Staða: NOTANDAVANDI SKRÁÐUR; AFMARKAÐ FÓKUSÓSAMRÆMI ENDURGERT. Lausn tillaga, ekki framkvæmd.
+GitHub nearby-discovery.js blob 2d78cc3ed63eb9b7100e047a3e3ef280d464fc18 og CSS blob 5fb9a496b7cd1231f3c9afb9a49d1a3c9042d4b0 samsvara óbreyttum 152-vinnukóða.
+Sleðinn er sama input[type=range] DOM-eining innan/utan flokks. Afmarkað Chromium153-próf við393px mældi í báðum sýnum 369×44px, touch-action:auto, appearance:auto og pointer-events:auto. Ekki fundinn munur á þessum mældu grunnstílum; því ekki staðhæfa að minni snertibox sé staðfest orsök iPhone-tilfinningarinnar.
+Raunverulegur munur í flæði: radius.onchange→change→search(category)→view(key) kallar append(radiusLabel), jafnvel þegar label er þegar í sama foreldri. Sleðinn er því endursettur í DOM við flokksleit. Á upphafssýn fer change aðeins í invalidate og endursetur ekki sleðann.
+Prófun óbreytts152: á upphafssýn breyttu tvö ArrowRight gildi5→6→7 og fókus hélst eftir báðar aðgerðir. Inni í flokki breyttist7→8, fókus tapaðist og næsta ArrowRight breytti ekki gildinu. Þetta er staðfest lyklaborðs-/fókusvilla í Chromium. Ekki fullyrða að hún sanni alla orsök verri iPhone-snertisvörunar; Safari-snerting hefur ekki verið keyrð hér.
+Tillaga að afmarkaðri viðgerð: view flytji sleðaeininguna aðeins þegar skipt er milli upphafssýnar og flokks, ekki þegar hún er þegar á réttum stað. Varðveita núverandi 1–20km svið, texta, útlit, minnst44px svæði, gildi, síur, skammtastöðu og leit við breytingarlok. Engin ný almenn thumb-/útlitshönnun án þörf/samþykkis. Prófa samfelldan lyklaborðsfókus, endurteknar breytingar, snertingu/drag í farsímabreidd og tengda leit; raunveruleg iPhone-snerting bíður staðfestingar.
+Skipun4 gildir: lausn á þessari greindu villu bíður samþykkis áður en appkóða er breytt. Enginn keyrslukóði, CSS eða bakendi breytt í þessari greiningu; eingöngu staða/greining skráð.
+
+NÆSTA AFMARKAÐA RÖÐ — TILLAGA AÐ FORGANGI:
+1. Ljúka ofangreindri sleðaviðgerð og afmarkaðri prófun áður en nýr eiginleiki bætist við.
+2. Smámyndir vinstra megin við staði og upplýsingar hægra megin samkvæmt samþykktu myndinni, með réttri staðatengingu og heimild/leyfi; ekki skrautmyndir af rangri borg eða ágiskaðar einkunnir.
+3. Fjórir samþykktir sjálfgefið lokaðir fróðleikskaflar HUG-FROD-01–04: Kynntu þér áfangastaðinn, Upplifðu menninguna, Smakkaðu áfangastaðinn og Upplifðu áfangastaðinn, með fyrri tungumála-/gagnareglum.
+Allir aðrir óloknir gagnaflokkar, ferjuviðbót, vistunarflæði og UI-LAR-01 halda samþykktu opnu umfangi. Þetta er forgangstillaga, ekki ný heildarsamþykkt á ótengdum breytingum. SAM-00 lokið24/24 og öll eldri verkefni/ákvarðanir/prófanir varðveitt.
+Þessi skráning er í nýjasta vinnuafriti, fylgir næstu afhendingu. Ekkert nýtt þarf að setja inn núna; engin GitHub-skrif eða þjónustudreifing.
+
+
+HUG-03/04 — AFHENDING 153 — AFMÖRKUÐ SLEÐAVIÐGERÐ — 20-11-2026
+Heimild: Kristján samþykkir kynnta sleðaviðgerð með „Já og passa alltaf samþykktar reglur og afmarka breytingar án þess að breyta ótengdum hlutum“. Þetta er samþykki nákvæmrar lausnar HUG-RADIUS-02, ekki heimild til hönnunarbreytingar, myndainnleiðingar eða breytinga á öðrum flæðum. Fyrri samþykktir halda allar.
+Grunnur: núverandi 152-kóði skoðaður, varðveittur og borinn saman við GitHub. nearby-discovery.js blob 2d78cc3ed63eb9b7100e047a3e3ef280d464fc18; index.html 0a51fc56df95315701ff05484fa6d8964f6a62b5; GILDANDI-AKVARDANIR.txt 941aa960c7c91458942a4308634028363199c432; GitHub-verkefnalisti 72fdc89444d753a82c97f20f43d2458a7244086d. Nýrri staðbundin greining/notandastaðfesting frá undanfarandi lotu varðveitt; nýjasta verkefnalistanum ekki skipt út fyrir eldra GitHub-/Sources-afrit.
+
+HUG-RADIUS-02 — FRAMKVÆMD:
+Óþarfa endursetning radiusLabel var staðfest í 152 við view(key) jafnvel þegar hún var þegar í sama foreldri. Inni í flokki fer radíusbreyting í leit/view; á upphafssýn aðeins invalidate. Í 152-prófi tapaðist fókus inni við fyrstu ArrowRight-breytingu og næsta ArrowRight hafði ekki áhrif. Innan/utan mældust sömu 369×44px grunnmál; minni snertibox var ekki staðfest orsök.
+Breyting í 153: view velur sama viðeigandi foreldri og áður en athugar fyrst radiusLabel.parentElement. Append er aðeins gert þegar foreldri þarf raunverulega að breytast. Sama input-eining er varðveitt, sama gildi, innbyggður sleði og uppsetning. Hann er enn færður milli upphafssýnar og flokks eftir þörf, en ekki við endurleit innan sömu sýnar.
+Einungis þetta skilyrði í nearby-discovery.js og ein cache-vísun JavaScript v152→153 í index.html breytt í keyrslukóða. CSS-vísun index.html helst v152. Allur annar index-kóði er bætisjafn við 152. nearby-discovery.css, bakendi v3, 15 hjálparskrár, gagnaskipan, bókunarform, kostnaður, veður, kort, dagatal og ferðastika óbreytt. Engin þjónustudreifing, nýr lykill/áskrift, SQL eða ferðagagnaskrif.
+1–20km mörk, radíusviðmið í loftlínu, leit við breytingarlok, réttir metrar, valinn undirflokkur/matargerðir, fyrsta síða eftir radíusbreytingu, síðbúin svör, Sýna fleiri/Retry, fjöldi, vefsíður og leiðsögn halda fyrri reglum. Ekki ný snertistýring eða endurhönnun á sleðahnúð/þema.
+
+RAUNVERULEG PRÓFUN 153:
+14/14 ný sértæk Chromium 153.0.8010.0 sleðapróf standast: sama input-eining í upphafs-/flokkasýnum, endurteknar lyklaborðsbreytingar með áframhaldandi fókus í öllum sex flokkum og upphafssýn, engin fjarlæging/endursetning label við endurleit, mörk 1/20 án aukaleitar utan marka, varðveitt 44px snertisvæði/native-útlit og óbreytt ferðagögn.
+Tvö þessara prófa nota raunverulegt innbyggt range-stjórntæki í snertistilltum Chromium með hermdum native touchStart/touchMove/touchEnd-atvikum. Snertidráttur innan flokks breytir gildinu, sendir eina leit við lok dráttar, heldur fókus og annar dráttur virkar án enduropnunar. Þetta er vafraherming, EKKI raunverulegur iPhone eða Safari/WebKit. Ekki fullyrða að öll orsök verri snertinæmni á raun-iPhone sé staðfest eða leyst fyrr en notandi hefur prófað.
+62/62 fyrri viðmóts-/flæðispróf 152 endurkeyrð gegn 153 og standast: sex sýnir, síur/fjölval, radíus, ný/gömul síðusvör, upphafs-/framhaldsvillur og Retry, efri/neðri framhaldshnappar, talning og engin tilbúin heild, síðbúin svör, afturleið/lokun, vefsíður/kort/Google Maps, ferðamáti, GPS hermt samþykkt/hafnað, 0-hnit/hnitaleysi, lyklaborð, stórt letur og varðveisla gagna. Breiddir 320×700/393×852/852×393/820×1180 í ljósu/dökku þema. Almenn lárétt Safari-hönnun er áfram ekki fullstaðfest með þessum afmörkuðu prófum.
+9/9 samþættingarpróf með raunverulegum óbreyttum v3-handler og stýrðum auth/Geoapify-svörum endurkeyrð og standast, þar á meðal18 gildar→offset20, nýtt safn úr framhaldi, afritahreinsun, opnun/fókus, vefsíður og ferðamáti, retry og skýrt 500-upprunasvara þak.
+9/9 MapLibre GL 6.11.2/WebGL-próf endurkeyrð og standast: eldri merki samhliða tímabundnum, endurteikning, réttur punktur og miðjun, afturleið/lokun, tvö þemu og tvær breiddir. Kortastíll og staðagögn stýrð; ekki lifandi OSM-flísar eða Geoapify.
+5/5 sérstök birtingarpróf með virkum efri/neðri framhaldshnöppum og 18 niðurstöðum endurkeyrð og standast í fjórum framangreindum skjástærðum og 200% texta. CSS og útlit óbreytt; prófunarmyndir yfirfarnar til varðveislu.
+Samtals 99 sjálfvirk próf stóðust í þessari lotu. Engin ný innskráð lifandi Geoapify-leit, raun-GPS eða raun-iPhone-snertiprófun af aðstoðarmanni. Eldri backend-/gáttarpróf eru varðveitt saga, ekki talin keyrð aftur núna. Eitt prófunarferli gat fyrst ekki ræst Chromium vegna samtímis afpökkunar keyrsluskrár (ETXTBSY); það var keyrt aftur í röð eftir afpökkun og öll próf stóðust. Engin appbreyting vegna ræsingarhindrunarinnar.
+Setningafræði JavaScript og aðalscript index.html staðfest. Bætissamanburður staðfestir nákvæmlega tvær breyttar keyrsluskrár: eitt skilyrði í JS og eina JS-cache-vísun í index. CSS og aðrar hjálparskrár óbreyttar; fyrri fyrirvari um eldri staðbundnar/GitHub-hjálparskrár er varðveittur og ekki sagður leystur. Þær eru ekki afhentar.
+
+STAÐA OG NÆSTU VERK:
+HUG-RADIUS-02: ÚTFÆRT OG SJÁLFVIRKT PRÓFAÐ Í 153; RAUNVERULEG iPHONE-SNERTISTAÐFESTING BÍÐUR. Ekki merkja fullstaðfest/lokið núna.
+HUG-UX-FJOLDI-01 heldur afmarkaðri notandastaðfestingu 152. HUG-LEIT-ALLT-01/HUG-RADIUS-01 halda fyrri framkvæmd og afmörkuðum prófunarmörkum. Heildarfjöldi er enn óþekktur og ekki sögð ný talna-/gagnaveitulausn í 153.
+Myndir við staði, réttar heimildir/leyfi, fjórir lokaðir fróðleikskaflar HUG-FROD-01–04, óloknar tengingar viðburða/útivistar/vefmyndavéla, farangursgeymsla/hjólaviðgerðir, ferjuviðbót, samþykkt vistunarflæði úr niðurstöðum, varaleiðir, frekari samstilling/eigin flokkun og fótbolti áfram ólokið. Enginn þessara eiginleika innleiddur samhliða sleðaviðgerðinni.
+UI-LAR-01, HUG-KORT-02, HUG-GPS-01/HUG-PROF-01 og öll önnur áður opin verkefni halda stöðu. SAM-00 lokið 24/24; SAM-P01–P04 haldast aðskilin og opin samkvæmt fyrri skráningu. UI-RUT-01 áfram lokað—fellt niður,ekki lagfært. Allar eldri ákvarðanir, staðfestingar, afhendingarsaga og prófunartakmarkanir varðveittar.
+
+AFHENDING/AFTURKÖLLUN:
+Aðeins fjórar uppfærsluskrár þarf í GitHub-aðalmöppu: index.html, nearby-discovery.js, VERKEFNALISTI.txt og GILDANDI-AKVARDANIR.txt. nearby-discovery.css er óbreytt frá 152 og ekki í þessum uppfærslupakka. Notandi hleður sjálfur; ekkert skrifað á GitHub af aðstoðarmanni og ekkert þarf að gera í Supabase.
+Afmarkað iPhone-próf vegna tilkynntu snertimunar: opna sama flokk og áður, draga sleðann nokkrum sinnum báðar leiðir án enduropnunar, staðfesta að gildi fylgi og að réttur radíus birtist eftir losun; undirflokkur/matargerðir eiga að haldast. Bera við sleðann á upphafssýn. Þetta krefst ekki endurprófunar allra óbreyttra bókunarforma.
+Afturköllun: endurheimta index.html og nearby-discovery.js úr152 saman, halda nýjustu verkefnasögu. CSS/bakendi/gagnaskipan óbreytt; ekki hreinsa bókanir eða vafragögn.
