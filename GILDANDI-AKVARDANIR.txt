@@ -372,3 +372,31 @@ Notandi samþykkti sérstaklega dreifingu nýju nearby-places þjónustunnar me�
 HUG-03/04 — AFMÖRKUÐ RAUNSTAÐFESTING OG ÁFANGI 20-11-2026
 Notandamynd staðfestir HTTP 200, nýtt Geoapify-svar og 19 Matur/drykkur-niðurstöður við Napólí í 5 km leit í Safari á iPhone. Þetta er tengipróf, ekki samþykki á öllum nýjum flokkum eða app-útliti. Innleiðing heldur áfram samkvæmt samþykktri áætlun og engin ný heildarsamþykkt er ályktuð.
 App-prófunarpakki 148 nær til inngangs, sameiginlegrar umgjarðar og fyrstu staðaleitar. Óloknir flokkar og undirflokkar halda stöðu. Nýr kóði breytir ekki eldri bókunar-, kostnaðar- eða dagsetningareglum. Framvinda og prófunartakmarkanir eru í VERKEFNALISTI.txt.
+
+
+HUG-03/04 — NÝJASTA SAMÞYKKT ÚTLITSVIÐMIÐ — 20-11-2026
+Heimild: skýr fyrirmæli Kristjáns 20-11-2026 og mynd í deilda tenglinum https://chatgpt.com/s/m_6b0077e4fa2c8191a682bb1e69d293d6
+Myndin var opnuð og skoðuð í þessari lotu. Hún sýnir aðalval, sex flokkasýnir og fjögur neðri sýnidæmi um fróðleiksinnihald. Hún er sjónrænt viðmið; eldri samþykktir í Library og gildandi Sources haldast nema nýrri skýr fyrirmæli breyti þeim.
+
+Nýjasta afmörkun: Halda útliti samþykktu myndarinnar með einni viðbót: einum lokuðum fellikafla undir áfangastaðnum í hverjum þessara fjögurra flokka:
+- 🏛️ Áhugaverðir staðir: 📜 Kynntu þér áfangastaðinn.
+- 🎭 Viðburðir og markaðir: 🎉 Upplifðu menninguna.
+- 🍷 Matur og drykkur: 🍽️ Smakkaðu áfangastaðinn.
+- 🚴 Afþreying og útivist: 🌿 Upplifðu áfangastaðinn.
+Neðri fjórar myndirnar sýna innihald þessara kafla þegar þeir eru opnaðir; ekki bæta þeim öllum sem opnum aðalköflum inn á yfirlitið. Upphafsstaða hvers ytri kafla er lokuð. Ekki túlka þetta sem heimild til nýrrar uppröðunar eða endurhönnunar annarra hluta.
+
+Leiðrétting á fyrri samanburði aðstoðarmanns: Í þessari mynd er áfangastaðaval og fjarlægðarsleði FYRIR OFAN sex flokkaflísarnar á upphafssýn. Fyrri ábending um að færa þær stillingar niður byggðist á eldra sýnidæmi frá 11-11 og gildir ekki sem breytingafyrirmæli. Varðveita eldri mynd sem sögu; nýjasta mynd ásamt skýrum fyrirmælum ræður þar sem þær stangast á.
+Allt annað í samþykkta viðmótinu helst óbreytt. Fyrirliggjandi inngangur undir núverandi korti, sex flokkar, tímabundið kortalag og vernd annarrar appvirkni halda gildi. Myndin er ekki ný heimild um raunverulegar einkunnir, framboð, opnunartíma eða viðburðadagsetningar; birta aðeins sannreynd gögn samkvæmt gagnareglum.
+
+
+HUG-03/04 — NIÐURSTAÐA HÖNNUNARSAMANBURÐAR — 20-11-2026
+Nýjasta samþykkta myndin https://chatgpt.com/s/m_6b0077e4fa2c8191a682bb1e69d293d6 ásamt skýrum fyrirmælum um fjóra lokaða fróðleikskafla er bindandi útlitsviðmið. Eigin flokkasýnir, síur, listaframsetning, fjarlægðarsleði og nákvæm staðsetning kafla eiga að fylgja henni. Eldra 11-11 sýnidæmi heimilar ekki andstæða uppröðun. Önnur gild virkni og samþykktir haldast.
+Nýjasta tungumálaákvörðun úr samþykktri v4-afhendingu: íslensk Wikipedia fyrst, tiltækur yfirfarinn íslenskur texti þar á eftir, annars skýrt merktur erlendur frumtexti með heimild. MyMemory ekki sjálfgefið. Þýðingarrannsókn lokið í bili; ekki láta óútfærða sjálfvirka þýðingu stöðva áfangana. Gildir um alla fjóra fróðleikskafla.
+Samanburður sex flokka og ferjuviðbótar, kóðastaðir, opnir undirliðir, afmörkuð kortahegðun, raunprófunartakmörk og heimildir eru í einum aðal-VERKEFNALISTI.txt, kafla HUG-03/04 — SAMANBURÐUR ALLRA SEX FLOKKA VIÐ SAMÞYKKT ÚTLIT — 20-11-2026. Ekki merkja tilvist flísar sem fullgerðan flokk eða sýnimynd sem staðfest framboð/einkunn.
+Þessi lota breytti aðeins skjölum. Engin ný app-, bakenda- eða gagnabreyting og engin heildarstaðfesting. Skráð valmerkingarvilla og spurningar um kort/GPS eru ekki lagfærð með þessari skráningu. Fyrri reglur, verkefni og prófanir varðveitt; SAM-00 áfram lokið 24/24.
+
+
+HUG-03/04 — AFHENDING 149, SAMEIGINLEG UMGJÖRÐ — 20-11-2026
+Næsti afmarkaði áfangi samkvæmt samtali er útfærður: eigin sýnir sex flokka með heiti/áfangastað/radíus, afturleið í flokkaval og 1–20 km sleði á upphafssýn fyrir ofan flísarnar. Fyrri útlitsviðmið og fjórir samþykktir lokaðir fróðleikskaflar halda gildi; þeir eru enn óútfærðir í 149.
+Afturleið/lokun hreinsar aðeins tímabundnar leitarniðurstöður, ógildir síðbúin svör og endurstillir flokkamerkingu með sama hætti og category-stöðu. Upphafsval áfangastaðar og radíus eru varðveitt við afturleið. GPS er áfram explicit val og Gangandi/Í bíl aðgengilegt í flokkasýn; ekkert nýtt sjálfvirkt gistileiðarupphaf.
+Þetta er afmarkaður umgjarðaráfangi, ekki fullgerð útfærsla myndarinnar eða gagnatenginga. Raunveruleg prófun og óstaðfest atriði eru í sama VERKEFNALISTI.txt: 31 Chromium-flæðispróf og 8 MapLibre-próf standast með stýrðum gögnum; raunverulegur iPhone/Safari bíður. Ekkert skrifað á GitHub eða ferðagögn af aðstoðarmanni. Allar aðrar gildandi samþykktir haldast.
