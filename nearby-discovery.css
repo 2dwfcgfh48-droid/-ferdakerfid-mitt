@@ -59,3 +59,6 @@
 .nearby-category-radius{max-width:24rem;margin:.5rem 0 .75rem}
 .nearby-category-radius>.nearby-radius{display:flex;flex-direction:column;gap:.25rem}
 .nearby-more{min-height:44px;margin:.75rem 0;max-width:100%;white-space:normal}
+.nearby-result-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin:.6rem 0}
+.nearby-result-bar>.notice{flex:1 1 12rem;min-width:0;margin:0}
+.nearby-result-bar>.nearby-more{flex:0 0 auto;margin:0}
