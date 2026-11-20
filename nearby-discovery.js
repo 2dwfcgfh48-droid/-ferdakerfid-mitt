@@ -9,6 +9,7 @@ const safe=v=>{try{const u=new URL(v);return u.protocol==='https:'&&!u.username&
 const point=s=>s&&typeof s.latitude==='number'&&typeof s.longitude==='number'&&Number.isFinite(s.latitude)&&Number.isFinite(s.longitude)&&Math.abs(s.latitude)<=90&&Math.abs(s.longitude)<=180?[s.longitude,s.latitude]:null;
 function mount({host,button,context,request,showPoints,clearPoints}){
  let version=0,controller=null,gps=null,category=null,subtype='all',cuisines=[],opened=false,contextKey='',results=[],lastStopId=null,manualCenter=false,filterCategory=null,nextOffset=null,busy=false,retry=false;
+ const photos=window.NearbyPhotos?.mount({host});
  const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!=null)el.textContent=text;if(cls)el.className=cls;return el};
  host.hidden=true;host.classList.add('nearby-discovery');
  const toolbar=node('div',null,'nearby-toolbar'),back=node('button','← Til baka','btn small'),close=node('button','Loka','btn small');back.type=close.type='button';back.hidden=true;toolbar.append(back,close);host.append(toolbar);
@@ -40,7 +41,7 @@ function mount({host,button,context,request,showPoints,clearPoints}){
  }
  function view(key){const chosen=categories.find(c=>c[0]===key);heading.textContent=chosen?chosen[1]+' '+chosen[2]:'🧭 Uppgötva nágrennið';back.hidden=!chosen;summary.hidden=!chosen;form.hidden=!!chosen;radiusSlot.hidden=!chosen;const radiusParent=chosen?radiusSlot:form;if(radiusLabel.parentElement!==radiusParent)radiusParent.append(radiusLabel);grid.hidden=!!chosen;modeLabel.hidden=!chosen;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.nearbyCategory===key)));paintFilters();describe()}
  function home(message){const previous=category;category=null;subtype='all';cuisines=[];cuisineInputs.forEach(x=>x.checked=false);cuisinePanel.open=false;invalidate();view(null);status.textContent=message||'Veldu flokk til að leita í nágrenninu.';return buttons.find(b=>b.dataset.nearbyCategory===previous)}
- function invalidate(){version++;controller?.abort();controller=null;busy=false;nextOffset=null;retry=false;more.hidden=true;more.disabled=false;more.textContent='Sýna fleiri';syncMore();results=[];list.replaceChildren();clearPoints();attr.hidden=true;host.removeAttribute('aria-busy')}
+ function invalidate(){photos?.reset();version++;controller?.abort();controller=null;busy=false;nextOffset=null;retry=false;more.hidden=true;more.disabled=false;more.textContent='Sýna fleiri';syncMore();results=[];list.replaceChildren();clearPoints();attr.hidden=true;host.removeAttribute('aria-busy')}
  function refresh(){const ctx=context();lastStopId=ctx.stopId;manualCenter=false;const stops=ctx.stops||[];select.replaceChildren();for(const s of stops){const o=node('option',s.label||s.name);o.value=s.id;o.disabled=!point(s);select.append(o)}
   if(gps){const o=node('option','Núverandi staðsetning');o.value='gps';select.append(o);select.value='gps'}else if(stops.some(s=>s.id===ctx.stopId))select.value=ctx.stopId;else{const first=stops.find(s=>point(s));if(first)select.value=first.id}
   contextKey=JSON.stringify([ctx.owner,ctx.tripId,stops.map(s=>[s.id,s.latitude,s.longitude])]);describe();status.textContent=stops.some(point)||gps?'Veldu flokk til að leita í nágrenninu.':'Veldu staðsetningu áfangastaðar eða notaðu núverandi staðsetningu.';
@@ -74,14 +75,14 @@ function mount({host,button,context,request,showPoints,clearPoints}){
   }catch(e){if(own===version&&(timedOut||e.name!=='AbortError')){status.textContent=e.userMessage||(timedOut?'Svarfrestur rann út. Prófaðu aftur síðar.':'Ekki tókst að sækja staði. Prófaðu aftur síðar.');retry=true;more.hidden=false}}
   finally{clearTimeout(timer);if(own===version){busy=false;controller=null;host.removeAttribute('aria-busy');more.disabled=false;more.textContent=retry?'Reyna aftur':'Sýna fleiri';syncMore()}}
  }
- function addResult(p,center){const card=node('article',null,'nearby-result');card.dataset.nearbyResult=p.id;const details=node('details'),overview=node('summary',null,'nearby-result-overview'),body=node('div',null,'nearby-result-details');overview.append(node('strong',p.name));
-    const km=Number.isFinite(p.distance_m)?(p.distance_m<1000?p.distance_m+' m':(p.distance_m/1000).toLocaleString('is-IS',{maximumFractionDigits:1})+' km'):'';const meta=[km?km+' frá leitarmiðju':'',kind(p)].filter(Boolean).join(' · ');if(meta)overview.append(node('span',meta,'notice'));
+ function addResult(p,center){const card=node('article',null,'nearby-result');card.dataset.nearbyResult=p.id;const details=node('details'),overview=node('summary',null,'nearby-result-overview'),body=node('div',null,'nearby-result-details');const copy=node('span',null,'nearby-result-copy');copy.append(node('strong',p.name));overview.append(copy);
+    const km=Number.isFinite(p.distance_m)?(p.distance_m<1000?p.distance_m+' m':(p.distance_m/1000).toLocaleString('is-IS',{maximumFractionDigits:1})+' km'):'';const meta=[km?km+' frá leitarmiðju':'',kind(p)].filter(Boolean).join(' · ');if(meta)copy.append(node('span',meta,'notice'));
     details.append(overview,body);card.append(details);if(p.address)body.append(node('p',p.address,'notice'));
     const labels=(Array.isArray(p.cuisines)?p.cuisines:[]).map(c=>cuisineOptions.find(x=>x[0]===c)?.[1]).filter(Boolean);if(labels.length)body.append(node('p',labels.join(' · '),'notice'));
     const actions=node('div',null,'nearby-actions');const map=node('button','Sýna á korti','btn small');map.type='button';map.onclick=()=>showPoints([p],true);actions.append(map);
     const url=new URL('https://www.google.com/maps/dir/');url.searchParams.set('api','1');url.searchParams.set('destination',p.latitude+','+p.longitude);url.searchParams.set('origin',center[1]+','+center[0]);url.searchParams.set('travelmode',mode.value);
     const nav=node('a','Leiðsögn í Google Maps ↗','btn small');nav.href=url.href;nav.target='_blank';nav.rel='noopener noreferrer';actions.append(nav);
-    if(safe(p.website)){const a=node('a','Vefsíða ↗','btn small');a.href=safe(p.website);a.target='_blank';a.rel='noopener noreferrer';actions.append(a)}body.append(actions);list.append(card);return card;
+    if(safe(p.website)){const a=node('a','Vefsíða ↗','btn small');a.href=safe(p.website);a.target='_blank';a.rel='noopener noreferrer';actions.append(a)}body.append(actions);list.append(card);photos?.watch(p,overview,card);return card;
  }
  function reset(){opened=false;gps=null;home();host.hidden=true;button.setAttribute('aria-expanded','false')}
  function open(){opened=true;host.hidden=false;button.setAttribute('aria-expanded','true');refresh();view(null);close.focus({preventScroll:true})}

@@ -62,3 +62,10 @@
 .nearby-result-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin:.6rem 0}
 .nearby-result-bar>.notice{flex:1 1 12rem;min-width:0;margin:0}
 .nearby-result-bar>.nearby-more{flex:0 0 auto;margin:0}
+
+/* Verified place thumbnails only; rows without a photo retain their text layout. */
+.nearby-result-overview.nearby-result-with-photo{display:flex;align-items:center;gap:.65rem}
+.nearby-result-copy{display:block;min-width:0}
+.nearby-place-photo{flex:0 0 104px;width:104px;height:78px;max-width:30%;object-fit:contain;border-radius:.5rem}
+.nearby-photo-credit{padding:0 .85rem .7rem;overflow-wrap:anywhere}
+.nearby-photo-credit a{color:var(--accent)}
