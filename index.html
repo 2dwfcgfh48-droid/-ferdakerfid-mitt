@@ -718,7 +718,7 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 .timeline-key-dot.selected{box-shadow:0 0 0 2px var(--timeline-selected)}
 .timeline-key-line{width:1.4em;flex:none;border-top:2px solid #77909c}
 .timeline-key-line.transport{border-top-style:dashed}
-</style><link rel="stylesheet" href="./nearby-discovery.css?v=149">
+</style><link rel="stylesheet" href="./nearby-discovery.css?v=150">
 </head>
 <body class="anim-on">
 <div class="app">
@@ -896,7 +896,7 @@ body .spotlight-hotel-compact.review-warning-card{padding:14px}
 <script src="./activity-times.js"></script>
 <script src="./rental-cars.js"></script>
 <script src="./travel-navigation-v90.js?v=129"></script>
-<script src="./nearby-discovery.js?v=149"></script>
+<script src="./nearby-discovery.js?v=150"></script>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.117.2';
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.11.2/dist/maplibre-gl.mjs';
@@ -5367,7 +5367,7 @@ function setupNearbyDiscovery(){
   context:()=>({owner:state.user?.id,tripId:state.trip?.id,stopId:nearbyContextStopId,stops:state.stops.map(s=>({...s,label:(s.country_code?flag(s.country_code)+' ':'')+s.name}))}),
   request:async(body,signal)=>{const {data}=await supabase.auth.getSession();if(!data.session?.access_token)return {error:'Skráðu þig inn til að leita.'};const response=await fetch(SUPABASE_URL+'/functions/v1/nearby-places',{method:'POST',headers:{Authorization:'Bearer '+data.session.access_token,apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),signal});const result=await response.json();return response.ok?result:{error:result.error||'Ekki tókst að sækja staði.'}},
   clearPoints:clear,
-  showPoints:(places,focus)=>{clear();const map=state.map;if(!map)return;for(const p of places){const el=document.createElement('button');el.type='button';el.className='nearby-pin';el.textContent='🧭';el.setAttribute('aria-label',p.name);el.title=p.name;const pin=new maplibregl.Marker({element:el}).setLngLat([p.longitude,p.latitude]).addTo(map);el.onclick=()=>map.easeTo({center:[p.longitude,p.latitude],zoom:15});pins.push(pin)}if(focus&&places[0])map.easeTo({center:[places[0].longitude,places[0].latitude],zoom:15})}
+  showPoints:(places,focus)=>{clear();const map=state.map;if(!map)return;for(const p of places){const el=document.createElement('button');el.type='button';el.className='nearby-pin';el.textContent='🧭';el.setAttribute('aria-label',p.name);el.title=p.name;const pin=new maplibregl.Marker({element:el}).setLngLat([p.longitude,p.latitude]).addTo(map);el.onclick=()=>{map.easeTo({center:[p.longitude,p.latitude],zoom:15});nearbyDiscovery?.selectResult(p.id)};pins.push(pin)}if(focus&&places[0])map.easeTo({center:[places[0].longitude,places[0].latitude],zoom:15})}
  });
 }
 setupNearbyDiscovery();

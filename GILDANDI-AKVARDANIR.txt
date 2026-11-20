@@ -400,3 +400,9 @@ HUG-03/04 — AFHENDING 149, SAMEIGINLEG UMGJÖRÐ — 20-11-2026
 Næsti afmarkaði áfangi samkvæmt samtali er útfærður: eigin sýnir sex flokka með heiti/áfangastað/radíus, afturleið í flokkaval og 1–20 km sleði á upphafssýn fyrir ofan flísarnar. Fyrri útlitsviðmið og fjórir samþykktir lokaðir fróðleikskaflar halda gildi; þeir eru enn óútfærðir í 149.
 Afturleið/lokun hreinsar aðeins tímabundnar leitarniðurstöður, ógildir síðbúin svör og endurstillir flokkamerkingu með sama hætti og category-stöðu. Upphafsval áfangastaðar og radíus eru varðveitt við afturleið. GPS er áfram explicit val og Gangandi/Í bíl aðgengilegt í flokkasýn; ekkert nýtt sjálfvirkt gistileiðarupphaf.
 Þetta er afmarkaður umgjarðaráfangi, ekki fullgerð útfærsla myndarinnar eða gagnatenginga. Raunveruleg prófun og óstaðfest atriði eru í sama VERKEFNALISTI.txt: 31 Chromium-flæðispróf og 8 MapLibre-próf standast með stýrðum gögnum; raunverulegur iPhone/Safari bíður. Ekkert skrifað á GitHub eða ferðagögn af aðstoðarmanni. Allar aðrar gildandi samþykktir haldast.
+
+
+HUG-03/04 — ÁFANGI 150, FLOKKASÍUR OG LISTAR — 20-11-2026
+Samþykkt mynd og fjórir lokaðir fróðleikskaflar halda gildi. Smámynd vinstra megin og texti hægra megin eru enn markmið; í 150 eru síur og þéttir opnanlegir listar útfærð, ekki myndatenging eða fróðleikurinn. Rétt staðatenging, heimild/leyfi og engar ágiskanir gilda um myndir.
+Níundi þjónustuflokkur er ekki kallaður ellefti: níu hagnýtar tegundir tengdar, farangursgeymsla og hjólaviðgerðir merktar óloknar. Nota skýra heimildarflokkun fyrir vín og matargerðir, ekki nafnaágiskanir. Leit er ekki tæmandi.
+Engin breyting á almennu appútliti, UI-LAR-01-lausn, bókunum eða vistuðum gögnum. Fyrri þemu, stillingar, bókunarsamræming og GPS/leiðsagnarreglur varðveittar. Framkvæmd, v2 þjónustudreifing, sjálfvirk próf og óstaðfest iPhone/raungagnapróf eru aðgreind í sama VERKEFNALISTI.txt. HUG-03/04 ekki lokið. SAM-00 heldur lokastöðu 24/24 og önnur verkefni haldast.

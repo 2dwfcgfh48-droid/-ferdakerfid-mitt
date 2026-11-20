@@ -2386,3 +2386,88 @@ AFHENDING OG AFTURKÖLLUN:
 Pakki 149 inniheldur fimm uppfærsluskrár í rót ásamt leiðbeiningum og prófunarskrá. Notandi hleður upp sjálfur. Ekkert skrifað á GitHub af aðstoðarmanni og engin ný dreifing þjónustu.
 Fyrri 148-grunnur varðveittur með pinned GitHub-blob-auðkennum í fyrri úttekt og fyrirliggjandi 148-afhendingu. Afturköllun keyrslukóða: endurheimta index.html, nearby-discovery.js og nearby-discovery.css úr 148 sem eitt samstætt sett. Halda nýjustu verkefnasögu; ekki eyða ferðagögnum eða endurheimta eldri gagnagrunn.
 HUG-03/04 er Í VINNSLU, ekki fullstaðfest. Afhending 149 bíður upphleðslu og afmarkaðrar raunprófunar á iPhone.
+
+
+AFHENDING 149 — AFMÖRKUÐ NOTANDASTAÐFESTING OG LÁRÉTT FRAMSETNING — 20-11-2026
+Heimild: Kristján svarar afmörkuðu iPhone-prófunarbeiðninni: „Þetta virkar en lárétt staða símans er ekki rétt útfærð í appinu almennt“.
+Fyrri GitHub-athugun staðfesti allar fimm afhentar skrár 149 með samsvarandi blob-auðkennum. Nýrri athugun í þessari lotu sýnir engin nýrri appgögn en þau í síðustu athugun; staða er ekki ályktuð eingöngu út frá mynd.
+
+STAÐFESTING 149:
+Notandi staðfestir prófaða Uppgötva-flæðið samkvæmt undanfarandi fjögurra skrefa beiðni: opna Uppgötva, 7 km, Matur/drykkur, réttur áfangastaður/radíus, Til baka með varðveislu vals og lokun/enduropnun án gamals græns ramma. Þetta er afmörkuð notandastaðfesting, ekki sjálfstæð framkvæmd þessara prófa af aðstoðarmanni eða heildarstaðfesting kerfisins.
+Aðgengilega skráin IMG_0926.jpeg var skoðuð; hún sýnir Uppgötva opið í láréttri birtingu, ítalskan fána/Napólí, 7 km sleða, staðsetningarhnapp og efstu flísarnar. Myndin ein staðfestir ekki allar milliaðgerðir, GPS-heimild, leiðsagnarhnit eða að öll 7 km svæðisgögn hafi verið sótt.
+Þrjár aðrar myndskrár, IMG_0924.jpeg, IMG_0925.jpeg og IMG_0927.png, voru óaðgengilegar sem skrár í þessari lotu. Ekki fullyrða að þær hafi verið lesnar. Myndir birtast einnig í skilaboðunum; formleg aðgangstakmörkun á viðhengjum er varðveitt.
+HUG-UI-02: útfærsla og sjálfvirk próf 149 varðveitt, afmarkað flæðispróf nú notandastaðfest; almennt lárétt útlit ekki samþykkt.
+HUG-KORT-01: útfærsla og sjálfvirk próf varðveitt; notandastaðfesting á undanfarandi enduropnunarflæði skráð með fyrirvara um að hver milliaðgerð sé ekki sýnd sérstaklega.
+HUG-UI-01: flokkasýn/tilbaka-flæði notandastaðfest að ofangreindu marki. Myndir, síur og heildarframsetning enn ólokin.
+HUG-PROF-01/HUG-GPS-01: ekki lokað. Raunverulegt GPS, öll leiðsagnarhnit, önnur gagnatengd flæði og heildar lárétt Safari-birting ekki fullstaðfest með þessu svari.
+
+UI-LAR-01 — ALMENN LÁRÉTT FRAMSETNING Á iPHONE / SAFARI
+Staða: ÓLOKIÐ — SKRÁÐ VANDAMÁL; GREINING OG LAUSN EKKI STAÐFEST.
+Notandi segir lárétta stöðu ekki rétt útfærða í appinu almennt. Skrá sem sjálfstætt verkefni yfir alla sambærilega skjái; ekki afmarka við nýja Uppgötva-svæðið eða kalla þetta örugglega nýja villu í 149 án samanburðar við fyrri útgáfu.
+Næsta greining: skoða raunverulega skjábreidd og -hæð, Safari/heimaskjáshegðun, textastærð, þéttleika, lóðrétt pláss, flæðisröðun, spjöld, haus-/kortastýringar og aðgengi að hnöppum í láréttri stöðu. Sannreyna orsök í kóða og bera við sömu stillingar í lóðréttri stöðu áður en breyting er valin. Þetta eru athugunaratriði, ekki staðfestar orsakir eða samþykkt ný hönnun.
+Varðveita samþykkt lóðrétt útlit, iPad, þemu, letur-/þéttleikastillingar, bókunarform, gögn og HUG-03/04-umfang. Ekki gera almenna landslagsendurröðun samhliða flokkasíum eða aðra ótengda lagfæringu.
+Útfærsla: engin. Sjálfvirk próf: engin ný; eldri breiddarpróf 149 eru afmörkuð, ekki sannprófun heildarappútlits. iPhone: vandamál tilkynnt af notanda, lausn óprófuð.
+Skipun 4 gildir um villugreiningu og samþykki lausnar áður en kóða er breytt.
+
+ENGAR APPKÓÐABREYTINGAR Í ÞESSARI LOTU.
+Aðeins ný staðfesting og opið UI-LAR-01 bætast við aðalverkefnalistann. Eldri efni, prófanir og öll ólokin verkefni eru varðveitt. SAM-00 helst lokið 24/24; HUG-03/04 áfram í vinnslu. Næsta fyrirliggjandi HUG-03/04-verk er flokkasíur og niðurstöðulistar samkvæmt samþykktri mynd; almenn lárétt útfærsla er sjálfstætt verk.
+Viðbótin er í vinnuafriti með kóðanum og fylgir næstu afhendingu. Hún er ekki skrifuð á GitHub af aðstoðarmanni og krefst ekki sérstakrar upphleðslu núna.
+
+
+UI-LAR-01 — ENDURSENDAR MYNDIR AÐGENGILEGAR — 20-11-2026
+Endursendar myndskrár IMG_0924(1).jpeg, IMG_0925(1).jpeg, IMG_0926(1).jpeg og IMG_0927(1).png voru nú allar opnaðar og skoðaðar. Fyrri færslan um óaðgengileg upprunaviðhengi er varðveitt sem saga; aðgangshindrun fyrir þessi endursendu mynddæmi er leyst.
+- IMG_0924(1): hluti ferðastiku, kortahaus, kortahnappar og flokkasíur í láréttri stöðu.
+- IMG_0925(1): kort, lokaður Uppgötva-inngangur, Áfangastaður/Um kortið og flugfærsluspjald í láréttri stöðu.
+- IMG_0926(1): Uppgötva opið, Napólí með ítölskum fána, 7 km sleði og efstu flokkaflísar í láréttri stöðu.
+- IMG_0927(1): tvídálka flokkaröð Uppgötva sem nýtir breiða lárétta sýn með breiðum flísum.
+Myndirnar varðveita dæmi bæði úr eldri ferðasýn og Uppgötva; verkefnið er því áfram almennt UI-LAR-01, ekki eingöngu Uppgötva-villa. Þær staðfesta ekki tæknilega orsök, raunveruleg CSS-viewport-gildi, Safari-textastækkun, vefaðdrátt eða samþykkta nýja uppröðun. Ekki jafna skurði skjámyndar við staðfesta yfirflæðisvillu án prófunar.
+Afmörkuð notandastaðfesting 149 heldur gildi; almennt lárétt útlit er áfram ÓLOKIÐ. Enginn kóði eða ferðagögn breytt í þessari myndayfirferð og engin ný keyrslupróf. Staða heimilda: Sources-afrit Skipun1/Hugmyndavinna og 02-02-Verkefnalisti eru aftur aðgengileg samkvæmt nýjasta viðhengjayfirliti; þau yfirskrifa ekki nýrri verkefnalista við kóðann.
+Skráning í vinnuafriti, fylgir næstu afhendingu. Ekkert skrifað á GitHub; engin sérstök upphleðsla nauðsynleg núna. Öll önnur opin verkefni og eldri skráning eru varðveitt.
+
+
+HUG-03/04 — AFHENDING 150 — FLOKKASÍUR OG ÞÉTTIR NIÐURSTÖÐULISTAR — 20-11-2026
+Staða: AFMARKAÐUR ÁFANGI ÚTFÆRÐUR OG SJÁLFVIRKT PRÓFAÐUR. Bíður upphleðslu appskráa og raunprófunar á iPhone. HUG-03/04 er áfram Í VINNSLU.
+Grunnur: nýjasta samþykkta mynd og samþykkt áfangaskipt áætlun, fyrirmæli notanda „Haltu áfram“. GitHub HEAD við upphaf: cd49340a7afb698acfffec2fdcb6dfcba2dd3476. Fimm skrár 149 voru áður bornar saman við GitHub; nýjustu staðfestingar/myndaskráning hér eru varðveittar. Eldra Sources-afrit yfirskrifar ekki nýrri verkefnalista.
+
+FRAMKVÆMD 150:
+- Áhugaverðir staðir: Allt, Sögustaðir, Söfn og Kirkjur. Matur/drykkur: Allt, Veitingastaðir, Vínbarir og Kaffihús. Hver sía sendir afmarkaða leit til gagnaveitu; ekki eingöngu síað úr fyrstu almennu 20 niðurstöðunum.
+- Matargerðir: lokaður fjölvalskafli með tíu samþykktum gerðum. Val sendir ekki leit fyrr en ýtt er á Nota síu. Fleiri valdar gerðir eru EIN OR-leit, ekki fjöldi samhliða fyrirspurna. Kaffihús/Vínbarir hreinsa ósamrýmanlegt matargerðaval.
+- Hagnýtt nálægt mér: ellefu þjónustuflísar. Níu tengdar: apótek, læknisþjónusta, tannlæknar, hraðbankar, matvöruverslanir, almenningssalerni, hárgreiðsla, drykkjarvatn og hleðslustöðvar. Farangursgeymsla og hjólaviðgerðir eru merktar Ekki tengt og óvirkar þar til viðeigandi gagnatenging hefur verið sannreynd. Ekki nota almenna geymslu eða hjólabúð sem staðfestingu slíkrar þjónustu.
+- Þéttur niðurstöðulisti með heiti, fjarlægð frá leitarmiðju og heimildastuddri gerð. Hver niðurstaða er sjálfgefið lokuð; snerting eða lyklaborð opnar heimilisfang og fyrirliggjandi korta-/leiðsagnar-/vefaðgerðir. Smellur á tímabundinn kortapunkt opnar samsvarandi niðurstöðu. Gögn vistast ekki í ferð við skoðun.
+- Smámyndir, ítarlegar lýsingar og fjórir samþykktir fróðleikskaflar eru EKKI innleidd með 150. Markmið lokaútkomu er áfram smámynd vinstra megin, texti hægra megin og myndir í viðeigandi fróðleiksköflum samkvæmt samþykktu myndinni. Nota rétta staðatengingu og viðeigandi leyfi/heimild; engar ágiskaðar myndir eða einkunnir.
+- Nýr viðskiptavinur sannreynir síumerkingu svars áður en ákveðin sía er sýnd sem virk. Eldri bakendi sem hunsar síu birtir skýra villu; óviðkomandi niðurstöður eru ekki kynntar sem rétt síuð svör.
+- Sameiginleg afturleið, heimildastýrt GPS, handvalin leitarmiðja, 0-hnit, Gangandi/Í bíl og Google Maps-upphaf/endi varðveitt. Engin sjálfvirk notkun gististaðar sem nýtt leiðarupphaf.
+
+AFMÖRKUN KÓÐA:
+App: index.html, nearby-discovery.js og nearby-discovery.css. index.html hefur nákvæmlega tvær v=149→150 vísanir og viðbót selectResult við smell á fyrirliggjandi nearby-kortapunkt; annar index-kóði er bætisjafn við grunn 149. Ný CSS er afmörkuð við Uppgötva. Ellefu nýjar þjónustuflísar nota lesanleg heitaumbrot; almenn letur-/þema-/þéttleikastýring óbreytt.
+15 aðrar hjálparskrár óbreyttar bætislega miðað við upphaf þessa áfanga. Fyrri takmörkun um ósamræmi þeirra við GitHub-tékksummur er varðveitt og ekki talin leyst; þær eru ekki í afhendingunni. Bókunarform, ferðastika, dagatal, viðvaranir, kostnaður, vistun, Ferðaveski og gagnaskipan óbreytt.
+Bakendi: aðeins handler.mjs í fyrirliggjandi nearby-places. index.ts óbreytt. Valfrjálsar leyfðar síur bætast við; eldri beiðni án subtype heldur eldri flokkafyrirspurn. Síur og matargerðir fylgja cache-auðkenni og svarlýsingu. Aðgangsvörn, RLS-lesaðgangur, verify_jwt=true, tímamörk, hámark 20 niðurstaðna, 15 mínútna tímabundið minni og engin gagnaskrif varðveitt. 40/klst á notanda / 60 á mínútu eru á worker, EKKI tryggt dreift kostnaðarþak. Fyrri gjaldfrjáls áætlun og kostnaðarkrafa haldast; engin ný þjónusta, lykill eða áskrift.
+
+RAUNVERULEG PRÓFUN 150:
+29/29 hermd þjónustupróf: nákvæmir undirflokkar, gömul beiðnisamhæfni, afmörkuð OR-matargerðaleit, aðgreind skyndiminni, samhliða endurtekning, óleyfðir/ógildir flokkar, uppruna-/gagnasannprófun, villur og aðgangur að ferð.
+23/23 eldri þjónustupróf ENDURKEYRÐ gegn nýjum handler: heimildir, RLS, beiðniskilyrði, takmörkun, tímamörk/svarvillur, safe URLs, hnit, gögn, cache og öryggi innan prófaðs umfangs. Prófin nota hermt fetch; ekki raunverulega Geoapify-gagnadreifingu.
+44/44 Chromium 153.0.8010.0 viðmótspróf: síur, fjölval án aukaleitar, svarsamningur/villur, lokuð niðurstaða/Enter, kortaval, afturleið/lokun, síðbúin svör, sex flokkaumgjarðir, val leitarmiðju, GPS samþykki/höfnun hermt, Google Maps-hnit og ferðamáti, óbreytt ferðagögn. Breiddir 320×700, 393×852, 852×393 og 820×1180 í ljósu/dökku þema, opnir matargerðarkaflar, þjónustuflísar og stórt letur. Prófuð engin lárétt yfirflæði í þessum afmörkuðu svæðum; þetta staðfestir EKKI almennt lárétt útlit appsins.
+9/9 MapLibre GL 6.11.2/WebGL-próf: eldri merki samhliða tímabundnum, endurteikning, kortapunktur opnar rétta niðurstöðu, Sýna á korti heldur réttum hnitum, hreinsun við afturleið/lokun varðveitir eldri merki, tvö þemu/skjábreiddir. Einfaldur prufukortastíll og hermt API; ekki lifandi OSM-flísar eða raun GPS.
+Sjónskoðaðar prófunarmyndir við 393 px dökkt og 852 px ljóst; nýjar þjónustuflísar yfirfarnar með heitaumbrotum. Hönnunarútkoma enn að hluta þar sem myndir/fróðleikur vantar.
+Fyrstu undirflokkapróf fundu að category sem eins staks fylki slapp inn í JS-lykilathugun; ströng strengjaprófun bætt við og öll 29 próf endurkeyrð með árangri. Engin slík keyrsla var dreift. Eldri UI-próf á alltaf sýnilegum aðgerðum voru aðlöguð að samþykktum þéttum opnanlegum lista; próf sannreyna bæði lokaða stöðu og opnun áður en kortaaðgerð er notuð.
+
+DREIFING ÞJÓNUSTU:
+nearby-places dreift sem útgáfu 2, ACTIVE, verify_jwt=true, 20-11-2026. SHA256 þjónustu: 1a06f7134a9d710ca447ef79ffc75554d99a742cf10c1ca41f438e2288045b7f. Sækta dreifða uppspretta var borin saman við afhentan handler/index.ts og samsvarar. Hinar fimm þjónusturnar halda útgáfum, tékksummum og JWT-stillingum.
+Þrjú lifandi gáttarpróf staðfest: OPTIONS 200 með réttum uppruna, POST án innskráningar 401 og ógildur JWT 401. Engin innskráð lifandi síuleit var framkvæmd í þessari lotu; raunveruleg svör undirflokka og GPS á iPhone bíða notanda. Eldri raunprófun HTTP 200/19 staða við Napólí er varðveitt sem fyrri almenn leit, ekki talin nýtt síupróf.
+
+GAGNAGÆÐI OG TAKMARKANIR:
+Opinber Geoapify Places-flokkun yfirfarin: https://apidocs.geoapify.com/docs/places/index.html
+Leit takmarkast áfram við allt að 20 svör í hverri fyrirspurn og ekki tæmandi. Vínbarir þurfa skýrt bar=wine eða wine_bar í upprunagögnum; heiti með wine eða almennur bar er ekki nægilegt. Vegna gagnaskorts/hámarks geta raunverulegir vínbarir vantað. Matargerðir koma úr skýrum flokkum/cuisine-gögnum, ekki ályktun út frá nafni. Tóm leit sannar ekki að þjónusta vanti á staðnum. Engin ný gögn eða fullyrðing um leyfi fyrir ljósmyndum í 150.
+
+UPPFÆRÐ STAÐA:
+HUG-UI-01: eigin flokkasýnir/tilbaka 149 notandastaðfest að fyrra marki; þéttir opnanlegir listar og síur 150 útfærð og sjálfvirkt prófuð, ný iPhone-staðfesting bíður. Mynd-/lýsingarhluti ólokinn; heildarliður áfram AÐ HLUTA.
+Hagnýtir undirflokkar: 9/11 gagnatengdir og hermiprófaðir, 2/11 óloknir. Raungagnapróf allra níu á iPhone óstaðfest.
+Matarflokkun/fjölval: útfært og hermi-/vafraprófað; lifandi niðurstöður á iPhone óstaðfestar.
+HUG-FROD-01–04, myndir/heimildir, viðburðir, útivist, myndavélar, ferjuviðbót, samþykkt vistunarflæði, varaleiðir, frekari samstilling/eigin flokkun og fótbolti halda fyrri opnu stöðu. Gildistöku-/tímabeltagagnapróf viðburða bíða viðkomandi áfanga.
+UI-LAR-01 áfram ÓLOKIÐ: almenn lárétt iPhone/Safari-framsetning; engin almenn lagfæring gerð hér. HUG-KORT-02 um staðsetningarhnapp sem virðist hverfa er enn óstaðfest á raunverulegu tæki. HUG-GPS-01/HUG-PROF-01 ekki lokað.
+SAM-00 áfram LOKIÐ 24/24. SAM-P01–P04 og öll önnur áður ólokin verkefni varðveitt. UI-RUT-01 heldur stöðu LOKAÐ—FELLT NIÐUR, EKKI LAGFÆRT. Eldri ákvarðanir, afhendingarsaga og allar prófunartakmarkanir eru varðveittar.
+
+AFHENDING/NOTANDAPRÓF/AFTURKÖLLUN:
+Notandi setur nákvæmlega fimm rótarskrár pakkans á GitHub við hlið núverandi index.html: index.html, nearby-discovery.js, nearby-discovery.css, VERKEFNALISTI.txt og GILDANDI-AKVARDANIR.txt. Engin GitHub-skrif aðstoðarmanns. Þjónusta þegar uppfærð; ekkert Supabase-skref þarf frá notanda núna.
+Prófa ný síu- og listaflæði á iPhone: Matur/drykkur→Kaffihús, Áhugaverðir→Söfn, opna/loka stað og Sýna á korti/Google Maps, Matargerðir fjölval og Nota síu, einn hagnýtan undirflokk, Til baka/Loka/enduropnun. Gagnatómur flokkur þarf ekki að vera villa; skrá raunveruleg villuboð ef þau koma. Þetta kallar ekki á endurprófun allra óbreyttra bókunarforma. Almenn lárétt hönnun ekki merkt samþykkt með þessum prófum.
+Afturköllun apps: endurheimta þrjár keyrsluskrár úr afhendingu 149 sem samstætt sett, halda nýjustu verkefnasögu. Gamalt app er samhæft við þjónustu v2 samkvæmt hermiprófi. Fyrri þjónustukóði v1 og nýr v2 eru varðveitt í pakkafylgiskrám til samanburðar; ekki þörf á þjónustuafturköllun nema sérstök bilun kalli á það. Engin gagnamigrering og ekki hreinsa bókanir eða vafragögn.
