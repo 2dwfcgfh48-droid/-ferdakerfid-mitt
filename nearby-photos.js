@@ -64,7 +64,7 @@ function mount({host,thumbnailWidth=240}){
  function display(job,photo){
   const {overview,card,own}=job;if(own!==epoch||!overview.isConnected||host.hidden)return;
   const image=new Image();image.className='nearby-place-photo';image.width=104;image.height=78;image.alt='';image.decoding='async';image.referrerPolicy='no-referrer';
-  image.onload=()=>{if(own!==epoch||!overview.isConnected||host.hidden)return;overview.prepend(image);overview.classList.add('nearby-result-with-photo');
+  image.onload=()=>{if(own!==epoch||!overview.isConnected||host.hidden)return;const frame=document.createElement('span');frame.className='nearby-photo-frame';frame.append(image);overview.prepend(frame);overview.classList.add('nearby-result-with-photo');
    const credit=document.createElement('p');credit.className='notice nearby-photo-credit';
    const link=(label,url)=>{const a=document.createElement('a');a.textContent=label;a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a};
    credit.append(link('Mynd: '+photo.author,photo.source),document.createTextNode(' · '),link(photo.license,photo.licenseUrl));

@@ -66,7 +66,8 @@
 /* Verified place thumbnails only; rows without a photo retain their text layout. */
 .nearby-result-overview.nearby-result-with-photo{display:flex;align-items:center;gap:.65rem}
 .nearby-result-copy{display:block;min-width:0}
-.nearby-place-photo{flex:0 0 104px;width:104px;height:78px;max-width:30%;object-fit:contain;border-radius:.5rem}
+.nearby-photo-frame{display:flex;align-items:center;justify-content:center;flex:0 0 104px;width:104px;height:78px;max-width:30%;min-width:0}
+.nearby-place-photo{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
 .nearby-photo-credit{padding:0 .85rem .7rem;overflow-wrap:anywhere}
 .nearby-photo-credit a{color:var(--accent)}
 
@@ -82,7 +83,7 @@
 .nearby-culture-body a{color:var(--accent);overflow-wrap:anywhere}
 .nearby-culture-section{border-top:1px solid var(--line)}
 .nearby-culture-section>summary{padding-left:0}
-.nearby-culture-hero .nearby-place-photo{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:.65rem}
+.nearby-culture-hero .nearby-photo-frame{width:100%;max-width:100%;height:auto;aspect-ratio:16/9}
 .nearby-culture-hero .nearby-photo-credit{padding:0;font-size:.8em}
 .nearby-culture-source{font-size:.85em}
 .nearby-culture>summary:focus-visible,.nearby-culture-section>summary:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
