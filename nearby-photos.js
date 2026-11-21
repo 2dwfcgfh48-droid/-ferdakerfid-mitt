@@ -1,6 +1,6 @@
 /* Optional discovery thumbnails only. No trip data, credentials or persistent writes. */
 (function(){'use strict';
-const AGENT='FerdakerfidMitt/154 (https://github.com/2dwfcgfh48-droid/-ferdakerfid-mitt)';
+const AGENT='FerdakerfidMitt/155 (https://github.com/2dwfcgfh48-droid/-ferdakerfid-mitt)';
 const qid=v=>typeof v==='string'&&/^Q[1-9][0-9]{0,14}$/.test(v);
 const folded=v=>String(v||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
 const values=(e,p)=>{const a=(e?.claims||e?.statements||{})[p]||[];const live=a.filter(x=>x.rank!=='deprecated'&&x.mainsnak?.snaktype==='value');return (live.some(x=>x.rank==='preferred')?live.filter(x=>x.rank==='preferred'):live).map(x=>x.mainsnak.datavalue?.value)};
@@ -15,7 +15,7 @@ function matches(place,e){
   const r=x=>x*Math.PI/180,h=Math.sin(r(c.latitude-place.latitude)/2)**2+Math.cos(r(c.latitude))*Math.cos(r(place.latitude))*Math.sin(r(c.longitude-place.longitude)/2)**2;return 12742000*Math.asin(Math.sqrt(Math.min(1,h)))<=250;
  });
 }
-function metadata(data,file){
+function metadata(data,file,compactAuthor=false){
  const pages=data?.query?.pages;if(!Array.isArray(pages)||pages.length!==1)return null;
  const p=pages[0],i=p.imageinfo?.[0],m=i?.extmetadata||{};
  if(p.missing||p.invalid||p.ns!==6||p.title?.replaceAll('_',' ')!=='File:'+file.replaceAll('_',' ')||!Number.isInteger(p.pageid)||!['image/jpeg','image/png','image/webp'].includes(i?.mime))return null;
@@ -23,16 +23,16 @@ function metadata(data,file){
  if(!source||!thumb||!source.pathname.startsWith('/wiki/File:')||!thumb.pathname.startsWith('/wikipedia/commons/'))return null;
  let sourceFile;try{sourceFile=decodeURIComponent(source.pathname.slice('/wiki/File:'.length)).replaceAll('_',' ')}catch{return null}
  if(sourceFile!==file.replaceAll('_',' '))return null;
- const author=text(m.Artist?.value),license=text(m.LicenseShortName?.value),url=https(m.LicenseUrl?.value,'creativecommons.org');
+ let author=text(m.Artist?.value);if(compactAuthor&&author.length>300){const t=document.createElement('template');t.innerHTML=m.Artist.value;const names=[...new Set([...t.content.querySelectorAll('a[title^="User:"]')].filter(a=>{try{const u=new URL(a.getAttribute('href'),'https://commons.wikimedia.org');return u.protocol==='https:'&&u.hostname==='commons.wikimedia.org'&&u.pathname.startsWith('/wiki/User:')}catch{return false}}).map(a=>a.textContent.trim()).filter(Boolean))];if(names.length!==1)return null;author=names[0]}const license=text(m.LicenseShortName?.value),url=https(m.LicenseUrl?.value,'creativecommons.org');
  const match=url?.pathname.match(/^\/licenses\/(by|by-sa)\/(1\.0|2\.0|2\.5|3\.0|4\.0)\/?$/);
  if(!author||!match||license!=='CC '+match[1].toUpperCase()+' '+match[2]||text(m.Restrictions?.value))return null;
  return {file,pageid:p.pageid,url:thumb.href,source:source.href,author,license,licenseUrl:url.href,credit:text(m.Attribution?.value)||text(m.Credit?.value)};
 }
-function mount({host}){
+function mount({host,thumbnailWidth=240}){
  const cache=new Map();let queue=[],running=false,epoch=0,active=null,blockedUntil=0,lastCall=0,notice=null;
  const observer=typeof IntersectionObserver==='function'?new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){observer.unobserve(e.target);const job=jobs.get(e.target);if(job){jobs.delete(e.target);queue.push(job)}}pump()},{rootMargin:'120px'}):null;
  let jobs=new WeakMap();
- function problem(){if(notice||host.hidden)return;notice=document.createElement('p');notice.className='notice nearby-photo-status';notice.textContent='Ekki tókst að sækja staðarmyndir. Staðalistinn er áfram aðgengilegur.';host.querySelector('.nearby-results')?.after(notice)}
+ function problem(){if(notice||host.hidden)return;notice=document.createElement('p');notice.className='notice nearby-photo-status';notice.textContent='Ekki tókst að sækja staðarmyndir. Staðalistinn er áfram aðgengilegur.';const anchor=host.querySelector('.nearby-results');if(anchor)anchor.after(notice);else host.append(notice)}
  async function api(site,params,signal){
   const wait=Math.max(0,300-(Date.now()-lastCall));if(wait)await new Promise(resolve=>setTimeout(resolve,wait));if(signal.aborted)throw new DOMException('Aborted','AbortError');
   if(Date.now()<blockedUntil)throw Error('cooldown');lastCall=Date.now();
@@ -46,13 +46,13 @@ function mount({host}){
    const bytes=new Uint8Array(size);let offset=0;for(const p of parts){bytes.set(p,offset);offset+=p.byteLength}const d=JSON.parse(new TextDecoder().decode(bytes));if(d.error){if(d.error.code==='maxlag'||d.error.code==='ratelimited')blockedUntil=Date.now()+60000;throw Error('provider')}return d;
   }finally{clearTimeout(timeout)}
  }
- async function load(place,signal){
+ async function load(place,signal,knownEntity){
   const key=JSON.stringify([place.wikidata,place.name,place.latitude,place.longitude]),saved=cache.get(key);if(saved&&saved.until>Date.now())return saved.value;
-  const d=await api('www.wikidata.org',{action:'wbgetentities',ids:place.wikidata,props:'labels|aliases|claims'},signal),entity=d.entities?.[place.wikidata];let photo=null;
+  const entity=knownEntity||((await api('www.wikidata.org',{action:'wbgetentities',ids:place.wikidata,props:'labels|aliases|claims'},signal)).entities?.[place.wikidata]);let photo=null;
   if(matches(place,entity)){
    const files=values(entity,'P18').filter(f=>typeof f==='string'&&f.length<=250&&!/[|#\u0000-\u001f]/.test(f));
    // Ambiguous image statements are not resolved by guessing.
-   if(files.length===1){const file=files[0],info=await api('commons.wikimedia.org',{action:'query',formatversion:'2',titles:'File:'+file,prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'240',iiextmetadatalanguage:'en'},signal);photo=metadata(info,file);
+   if(files.length===1){const file=files[0],info=await api('commons.wikimedia.org',{action:'query',formatversion:'2',titles:'File:'+file,prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:thumbnailWidth===960?'960':'240',iiextmetadatalanguage:'en'},signal);photo=metadata(info,file,thumbnailWidth===960);
     if(photo){const media=await api('commons.wikimedia.org',{action:'wbgetentities',ids:'M'+photo.pageid,props:'claims'},signal),e=media.entities?.['M'+photo.pageid];
      if(e?.id!=='M'+photo.pageid||e.type!=='mediainfo')photo=null;
      else {const depicts=values(e,'P180').map(x=>x?.id).filter(qid);if(depicts.length&&!depicts.includes(place.wikidata))photo=null}
@@ -73,10 +73,10 @@ function mount({host}){
   image.onerror=()=>{if(own===epoch&&overview.isConnected)problem()};image.src=photo.url;
  }
  async function pump(){if(running)return;running=true;try{while(queue.length){const job=queue.shift();if(job.own!==epoch||!job.overview.isConnected)continue;if(Date.now()<blockedUntil){problem();continue}const current=new AbortController();active=current;
-   try{const photo=await load(job.place,current.signal);if(photo)display(job,photo)}catch(e){if(job.own===epoch)problem()}finally{if(active===current)active=null}
+   try{const photo=await load(job.place,current.signal,job.entity);if(photo)display(job,photo)}catch(e){if(job.own===epoch)problem()}finally{if(active===current)active=null}
   }}finally{running=false}}
  return {
-  watch(place,overview,card){if(!qid(place.wikidata))return;const job={place,overview,card,own:epoch};if(observer){jobs.set(overview,job);observer.observe(overview)}else overview.parentElement.addEventListener('toggle',()=>{if(overview.parentElement.open&&job.own===epoch){queue.push(job);pump()}},{once:true})},
+  watch(place,overview,card,entity){if(!qid(place.wikidata))return;const job={place,overview,card,entity,own:epoch};if(observer){jobs.set(overview,job);observer.observe(overview)}else overview.parentElement.addEventListener('toggle',()=>{if(overview.parentElement.open&&job.own===epoch){queue.push(job);pump()}},{once:true})},
   reset(){epoch++;active?.abort();queue=[];jobs=new WeakMap();observer?.disconnect();notice?.remove();notice=null}
  };
 }
