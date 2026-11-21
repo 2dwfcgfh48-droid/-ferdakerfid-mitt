@@ -108,7 +108,9 @@ function mount({host}){
   if(!source||new URL(source).hostname!=='commons.wikimedia.org'||!new URL(source).pathname.startsWith('/wiki/File:')||!license||new URL(license).hostname!=='creativecommons.org')return null;
   const m=new URL(license).pathname.match(/^\/licenses\/(by|by-sa)\/(2\.0|3\.0|4\.0)\/?$/);
   if(!m||image.license!=='CC '+m[1].toUpperCase()+' '+m[2])return null;
-  return {...image,source,licenseUrl:license,local:new URL(image.src,assetBase).href};
+  const assets=window.NearbyFoodData?.assets,asset=assets&&Object.hasOwn(assets,image.src)?assets[image.src]:null;
+  const bundled=asset&&/^[a-f0-9]{64}$/.test(image.sha256)&&asset.sha256===image.sha256&&typeof asset.data==='string'&&asset.data.length<=1500000&&/^data:image\/jpeg;base64,\/9j\/[A-Za-z0-9+/]*={0,2}$/.test(asset.data);
+  return {...image,source,licenseUrl:license,local:bundled?asset.data:new URL(image.src,assetBase).href};
  }
  function renderFood(profile){
   body.replaceChildren();body.classList.add('nearby-food-body');const credits=new Map(),own=epoch;
@@ -119,18 +121,23 @@ function mount({host}){
    img.addEventListener('error',()=>{if(own!==epoch||!frame.isConnected)return;frame.remove();if(hero)body.classList.add('nearby-food-no-hero')},{once:true});frame.append(img);img.src=image.local;return frame;
   }
   const hero=node('figure',null,'nearby-culture-hero nearby-food-hero'),cover=picture(profile.hero,true);
-  if(cover){hero.append(cover);body.append(hero)}
-  body.append(node('h4',String.fromCodePoint(...Array.from(profile.country,c=>127397+c.charCodeAt(0)))+' '+profile.heading,'nearby-food-heading'));
-  body.append(node('p',profile.intro,'nearby-food-intro'));
+  if(cover)hero.append(cover);else body.classList.add('nearby-food-no-hero');
+  hero.append(node('figcaption',String.fromCodePoint(...Array.from(profile.country,c=>127397+c.charCodeAt(0)))+' '+profile.name,'nearby-food-heading'));body.append(hero);
   for(const group of profile.sections){
    const section=node('details',null,'nearby-culture-section nearby-food-section');section.open=true;section.append(node('summary',group.title));
    const list=node('div',null,'nearby-food-list');
    for(const item of group.items){const row=node('article',null,'nearby-food-item'),photo=picture(item.image);if(photo)row.append(photo);
-    const copy=node('div',null,'nearby-food-copy'),heading=node('h5'),source=link(item.title,sourceUrl(item.source.url));source.title='Heimild: '+item.source.label;source.setAttribute('aria-label',item.title+' — heimild: '+item.source.label);heading.append(source);copy.append(heading,node('p',item.text));row.append(copy);list.append(row);
+    const copy=node('div',null,'nearby-food-copy'),heading=node('h5'),source=link(item.title,sourceUrl(item.source.url));source.title='Heimild: '+item.source.label;source.setAttribute('aria-label',item.title+' — heimild: '+item.source.label);heading.append(source);copy.append(heading,node('p',item.text));row.append(copy);
+    const more=node('div',null,'nearby-food-more');
+    for(const [key,label,message] of [['history','Saga og uppruni','Saga og uppruni hafa ekki enn verið staðfest.'],['availability','Hvar fæst þetta?','Ekki liggja enn fyrir staðfestir sölustaðir fyrir þetta atriði.']]){
+     const detail=node('details',null,'nearby-food-detail');detail.dataset.foodDetail=key;const summary=node('summary',label);summary.setAttribute('aria-label',label+' — '+item.title);detail.append(summary,node('p',message,'notice'));more.append(detail);
+    }
+    row.append(more);list.append(row);
    }
    section.append(list);body.append(section);
   }
   const sources=node('details',null,'nearby-culture-section nearby-food-sources');sources.append(node('summary','Heimildir og myndaleyfi'));
+  sources.append(node('p',profile.heading),node('p',profile.intro));
   sources.append(node('p','Íslenskar samantektir byggðar á tengdum heimildum. Heiti réttar eða drykkjar opnar heimildina. Myndir sýna viðkomandi mat eða drykk; þær staðfesta ekki framboð veitingastaða.','notice'));
   const list=node('ul');for(const image of credits.values()){const li=node('li');li.append(link(typeof image.title==='string'?image.title.replace(/^File:/,''):(image.alt||'Mynd'),image.source),document.createTextNode(' · '+image.author+' · '),link(image.license,image.licenseUrl));if(image.credit&&image.credit!=='Own work')li.append(document.createTextNode(' · '+image.credit));list.append(li)}sources.append(list);body.append(sources);
  }
@@ -164,7 +171,7 @@ function mount({host}){
  }
  function clear(){epoch++;controller?.abort();controller=null;photos?.reset();loaded=false;body.replaceChildren();body.classList.remove('nearby-food-body','nearby-food-no-hero');body.removeAttribute('aria-busy')}
  outer.addEventListener('toggle',()=>{if(outer.open)load();else clear()});
- return {show(key,s,scope){const next=JSON.stringify([key,s?.id,s?.name,s?.latitude,s?.longitude,s?.country_code,scope]);if(next===stamp)return;stamp=next;clear();outer.open=false;category=CONFIG[key]?key:null;stop=s;outer.hidden=!category;title.textContent=CONFIG[key]?.title||''},reset(){stamp='';clear();outer.open=false;outer.hidden=true;category=null;stop=null}};
+ return {show(key,s,scope){const next=JSON.stringify([key,s?.id,s?.name,s?.latitude,s?.longitude,s?.country_code,scope]);if(next===stamp)return;stamp=next;clear();outer.open=false;category=CONFIG[key]?key:null;stop=s;outer.hidden=!category;title.replaceChildren();if(category){const [icon,...words]=CONFIG[key].title.split(' ');title.append(node('span',icon+' ','nearby-culture-icon'),node('span',words.join(' '),'nearby-culture-label'))}},reset(){stamp='';clear();outer.open=false;outer.hidden=true;category=null;stop=null}};
 }
 window.NearbyCulture={mount};
 })();
