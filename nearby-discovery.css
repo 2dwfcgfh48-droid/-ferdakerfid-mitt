@@ -87,3 +87,23 @@
 .nearby-culture-hero .nearby-photo-credit{padding:0;font-size:.8em}
 .nearby-culture-source{font-size:.85em}
 .nearby-culture>summary:focus-visible,.nearby-culture-section>summary:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+/* Reviewed food profiles share this layout; content coverage is explicit. */
+.nearby-food-body .nearby-food-hero{margin:0 0 .65rem}
+.nearby-food-body .nearby-food-picture{text-decoration:none}
+.nearby-food-body .nearby-food-heading{font-size:1.05em;line-height:1.3;margin:.65rem 0 .4rem}
+.nearby-food-body .nearby-food-intro{font-size:.9em;color:var(--mut);margin:.4rem 0 .7rem}
+.nearby-food-section{border:1px solid var(--line);border-radius:12px;margin:.6rem 0;min-width:0}
+.nearby-food-section>summary{padding:.55rem 2rem .55rem .7rem;font-weight:700;background:var(--surface-bg,transparent);border-radius:12px}
+.nearby-food-list{padding:0 .65rem}
+.nearby-food-item{display:flex;align-items:center;gap:.7rem;padding:.65rem 0;min-width:0}
+.nearby-food-item+.nearby-food-item{border-top:1px solid var(--line)}
+.nearby-food-copy{flex:1;min-width:0}
+.nearby-food-copy h5{font-size:1em;line-height:1.3;margin:0 0 .25rem}
+.nearby-food-copy h5 a{color:var(--text);text-decoration:none}
+.nearby-food-copy h5 a:hover,.nearby-food-copy h5 a:focus-visible{text-decoration:underline}
+.nearby-food-body .nearby-food-copy p{font-size:.9em;line-height:1.4;margin:0}
+.nearby-food-sources{margin-top:.75rem;font-size:.8em}
+.nearby-food-sources>summary{font-weight:600}
+.nearby-food-sources ul{padding-left:1.2rem;margin:.5rem 0}
+.nearby-food-sources li{margin:.5rem 0;line-height:1.4}
