@@ -102,6 +102,31 @@ function mount({host}){
   return p;
  }
  function sourceUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port?u.href:null}catch{return null}}
+ const field=(s,max=1200)=>typeof s==='string'&&clean(s).length>0&&s.length<=max;
+ function checkedDate(value){try{return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value&&value<=new Date().toISOString().slice(0,10)}catch{return false}}
+ function reviewLine(value){const p=node('p',null,'notice nearby-food-reviewed'),time=node('time',value.split('-').reverse().join('-'));time.dateTime=value;p.append(document.createTextNode('Heimild skoðuð '),time);return p}
+ function renderHistory(detail,data){
+  if(!data||!checkedDate(data.reviewed)||!Array.isArray(data.paragraphs)||!data.paragraphs.length||data.paragraphs.length>4||data.paragraphs.some(p=>!field(p?.text,2000)||!['fact','tradition'].includes(p.kind))||!Array.isArray(data.sources)||!data.sources.length||data.sources.length>4||data.sources.some(s=>!field(s?.label,250)||!sourceUrl(s.url)))return false;
+  for(const paragraph of data.paragraphs){const p=node('p');if(paragraph.kind==='tradition')p.append(node('strong','Upprunasaga / munnmæli: '));p.append(document.createTextNode(paragraph.text));detail.append(p)}
+  const sources=node('p',null,'notice nearby-food-history-sources');data.sources.forEach((s,i)=>{if(i)sources.append(document.createTextNode(' · '));sources.append(link(s.label+' ↗',sourceUrl(s.url)))});detail.append(sources,reviewLine(data.reviewed));return true;
+ }
+ function renderAvailability(detail,data,profile){
+  if(!data||data.status!=='listed'||!checkedDate(data.reviewed)||!Array.isArray(data.venues)||!data.venues.length||data.venues.length>5)return false;
+  let shown=0;
+  for(const v of data.venues){
+   if(!v||v.cityQid!==profile.qid||v.country!==profile.country||!['venue','chain'].includes(v.scope)||!field(v.name,250)||!field(v.offering,500)||!field(v.menu?.label,250)||!sourceUrl(v.menu.url)||!sourceUrl(v.website)||v.note!=null&&!field(v.note))continue;
+   const official=new URL(v.website).hostname.replace(/^www\./,'');if(new URL(v.menu.url).hostname.replace(/^www\./,'')!==official)continue;
+   if(v.scope==='chain'&&!field(v.note))continue;
+   const place=node('div',null,'nearby-food-venue');place.append(node('strong',v.name),node('p','Skráð á netseðli: '+v.offering));
+   const location=v.scope==='venue'&&v.location,hasAddress=location&&field(location.address,500)&&sourceUrl(location.source)&&new URL(location.source).hostname.replace(/^www\./,'')===official;
+   if(hasAddress)place.append(node('p',location.address,'nearby-food-address'));
+   if(v.note)place.append(node('p',v.note,'notice'));
+   const actions=node('div',null,'nearby-food-links');for(const [label,url] of [[v.menu.label+' ↗',sourceUrl(v.menu.url)],['Heimasíða ↗',sourceUrl(v.website)]]){const a=link(label,url);a.className='btn small';actions.append(a)}
+   if(hasAddress){const url=new URL('https://www.google.com/maps/search/');url.search=new URLSearchParams({api:'1',query:v.name+', '+location.address});const a=link('Leita að stað í Google Maps ↗',url.href);a.className='btn small';actions.append(a)}
+   place.append(actions);detail.append(place);shown++;
+  }
+  if(!shown)return false;detail.append(reviewLine(data.reviewed),node('p','Skráning á netseðli tryggir ekki framboð á komudegi. Staðfestið við staðinn.','notice'));return true;
+ }
  function foodImage(image){
   if(!image||!/^nearby-food-images\/[a-z0-9-]+\.(jpg|png|webp)$/.test(image.src)||typeof image.author!=='string'||!clean(image.author))return null;
   const source=sourceUrl(image.source),license=sourceUrl(image.licenseUrl);
@@ -130,7 +155,7 @@ function mount({host}){
     const copy=node('div',null,'nearby-food-copy'),heading=node('h5'),source=link(item.title,sourceUrl(item.source.url));source.title='Heimild: '+item.source.label;source.setAttribute('aria-label',item.title+' — heimild: '+item.source.label);heading.append(source);copy.append(heading,node('p',item.text));row.append(copy);
     const more=node('div',null,'nearby-food-more');
     for(const [key,label,message] of [['history','Saga og uppruni','Saga og uppruni hafa ekki enn verið staðfest.'],['availability','Hvar fæst þetta?','Ekki liggja enn fyrir staðfestir sölustaðir fyrir þetta atriði.']]){
-     const detail=node('details',null,'nearby-food-detail');detail.dataset.foodDetail=key;const summary=node('summary',label);summary.setAttribute('aria-label',label+' — '+item.title);detail.append(summary,node('p',message,'notice'));more.append(detail);
+     const detail=node('details',null,'nearby-food-detail');detail.dataset.foodDetail=key;const summary=node('summary',label);summary.setAttribute('aria-label',label+' — '+item.title);detail.append(summary);const filled=key==='history'?renderHistory(detail,item.history):renderAvailability(detail,item.availability,profile);if(!filled)detail.append(node('p',message,'notice'));more.append(detail);
     }
     row.append(more);list.append(row);
    }
